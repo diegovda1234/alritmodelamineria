@@ -430,6 +430,30 @@ Empresas medianas chilenas y proyectos en desarrollo. **Diego trabaja en este se
 ### Pequeña Minería y Pirquineros
 ENAMI, programas de fomento, precios de compra de mineral, actividad pirquinera. Barómetro de la base del sector.
 
+### 🔎 GOBIERNO KAST — Agenda Minera (sección obligatoria desde Edición N° 2)
+
+> El presidente José Antonio Kast asumió el 11 de marzo de 2026. Su gobierno tiene una agenda pro-inversión minera que puede cambiar significativamente las reglas del sector. **Esta sección es obligatoria en cada edición** — incluirla siempre aunque la semana haya sido de baja actividad (en ese caso, reportar el estado del pipeline de decisiones pendientes).
+
+Monitorear y reportar **toda acción concreta** del gobierno Kast en minería:
+- **Decretos y normativas:** desregulación, cambios al SEA, modificaciones al royalty minero, nuevos reglamentos de agua o energía para minería
+- **Permisología acelerada:** seguimiento semanal del decreto de destrabamiento SEIA (USD $16.300M, 42 proyectos, 8 mineros) — qué proyectos reciben RCA, cuáles se traban, qué plazos se cumplen o incumplen
+- **Política del Litio:** ¿mantiene el modelo Codelco-SQM? ¿abre nuevas licitaciones? ¿modifica los contratos de explotación en Atacama y Maricunga?
+- **Minerales críticos:** acuerdos internacionales firmados, nueva Estrategia Nacional de Minerales Críticos, postura frente a EE.UU. y China
+- **Inversión extranjera:** medidas para atraer capital, cambios al régimen de invariabilidad tributaria (DL 600 o equivalente), señales a inversionistas
+- **Relación con gremios:** posición de SONAMI, Consejo Minero, COCHILCO frente a las políticas del nuevo gobierno
+- **Royalty Minero:** ¿modifica la ley aprobada en 2023? ¿postula cambios? impacto en flujos de inversión
+- **Ministro de Minería:** nombre, declaraciones públicas, agenda de reuniones relevantes
+
+Búsquedas obligatorias cada semana:
+- `Kast minería Chile decreto [semana actual]`
+- `gobierno Chile minería inversión proyecto [semana actual]`
+- `Ministro Minería Chile Kast [semana actual]`
+- `SEA permiso minero Chile Kast [semana actual]`
+- `royalty minero Chile gobierno Kast [semana actual]`
+- `litio Chile Kast política [semana actual]`
+
+**Formato de la sección:** Comenzar con un párrafo de estado general ("Esta semana el gobierno Kast..."), luego listar las acciones concretas con análisis de impacto. Si no hubo movimientos esta semana, reportar qué decisiones están pendientes y cuándo se esperan.
+
 ### Gobierno de Chile — Política Minera y Minerales Críticos
 El Estado chileno está definiendo su postura estratégica en minerales críticos. Monitorear con atención:
 - **Estrategia Nacional de Minerales Críticos:** avances, documentos publicados, hoja de ruta del gobierno
