@@ -1157,12 +1157,13 @@ def _load_svg_logo() -> str:
 
 
 def _strip_gmlc_footer(md_text: str) -> str:
-    """Remove GMLC/job-title footer lines and normalize 'Para Diego:' → 'Para el lector:'."""
+    """Remove GMLC/job-title footer lines and replace reader references to Diego → el lector."""
     md_text = re.sub(
         r'\*[^\n]*(?:GMLC|Gerente\s+Finanzas|Control\s+de\s+Gesti[oó]n)[^\n]*\*\n?',
         '', md_text, flags=re.IGNORECASE
     )
-    md_text = re.sub(r'\*\*Para\s+Diego\s*:\*\*', '**Para el lector:**', md_text, flags=re.IGNORECASE)
+    # Reemplazar todas las referencias a Diego como lector (excepto "Diego Varleta")
+    md_text = re.sub(r'\bDiego\b(?!\s+Varleta)', 'el lector', md_text)
     return md_text
 
 
