@@ -1,1 +1,126 @@
-<h1>Hola</h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al Ritmo de la Minería — Diego Varleta</title>
+    <style>
+        :root {
+            --copper: #B87333;
+            --dark:   #1a1a2e;
+            --gold:   #e2b96f;
+            --bg:     #f8f9fa;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', Inter, sans-serif;
+            background: var(--bg);
+            color: #212529;
+            min-height: 100vh;
+        }
+        header {
+            background: linear-gradient(135deg, var(--dark) 0%, #0f3460 100%);
+            color: white;
+            padding: 28px 24px 24px;
+            text-align: center;
+        }
+        header h1 {
+            font-size: clamp(20px, 5vw, 32px);
+            letter-spacing: -0.5px;
+            color: var(--gold);
+            margin-bottom: 6px;
+        }
+        header p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+        }
+        .container {
+            max-width: 720px;
+            margin: 32px auto;
+            padding: 0 16px 48px;
+        }
+        .section-title {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #6c757d;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .card-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .card {
+            background: white;
+            border: 1px solid #dee2e6;
+            border-left: 4px solid var(--copper);
+            border-radius: 8px;
+            padding: 16px 20px;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: box-shadow 0.15s, transform 0.1s;
+        }
+        .card:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+            transform: translateY(-1px);
+        }
+        .card-title {
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--dark);
+        }
+        .card-meta {
+            font-size: 12px;
+            color: #6c757d;
+            margin-top: 3px;
+        }
+        .badge {
+            background: var(--copper);
+            color: white;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 12px;
+            white-space: nowrap;
+        }
+        .badge.latest {
+            background: #28a745;
+        }
+        footer {
+            text-align: center;
+            font-size: 11px;
+            color: #adb5bd;
+            padding: 20px;
+        }
+        @media (max-width: 500px) {
+            .card { flex-direction: column; align-items: flex-start; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Al Ritmo de la Minería</h1>
+    <p>Inteligencia Minera Estratégica · Diego Varleta</p>
+</header>
+<div class="container">
+    <p class="section-title">Ediciones disponibles</p>
+    <div class="card-list">
+        <a class="card" href="Noticiero_Minero_Ed001_2026-03-12.html">
+            <div>
+                <div class="card-title">Edición N° 1 — Semana del 06/03/2026 al 12/03/2026</div>
+                <div class="card-meta">Publicado: 2026-03-12</div>
+            </div>
+            <span class="badge latest">ÚLTIMA EDICIÓN</span>
+        </a>
+    </div>
+</div>
+<footer>Actualizado el 13/03/2026 13:19 · Uso personal y confidencial</footer>
+</body>
+</html>
