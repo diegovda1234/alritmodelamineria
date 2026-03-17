@@ -11,12 +11,8 @@
             --bg:#F7F9FC; --card:#fff; --text:#1A2535; --muted:#5B6E84;
             --rule:#D1D8E0; --green:#22c55e; --red:#ef4444; --yellow:#eab308; --light:#EEF2F7;
         }
-        html.dark {
-            --night:#0a1018; --bg:#0F1C2E; --card:#162336; --text:#d1d8e0;
-            --muted:#8FA3BC; --rule:#243348; --light:#1a2d42;
-        }
         * { box-sizing:border-box; margin:0; padding:0; }
-        body { font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--text); transition:background .3s,color .3s; }
+        body { font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--text); }
 
         /* NAV */
         .top-bar {
@@ -48,8 +44,7 @@
         .price-table-wrap {
             overflow-x:auto; -webkit-overflow-scrolling:touch;
             border:1px solid var(--rule); border-radius:10px;
-            background:var(--card); transition:background .3s;
-        }
+            background:var(--card);        }
         table { width:100%; border-collapse:collapse; font-size:12px; min-width:700px; }
         thead { position:sticky; top:0; z-index:2; }
         thead tr { background:var(--night); color:white; }
@@ -74,8 +69,7 @@
         .price-cards { display:none; }
         .p-card {
             background:var(--card); border:1px solid var(--rule); border-left:4px solid var(--copper);
-            border-radius:10px; padding:16px; margin-bottom:10px; transition:background .3s;
-        }
+            border-radius:10px; padding:16px; margin-bottom:10px;        }
         .p-card-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
         .p-card-name { font-weight:700; font-size:14px; }
         .p-card-price { font-family:'DM Mono',monospace; font-size:15px; font-weight:600; }
@@ -95,10 +89,7 @@
 <div class="top-bar">
     <a href="index.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg> Inicio</a>
     <h1>Historial de Precios</h1>
-    <button class="btn-icon" id="dark-toggle" title="Modo oscuro">
-        <svg id="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg>
-        <svg id="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-    </button>
+    <span></span>
 </div>
 
 <div class="container">
@@ -237,21 +228,5 @@
 
 <footer>Historial acumulativo desde Edicion N.1 &middot; Al Ritmo de la Mineria &middot; Diego Varleta</footer>
 
-<script>
-(function() {
-    var html = document.documentElement;
-    var btn = document.getElementById('dark-toggle');
-    var moon = document.getElementById('icon-moon');
-    var sun = document.getElementById('icon-sun');
-    if (localStorage.getItem('dark-mode') === 'true') { html.classList.add('dark'); moon.style.display='none'; sun.style.display=''; }
-    btn.addEventListener('click', function() {
-        html.classList.toggle('dark');
-        var d = html.classList.contains('dark');
-        localStorage.setItem('dark-mode', d);
-        moon.style.display = d ? 'none' : '';
-        sun.style.display = d ? '' : 'none';
-    });
-})();
-</script>
 </body>
 </html>
