@@ -59,44 +59,63 @@
         }
         .section-title::after { content:''; flex:1; height:1px; background:var(--rule); }
 
-        .lesson-index-toggle {
+        /* Current lesson highlight */
+        .current-label {
+            font-size:10px; text-transform:uppercase; letter-spacing:1.2px;
+            color:var(--copper); font-weight:700; margin-bottom:10px;
+            display:flex; align-items:center; gap:8px;
+        }
+        .current-label::after { content:''; flex:1; height:1px; background:var(--rule); }
+
+        /* Archive toggle */
+        .archive-toggle {
             display:flex; align-items:center; justify-content:space-between;
-            cursor:pointer; user-select:none; margin-bottom:0;
+            cursor:pointer; user-select:none;
             background:var(--card); border:1px solid var(--rule);
-            border-radius:10px; padding:14px 20px;
+            border-radius:10px; padding:12px 18px; margin:28px 0 0;
+            -webkit-tap-highlight-color:transparent;
         }
-        .lesson-index-toggle:hover { background:var(--light); }
-        .lesson-index-toggle .lit-label {
-            font-size:14px; font-weight:700; color:var(--night);
-            font-family:'Playfair Display',serif;
+        .archive-toggle:hover { background:var(--light); }
+        .archive-toggle .at-left { display:flex; align-items:center; gap:10px; }
+        .archive-toggle .at-icon { font-size:16px; color:var(--copper); }
+        .archive-toggle .at-label { font-size:13px; font-weight:600; color:var(--night); }
+        .archive-toggle .at-count { font-size:11px; color:var(--muted); }
+        .archive-toggle .at-arrow { font-size:10px; color:var(--copper); transition:transform .3s; }
+        .archive-toggle.open .at-arrow { transform:rotate(180deg); }
+
+        /* Archive list — compact rows */
+        .archive-list {
+            display:none; flex-direction:column; gap:0;
+            border:1px solid var(--rule); border-top:none;
+            border-radius:0 0 10px 10px; overflow:hidden;
+            margin-bottom:32px;
         }
-        .lesson-index-toggle .lit-count {
-            font-size:12px; color:var(--muted); font-weight:500;
+        .archive-list.open { display:flex; }
+        .archive-item {
+            display:flex; align-items:center; gap:12px;
+            padding:10px 18px; text-decoration:none; color:inherit;
+            border-bottom:1px solid var(--rule); background:var(--card);
+            transition:background .1s;
+            -webkit-tap-highlight-color:transparent;
         }
-        .lesson-index-toggle .lit-arrow {
-            font-size:12px; color:var(--copper); transition:transform .3s;
+        .archive-item:last-child { border-bottom:none; }
+        .archive-item:hover { background:var(--light); }
+        .ai-dot {
+            width:8px; height:8px; border-radius:50%; flex-shrink:0;
         }
-        .lesson-index-toggle.open .lit-arrow { transform:rotate(180deg); }
-        .lesson-list {
-            display:none; flex-direction:column; gap:8px;
-            margin-top:8px; margin-bottom:36px;
-            padding:0;
+        .ai-dot.ed { background:var(--copper); }
+        .ai-dot.special { background:var(--muted); }
+        .ai-pillar {
+            font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:.5px;
+            color:var(--slate); background:var(--light); padding:2px 8px; border-radius:8px;
+            flex-shrink:0; white-space:nowrap;
         }
-        .lesson-list.open { display:flex; }
-        .lesson-card {
-            background:var(--card); border:1px solid var(--rule); border-left:4px solid var(--copper);
-            border-radius:10px; padding:12px 16px; text-decoration:none; color:inherit;
-            transition:box-shadow .15s, transform .1s;
+        .ai-title { font-size:13px; color:var(--text); font-weight:500; flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+        .ai-ed { font-size:11px; color:var(--muted); flex-shrink:0; white-space:nowrap; font-family:'DM Mono',monospace; }
+        @media(max-width:600px){
+            .ai-pillar { display:none; }
+            .ai-title { white-space:normal; }
         }
-        .lesson-card:hover { box-shadow:0 4px 16px rgba(0,0,0,.06); transform:translateY(-1px); }
-        .lc-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:6px; }
-        .lc-num { font-family:'DM Mono',monospace; font-size:11px; color:var(--copper); font-weight:600; }
-        .lc-pillar {
-            font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:.6px;
-            background:var(--light); color:var(--slate); padding:3px 10px; border-radius:10px;
-        }
-        .lc-title { font-family:'Playfair Display',serif; font-size:16px; font-weight:700; color:var(--text); margin-bottom:4px; }
-        .lc-subtitle { font-size:13px; color:var(--muted); }
 
         /* ═══ LESSON CONTENT ═══ */
         .lesson {
@@ -281,63 +300,24 @@
         </div>
     </div>
 
-    <!-- LESSON INDEX -->
-    <div class="lesson-index-toggle" id="lesson-index-toggle" onclick="this.classList.toggle('open');document.getElementById('lesson-list').classList.toggle('open');">
-        <div>
-            <span class="lit-label">Lecciones disponibles</span>
-            <span class="lit-count">&nbsp;&middot; 6 clases</span>
+    <!-- CURRENT LESSON -->
+    <p class="current-label">Clase de la semana — Edicion N.3</p>
+
+    <!-- ARCHIVE -->
+    <div class="archive-toggle" id="archive-toggle" onclick="this.classList.toggle('open');document.getElementById('archive-list').classList.toggle('open');">
+        <div class="at-left">
+            <span class="at-icon">&#128218;</span>
+            <span class="at-label">Lecciones anteriores y especiales</span>
+            <span class="at-count">(5 mas)</span>
         </div>
-        <span class="lit-arrow">&#9660;</span>
+        <span class="at-arrow">&#9660;</span>
     </div>
-    <div class="lesson-list" id="lesson-list">
-        <a class="lesson-card" href="#leccion-1">
-            <div class="lc-header">
-                <span class="lc-num">Leccion 01</span>
-                <span class="lc-pillar">Evaluacion de Proyectos</span>
-            </div>
-            <div class="lc-title">Del PEA al Feasibility Study: Las etapas que definen si una mina existe</div>
-            <div class="lc-subtitle">Edicion N.3 — 17/03/2026</div>
-        </a>
-        <a class="lesson-card" href="#leccion-02">
-            <div class="lc-header">
-                <span class="lc-num">Leccion 02</span>
-                <span class="lc-pillar">Planificacion Minera</span>
-            </div>
-            <div class="lc-title">Ley de Corte y Curva Tonelaje-Ley: El numero que decide que se extrae y que se deja</div>
-            <div class="lc-subtitle">Edicion N.2 — 13/03/2026</div>
-        </a>
-        <a class="lesson-card" href="#leccion-03">
-            <div class="lc-header">
-                <span class="lc-num">Leccion 03</span>
-                <span class="lc-pillar">Finanzas Mineras</span>
-            </div>
-            <div class="lc-title">Costos C1, C2 y AISC: Entendiendo cuanto cuesta producir una libra de cobre</div>
-            <div class="lc-subtitle">Edicion N.1 — 12/03/2026</div>
-        </a>
-        <a class="lesson-card" href="#leccion-04">
-            <div class="lc-header">
-                <span class="lc-num">Especial</span>
-                <span class="lc-pillar">Contabilidad IFRS</span>
-            </div>
-            <div class="lc-title">IFRS 6 e IAS 36: Cuando capitalizar la exploracion y cuando reconocer que un activo perdio valor</div>
-            <div class="lc-subtitle">Edicion Especial</div>
-        </a>
-        <a class="lesson-card" href="#leccion-05">
-            <div class="lc-header">
-                <span class="lc-num">Especial</span>
-                <span class="lc-pillar">Geologia y Recursos</span>
-            </div>
-            <div class="lc-title">JORC, NI 43-101 y el fraude Bre-X: Como se clasifican los recursos y por que importa</div>
-            <div class="lc-subtitle">Edicion Especial</div>
-        </a>
-        <a class="lesson-card" href="#leccion-08">
-            <div class="lc-header">
-                <span class="lc-num">Especial</span>
-                <span class="lc-pillar">Contabilidad IFRS</span>
-            </div>
-            <div class="lc-title">IFRIC 20 e IAS 37: Costos de desbroce y provisiones por cierre de faenas</div>
-            <div class="lc-subtitle">Edicion Especial</div>
-        </a>
+    <div class="archive-list" id="archive-list">
+        <a class="archive-item lesson-card" href="#leccion-02"><span class="ai-dot ed"></span><span class="ai-pillar">Planificacion</span><span class="ai-title">Ley de Corte y Curva Tonelaje-Ley</span><span class="ai-ed">Ed.2</span></a>
+        <a class="archive-item lesson-card" href="#leccion-03"><span class="ai-dot ed"></span><span class="ai-pillar">Finanzas</span><span class="ai-title">Costos C1, C2 y AISC</span><span class="ai-ed">Ed.1</span></a>
+        <a class="archive-item lesson-card" href="#leccion-04"><span class="ai-dot special"></span><span class="ai-pillar">IFRS</span><span class="ai-title">IFRS 6 e IAS 36: Exploracion y Deterioro</span><span class="ai-ed">Esp.</span></a>
+        <a class="archive-item lesson-card" href="#leccion-05"><span class="ai-dot special"></span><span class="ai-pillar">Geologia</span><span class="ai-title">JORC, NI 43-101 y el fraude Bre-X</span><span class="ai-ed">Esp.</span></a>
+        <a class="archive-item lesson-card" href="#leccion-08"><span class="ai-dot special"></span><span class="ai-pillar">IFRS</span><span class="ai-title">IFRIC 20 e IAS 37: Desbroce y Cierre</span><span class="ai-ed">Esp.</span></a>
     </div>
 
     <!-- ═══════════════════════════════════════════════════════════
