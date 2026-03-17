@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial de Precios — Al Ritmo de la Mineria</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400&display=swap');
+        :root {
+            --copper:#B87333; --gold:#e2b96f; --night:#0F1C2E; --slate:#3B5070;
+            --bg:#F7F9FC; --card:#fff; --text:#1A2535; --muted:#5B6E84;
+            --rule:#D1D8E0; --green:#22c55e; --red:#ef4444; --yellow:#eab308; --light:#EEF2F7;
+        }
+        html.dark {
+            --night:#0a1018; --bg:#0F1C2E; --card:#162336; --text:#d1d8e0;
+            --muted:#8FA3BC; --rule:#243348; --light:#1a2d42;
+        }
+        * { box-sizing:border-box; margin:0; padding:0; }
+        body { font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--text); transition:background .3s,color .3s; }
+
+        /* NAV */
+        .top-bar {
+            background:var(--night); color:white; padding:12px 20px;
+            display:flex; align-items:center; justify-content:space-between;
+            border-bottom:2px solid var(--copper);
+        }
+        .top-bar a {
+            color:var(--gold); text-decoration:none; font-size:13px; font-weight:600;
+            display:flex; align-items:center; gap:6px;
+        }
+        .top-bar a:hover { text-decoration:underline; }
+        .top-bar h1 {
+            font-family:'Playfair Display',serif; font-size:16px; font-weight:700; color:white;
+        }
+        .btn-icon {
+            background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.15);
+            color:var(--gold); width:34px; height:34px; border-radius:8px; cursor:pointer;
+            display:flex; align-items:center; justify-content:center; font-size:15px;
+        }
+        .btn-icon:hover { background:rgba(226,185,111,.15); }
+
+        .container { max-width:960px; margin:0 auto; padding:24px 16px 48px; }
+
+        /* INFO */
+        .info-text { font-size:13px; color:var(--muted); margin-bottom:24px; line-height:1.5; }
+
+        /* TABLE */
+        .price-table-wrap {
+            overflow-x:auto; -webkit-overflow-scrolling:touch;
+            border:1px solid var(--rule); border-radius:10px;
+            background:var(--card); transition:background .3s;
+        }
+        table { width:100%; border-collapse:collapse; font-size:12px; min-width:700px; }
+        thead { position:sticky; top:0; z-index:2; }
+        thead tr { background:var(--night); color:white; }
+        thead th {
+            padding:12px 14px; text-align:left; font-weight:600; font-size:10px;
+            text-transform:uppercase; letter-spacing:.8px; white-space:nowrap;
+        }
+        thead th:first-child { border-radius:10px 0 0 0; }
+        thead th:last-child { border-radius:0 10px 0 0; }
+        tbody tr { border-bottom:1px solid var(--rule); transition:background .15s; }
+        tbody tr:nth-child(even) { background:var(--light); }
+        tbody tr:hover { background:rgba(184,115,51,.06); }
+        html.dark tbody tr:hover { background:rgba(184,115,51,.12); }
+        tbody td { padding:10px 14px; vertical-align:middle; white-space:nowrap; }
+        tbody td:first-child { font-weight:600; color:var(--text); }
+        .up { color:var(--green); }
+        .down { color:var(--red); }
+        .neutral { color:var(--yellow); }
+        .sparkline { display:block; }
+
+        /* CARDS para mobile */
+        .price-cards { display:none; }
+        .p-card {
+            background:var(--card); border:1px solid var(--rule); border-left:4px solid var(--copper);
+            border-radius:10px; padding:16px; margin-bottom:10px; transition:background .3s;
+        }
+        .p-card-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
+        .p-card-name { font-weight:700; font-size:14px; }
+        .p-card-price { font-family:'DM Mono',monospace; font-size:15px; font-weight:600; }
+        .p-card-row { display:flex; justify-content:space-between; font-size:12px; color:var(--muted); margin-top:4px; }
+        .p-card svg { display:block; margin-top:8px; }
+
+        @media (max-width:700px) {
+            .price-table-wrap { display:none; }
+            .price-cards { display:block; }
+        }
+
+        footer { text-align:center; font-size:11px; color:var(--muted); padding:20px; border-top:1px solid var(--rule); }
+    </style>
+</head>
+<body>
+
+<div class="top-bar">
+    <a href="index.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg> Inicio</a>
+    <h1>Historial de Precios</h1>
+    <button class="btn-icon" id="dark-toggle" title="Modo oscuro">
+        <svg id="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg>
+        <svg id="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
+</div>
+
+<div class="container">
+    <p class="info-text">Precios acumulados semana a semana desde la Edicion N.1. Las sparklines muestran la tendencia de las ultimas semanas disponibles. Esta tabla se actualiza automaticamente con cada nueva edicion del noticiero.</p>
+
+    <!-- DESKTOP TABLE -->
+    <div class="price-table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Mineral</th>
+                    <th>Unidad</th>
+                    <th>Ed.1 (12/03)</th>
+                    <th>Ed.2 (13/03)</th>
+                    <th>Ed.3 (17/03)</th>
+                    <th>Var. Sem.</th>
+                    <th>Tendencia</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Cobre</td><td>USD/t</td>
+                    <td>12,400</td><td>12,530</td><td>12,678</td>
+                    <td class="up">+1.2%</td>
+                    <td><svg class="sparkline" width="80" height="24"><polyline points="5,20 40,14 75,6" fill="none" stroke="#22c55e" stroke-width="2"/></svg></td>
+                </tr>
+                <tr>
+                    <td>Cobre</td><td>USD/lb</td>
+                    <td>5.63</td><td>5.68</td><td>5.75</td>
+                    <td class="up">+1.2%</td>
+                    <td><svg class="sparkline" width="80" height="24"><polyline points="5,20 40,14 75,6" fill="none" stroke="#22c55e" stroke-width="2"/></svg></td>
+                </tr>
+                <tr>
+                    <td>Litio Carbonato</td><td>USD/t</td>
+                    <td>18,500</td><td>19,200</td><td>20,256</td>
+                    <td class="up">+2.1%</td>
+                    <td><svg class="sparkline" width="80" height="24"><polyline points="5,22 40,14 75,4" fill="none" stroke="#22c55e" stroke-width="2"/></svg></td>
+                </tr>
+                <tr>
+                    <td>Platino</td><td>USD/oz</td>
+                    <td>1,580</td><td>1,610</td><td>1,650</td>
+                    <td class="up">+2.5%</td>
+                    <td><svg class="sparkline" width="80" height="24"><polyline points="5,20 40,14 75,6" fill="none" stroke="#22c55e" stroke-width="2"/></svg></td>
+                </tr>
+                <tr>
+                    <td>Paladio</td><td>USD/oz</td>
+                    <td>1,640</td><td>1,655</td><td>1,685</td>
+                    <td class="up">+1.8%</td>
+                    <td><svg class="sparkline" width="80" height="24"><polyline points="5,20 40,14 75,6" fill="none" stroke="#22c55e" stroke-width="2"/></svg></td>
+                </tr>
+                <tr>
+                    <td>Rodio</td><td>USD/oz</td>
+                    <td>11,200</td><td>11,500</td><td>11,700</td>
+                    <td class="up">+1.7%</td>
+                    <td><svg class="sparkline" width="80" height="24"><polyline points="5,20 40,14 75,6" fill="none" stroke="#22c55e" stroke-width="2"/></svg></td>
+                </tr>
+                <tr>
+                    <td>NdPr Oxido</td><td>USD/kg</td>
+                    <td>96.5</td><td>102.0</td><td>108.64</td>
+                    <td class="up">+3.2%</td>
+                    <td><svg class="sparkline" width="80" height="24"><polyline points="5,22 40,14 75,3" fill="none" stroke="#22c55e" stroke-width="2"/></svg></td>
+                </tr>
+                <tr>
+                    <td>Cobalto</td><td>USD/t</td>
+                    <td>54,800</td><td>55,500</td><td>56,290</td>
+                    <td class="up">+2.7%</td>
+                    <td><svg class="sparkline" width="80" height="24"><polyline points="5,20 40,14 75,6" fill="none" stroke="#22c55e" stroke-width="2"/></svg></td>
+                </tr>
+                <tr>
+                    <td>Oro</td><td>USD/oz</td>
+                    <td>5,350</td><td>5,114</td><td>5,025</td>
+                    <td class="down">-3.4%</td>
+                    <td><svg class="sparkline" width="80" height="24"><polyline points="5,6 40,14 75,20" fill="none" stroke="#ef4444" stroke-width="2"/></svg></td>
+                </tr>
+                <tr>
+                    <td>Plata</td><td>USD/oz</td>
+                    <td>88.20</td><td>83.97</td><td>80.10</td>
+                    <td class="down">-4.7%</td>
+                    <td><svg class="sparkline" width="80" height="24"><polyline points="5,5 40,13 75,22" fill="none" stroke="#ef4444" stroke-width="2"/></svg></td>
+                </tr>
+                <tr>
+                    <td>CLP/USD</td><td>CLP</td>
+                    <td>885</td><td>898</td><td>908</td>
+                    <td class="down">+1.2%</td>
+                    <td><svg class="sparkline" width="80" height="24"><polyline points="5,20 40,13 75,5" fill="none" stroke="#ef4444" stroke-width="2"/></svg></td>
+                </tr>
+                <tr>
+                    <td>H2SO4</td><td>USD/t SA</td>
+                    <td>~149</td><td>~149</td><td>~149</td>
+                    <td class="neutral">0%</td>
+                    <td><svg class="sparkline" width="80" height="24"><polyline points="5,12 40,12 75,12" fill="none" stroke="#eab308" stroke-width="2"/></svg></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- MOBILE CARDS -->
+    <div class="price-cards">
+        <div class="p-card">
+            <div class="p-card-header"><span class="p-card-name">Cobre</span><span class="p-card-price">$12,678/t</span></div>
+            <div class="p-card-row"><span>$5.75/lb</span><span class="up">+1.2% sem.</span></div>
+            <svg width="100%" height="28" viewBox="0 0 120 28" preserveAspectRatio="none"><polyline points="5,24 60,16 115,6" fill="none" stroke="#22c55e" stroke-width="2"/></svg>
+        </div>
+        <div class="p-card">
+            <div class="p-card-header"><span class="p-card-name">Litio Carbonato</span><span class="p-card-price">$20,256/t</span></div>
+            <div class="p-card-row"><span>Battery-grade</span><span class="up">+2.1% sem.</span></div>
+            <svg width="100%" height="28" viewBox="0 0 120 28" preserveAspectRatio="none"><polyline points="5,26 60,16 115,4" fill="none" stroke="#22c55e" stroke-width="2"/></svg>
+        </div>
+        <div class="p-card">
+            <div class="p-card-header"><span class="p-card-name">Oro</span><span class="p-card-price">$5,025/oz</span></div>
+            <div class="p-card-row"><span>Correccion desde $5,408</span><span class="down">-3.4% sem.</span></div>
+            <svg width="100%" height="28" viewBox="0 0 120 28" preserveAspectRatio="none"><polyline points="5,6 60,14 115,24" fill="none" stroke="#ef4444" stroke-width="2"/></svg>
+        </div>
+        <div class="p-card">
+            <div class="p-card-header"><span class="p-card-name">Plata</span><span class="p-card-price">$80.10/oz</span></div>
+            <div class="p-card-row"><span>Desde $121 en enero</span><span class="down">-4.7% sem.</span></div>
+            <svg width="100%" height="28" viewBox="0 0 120 28" preserveAspectRatio="none"><polyline points="5,6 60,14 115,24" fill="none" stroke="#ef4444" stroke-width="2"/></svg>
+        </div>
+        <div class="p-card">
+            <div class="p-card-header"><span class="p-card-name">Platino</span><span class="p-card-price">$1,650/oz</span></div>
+            <div class="p-card-row"><span>Deficit estructural</span><span class="up">+2.5% sem.</span></div>
+            <svg width="100%" height="28" viewBox="0 0 120 28" preserveAspectRatio="none"><polyline points="5,22 60,14 115,6" fill="none" stroke="#22c55e" stroke-width="2"/></svg>
+        </div>
+        <div class="p-card">
+            <div class="p-card-header"><span class="p-card-name">NdPr Oxido</span><span class="p-card-price">$108.6/kg</span></div>
+            <div class="p-card-row"><span>Tierras raras</span><span class="up">+3.2% sem.</span></div>
+            <svg width="100%" height="28" viewBox="0 0 120 28" preserveAspectRatio="none"><polyline points="5,24 60,14 115,4" fill="none" stroke="#22c55e" stroke-width="2"/></svg>
+        </div>
+        <div class="p-card">
+            <div class="p-card-header"><span class="p-card-name">CLP/USD</span><span class="p-card-price">$908</span></div>
+            <div class="p-card-row"><span>Tipo de cambio</span><span class="down">+1.2% (depreciacion)</span></div>
+            <svg width="100%" height="28" viewBox="0 0 120 28" preserveAspectRatio="none"><polyline points="5,22 60,14 115,5" fill="none" stroke="#ef4444" stroke-width="2"/></svg>
+        </div>
+    </div>
+</div>
+
+<footer>Historial acumulativo desde Edicion N.1 &middot; Al Ritmo de la Mineria &middot; Diego Varleta</footer>
+
+<script>
+(function() {
+    var html = document.documentElement;
+    var btn = document.getElementById('dark-toggle');
+    var moon = document.getElementById('icon-moon');
+    var sun = document.getElementById('icon-sun');
+    if (localStorage.getItem('dark-mode') === 'true') { html.classList.add('dark'); moon.style.display='none'; sun.style.display=''; }
+    btn.addEventListener('click', function() {
+        html.classList.toggle('dark');
+        var d = html.classList.contains('dark');
+        localStorage.setItem('dark-mode', d);
+        moon.style.display = d ? 'none' : '';
+        sun.style.display = d ? '' : 'none';
+    });
+})();
+</script>
+</body>
+</html>
