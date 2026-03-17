@@ -31,6 +31,10 @@
     --black:      #0A1220;
 }
 
+html.dark {
+    --night:#0a1018; --cold-white:#0F1C2E; --text:#d1d8e0; --muted:#8FA3BC;
+    --rule:#243348; --light:#1a2d42; --black:#e8edf3; --mid-blue:#8FA3BC; --slate:#6B8AB0;
+}
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
@@ -40,7 +44,11 @@ body {
     color: var(--text);
     background: var(--cold-white);
     padding: 0;
+    transition: background 0.3s, color 0.3s;
 }
+.dark-toggle{position:fixed;bottom:20px;left:20px;z-index:9998;width:42px;height:42px;border-radius:50%;background:var(--night);border:2px solid #B87333;color:#e2b96f;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.3)}.dark-toggle:hover{background:var(--slate)}
+.edition-nav{display:flex;justify-content:space-between;align-items:center;padding:20px 0;margin-top:32px;border-top:2px solid var(--rule)}.edition-nav a{color:#B87333;text-decoration:none;font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px;padding:8px 16px;border:1px solid #B87333;border-radius:8px;transition:background .15s,color .15s}.edition-nav a:hover{background:#B87333;color:#fff}.edition-nav .home-link{border:none;color:var(--muted)}.edition-nav .home-link:hover{color:#B87333;background:none}
+@media print{.dark-toggle,.edition-nav{display:none!important}}
 
 /* ══════════════════════════════════════
    PORTADA — BRAND COVER
@@ -1470,7 +1478,13 @@ mark.search-hl.current {
         });
     }
 })();
-
 </script>
+<button class="dark-toggle" id="dark-toggle" title="Modo oscuro"><svg id="dm-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg><svg id="dm-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
+<div class="content"><div class="edition-nav">
+    <a href="Noticiero_Minero_Ed001_2026-03-12.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg> Ed. anterior</a>
+    <a class="home-link" href="index.html">Todas las ediciones</a>
+    <a href="Noticiero_Minero_Ed003_2026-03-17.html">Ed. siguiente <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></a>
+</div></div>
+<script>(function(){var h=document.documentElement,b=document.getElementById('dark-toggle'),m=document.getElementById('dm-moon'),s=document.getElementById('dm-sun');if(localStorage.getItem('dark-mode')==='true'){h.classList.add('dark');m.style.display='none';s.style.display='';}b.addEventListener('click',function(){h.classList.toggle('dark');var d=h.classList.contains('dark');localStorage.setItem('dark-mode',d);m.style.display=d?'none':'';s.style.display=d?'':'none';});})();</script>
 </body>
 </html>
