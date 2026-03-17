@@ -466,6 +466,28 @@ blockquote { page-break-inside: avoid; }
     border-bottom: 1px solid rgba(143,163,188,0.2);
 }
 
+.nav-back {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 9pt;
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding: 5px 12px;
+    border: 1px solid rgba(226,185,111,0.35);
+    border-radius: 6px;
+    transition: background 0.15s, border-color 0.15s;
+    -webkit-tap-highlight-color: transparent;
+}
+.nav-back:hover {
+    background: rgba(226,185,111,0.15);
+    border-color: var(--gold);
+}
+.nav-back svg { flex-shrink: 0; }
+
 .nav-brand {
     color: var(--gold);
     font-size: 8.5pt;
@@ -667,6 +689,7 @@ mark.search-hl.current {
 </head>
 <body>
 <nav class="quick-nav" id="quick-nav" aria-label="Navegacion del informe">
+    <a class="nav-back" href="index.html" title="Volver a ediciones"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>Ediciones</a>
     <span class="nav-brand">AL RITMO DE LA MINERÍA</span>
     <div class="nav-search-wrap">
         <input type="text" id="search-input" placeholder="Buscar en el informe..." aria-label="Buscar en el informe">
