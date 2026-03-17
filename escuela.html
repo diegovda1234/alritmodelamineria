@@ -240,6 +240,22 @@
             <div class="lc-title">Del PEA al Feasibility Study: Las etapas que definen si una mina existe</div>
             <div class="lc-subtitle">Edicion N.3 — 17/03/2026</div>
         </a>
+        <a class="lesson-card" href="#leccion-02">
+            <div class="lc-header">
+                <span class="lc-num">Leccion 02</span>
+                <span class="lc-pillar">Planificacion Minera</span>
+            </div>
+            <div class="lc-title">Ley de Corte y Curva Tonelaje-Ley: El numero que decide que se extrae y que se deja</div>
+            <div class="lc-subtitle">Edicion N.2 — 13/03/2026</div>
+        </a>
+        <a class="lesson-card" href="#leccion-03">
+            <div class="lc-header">
+                <span class="lc-num">Leccion 03</span>
+                <span class="lc-pillar">Finanzas Mineras</span>
+            </div>
+            <div class="lc-title">Costos C1, C2 y AISC: Entendiendo cuanto cuesta producir una libra de cobre</div>
+            <div class="lc-subtitle">Edicion N.1 — 12/03/2026</div>
+        </a>
     </div>
 
     <!-- ═══════════════════════════════════════════════════════════
@@ -402,7 +418,221 @@
 
 </div>
 
-<footer>Escuela del Minero &middot; Al Ritmo de la Mineria &middot; Diego Varleta &middot; Contenido acumulativo desde Edicion N.3</footer>
+    <!-- ═══════════════════════════════════════════════════════════
+         LECCION 02
+    ═══════════════════════════════════════════════════════════════ -->
+    <div class="lesson" id="leccion-02">
+        <div class="lesson-hero">
+            <div class="lh-num">Leccion 02 &middot; Edicion N.2</div>
+            <h2>Ley de Corte y Curva Tonelaje-Ley</h2>
+            <div class="lh-english">Cut-off Grade and the Grade-Tonnage Curve: The Number That Decides What Gets Mined</div>
+            <span class="lh-pillar">Planificacion Minera</span>
+        </div>
+        <div class="lesson-body">
+
+            <h3>El concepto central</h3>
+
+            <p>La <strong>ley de corte</strong> (cut-off grade) es la concentracion minima de metal que debe tener una roca para que sea economicamente rentable extraerla y procesarla. Todo lo que esta por encima de la ley de corte es <strong>mineral</strong> (ore); todo lo que esta por debajo es <strong>esteril</strong> (waste). Este numero unico define el tamano del deposito, la vida de la mina y su rentabilidad.</p>
+
+            <div class="concept-box">
+                <div class="cb-term">Cut-off Grade (Ley de Corte)</div>
+                <div class="cb-def">Se calcula igualando ingresos y costos: <strong>Cut-off = Costo de procesamiento / (Precio del metal x Recuperacion metalurgica x Factor de conversion)</strong>. Para cobre: si el costo de procesamiento es US$12/t, el precio es US$4.50/lb (US$9,920/t), y la recuperacion es 85%, la ley de corte = 12 / (9,920 x 0.85) = 0.14% CuT. Todo bloque con ley superior a 0.14% CuT genera margen positivo en planta.</div>
+            </div>
+
+            <div class="concept-box">
+                <div class="cb-term">Grade-Tonnage Curve (Curva Tonelaje-Ley)</div>
+                <div class="cb-def">Es un grafico que muestra, para cada ley de corte posible, cuantas toneladas de mineral quedan y cual es la ley promedio de ese mineral. A medida que subes la ley de corte: menos toneladas, mayor ley promedio, menor vida de mina, mayores ingresos por tonelada. Es la herramienta mas importante de planificacion minera — conecta la geologia con la economia.</div>
+            </div>
+
+            <p><strong>Punto critico:</strong> La ley de corte no es fija. Cambia con el precio del commodity, los costos operacionales y la recuperacion metalurgica. Si el cobre sube de US$3.50 a US$5.00/lb, la ley de corte baja, y bloques que antes eran esteril se convierten en mineral. Esto es lo que ocurre en ciclos alcistas: los depositos "crecen" sin que nadie haya perforado un metro adicional.</p>
+
+            <h3>Caso real</h3>
+
+            <div class="case-study">
+                <div class="cs-header">
+                    <span class="cs-icon">&#9874;</span>
+                    <span class="cs-label">Caso de estudio</span>
+                </div>
+                <div class="cs-title">Escondida (BHP): Gestionando leyes decrecientes en la mina de cobre mas grande del mundo</div>
+                <p>Escondida inicio operaciones en 1991 con leyes de cabeza superiores a 2.0% CuT. Para 2025, la ley promedio procesada habia caido a ~0.85% CuT — menos de la mitad. A pesar de esto, BHP logro producir 1.345 kt de cobre en 2025 (mas que todo Codelco) mediante inversiones masivas en capacidad de procesamiento: la concentradora OLAP, la planta de oxidos, y la ampliacion de Los Colorados.</p>
+                <p><strong>Leccion:</strong> Cuando la ley baja, la unica forma de mantener produccion es mover mas material. Escondida procesa mas de 360 Mt de material al ano. La curva tonelaje-ley de Escondida permite esto porque el tonelaje total del deposito es enorme (~10.000 Mt), pero la ley promedio disponible cae cada ano. La decision estrategica de BHP fue invertir en escala de procesamiento para compensar la caida de ley.</p>
+                <p class="cs-source">Fuentes: BHP Annual Report 2025. Escondida NI 43-101 Technical Report. COCHILCO Estadisticas de Produccion 2025.</p>
+            </div>
+
+            <div class="case-study">
+                <div class="cs-header">
+                    <span class="cs-icon">&#9888;</span>
+                    <span class="cs-label">Caso de fracaso</span>
+                </div>
+                <div class="cs-title">Olympic Dam (BHP): La expansion de US$30.000M que murio por la ley de corte</div>
+                <p>Olympic Dam en Australia del Sur es el deposito de cobre-uranio-oro mas grande del mundo: ~10.000 Mt de recurso a 0.77% Cu. BHP propuso en 2011 una expansion open pit de US$30.000M que habria convertido la operacion subterranea en el rajo mas grande del planeta. El proyecto fue cancelado en 2012.</p>
+                <p><strong>Que salio mal:</strong> A 0.77% Cu, la ley promedio del deposito es baja para open pit. El strip ratio (relacion esteril:mineral) era de 5:1, lo que significaba mover 5 toneladas de esteril por cada tonelada de mineral. Cuando los costos de combustible y mano de obra subieron post-2010, el capex escalo y el NPV colapso. BHP opto por expansiones incrementales de la operacion subterranea existente — menos ambicioso pero economicamente viable.</p>
+                <p class="cs-source">Fuentes: BHP Annual Report 2012. SA Government Mining Regulator. Olympic Dam Expansion EIS 2011.</p>
+            </div>
+
+            <h3>Vocabulario tecnico bilingue</h3>
+
+            <table class="vocab-table">
+                <thead><tr><th>Espanol</th><th>English</th><th>Contexto de uso</th></tr></thead>
+                <tbody>
+                    <tr><td>Ley de corte</td><td><span class="v-english">Cut-off Grade</span></td><td><div class="v-context">"The cut-off grade was lowered to 0.3% CuT following the copper price rally."</div></td></tr>
+                    <tr><td>Ley de cabeza</td><td><span class="v-english">Head Grade / Mill Feed Grade</span></td><td><div class="v-context">"Head grade averaged 0.85% CuT during Q4, down from 0.92% in Q3."</div></td></tr>
+                    <tr><td>Curva tonelaje-ley</td><td><span class="v-english">Grade-Tonnage Curve</span></td><td><div class="v-context">"The grade-tonnage curve shows 520 Mt above a 0.4% CuT cut-off."</div></td></tr>
+                    <tr><td>Razon esteril:mineral</td><td><span class="v-english">Strip Ratio / Stripping Ratio</span></td><td><div class="v-context">"The life-of-mine strip ratio is 3.2:1, increasing to 4.5:1 in the final phases."</div></td></tr>
+                    <tr><td>Mineral</td><td><span class="v-english">Ore</span></td><td><div class="v-context">"Total ore mined was 85 Mt at an average grade of 0.72% CuT."</div></td></tr>
+                    <tr><td>Esteril / Desmonte</td><td><span class="v-english">Waste Rock</span></td><td><div class="v-context">"Waste rock was deposited in the north dump at a rate of 250 kt per day."</div></td></tr>
+                    <tr><td>Recuperacion metalurgica</td><td><span class="v-english">Metallurgical Recovery</span></td><td><div class="v-context">"Copper recovery improved to 87.5% after the flotation circuit upgrade."</div></td></tr>
+                    <tr><td>Ley marginal</td><td><span class="v-english">Marginal Grade / Break-even Grade</span></td><td><div class="v-context">"At current costs, the marginal grade for heap leach is 0.15% CuT."</div></td></tr>
+                    <tr><td>Concentradora</td><td><span class="v-english">Concentrator / Mill</span></td><td><div class="v-context">"The concentrator processes 160,000 tonnes per day of sulphide ore."</div></td></tr>
+                    <tr><td>Rajo abierto / Cielo abierto</td><td><span class="v-english">Open Pit</span></td><td><div class="v-context">"The open pit will reach a final depth of 850 metres below surface."</div></td></tr>
+                </tbody>
+            </table>
+
+            <h3>Ejercicio mental</h3>
+
+            <div class="exercise-box">
+                <div class="ex-header">Piensa como un planificador minero</div>
+                <p>Tienes un deposito con la siguiente curva tonelaje-ley simplificada:</p>
+                <ul>
+                    <li>Cut-off 0.3%: 400 Mt @ 0.65% CuT</li>
+                    <li>Cut-off 0.5%: 250 Mt @ 0.85% CuT</li>
+                    <li>Cut-off 0.8%: 100 Mt @ 1.20% CuT</li>
+                </ul>
+                <p>Tu planta procesa 20 Mt/ano. Costo de procesamiento: US$15/t. Recuperacion: 85%. Cobre a US$4.50/lb (US$9,920/t).</p>
+                <p><strong>Pregunta:</strong> ¿Cual es la ley de corte economica? ¿Cuantos anos dura la mina en cada escenario? ¿Cual genera mas valor total?</p>
+                <div class="ex-hint" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'">&#9660; Ver analisis</div>
+                <div class="ex-answer">
+                    <p><strong>Ley de corte economica:</strong> 15 / (9,920 x 0.85) = 0.18% CuT. Todos los escenarios estan sobre la ley de corte economica.</p>
+                    <p><strong>Escenario 0.3%:</strong> 400/20 = 20 anos. Cobre contenido: 400M x 0.0065 x 0.85 = 2.21 Mt Cu. Ingreso bruto: 2.21M x 9,920 = ~US$21.900M</p>
+                    <p><strong>Escenario 0.5%:</strong> 250/20 = 12.5 anos. Cobre: 250M x 0.0085 x 0.85 = 1.81 Mt Cu. Ingreso: ~US$17.950M</p>
+                    <p><strong>Escenario 0.8%:</strong> 100/20 = 5 anos. Cobre: 100M x 0.012 x 0.85 = 1.02 Mt Cu. Ingreso: ~US$10.120M</p>
+                    <p><strong>Conclusion:</strong> El escenario 0.3% genera mas valor total pero durante 20 anos. El 0.8% genera menos valor total pero con mayor ingreso por tonelada y menor riesgo de largo plazo. La respuesta "correcta" depende de la tasa de descuento, el capex, y la estrategia del dueño. En la practica, la mayoria de las minas optimizan con un NPV maximo, que tipicamente esta en un cut-off intermedio.</p>
+                </div>
+            </div>
+
+            <div class="fun-fact">
+                <div class="ff-label">Dato que pocos saben</div>
+                <p>En 1900, la ley promedio de las minas de cobre en EE.UU. era de <strong>2.5% CuT</strong>. Hoy, la ley promedio global de las minas operando es de <strong>0.62% CuT</strong> (S&P Global, 2024). Esto significa que la industria mueve 4 veces mas roca por cada tonelada de cobre producido que hace un siglo. Es la razon por la que el consumo de energia, agua y acido sulfurico de la industria crece mas rapido que la produccion de metal — y por que la ley de corte es el numero mas importante del negocio.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         LECCION 03
+    ═══════════════════════════════════════════════════════════════ -->
+    <div class="lesson" id="leccion-03">
+        <div class="lesson-hero">
+            <div class="lh-num">Leccion 03 &middot; Edicion N.1</div>
+            <h2>Costos C1, C2 y AISC</h2>
+            <div class="lh-english">Cash Cost C1, Total Cost C2, and All-In Sustaining Cost: How Much Does a Pound of Copper Really Cost?</div>
+            <span class="lh-pillar">Finanzas Mineras</span>
+        </div>
+        <div class="lesson-body">
+
+            <h3>El concepto central</h3>
+
+            <p>Cuando una minera dice que "produce cobre a US$1.85 por libra", ¿que costos estan incluidos? La respuesta depende de que metrica usa. La industria tiene tres metricas estandar de costo, cada una con un alcance distinto:</p>
+
+            <div class="concept-box">
+                <div class="cb-term">C1 — Cash Cost (Costo directo de produccion)</div>
+                <div class="cb-def">Incluye: mineria (perforacion, tronadura, carguio, transporte), procesamiento (molienda, flotacion o lixiviacion SX-EW), gastos de fundicion y refinacion (TC/RC), transporte del concentrado al puerto, y gastos generales del sitio. Se resta el credito por subproductos (oro, plata, molibdeno). Es el costo "cash" de sacar una libra de cobre de la mina y llevarla al mercado. <strong>No incluye:</strong> depreciacion, intereses, impuestos, royalties, ni capex de mantenimiento.</div>
+            </div>
+
+            <div class="concept-box">
+                <div class="cb-term">C2 — Total Cost (Costo total incluyendo depreciacion)</div>
+                <div class="cb-def">C2 = C1 + depreciacion y amortizacion. Agrega el costo de "gastar" los activos fijos (planta, equipos, infraestructura). Es una metrica contable que refleja el costo economico real de produccion, incluyendo el desgaste del capital invertido.</div>
+            </div>
+
+            <div class="concept-box">
+                <div class="cb-term">AISC — All-In Sustaining Cost</div>
+                <div class="cb-def">Definido por el World Gold Council en 2013 y adoptado por la industria del cobre. AISC = C1 + capex de sustentacion (mantenimiento de equipos, desarrollos para mantener produccion, stripping de esteril diferido) + gastos corporativos + costos de exploracion en mina + costos de cierre. Es la metrica mas completa: responde "¿cuanto necesito gastar para mantener esta mina produciendo al nivel actual?". <strong>No incluye:</strong> capex de expansion, intereses de deuda, ni impuestos.</div>
+            </div>
+
+            <p><strong>Punto critico:</strong> El C1 es seductor porque siempre es el numero mas bajo. Una minera puede mostrar un C1 de US$1.50/lb y parecer muy rentable, pero si su AISC es US$3.20/lb porque necesita capex de sustentacion masivo, la rentabilidad real es mucho menor. <strong>Regla de oro:</strong> siempre preguntar por el AISC, no solo el C1.</p>
+
+            <h3>Caso real</h3>
+
+            <div class="case-study">
+                <div class="cs-header">
+                    <span class="cs-icon">&#9874;</span>
+                    <span class="cs-label">Caso de estudio</span>
+                </div>
+                <div class="cs-title">Codelco 2025: C1 de 368 c/lb vs. presupuesto de 336 c/lb</div>
+                <p>Codelco cerro 2025 con un costo neto a catodo (C1) de <strong>368 centavos por libra</strong>, un 12% sobre los 336 c/lb presupuestados y un alza interanual significativa. La produccion fue de 1.334 kt, bajo la meta de 1.390 kt.</p>
+                <p><strong>Que explica la desviacion:</strong> (1) Leyes de mineral mas bajas de lo planificado en varias divisiones. (2) Costos de energia y acido sulfurico por encima del presupuesto. (3) Mayor movimiento de material para compensar la caida de ley. (4) Costos adicionales por contingencias operacionales (paradas no programadas, accidentes).</p>
+                <p><strong>Leccion:</strong> El C1 presupuestado no es una promesa — es una estimacion basada en supuestos de ley, precio de insumos y continuidad operacional. Cuando alguno de estos supuestos falla, el C1 real sube. Para 2026, Codelco presupuesto un C1 de ~220 c/lb (US$2.202/lb en el documento oficial), lo que implica una reduccion agresiva que dependera de la entrada en regimen de los proyectos estructurales.</p>
+                <p class="cs-source">Fuentes: Codelco Resultados 2025 (codelco.com). Presupuesto Codelco 2026 (decreto gubernamental). Reporte Minero, La Tercera.</p>
+            </div>
+
+            <div class="case-study">
+                <div class="cs-header">
+                    <span class="cs-icon">&#9888;</span>
+                    <span class="cs-label">Caso de fracaso</span>
+                </div>
+                <div class="cs-title">Glencore Katanga (Congo): C1 bajo, AISC letal</div>
+                <p>La operacion Katanga de Glencore en la RDC producia cobre con un C1 aparentemente competitivo de ~US$1.40/lb en 2015. Sin embargo, cuando se sumaron los costos de mantenimiento de la planta de acido, el capex de sustentacion de la mina subterranea, y los costos logisticos de sacar el catodo de un pais sin infraestructura, el <strong>AISC superaba los US$3.00/lb</strong>.</p>
+                <p>Glencore suspendio Katanga en septiembre de 2015 cuando el cobre cayo a US$2.20/lb, porque el AISC — no el C1 — era la metrica relevante para decidir si la operacion era viable. La mina reaparecio como rentable en 2017 cuando el cobre supero los US$3.00/lb.</p>
+                <p><strong>Leccion:</strong> C1 bajo no es sinonimo de operacion segura. El AISC incluye todo lo que necesitas gastar para que la mina siga produciendo. Si el AISC esta cerca del precio del commodity, la operacion es fragil.</p>
+                <p class="cs-source">Fuentes: Glencore Annual Report 2015, 2017. Wood Mackenzie Copper Cost Curves 2015.</p>
+            </div>
+
+            <h3>Vocabulario tecnico bilingue</h3>
+
+            <table class="vocab-table">
+                <thead><tr><th>Espanol</th><th>English</th><th>Contexto de uso</th></tr></thead>
+                <tbody>
+                    <tr><td>Costo directo (C1)</td><td><span class="v-english">Cash Cost (C1)</span></td><td><div class="v-context">"Net cash cost C1 was US$1.85/lb, net of by-product credits."</div></td></tr>
+                    <tr><td>Costo total (C2)</td><td><span class="v-english">Total Cost (C2)</span></td><td><div class="v-context">"C2 includes depreciation and amortization of US$0.45/lb."</div></td></tr>
+                    <tr><td>Costo sostenible total</td><td><span class="v-english">All-In Sustaining Cost (AISC)</span></td><td><div class="v-context">"AISC of US$2.95/lb places this operation in the third quartile of the global cost curve."</div></td></tr>
+                    <tr><td>Credito por subproductos</td><td><span class="v-english">By-product Credits</span></td><td><div class="v-context">"Gold and molybdenum by-product credits reduced C1 by US$0.35/lb."</div></td></tr>
+                    <tr><td>Cargos de fundicion y refinacion</td><td><span class="v-english">Treatment Charge / Refining Charge (TC/RC)</span></td><td><div class="v-context">"Benchmark TC/RC for 2026 was settled at US$80/t and US$0.08/lb."</div></td></tr>
+                    <tr><td>Capex de sustentacion</td><td><span class="v-english">Sustaining Capex</span></td><td><div class="v-context">"Sustaining capex of US$450M includes fleet replacement and mine development."</div></td></tr>
+                    <tr><td>Curva de costos</td><td><span class="v-english">Cost Curve</span></td><td><div class="v-context">"The operation sits in the first quartile of the global copper cost curve."</div></td></tr>
+                    <tr><td>Precio de equilibrio</td><td><span class="v-english">Break-even Price</span></td><td><div class="v-context">"The break-even copper price at AISC level is US$3.10/lb."</div></td></tr>
+                    <tr><td>Cuartil de costos</td><td><span class="v-english">Cost Quartile</span></td><td><div class="v-context">"First-quartile producers have AISC below US$2.00/lb."</div></td></tr>
+                    <tr><td>Margen operacional</td><td><span class="v-english">Operating Margin</span></td><td><div class="v-context">"At US$4.50/lb copper, the operating margin is US$2.65/lb on a C1 basis."</div></td></tr>
+                </tbody>
+            </table>
+
+            <h3>Ejercicio mental</h3>
+
+            <div class="exercise-box">
+                <div class="ex-header">Piensa como un analista de costos</div>
+                <p>Una operacion de cobre reporta los siguientes datos anuales:</p>
+                <ul>
+                    <li>Produccion: 120.000 toneladas de cobre fino</li>
+                    <li>Costos de mineria: US$620M</li>
+                    <li>Costos de procesamiento: US$280M</li>
+                    <li>TC/RC y transporte: US$85M</li>
+                    <li>Gastos generales sitio: US$45M</li>
+                    <li>Credito oro y molibdeno: US$110M</li>
+                    <li>Depreciacion: US$180M</li>
+                    <li>Capex sustentacion: US$210M</li>
+                    <li>Gastos corporativos: US$35M</li>
+                </ul>
+                <p><strong>Calcula:</strong> C1, C2 y AISC en centavos por libra. ¿En que cuartil de la curva global de cobre estaria esta operacion?</p>
+                <div class="ex-hint" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'">&#9660; Ver analisis</div>
+                <div class="ex-answer">
+                    <p>120.000 t Cu = 264,6 Mlb (x 2.204,6 lb/t)</p>
+                    <p><strong>C1</strong> = (620 + 280 + 85 + 45 - 110) / 264,6 = 920 / 264,6 = <strong>US$3.48/lb = 348 c/lb</strong></p>
+                    <p><strong>C2</strong> = C1 + (180 / 264,6) = 348 + 68 = <strong>416 c/lb</strong></p>
+                    <p><strong>AISC</strong> = C1 + ((210 + 35) / 264,6) = 348 + 93 = <strong>441 c/lb</strong></p>
+                    <p><strong>Cuartil:</strong> Con AISC de 441 c/lb (~US$4.41/lb), esta operacion esta en el <strong>cuarto cuartil</strong> de la curva global de costos (los productores mas caros). Con cobre a US$4.50/lb, el margen es de apenas US$0.09/lb — extremadamente fragil. Cualquier baja en el precio del cobre pondria esta operacion en perdida. Comparacion: los productores de primer cuartil (Escondida, Collahuasi) operan con AISC bajo US$2.00/lb.</p>
+                </div>
+            </div>
+
+            <div class="fun-fact">
+                <div class="ff-label">Dato que pocos saben</div>
+                <p>El concepto de AISC fue creado en 2013 por el <strong>World Gold Council</strong> para la industria del oro, porque los inversionistas estaban frustrados de que las mineras reportaran C1 bajisimos mientras quemaban efectivo en capex de sustentacion que nunca aparecia en las metricas de costo. El AISC obligo a las empresas a mostrar "cuanto realmente cuesta mantener la mina andando". La industria del cobre lo adopto rapidamente porque resolvia el mismo problema. Hoy, si un analista te muestra solo el C1 sin el AISC, o no sabe lo que hace o te esta ocultando algo.</p>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<footer>Escuela del Minero &middot; Al Ritmo de la Mineria &middot; Diego Varleta &middot; Contenido acumulativo desde Edicion N.1</footer>
 
 </body>
 </html>
