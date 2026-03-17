@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escuela del Minero — Al Ritmo de la Mineria</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400&display=swap');
+        :root {
+            --copper:#B87333; --gold:#e2b96f; --night:#0F1C2E; --slate:#3B5070;
+            --bg:#F7F9FC; --card:#fff; --text:#1A2535; --muted:#5B6E84;
+            --rule:#D1D8E0; --green:#22c55e; --red:#ef4444; --light:#EEF2F7;
+        }
+        * { box-sizing:border-box; margin:0; padding:0; }
+        body { font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--text); line-height:1.7; }
+
+        /* ═══ TOP BAR ═══ */
+        .top-bar {
+            background:var(--night); padding:12px 20px;
+            display:flex; align-items:center; justify-content:space-between;
+            border-bottom:2px solid var(--copper);
+        }
+        .top-bar a { color:var(--gold); text-decoration:none; font-size:13px; font-weight:600; display:flex; align-items:center; gap:6px; }
+        .top-bar a:hover { text-decoration:underline; }
+        .top-bar h1 { font-family:'Playfair Display',serif; font-size:16px; font-weight:700; color:white; }
+
+        .container { max-width:800px; margin:0 auto; padding:28px 16px 60px; }
+
+        /* ═══ INTRO ═══ */
+        .intro {
+            background:linear-gradient(135deg, var(--night) 0%, #16213e 100%);
+            border-radius:12px; padding:28px 28px 24px; margin-bottom:32px; color:white;
+        }
+        .intro h2 {
+            font-family:'Playfair Display',serif; font-size:22px; font-weight:900;
+            color:var(--gold); margin-bottom:8px;
+        }
+        .intro p { font-size:14px; color:rgba(255,255,255,.75); line-height:1.6; }
+        .pillar-grid {
+            display:grid; grid-template-columns:repeat(3, 1fr); gap:8px; margin-top:16px;
+        }
+        .pillar-tag {
+            text-align:center; font-size:10px; font-weight:600; text-transform:uppercase;
+            letter-spacing:.8px; padding:8px 6px; border-radius:6px;
+            background:rgba(255,255,255,.08); color:rgba(255,255,255,.6);
+            border:1px solid rgba(255,255,255,.08);
+        }
+        .pillar-tag.active {
+            background:rgba(184,115,51,.2); color:var(--gold);
+            border-color:rgba(184,115,51,.4);
+        }
+        @media(max-width:500px){ .pillar-grid{grid-template-columns:repeat(2,1fr);} }
+
+        /* ═══ LESSON INDEX ═══ */
+        .section-title {
+            font-size:10px; text-transform:uppercase; letter-spacing:1.2px;
+            color:var(--muted); font-weight:600; margin-bottom:14px;
+            display:flex; align-items:center; gap:8px;
+        }
+        .section-title::after { content:''; flex:1; height:1px; background:var(--rule); }
+
+        .lesson-list { display:flex; flex-direction:column; gap:10px; margin-bottom:36px; }
+        .lesson-card {
+            background:var(--card); border:1px solid var(--rule); border-left:4px solid var(--copper);
+            border-radius:10px; padding:16px 20px; text-decoration:none; color:inherit;
+            transition:box-shadow .15s, transform .1s;
+        }
+        .lesson-card:hover { box-shadow:0 4px 16px rgba(0,0,0,.06); transform:translateY(-1px); }
+        .lc-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:6px; }
+        .lc-num { font-family:'DM Mono',monospace; font-size:11px; color:var(--copper); font-weight:600; }
+        .lc-pillar {
+            font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:.6px;
+            background:var(--light); color:var(--slate); padding:3px 10px; border-radius:10px;
+        }
+        .lc-title { font-family:'Playfair Display',serif; font-size:16px; font-weight:700; color:var(--text); margin-bottom:4px; }
+        .lc-subtitle { font-size:13px; color:var(--muted); }
+
+        /* ═══ LESSON CONTENT ═══ */
+        .lesson {
+            background:var(--card); border:1px solid var(--rule);
+            border-radius:12px; padding:0; overflow:hidden; margin-bottom:28px;
+        }
+        .lesson-hero {
+            background:var(--night); padding:28px 28px 24px; color:white;
+        }
+        .lesson-hero .lh-num {
+            font-family:'DM Mono',monospace; font-size:11px; color:var(--gold);
+            letter-spacing:1px; text-transform:uppercase; margin-bottom:4px;
+        }
+        .lesson-hero h2 {
+            font-family:'Playfair Display',serif; font-size:22px; font-weight:900;
+            color:white; margin-bottom:4px; line-height:1.3;
+        }
+        .lesson-hero .lh-english {
+            font-size:14px; font-style:italic; color:var(--gold); margin-bottom:8px;
+        }
+        .lesson-hero .lh-pillar {
+            display:inline-block; font-size:9px; font-weight:700; text-transform:uppercase;
+            letter-spacing:.8px; background:rgba(184,115,51,.2); color:var(--gold);
+            padding:3px 12px; border-radius:10px;
+        }
+        .lesson-body { padding:28px; }
+        .lesson-body h3 {
+            font-family:'Playfair Display',serif; font-size:16px; font-weight:700;
+            color:var(--night); margin:28px 0 12px; padding-bottom:6px;
+            border-bottom:2px solid var(--light);
+        }
+        .lesson-body h3:first-child { margin-top:0; }
+        .lesson-body p { margin-bottom:12px; font-size:14px; }
+        .lesson-body ul, .lesson-body ol { margin:0 0 14px 20px; font-size:14px; }
+        .lesson-body li { margin-bottom:6px; }
+        .lesson-body strong { color:var(--night); }
+        .lesson-body em { color:var(--slate); }
+
+        /* Concept box */
+        .concept-box {
+            background:var(--light); border-left:4px solid var(--copper);
+            padding:16px 20px; border-radius:0 8px 8px 0; margin:16px 0;
+        }
+        .concept-box .cb-term {
+            font-family:'DM Mono',monospace; font-size:13px; font-weight:600;
+            color:var(--copper); margin-bottom:2px;
+        }
+        .concept-box .cb-def { font-size:14px; color:var(--text); line-height:1.6; }
+
+        /* Case study */
+        .case-study {
+            background:#fffbf5; border:1px solid rgba(184,115,51,.2);
+            border-radius:10px; padding:20px 24px; margin:16px 0;
+        }
+        .case-study .cs-header {
+            display:flex; align-items:center; gap:8px; margin-bottom:10px;
+        }
+        .case-study .cs-icon { font-size:18px; }
+        .case-study .cs-label {
+            font-size:10px; font-weight:700; text-transform:uppercase;
+            letter-spacing:1px; color:var(--copper);
+        }
+        .case-study .cs-title {
+            font-family:'Playfair Display',serif; font-size:15px; font-weight:700;
+            color:var(--night); margin-bottom:8px;
+        }
+        .case-study p { font-size:13px; color:var(--text); margin-bottom:8px; }
+        .case-study .cs-source { font-size:11px; color:var(--muted); font-style:italic; }
+
+        /* Vocab table */
+        .vocab-table { width:100%; border-collapse:collapse; margin:14px 0 20px; font-size:13px; }
+        .vocab-table thead tr { background:var(--night); color:white; }
+        .vocab-table th {
+            padding:10px 12px; text-align:left; font-weight:600; font-size:10px;
+            text-transform:uppercase; letter-spacing:.8px;
+        }
+        .vocab-table tbody tr { border-bottom:1px solid var(--rule); }
+        .vocab-table tbody tr:nth-child(even) { background:var(--light); }
+        .vocab-table td { padding:10px 12px; vertical-align:top; }
+        .vocab-table td:first-child { font-weight:600; color:var(--night); white-space:nowrap; }
+        .vocab-table .v-english {
+            font-family:'DM Mono',monospace; font-weight:600; color:var(--copper);
+        }
+        .vocab-table .v-context {
+            font-size:12px; color:var(--muted); font-style:italic; margin-top:2px;
+        }
+
+        /* Mental exercise */
+        .exercise-box {
+            background:linear-gradient(135deg, #f0f4ff 0%, #e8ecf8 100%);
+            border:1px solid #c5cde6; border-radius:10px; padding:20px 24px; margin:16px 0;
+        }
+        .exercise-box .ex-header {
+            font-size:10px; font-weight:700; text-transform:uppercase;
+            letter-spacing:1px; color:var(--slate); margin-bottom:8px;
+        }
+        .exercise-box p { font-size:14px; color:var(--text); margin-bottom:8px; }
+        .exercise-box .ex-hint {
+            font-size:12px; color:var(--muted); cursor:pointer;
+            border-top:1px solid #c5cde6; padding-top:8px; margin-top:8px;
+        }
+        .exercise-box .ex-answer {
+            display:none; font-size:13px; color:var(--slate);
+            background:white; padding:12px; border-radius:6px; margin-top:8px;
+        }
+
+        /* Fun fact */
+        .fun-fact {
+            background:var(--night); border-radius:10px; padding:16px 20px;
+            margin:16px 0; color:white;
+        }
+        .fun-fact .ff-label {
+            font-size:10px; font-weight:700; text-transform:uppercase;
+            letter-spacing:1px; color:var(--gold); margin-bottom:6px;
+        }
+        .fun-fact p { font-size:13px; color:rgba(255,255,255,.85); }
+
+        /* Footer */
+        footer {
+            text-align:center; font-size:11px; color:var(--muted); padding:20px;
+            border-top:1px solid var(--rule);
+        }
+
+        @media(max-width:600px){
+            .lesson-hero { padding:20px; }
+            .lesson-body { padding:20px; }
+            .lesson-hero h2 { font-size:18px; }
+            .vocab-table { font-size:12px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-bar">
+    <a href="index.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg> Inicio</a>
+    <h1>Escuela del Minero</h1>
+    <span></span>
+</div>
+
+<div class="container">
+
+    <!-- INTRO -->
+    <div class="intro">
+        <h2>Escuela del Minero</h2>
+        <p>Cada semana, una leccion nueva que cubre el ciclo completo del negocio minero. Conceptos tecnicos precisos, casos reales con datos verificables, y vocabulario bilingue del sector. En 6 semanas cubres todos los pilares; luego profundizamos.</p>
+        <div class="pillar-grid">
+            <div class="pillar-tag active">Evaluacion de Proyectos</div>
+            <div class="pillar-tag">Geologia y Exploracion</div>
+            <div class="pillar-tag">Procesos y Metalurgia</div>
+            <div class="pillar-tag">Finanzas Mineras</div>
+            <div class="pillar-tag">Permisologia</div>
+            <div class="pillar-tag">Planificacion Minera</div>
+        </div>
+    </div>
+
+    <!-- LESSON INDEX -->
+    <p class="section-title">Lecciones disponibles</p>
+    <div class="lesson-list">
+        <a class="lesson-card" href="#leccion-1">
+            <div class="lc-header">
+                <span class="lc-num">Leccion 01</span>
+                <span class="lc-pillar">Evaluacion de Proyectos</span>
+            </div>
+            <div class="lc-title">Del PEA al Feasibility Study: Las etapas que definen si una mina existe</div>
+            <div class="lc-subtitle">Edicion N.3 — 17/03/2026</div>
+        </a>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         LECCION 01
+    ═══════════════════════════════════════════════════════════════ -->
+    <div class="lesson" id="leccion-1">
+        <div class="lesson-hero">
+            <div class="lh-num">Leccion 01 &middot; Edicion N.3</div>
+            <h2>Del PEA al Feasibility Study</h2>
+            <div class="lh-english">From Scoping Study to Bankable Feasibility: The Stage-Gate Process in Mining</div>
+            <span class="lh-pillar">Evaluacion de Proyectos</span>
+        </div>
+
+        <div class="lesson-body">
+
+            <h3>El concepto central</h3>
+
+            <p>Antes de que una mina produzca su primera tonelada de mineral, el proyecto debe pasar por una secuencia de estudios de ingenieria cada vez mas detallados y costosos. Esta secuencia se conoce como el <strong>stage-gate process</strong> y es el marco que usan la banca de inversion, los directorios y los reguladores para decidir si un proyecto avanza o se detiene.</p>
+
+            <p>Cada etapa responde una pregunta distinta:</p>
+
+            <div class="concept-box">
+                <div class="cb-term">PEA — Preliminary Economic Assessment</div>
+                <div class="cb-def"><strong>Pregunta que responde:</strong> "¿Vale la pena seguir gastando dinero en este proyecto?" Es el primer filtro economico. Usa recursos inferidos (la categoria de menor confianza bajo JORC/NI 43-101), estimaciones de orden de magnitud para capex y opex, y un diseno de mina conceptual. Precision tipica del capex: +/- 50%. <strong>Costo:</strong> US$500k–US$2M. <strong>Duracion:</strong> 3–6 meses.</div>
+            </div>
+
+            <div class="concept-box">
+                <div class="cb-term">PFS — Pre-Feasibility Study</div>
+                <div class="cb-def"><strong>Pregunta que responde:</strong> "¿Es este proyecto tecnica y economicamente viable?" Requiere recursos indicados como minimo. Incluye diseno de mina preliminar, seleccion de metodo de procesamiento, plan de infraestructura, y evaluacion ambiental inicial. Precision tipica del capex: +/- 25%. <strong>Costo:</strong> US$5M–US$20M. <strong>Duracion:</strong> 12–18 meses.</div>
+            </div>
+
+            <div class="concept-box">
+                <div class="cb-term">FS / BFS — Feasibility Study / Bankable Feasibility Study</div>
+                <div class="cb-def"><strong>Pregunta que responde:</strong> "¿Podemos conseguir financiamiento para construir esta mina?" Es el estudio definitivo. Requiere recursos medidos e indicados, ingenieria de detalle, cotizaciones reales de equipos, plan de cierre, y evaluacion de impacto ambiental completa. Lo revisan los bancos para decidir si prestan. Precision del capex: +/- 15%. <strong>Costo:</strong> US$20M–US$100M+. <strong>Duracion:</strong> 18–24 meses.</div>
+            </div>
+
+            <p><strong>Punto critico:</strong> Un PEA con NPV positivo <em>no significa</em> que el proyecto es viable. Significa que merece mas estudio. Muchos proyectos con PEA atractivos mueren en el PFS cuando la realidad geologica o los costos reales no coinciden con las estimaciones iniciales.</p>
+
+            <h3>Caso real</h3>
+
+            <div class="case-study">
+                <div class="cs-header">
+                    <span class="cs-icon">&#9874;</span>
+                    <span class="cs-label">Caso de estudio</span>
+                </div>
+                <div class="cs-title">Resolution Copper: 30 anos del descubrimiento al land exchange</div>
+                <p>El deposito de Resolution fue descubierto por Magma Copper en la decada de 1990 mediante perforaciones profundas que encontraron mineralizacion de cobre a ~2.000 metros bajo la superficie en Superior, Arizona. BHP adquirio Magma en 1996 y luego Rio Tinto ingreso al joint venture.</p>
+                <p>El proyecto completo un <strong>PFS en 2014</strong> que estimo un recurso de 1.780 millones de toneladas con ley de 1,52% CuT. El capex estimado: US$6.000 millones (en dolares de 2014). El metodo propuesto: <strong>block caving</strong>, una tecnica de mineria subterranea masiva donde se colapsa la roca desde abajo.</p>
+                <p>A pesar de la solidez tecnica, el proyecto estuvo bloqueado por el proceso de land exchange y litigios ambientales durante mas de una decada. Recien el 16 de marzo de 2026 se completo el intercambio de tierras. <strong>Leccion:</strong> un Feasibility Study positivo es condicion necesaria pero no suficiente — la permisologia puede ser el cuello de botella mas largo e impredecible del stage-gate process.</p>
+                <p class="cs-source">Fuentes: Resolution Copper Mining (resolutioncopper.com), NI 43-101 Technical Report 2014, US Forest Service Final EIS 2021.</p>
+            </div>
+
+            <div class="case-study">
+                <div class="cs-header">
+                    <span class="cs-icon">&#9888;</span>
+                    <span class="cs-label">Caso de fracaso</span>
+                </div>
+                <div class="cs-title">Pascua-Lama (Barrick Gold): US$8.500M en write-downs</div>
+                <p>Pascua-Lama, en la frontera Chile-Argentina, tenia un <strong>BFS completado en 2009</strong> con capex estimado de US$3.000M. Para 2013, el capex se habia escalado a US$8.500M y Barrick suspendio la construccion. La empresa registro write-downs por US$8.500 millones entre 2013 y 2019.</p>
+                <p><strong>Que salio mal:</strong> (1) El BFS subestimo la complejidad de construir a 4.500+ msnm en la cordillera. (2) Las exigencias ambientales de la RCA chilena (proteccion de glaciares) no fueron internalizadas en el diseno original. (3) La inflacion de costos mineros post-2010 elevo todos los insumos.</p>
+                <p><strong>Leccion:</strong> La precision de +/-15% del BFS asume que el alcance del proyecto no cambia. Cuando las condiciones regulatorias o ambientales cambian el alcance, toda la evaluacion economica se invalida. Un BFS no protege contra riesgo regulatorio.</p>
+                <p class="cs-source">Fuentes: Barrick Gold Annual Report 2013, 2019. Chilean Supreme Court ruling 2020. NI 43-101 Technical Report Pascua-Lama 2009.</p>
+            </div>
+
+            <h3>Vocabulario tecnico bilingue</h3>
+
+            <table class="vocab-table">
+                <thead>
+                    <tr><th>Espanol</th><th>English</th><th>Contexto de uso</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Estudio de alcance</td>
+                        <td><span class="v-english">Scoping Study / PEA</span></td>
+                        <td><div class="v-context">"The PEA indicates a pre-tax NPV of US$1.2 billion at an 8% discount rate."</div></td>
+                    </tr>
+                    <tr>
+                        <td>Prefactibilidad</td>
+                        <td><span class="v-english">Pre-Feasibility Study (PFS)</span></td>
+                        <td><div class="v-context">"The PFS confirmed indicated resources sufficient to support a 20-year mine life."</div></td>
+                    </tr>
+                    <tr>
+                        <td>Estudio de factibilidad bancable</td>
+                        <td><span class="v-english">Bankable Feasibility Study (BFS)</span></td>
+                        <td><div class="v-context">"Project financing is contingent on completion of a BFS to NI 43-101 standards."</div></td>
+                    </tr>
+                    <tr>
+                        <td>Valor actual neto</td>
+                        <td><span class="v-english">Net Present Value (NPV)</span></td>
+                        <td><div class="v-context">"The after-tax NPV at a 10% discount rate is US$850M."</div></td>
+                    </tr>
+                    <tr>
+                        <td>Tasa interna de retorno</td>
+                        <td><span class="v-english">Internal Rate of Return (IRR)</span></td>
+                        <td><div class="v-context">"The project IRR exceeds the company's 15% hurdle rate."</div></td>
+                    </tr>
+                    <tr>
+                        <td>Gastos de capital</td>
+                        <td><span class="v-english">Capital Expenditure (Capex)</span></td>
+                        <td><div class="v-context">"Initial capex is estimated at US$2.1 billion, with sustaining capex of US$150M per year."</div></td>
+                    </tr>
+                    <tr>
+                        <td>Gastos operacionales</td>
+                        <td><span class="v-english">Operating Expenditure (Opex)</span></td>
+                        <td><div class="v-context">"Cash opex is projected at US$1.85 per pound of copper, net of by-product credits."</div></td>
+                    </tr>
+                    <tr>
+                        <td>Tasa de descuento</td>
+                        <td><span class="v-english">Discount Rate</span></td>
+                        <td><div class="v-context">"We applied an 8% real discount rate, consistent with copper project benchmarks."</div></td>
+                    </tr>
+                    <tr>
+                        <td>Periodo de recuperacion</td>
+                        <td><span class="v-english">Payback Period</span></td>
+                        <td><div class="v-context">"The payback period is estimated at 4.2 years from first production."</div></td>
+                    </tr>
+                    <tr>
+                        <td>Recurso inferido / indicado / medido</td>
+                        <td><span class="v-english">Inferred / Indicated / Measured Resource</span></td>
+                        <td><div class="v-context">"Measured and indicated resources total 520 Mt at 0.85% CuT."</div></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Ejercicio mental</h3>
+
+            <div class="exercise-box">
+                <div class="ex-header">Piensa como un banquero de inversion</div>
+                <p>Llega a tu escritorio un proyecto de cobre con los siguientes datos del PFS:</p>
+                <ul>
+                    <li>Recurso indicado: 200 Mt @ 0.70% CuT</li>
+                    <li>Recuperacion metalurgica: 85%</li>
+                    <li>Capex: US$1.800M (+/- 25%)</li>
+                    <li>Opex: US$2.10/lb Cu</li>
+                    <li>Precio de cobre asumido: US$4.00/lb</li>
+                    <li>NPV (8%): US$920M</li>
+                    <li>IRR: 18%</li>
+                </ul>
+                <p><strong>Pregunta:</strong> ¿Financiarias la construccion basandote en estos numeros? ¿Que le pedirias al equipo tecnico antes de tomar una decision?</p>
+                <div class="ex-hint" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'">&#9660; Ver analisis</div>
+                <div class="ex-answer">
+                    <p><strong>No financiarias aun.</strong> Un PFS tiene precision de +/-25% en capex. Eso significa que el capex real podria ser US$2.250M en el peor caso. Recalculando con ese capex, el NPV cae significativamente y el IRR podria bajar a ~12%, cerca del hurdle rate de muchas empresas.</p>
+                    <p><strong>Que pedirias:</strong> (1) Un BFS con precision +/-15%. (2) Sensibilidad del NPV al precio del cobre — si baja a US$3.50/lb, ¿el proyecto sigue viable? (3) Estado de la permisologia: ¿tiene RCA o equivalente? (4) Composicion del recurso: ¿cuanto es medido vs. indicado? Un recurso mayoritariamente indicado tiene mayor riesgo geologico. (5) Experiencia del equipo gerencial en proyectos de escala similar.</p>
+                </div>
+            </div>
+
+            <h3>Dato que pocos saben</h3>
+
+            <div class="fun-fact">
+                <div class="ff-label">Dato que pocos saben</div>
+                <p>El promedio global desde el descubrimiento de un deposito de cobre hasta la primera produccion es de <strong>16,5 anos</strong> (S&P Global, 2023). Pero el percentil 90 — es decir, los proyectos mas lentos — supera los <strong>25 anos</strong>. Resolution Copper, descubierto en los 90 y sin producir una libra en 2026, esta en ese percentil. Cuando alguien dice "necesitamos mas minas de cobre para la transicion energetica", la respuesta real es: "necesitabamos haberlas empezado hace 15 anos".</p>
+            </div>
+
+            <h3>Resumen en 30 segundos</h3>
+
+            <p>Todo proyecto minero pasa por PEA → PFS → BFS antes de construirse. Cada etapa cuesta mas, toma mas tiempo y produce estimaciones mas precisas. Un PEA positivo no es garantia de nada — es solo una invitacion a gastar mas en estudiar el proyecto. El verdadero filtro no es solo la ingenieria sino la permisologia, que puede agregar decadas al timeline. <strong>Para una reunion:</strong> si alguien dice "este proyecto tiene un NPV de US$X millones", tu primera pregunta deberia ser: "¿En que etapa de estudio? ¿PEA, PFS o BFS?"</p>
+
+        </div>
+    </div>
+
+</div>
+
+<footer>Escuela del Minero &middot; Al Ritmo de la Mineria &middot; Diego Varleta &middot; Contenido acumulativo desde Edicion N.3</footer>
+
+</body>
+</html>
