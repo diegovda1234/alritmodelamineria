@@ -72,7 +72,7 @@
             display:flex; align-items:center; justify-content:space-between;
             cursor:pointer; user-select:none;
             background:var(--card); border:1px solid var(--rule);
-            border-radius:10px; padding:12px 18px; margin:28px 0 0;
+            border-radius:10px; padding:12px 18px; margin:28px 0 24px;
             -webkit-tap-highlight-color:transparent;
         }
         .archive-toggle:hover { background:var(--light); }
@@ -82,6 +82,7 @@
         .archive-toggle .at-count { font-size:11px; color:var(--muted); }
         .archive-toggle .at-arrow { font-size:10px; color:var(--copper); transition:transform .3s; }
         .archive-toggle.open .at-arrow { transform:rotate(180deg); }
+        .archive-toggle.open { margin-bottom:0; border-radius:10px 10px 0 0; }
 
         /* Archive list — compact rows */
         .archive-list {
