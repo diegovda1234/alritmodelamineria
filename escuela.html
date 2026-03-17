@@ -144,7 +144,11 @@
         .case-study .cs-source { font-size:11px; color:var(--muted); font-style:italic; }
 
         /* Vocab table */
-        .vocab-table { width:100%; border-collapse:collapse; margin:14px 0 20px; font-size:13px; }
+        .vocab-wrap {
+            overflow-x:auto; -webkit-overflow-scrolling:touch;
+            border:1px solid var(--rule); border-radius:10px; margin:14px 0 20px;
+        }
+        .vocab-table { width:100%; border-collapse:collapse; font-size:13px; min-width:540px; }
         .vocab-table thead tr { background:var(--night); color:white; }
         .vocab-table th {
             padding:10px 12px; text-align:left; font-weight:600; font-size:10px;
@@ -153,12 +157,25 @@
         .vocab-table tbody tr { border-bottom:1px solid var(--rule); }
         .vocab-table tbody tr:nth-child(even) { background:var(--light); }
         .vocab-table td { padding:10px 12px; vertical-align:top; }
-        .vocab-table td:first-child { font-weight:600; color:var(--night); white-space:nowrap; }
+        .vocab-table td:first-child { font-weight:600; color:var(--night); }
         .vocab-table .v-english {
             font-family:'DM Mono',monospace; font-weight:600; color:var(--copper);
         }
         .vocab-table .v-context {
             font-size:12px; color:var(--muted); font-style:italic; margin-top:2px;
+        }
+        /* Mobile vocab cards */
+        .vocab-cards { display:none; margin:14px 0 20px; }
+        .vc-item {
+            background:var(--card); border:1px solid var(--rule); border-left:3px solid var(--copper);
+            border-radius:8px; padding:14px 16px; margin-bottom:8px;
+        }
+        .vc-es { font-weight:700; color:var(--night); font-size:14px; margin-bottom:2px; }
+        .vc-en { font-family:'DM Mono',monospace; font-weight:600; color:var(--copper); font-size:13px; margin-bottom:6px; }
+        .vc-ctx { font-size:12px; color:var(--muted); font-style:italic; line-height:1.5; }
+        @media(max-width:600px){
+            .vocab-wrap { display:none; }
+            .vocab-cards { display:block; }
         }
 
         /* Mental exercise */
@@ -633,6 +650,39 @@
 </div>
 
 <footer>Escuela del Minero &middot; Al Ritmo de la Mineria &middot; Diego Varleta &middot; Contenido acumulativo desde Edicion N.1</footer>
+
+<script>
+// Auto-generate mobile vocab cards from tables
+(function(){
+    var tables = document.querySelectorAll('.vocab-table');
+    tables.forEach(function(table){
+        var wrap = document.createElement('div');
+        wrap.className = 'vocab-wrap';
+        table.parentNode.insertBefore(wrap, table);
+        wrap.appendChild(table);
+
+        var cards = document.createElement('div');
+        cards.className = 'vocab-cards';
+        var rows = table.querySelectorAll('tbody tr');
+        rows.forEach(function(row){
+            var cells = row.querySelectorAll('td');
+            if(cells.length < 3) return;
+            var es = cells[0].textContent.trim();
+            var enEl = cells[1].querySelector('.v-english');
+            var en = enEl ? enEl.textContent.trim() : cells[1].textContent.trim();
+            var ctxEl = cells[2].querySelector('.v-context');
+            var ctx = ctxEl ? ctxEl.textContent.trim() : cells[2].textContent.trim();
+            var card = document.createElement('div');
+            card.className = 'vc-item';
+            card.innerHTML = '<div class="vc-es">' + es + '</div>' +
+                '<div class="vc-en">' + en + '</div>' +
+                '<div class="vc-ctx">' + ctx + '</div>';
+            cards.appendChild(card);
+        });
+        wrap.parentNode.insertBefore(cards, wrap.nextSibling);
+    });
+})();
+</script>
 
 </body>
 </html>
