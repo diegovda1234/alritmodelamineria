@@ -31,6 +31,12 @@
     --black:      #0A1220;
 }
 
+html.dark {
+    --night:#0a1018; --cold-white:#0F1C2E; --text:#d1d8e0; --muted:#8FA3BC;
+    --rule:#243348; --light:#1a2d42; --black:#e8edf3; --mid-blue:#8FA3BC;
+    --slate:#6B8AB0;
+}
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
@@ -40,7 +46,80 @@ body {
     color: var(--text);
     background: var(--cold-white);
     padding: 0;
+    transition: background 0.3s, color 0.3s;
 }
+
+/* ══ DARK MODE TOGGLE ══ */
+.dark-toggle {
+    position: fixed; bottom: 20px; left: 20px; z-index: 9998;
+    width: 42px; height: 42px; border-radius: 50%;
+    background: var(--night); border: 2px solid var(--copper);
+    color: var(--gold); cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    transition: background 0.2s;
+}
+.dark-toggle:hover { background: var(--slate); }
+@media print { .dark-toggle { display: none !important; } }
+
+/* ══ STICKY PRICES FAB ══ */
+.fab-prices {
+    position: fixed; bottom: 20px; right: 20px; z-index: 9998;
+    background: var(--night); border: 2px solid var(--copper);
+    color: var(--gold); cursor: pointer; border-radius: 28px;
+    padding: 10px 18px; font-family: 'DM Sans', sans-serif;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.3px;
+    display: flex; align-items: center; gap: 6px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+    transition: background 0.2s, transform 0.15s;
+}
+.fab-prices:hover { background: var(--slate); transform: scale(1.04); }
+@media print { .fab-prices { display: none !important; } }
+
+.prices-panel {
+    position: fixed; bottom: 72px; right: 20px; z-index: 9997;
+    background: var(--night); border: 1px solid rgba(226,185,111,0.3);
+    border-radius: 12px; padding: 16px; color: white;
+    max-height: 400px; overflow-y: auto; width: 300px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    display: none; font-size: 12px;
+    transition: background 0.3s;
+}
+.prices-panel.open { display: block; }
+.prices-panel table { width: 100%; border-collapse: collapse; }
+.prices-panel th { text-align: left; color: var(--gold); font-size: 9px; text-transform: uppercase; letter-spacing: .8px; padding: 4px 6px; border-bottom: 1px solid rgba(255,255,255,.1); }
+.prices-panel td { padding: 5px 6px; color: rgba(255,255,255,.85); font-family: 'DM Mono', 'Consolas', monospace; font-size: 11px; }
+.prices-panel td:last-child { text-align: right; }
+.pp-up { color: #22c55e; }
+.pp-down { color: #ef4444; }
+@media print { .prices-panel { display: none !important; } }
+
+/* ══ IMPACT SCORES ══ */
+.impact-badge {
+    display: inline-flex; align-items: center; gap: 2px;
+    margin-left: 8px; vertical-align: middle;
+}
+.impact-dot {
+    width: 6px; height: 12px; border-radius: 2px;
+    background: var(--copper); opacity: 0.25;
+}
+.impact-dot.filled { opacity: 1; }
+
+/* ══ EDITION NAV ══ */
+.edition-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 0; margin-top: 32px; border-top: 2px solid var(--rule);
+}
+.edition-nav a {
+    color: var(--copper); text-decoration: none; font-size: 13px;
+    font-weight: 600; display: flex; align-items: center; gap: 6px;
+    padding: 8px 16px; border: 1px solid var(--copper); border-radius: 8px;
+    transition: background 0.15s, color 0.15s;
+}
+.edition-nav a:hover { background: var(--copper); color: white; }
+.edition-nav .home-link { border: none; color: var(--muted); }
+.edition-nav .home-link:hover { color: var(--copper); background: none; }
+@media print { .edition-nav { display: none !important; } }
 
 /* ══════════════════════════════════════
    PORTADA — BRAND COVER
@@ -1450,6 +1529,72 @@ mark.search-hl.current {
     }
 })();
 
+</script>
+
+<!-- DARK MODE TOGGLE -->
+<button class="dark-toggle" id="dark-toggle" title="Modo oscuro">
+    <svg id="dm-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg>
+    <svg id="dm-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+
+<!-- STICKY PRICES FAB -->
+<button class="fab-prices" id="fab-prices">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="18" rx="2"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
+    Precios
+</button>
+<div class="prices-panel" id="prices-panel">
+    <table>
+        <tr><th>Mineral</th><th>Precio</th><th>Var.</th></tr>
+        <tr><td>Cobre</td><td>$12,678/t</td><td class="pp-up">+1.2%</td></tr>
+        <tr><td>Cobre</td><td>$5.75/lb</td><td class="pp-up">+1.2%</td></tr>
+        <tr><td>Litio</td><td>$20,256/t</td><td class="pp-up">+2.1%</td></tr>
+        <tr><td>Platino</td><td>$1,650/oz</td><td class="pp-up">+2.5%</td></tr>
+        <tr><td>Paladio</td><td>$1,685/oz</td><td class="pp-up">+1.8%</td></tr>
+        <tr><td>Rodio</td><td>$11,700/oz</td><td class="pp-up">+1.7%</td></tr>
+        <tr><td>NdPr</td><td>$108.6/kg</td><td class="pp-up">+3.2%</td></tr>
+        <tr><td>Cobalto</td><td>$56,290/t</td><td class="pp-up">+2.7%</td></tr>
+        <tr><td>Oro</td><td>$5,025/oz</td><td class="pp-down">-3.4%</td></tr>
+        <tr><td>Plata</td><td>$80.10/oz</td><td class="pp-down">-4.7%</td></tr>
+        <tr><td>CLP/USD</td><td>$908</td><td class="pp-down">+1.2%</td></tr>
+    </table>
+</div>
+
+<!-- EDITION NAV -->
+<div class="content">
+    <div class="edition-nav">
+        <a href="Noticiero_Minero_Ed002_2026-03-13.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg> Ed. anterior</a>
+        <a class="home-link" href="index.html">Todas las ediciones</a>
+        <span style="color:var(--muted);font-size:12px;">Ultima edicion</span>
+    </div>
+</div>
+
+<script>
+// Dark mode
+(function() {
+    var html = document.documentElement;
+    var btn = document.getElementById('dark-toggle');
+    var moon = document.getElementById('dm-moon');
+    var sun = document.getElementById('dm-sun');
+    if (localStorage.getItem('dark-mode') === 'true') { html.classList.add('dark'); moon.style.display='none'; sun.style.display=''; }
+    btn.addEventListener('click', function() {
+        html.classList.toggle('dark');
+        var d = html.classList.contains('dark');
+        localStorage.setItem('dark-mode', d);
+        moon.style.display = d ? 'none' : '';
+        sun.style.display = d ? '' : 'none';
+    });
+})();
+// Sticky prices panel
+(function() {
+    var fab = document.getElementById('fab-prices');
+    var panel = document.getElementById('prices-panel');
+    fab.addEventListener('click', function() { panel.classList.toggle('open'); });
+    document.addEventListener('click', function(e) {
+        if (!panel.contains(e.target) && e.target !== fab && !fab.contains(e.target)) {
+            panel.classList.remove('open');
+        }
+    });
+})();
 </script>
 </body>
 </html>
