@@ -542,8 +542,8 @@
         <p class="quote-author">— Analisis IEA sobre controles de exportacion de REE, marzo 2026</p>
     </div>
 
-    <!-- EDICIONES -->
-    <p class="section-title">Ediciones disponibles</p>
+    <!-- ULTIMAS 3 EDICIONES -->
+    <p class="section-title">Ultimas ediciones</p>
     <div class="card-list">
         <div class="card">
             <div class="card-header">
@@ -574,6 +574,12 @@
                 </div>
                 <span class="badge">Ed. 002</span>
             </div>
+            <div class="card-emphasis">Primera semana de cobertura completa. Precios del cobre firmes sobre US$12.500/t, oro rompe US$5.000/oz por primera vez, y el litio muestra senales de recuperacion.</div>
+            <ul class="card-bullets">
+                <li><span class="tag">[Cu]</span> Cobre firme sobre US$12.5k/t</li>
+                <li><span class="tag">[Au]</span> Oro rompe US$5,000/oz</li>
+                <li><span class="tag">[Li]</span> Litio en recuperacion</li>
+            </ul>
             <div class="card-actions">
                 <a class="card-btn primary" href="Noticiero_Minero_Ed002_2026-03-13.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Informe</a>
                 <a class="card-btn secondary" href="escuela.html#leccion-02"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg> Clase: Ley de Corte y Curva Tonelaje-Ley</a>
@@ -587,11 +593,30 @@
                 </div>
                 <span class="badge">Ed. 001</span>
             </div>
+            <div class="card-emphasis">Edicion inaugural de Al Ritmo de la Mineria. Panorama general de precios, contexto de mercado y estructura del sector minero chileno.</div>
+            <ul class="card-bullets">
+                <li><span class="tag">[Cu]</span> Panorama del mercado</li>
+                <li><span class="tag">[Chile]</span> Contexto sectorial</li>
+                <li><span class="tag">[Macro]</span> Variables globales</li>
+            </ul>
             <div class="card-actions">
                 <a class="card-btn primary" href="Noticiero_Minero_Ed001_2026-03-12.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Informe</a>
                 <a class="card-btn secondary" href="escuela.html#leccion-03"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg> Clase: Costos C1, C2 y AISC</a>
             </div>
         </div>
+    </div>
+
+    <!-- EDICIONES ANTERIORES (desplegable, se llena cuando haya mas de 3) -->
+    <div class="older-toggle" onclick="this.classList.toggle('open');document.getElementById('older-list').classList.toggle('open');" style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 18px;margin-top:16px;">
+        <div style="display:flex;align-items:center;gap:10px;">
+            <span style="font-size:13px;font-weight:600;color:var(--night);">Ediciones anteriores</span>
+            <span style="font-size:11px;color:var(--muted);">(0 mas)</span>
+        </div>
+        <span style="font-size:10px;color:var(--copper);transition:transform .3s;" class="older-arrow">&#9660;</span>
+    </div>
+    <div id="older-list" style="display:none;border:1px solid var(--rule);border-top:none;border-radius:0 0 10px 10px;overflow:hidden;">
+        <!-- Aqui se agregan ediciones cuando haya mas de 3, formato compacto como archive-item -->
+        <div style="padding:16px 18px;text-align:center;font-size:12px;color:var(--muted);">Todas las ediciones estan visibles arriba.</div>
     </div>
 
     <!-- NAV LINKS -->
