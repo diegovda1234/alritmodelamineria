@@ -26,16 +26,6 @@
             --yellow: #eab308;
             --light:  #EEF2F7;
         }
-        html.dark {
-            --night:  #0a1018;
-            --bg:     #0F1C2E;
-            --card:   #162336;
-            --text:   #d1d8e0;
-            --muted:  #8FA3BC;
-            --rule:   #243348;
-            --light:  #1a2d42;
-            --slate:  #4B6280;
-        }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -43,7 +33,6 @@
             background: var(--bg);
             color: var(--text);
             min-height: 100vh;
-            transition: background 0.3s, color 0.3s;
         }
 
         /* ═══ TICKER BAR ═══ */
@@ -121,20 +110,6 @@
             gap: 8px;
             align-items: center;
         }
-        .btn-icon {
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.15);
-            color: var(--gold);
-            width: 36px; height: 36px;
-            border-radius: 8px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.15s;
-            font-size: 16px;
-        }
-        .btn-icon:hover { background: rgba(226,185,111,0.15); }
 
         /* ═══ SEMÁFORO SECTION ═══ */
         .signal-bar {
@@ -323,9 +298,6 @@
             box-shadow: 0 6px 24px rgba(0,0,0,0.08);
             transform: translateY(-2px);
         }
-        html.dark .card:hover {
-            box-shadow: 0 6px 24px rgba(0,0,0,0.3);
-        }
         .card-header {
             display: flex;
             justify-content: space-between;
@@ -457,12 +429,6 @@
 
 <!-- HEADER -->
 <header>
-    <div class="header-actions">
-        <button class="btn-icon" id="dark-toggle" title="Modo oscuro" aria-label="Alternar modo oscuro">
-            <svg id="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg>
-            <svg id="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        </button>
-    </div>
     <h1>Al Ritmo de la Mineria</h1>
     <p class="subtitle">Inteligencia Minera Estrategica &middot; Diego Varleta</p>
 </header>
@@ -592,23 +558,5 @@
 
 <footer>Actualizado el 17/03/2026 &middot; Uso personal y confidencial</footer>
 
-<script>
-// Dark mode
-(function() {
-    var html = document.documentElement;
-    var btn = document.getElementById('dark-toggle');
-    var moon = document.getElementById('icon-moon');
-    var sun = document.getElementById('icon-sun');
-    var saved = localStorage.getItem('dark-mode');
-    if (saved === 'true') { html.classList.add('dark'); moon.style.display='none'; sun.style.display=''; }
-    btn.addEventListener('click', function() {
-        html.classList.toggle('dark');
-        var isDark = html.classList.contains('dark');
-        localStorage.setItem('dark-mode', isDark);
-        moon.style.display = isDark ? 'none' : '';
-        sun.style.display = isDark ? '' : 'none';
-    });
-})();
-</script>
 </body>
 </html>
