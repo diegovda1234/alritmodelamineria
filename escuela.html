@@ -112,6 +112,17 @@
         .lesson-body strong { color:var(--night); }
         .lesson-body em { color:var(--slate); }
 
+        /* Accordion */
+        .lesson { margin-bottom:16px; }
+        .lesson-hero { cursor:pointer; user-select:none; position:relative; }
+        .lesson-hero::after {
+            content:'▼'; position:absolute; right:24px; top:50%; transform:translateY(-50%);
+            font-size:14px; color:var(--gold); opacity:.6; transition:transform .3s;
+        }
+        .lesson.collapsed .lesson-hero::after { transform:translateY(-50%) rotate(-90deg); }
+        .lesson-body { overflow:hidden; transition:max-height .4s ease, opacity .3s ease; }
+        .lesson.collapsed .lesson-body { max-height:0 !important; opacity:0; padding:0 28px; }
+
         /* Concept box */
         .concept-box {
             background:var(--light); border-left:4px solid var(--copper);
@@ -906,6 +917,54 @@
 <footer>Escuela del Minero &middot; Al Ritmo de la Mineria &middot; Diego Varleta &middot; Contenido acumulativo desde Edicion N.1</footer>
 
 <script>
+// Accordion: all lessons start collapsed except the first
+(function(){
+    var lessons = document.querySelectorAll('.lesson');
+    lessons.forEach(function(lesson, i){
+        if(i > 0) lesson.classList.add('collapsed');
+        var hero = lesson.querySelector('.lesson-hero');
+        var body = lesson.querySelector('.lesson-body');
+        if(!hero || !body) return;
+        // Set initial max-height for open lessons
+        if(!lesson.classList.contains('collapsed')) {
+            body.style.maxHeight = body.scrollHeight + 'px';
+        }
+        hero.addEventListener('click', function(){
+            var isCollapsed = lesson.classList.contains('collapsed');
+            // Collapse all others
+            lessons.forEach(function(other){
+                if(other !== lesson) {
+                    other.classList.add('collapsed');
+                }
+            });
+            if(isCollapsed) {
+                lesson.classList.remove('collapsed');
+                body.style.maxHeight = body.scrollHeight + 'px';
+                // Scroll into view
+                setTimeout(function(){ lesson.scrollIntoView({behavior:'smooth', block:'start'}); }, 100);
+            } else {
+                lesson.classList.add('collapsed');
+            }
+        });
+    });
+    // Also handle clicking from the lesson index links
+    var indexLinks = document.querySelectorAll('.lesson-card');
+    indexLinks.forEach(function(link){
+        link.addEventListener('click', function(e){
+            e.preventDefault();
+            var targetId = this.getAttribute('href').replace('#','');
+            var target = document.getElementById(targetId);
+            if(!target) return;
+            // Collapse all, open target
+            lessons.forEach(function(l){ l.classList.add('collapsed'); });
+            target.classList.remove('collapsed');
+            var body = target.querySelector('.lesson-body');
+            if(body) body.style.maxHeight = body.scrollHeight + 'px';
+            setTimeout(function(){ target.scrollIntoView({behavior:'smooth', block:'start'}); }, 100);
+        });
+    });
+})();
+
 // Auto-generate mobile vocab cards from tables
 (function(){
     var tables = document.querySelectorAll('.vocab-table');
