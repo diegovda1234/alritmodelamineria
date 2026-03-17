@@ -31,12 +31,6 @@
     --black:      #0A1220;
 }
 
-html.dark {
-    --night:#0a1018; --cold-white:#0F1C2E; --text:#d1d8e0; --muted:#8FA3BC;
-    --rule:#243348; --light:#1a2d42; --black:#e8edf3; --mid-blue:#8FA3BC;
-    --slate:#6B8AB0;
-}
-
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
@@ -46,21 +40,7 @@ body {
     color: var(--text);
     background: var(--cold-white);
     padding: 0;
-    transition: background 0.3s, color 0.3s;
 }
-
-/* ══ DARK MODE TOGGLE ══ */
-.dark-toggle {
-    position: fixed; bottom: 20px; left: 20px; z-index: 9998;
-    width: 42px; height: 42px; border-radius: 50%;
-    background: var(--night); border: 2px solid var(--copper);
-    color: var(--gold); cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
-    transition: background 0.2s;
-}
-.dark-toggle:hover { background: var(--slate); }
-@media print { .dark-toggle { display: none !important; } }
 
 /* ══ STICKY PRICES FAB ══ */
 .fab-prices {
@@ -78,17 +58,17 @@ body {
 
 .prices-panel {
     position: fixed; bottom: 72px; right: 20px; z-index: 9997;
-    background: var(--night); border: 1px solid rgba(226,185,111,0.3);
-    border-radius: 12px; padding: 16px; color: white;
+    background: #ffffff; border: 1px solid var(--rule);
+    border-radius: 12px; padding: 16px; color: var(--text);
     max-height: 400px; overflow-y: auto; width: 300px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
     display: none; font-size: 12px;
-    transition: background 0.3s;
 }
 .prices-panel.open { display: block; }
 .prices-panel table { width: 100%; border-collapse: collapse; }
-.prices-panel th { text-align: left; color: var(--gold); font-size: 9px; text-transform: uppercase; letter-spacing: .8px; padding: 4px 6px; border-bottom: 1px solid rgba(255,255,255,.1); }
-.prices-panel td { padding: 5px 6px; color: rgba(255,255,255,.85); font-family: 'DM Mono', 'Consolas', monospace; font-size: 11px; }
+.prices-panel th { text-align: left; color: var(--copper); font-size: 9px; text-transform: uppercase; letter-spacing: .8px; padding: 6px 8px; border-bottom: 2px solid var(--rule); font-weight: 700; }
+.prices-panel td { padding: 6px 8px; color: var(--text); font-family: 'DM Mono', 'Consolas', monospace; font-size: 11px; border-bottom: 1px solid #EEF2F7; }
+.prices-panel td:first-child { font-family: 'DM Sans', sans-serif; font-weight: 600; color: #0F1C2E; }
 .prices-panel td:last-child { text-align: right; }
 .pp-up { color: #22c55e; }
 .pp-down { color: #ef4444; }
@@ -1531,12 +1511,6 @@ mark.search-hl.current {
 
 </script>
 
-<!-- DARK MODE TOGGLE -->
-<button class="dark-toggle" id="dark-toggle" title="Modo oscuro">
-    <svg id="dm-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg>
-    <svg id="dm-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-</button>
-
 <!-- STICKY PRICES FAB -->
 <button class="fab-prices" id="fab-prices">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="18" rx="2"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
@@ -1569,21 +1543,6 @@ mark.search-hl.current {
 </div>
 
 <script>
-// Dark mode
-(function() {
-    var html = document.documentElement;
-    var btn = document.getElementById('dark-toggle');
-    var moon = document.getElementById('dm-moon');
-    var sun = document.getElementById('dm-sun');
-    if (localStorage.getItem('dark-mode') === 'true') { html.classList.add('dark'); moon.style.display='none'; sun.style.display=''; }
-    btn.addEventListener('click', function() {
-        html.classList.toggle('dark');
-        var d = html.classList.contains('dark');
-        localStorage.setItem('dark-mode', d);
-        moon.style.display = d ? 'none' : '';
-        sun.style.display = d ? '' : 'none';
-    });
-})();
 // Sticky prices panel
 (function() {
     var fab = document.getElementById('fab-prices');
