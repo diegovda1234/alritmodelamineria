@@ -12,73 +12,88 @@
             --rule:#D1D8E0; --green:#22c55e; --red:#ef4444; --yellow:#eab308; --light:#EEF2F7;
         }
         * { box-sizing:border-box; margin:0; padding:0; }
-        body { font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--text); }
-
-        /* NAV */
+        body { font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
         .top-bar {
             background:var(--night); color:white; padding:12px 20px;
             display:flex; align-items:center; justify-content:space-between;
             border-bottom:2px solid var(--copper);
         }
-        .top-bar a {
-            color:var(--gold); text-decoration:none; font-size:13px; font-weight:600;
-            display:flex; align-items:center; gap:6px;
-        }
+        .top-bar a { color:var(--gold); text-decoration:none; font-size:13px; font-weight:600; display:flex; align-items:center; gap:6px; }
         .top-bar a:hover { text-decoration:underline; }
-        .top-bar h1 {
-            font-family:'Playfair Display',serif; font-size:16px; font-weight:700; color:white;
-        }
-        .btn-icon {
-            background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.15);
-            color:var(--gold); width:34px; height:34px; border-radius:8px; cursor:pointer;
-            display:flex; align-items:center; justify-content:center; font-size:15px;
-        }
-        .btn-icon:hover { background:rgba(226,185,111,.15); }
-
+        .top-bar h1 { font-family:'Playfair Display',serif; font-size:16px; font-weight:700; color:white; }
         .container { max-width:960px; margin:0 auto; padding:24px 16px 48px; }
 
-        /* INFO */
-        .info-text { font-size:13px; color:var(--muted); margin-bottom:24px; line-height:1.5; }
-
-        /* TABLE */
-        .price-table-wrap {
-            overflow-x:auto; -webkit-overflow-scrolling:touch;
-            border:1px solid var(--rule); border-radius:10px;
-            background:var(--card);        }
-        table { width:100%; border-collapse:collapse; font-size:12px; min-width:700px; }
-        thead { position:sticky; top:0; z-index:2; }
-        thead tr { background:var(--night); color:white; }
-        thead th {
-            padding:12px 14px; text-align:left; font-weight:600; font-size:10px;
-            text-transform:uppercase; letter-spacing:.8px; white-space:nowrap;
+        /* Source badge */
+        .source-badge {
+            display:inline-flex; align-items:center; gap:6px;
+            background:var(--light); border:1px solid var(--rule); border-radius:8px;
+            padding:8px 14px; font-size:11px; color:var(--muted); margin-bottom:20px;
         }
-        thead th:first-child { border-radius:10px 0 0 0; }
-        thead th:last-child { border-radius:0 10px 0 0; }
-        tbody tr { border-bottom:1px solid var(--rule); transition:background .15s; }
-        tbody tr:nth-child(even) { background:var(--light); }
-        tbody tr:hover { background:rgba(184,115,51,.06); }
-        html.dark tbody tr:hover { background:rgba(184,115,51,.12); }
-        tbody td { padding:10px 14px; vertical-align:middle; white-space:nowrap; }
-        tbody td:first-child { font-weight:600; color:var(--text); }
-        .up { color:var(--green); }
-        .down { color:var(--red); }
-        .neutral { color:var(--yellow); }
-        .sparkline { display:block; }
+        .source-badge strong { color:var(--night); }
 
-        /* CARDS para mobile */
-        .price-cards { display:none; }
-        .p-card {
-            background:var(--card); border:1px solid var(--rule); border-left:4px solid var(--copper);
-            border-radius:10px; padding:16px; margin-bottom:10px;        }
-        .p-card-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
-        .p-card-name { font-weight:700; font-size:14px; }
-        .p-card-price { font-family:'DM Mono',monospace; font-size:15px; font-weight:600; }
-        .p-card-row { display:flex; justify-content:space-between; font-size:12px; color:var(--muted); margin-top:4px; }
-        .p-card svg { display:block; margin-top:8px; }
+        /* Commodity row */
+        .commodity-row {
+            background:var(--card); border:1px solid var(--rule); border-radius:10px;
+            margin-bottom:12px; overflow:hidden;
+        }
+        .cr-header {
+            display:flex; align-items:center; justify-content:space-between;
+            padding:14px 18px; cursor:pointer; user-select:none;
+            -webkit-tap-highlight-color:transparent;
+        }
+        .cr-header:hover { background:var(--light); }
+        .cr-left { display:flex; align-items:center; gap:12px; flex:1; min-width:0; }
+        .cr-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+        .cr-dot.up { background:var(--green); }
+        .cr-dot.down { background:var(--red); }
+        .cr-dot.flat { background:var(--yellow); }
+        .cr-name { font-weight:700; font-size:14px; color:var(--night); }
+        .cr-price { font-family:'DM Mono',monospace; font-size:14px; font-weight:600; color:var(--text); }
+        .cr-unit { font-size:11px; color:var(--muted); margin-left:4px; }
+        .cr-change { font-size:12px; font-weight:600; margin-left:12px; white-space:nowrap; }
+        .cr-change.up { color:var(--green); }
+        .cr-change.down { color:var(--red); }
+        .cr-change.flat { color:var(--yellow); }
+        .cr-arrow { font-size:10px; color:var(--copper); transition:transform .3s; flex-shrink:0; margin-left:8px; }
+        .commodity-row.open .cr-arrow { transform:rotate(180deg); }
 
-        @media (max-width:700px) {
-            .price-table-wrap { display:none; }
-            .price-cards { display:block; }
+        /* Expanded detail */
+        .cr-detail { display:none; padding:0 18px 18px; }
+        .commodity-row.open .cr-detail { display:block; }
+
+        /* Chart container */
+        .chart-wrap {
+            background:var(--light); border-radius:8px; padding:12px;
+            margin-bottom:12px; position:relative;
+        }
+        .chart-wrap svg { display:block; width:100%; }
+
+        /* Data table inside detail */
+        .cr-table { width:100%; border-collapse:collapse; font-size:12px; }
+        .cr-table th {
+            text-align:left; font-size:9px; text-transform:uppercase; letter-spacing:.8px;
+            color:var(--muted); font-weight:600; padding:6px 8px;
+            border-bottom:2px solid var(--rule);
+        }
+        .cr-table td {
+            padding:6px 8px; font-family:'DM Mono',monospace; font-size:12px;
+            border-bottom:1px solid var(--light); color:var(--text);
+        }
+        .cr-table td:first-child { font-family:'DM Sans',sans-serif; font-weight:600; color:var(--night); }
+        .cr-table .src { font-size:10px; color:var(--muted); font-family:'DM Sans',sans-serif; font-style:italic; }
+
+        /* Tooltip */
+        .chart-tooltip {
+            position:absolute; background:var(--night); color:white; padding:6px 10px;
+            border-radius:6px; font-size:11px; pointer-events:none; display:none;
+            white-space:nowrap; z-index:10; font-family:'DM Mono',monospace;
+        }
+
+        /* Mobile */
+        @media(max-width:600px) {
+            .cr-unit { display:none; }
+            .cr-name { font-size:13px; }
+            .cr-price { font-size:13px; }
         }
 
         footer { text-align:center; font-size:11px; color:var(--muted); padding:20px; border-top:1px solid var(--rule); }
@@ -87,146 +102,196 @@
 <body>
 
 <div class="top-bar">
-    <a href="index.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg> Inicio</a>
+    <a href="index.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg> Inicio</a>
     <h1>Historial de Precios</h1>
     <span></span>
 </div>
 
 <div class="container">
-    <p class="info-text">Precios acumulados semana a semana desde la Edicion N.1. Las sparklines muestran la tendencia de las ultimas semanas disponibles. Esta tabla se actualiza automaticamente con cada nueva edicion del noticiero.</p>
-
-    <!-- DESKTOP TABLE -->
-    <div class="price-table-wrap">
-        <table>
-            <thead>
-                <tr>
-                    <th>Mineral</th>
-                    <th>Unidad</th>
-                    <th>Ed.1 (12/03)</th>
-                    <th>Ed.2 (13/03)</th>
-                    <th>Ed.3 (17/03)</th>
-                    <th>Var. Sem.</th>
-                    <th>Tendencia</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Cobre</td><td>USD/t</td>
-                    <td>12,400</td><td>12,530</td><td>12,678</td>
-                    <td class="up">+1.2%</td>
-                    <td><svg class="sparkline" width="80" height="24"><polyline points="5,20 40,14 75,6" fill="none" stroke="#22c55e" stroke-width="2"/></svg></td>
-                </tr>
-                <tr>
-                    <td>Cobre</td><td>USD/lb</td>
-                    <td>5.63</td><td>5.68</td><td>5.75</td>
-                    <td class="up">+1.2%</td>
-                    <td><svg class="sparkline" width="80" height="24"><polyline points="5,20 40,14 75,6" fill="none" stroke="#22c55e" stroke-width="2"/></svg></td>
-                </tr>
-                <tr>
-                    <td>Litio Carbonato</td><td>USD/t</td>
-                    <td>18,500</td><td>19,200</td><td>20,256</td>
-                    <td class="up">+2.1%</td>
-                    <td><svg class="sparkline" width="80" height="24"><polyline points="5,22 40,14 75,4" fill="none" stroke="#22c55e" stroke-width="2"/></svg></td>
-                </tr>
-                <tr>
-                    <td>Platino</td><td>USD/oz</td>
-                    <td>1,580</td><td>1,610</td><td>1,650</td>
-                    <td class="up">+2.5%</td>
-                    <td><svg class="sparkline" width="80" height="24"><polyline points="5,20 40,14 75,6" fill="none" stroke="#22c55e" stroke-width="2"/></svg></td>
-                </tr>
-                <tr>
-                    <td>Paladio</td><td>USD/oz</td>
-                    <td>1,640</td><td>1,655</td><td>1,685</td>
-                    <td class="up">+1.8%</td>
-                    <td><svg class="sparkline" width="80" height="24"><polyline points="5,20 40,14 75,6" fill="none" stroke="#22c55e" stroke-width="2"/></svg></td>
-                </tr>
-                <tr>
-                    <td>Rodio</td><td>USD/oz</td>
-                    <td>11,200</td><td>11,500</td><td>11,700</td>
-                    <td class="up">+1.7%</td>
-                    <td><svg class="sparkline" width="80" height="24"><polyline points="5,20 40,14 75,6" fill="none" stroke="#22c55e" stroke-width="2"/></svg></td>
-                </tr>
-                <tr>
-                    <td>NdPr Oxido</td><td>USD/kg</td>
-                    <td>96.5</td><td>102.0</td><td>108.64</td>
-                    <td class="up">+3.2%</td>
-                    <td><svg class="sparkline" width="80" height="24"><polyline points="5,22 40,14 75,3" fill="none" stroke="#22c55e" stroke-width="2"/></svg></td>
-                </tr>
-                <tr>
-                    <td>Cobalto</td><td>USD/t</td>
-                    <td>54,800</td><td>55,500</td><td>56,290</td>
-                    <td class="up">+2.7%</td>
-                    <td><svg class="sparkline" width="80" height="24"><polyline points="5,20 40,14 75,6" fill="none" stroke="#22c55e" stroke-width="2"/></svg></td>
-                </tr>
-                <tr>
-                    <td>Oro</td><td>USD/oz</td>
-                    <td>5,350</td><td>5,114</td><td>5,025</td>
-                    <td class="down">-3.4%</td>
-                    <td><svg class="sparkline" width="80" height="24"><polyline points="5,6 40,14 75,20" fill="none" stroke="#ef4444" stroke-width="2"/></svg></td>
-                </tr>
-                <tr>
-                    <td>Plata</td><td>USD/oz</td>
-                    <td>88.20</td><td>83.97</td><td>80.10</td>
-                    <td class="down">-4.7%</td>
-                    <td><svg class="sparkline" width="80" height="24"><polyline points="5,5 40,13 75,22" fill="none" stroke="#ef4444" stroke-width="2"/></svg></td>
-                </tr>
-                <tr>
-                    <td>CLP/USD</td><td>CLP</td>
-                    <td>885</td><td>898</td><td>908</td>
-                    <td class="down">+1.2%</td>
-                    <td><svg class="sparkline" width="80" height="24"><polyline points="5,20 40,13 75,5" fill="none" stroke="#ef4444" stroke-width="2"/></svg></td>
-                </tr>
-                <tr>
-                    <td>H2SO4</td><td>USD/t SA</td>
-                    <td>~149</td><td>~149</td><td>~149</td>
-                    <td class="neutral">0%</td>
-                    <td><svg class="sparkline" width="80" height="24"><polyline points="5,12 40,12 75,12" fill="none" stroke="#eab308" stroke-width="2"/></svg></td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="source-badge">
+        <strong>Fuentes:</strong> LME (Cu, Co) &middot; Kitco (Au, Ag, Pt, Pd, Rh) &middot; SMM/Fastmarkets (Li, NdPr) &middot; Banco Central (CLP/USD) &middot; IMARC (H2SO4)
     </div>
 
-    <!-- MOBILE CARDS -->
-    <div class="price-cards">
-        <div class="p-card">
-            <div class="p-card-header"><span class="p-card-name">Cobre</span><span class="p-card-price">$12,678/t</span></div>
-            <div class="p-card-row"><span>$5.75/lb</span><span class="up">+1.2% sem.</span></div>
-            <svg width="100%" height="28" viewBox="0 0 120 28" preserveAspectRatio="none"><polyline points="5,24 60,16 115,6" fill="none" stroke="#22c55e" stroke-width="2"/></svg>
-        </div>
-        <div class="p-card">
-            <div class="p-card-header"><span class="p-card-name">Litio Carbonato</span><span class="p-card-price">$20,256/t</span></div>
-            <div class="p-card-row"><span>Battery-grade</span><span class="up">+2.1% sem.</span></div>
-            <svg width="100%" height="28" viewBox="0 0 120 28" preserveAspectRatio="none"><polyline points="5,26 60,16 115,4" fill="none" stroke="#22c55e" stroke-width="2"/></svg>
-        </div>
-        <div class="p-card">
-            <div class="p-card-header"><span class="p-card-name">Oro</span><span class="p-card-price">$5,025/oz</span></div>
-            <div class="p-card-row"><span>Correccion desde $5,408</span><span class="down">-3.4% sem.</span></div>
-            <svg width="100%" height="28" viewBox="0 0 120 28" preserveAspectRatio="none"><polyline points="5,6 60,14 115,24" fill="none" stroke="#ef4444" stroke-width="2"/></svg>
-        </div>
-        <div class="p-card">
-            <div class="p-card-header"><span class="p-card-name">Plata</span><span class="p-card-price">$80.10/oz</span></div>
-            <div class="p-card-row"><span>Desde $121 en enero</span><span class="down">-4.7% sem.</span></div>
-            <svg width="100%" height="28" viewBox="0 0 120 28" preserveAspectRatio="none"><polyline points="5,6 60,14 115,24" fill="none" stroke="#ef4444" stroke-width="2"/></svg>
-        </div>
-        <div class="p-card">
-            <div class="p-card-header"><span class="p-card-name">Platino</span><span class="p-card-price">$1,650/oz</span></div>
-            <div class="p-card-row"><span>Deficit estructural</span><span class="up">+2.5% sem.</span></div>
-            <svg width="100%" height="28" viewBox="0 0 120 28" preserveAspectRatio="none"><polyline points="5,22 60,14 115,6" fill="none" stroke="#22c55e" stroke-width="2"/></svg>
-        </div>
-        <div class="p-card">
-            <div class="p-card-header"><span class="p-card-name">NdPr Oxido</span><span class="p-card-price">$108.6/kg</span></div>
-            <div class="p-card-row"><span>Tierras raras</span><span class="up">+3.2% sem.</span></div>
-            <svg width="100%" height="28" viewBox="0 0 120 28" preserveAspectRatio="none"><polyline points="5,24 60,14 115,4" fill="none" stroke="#22c55e" stroke-width="2"/></svg>
-        </div>
-        <div class="p-card">
-            <div class="p-card-header"><span class="p-card-name">CLP/USD</span><span class="p-card-price">$908</span></div>
-            <div class="p-card-row"><span>Tipo de cambio</span><span class="down">+1.2% (depreciacion)</span></div>
-            <svg width="100%" height="28" viewBox="0 0 120 28" preserveAspectRatio="none"><polyline points="5,22 60,14 115,5" fill="none" stroke="#ef4444" stroke-width="2"/></svg>
-        </div>
-    </div>
+    <div id="commodity-list"></div>
 </div>
 
 <footer>Historial acumulativo desde Edicion N.1 &middot; Al Ritmo de la Mineria &middot; Diego Varleta</footer>
 
+<script>
+// ═══ DATA — Single source of truth ═══
+// Each edition's prices come from the Noticiero Minero of that week.
+// Add new editions here; the UI builds automatically.
+var EDITIONS = [
+    { id: 1, label: 'Ed.1', date: '12/03' },
+    { id: 2, label: 'Ed.2', date: '13/03' },
+    { id: 3, label: 'Ed.3', date: '17/03' }
+];
+
+var COMMODITIES = [
+    {
+        name: 'Cobre', unit: 'USD/t', source: 'LME',
+        prices: [12400, 12530, 12678]
+    },
+    {
+        name: 'Cobre', unit: 'USD/lb', source: 'LME',
+        prices: [5.63, 5.68, 5.75]
+    },
+    {
+        name: 'Litio Carbonato', unit: 'USD/t', source: 'SMM',
+        prices: [18500, 19200, 20256]
+    },
+    {
+        name: 'Platino', unit: 'USD/oz', source: 'Kitco',
+        prices: [1580, 1610, 1650]
+    },
+    {
+        name: 'Paladio', unit: 'USD/oz', source: 'Kitco',
+        prices: [1640, 1655, 1685]
+    },
+    {
+        name: 'Rodio', unit: 'USD/oz', source: 'Kitco',
+        prices: [11200, 11500, 11700]
+    },
+    {
+        name: 'NdPr Oxido', unit: 'USD/kg', source: 'Fastmarkets',
+        prices: [96.5, 102.0, 108.64]
+    },
+    {
+        name: 'Cobalto', unit: 'USD/t', source: 'LME',
+        prices: [54800, 55500, 56290]
+    },
+    {
+        name: 'Oro', unit: 'USD/oz', source: 'Kitco',
+        prices: [5350, 5114, 5025]
+    },
+    {
+        name: 'Plata', unit: 'USD/oz', source: 'Kitco',
+        prices: [88.20, 83.97, 80.10]
+    },
+    {
+        name: 'CLP/USD', unit: 'CLP', source: 'Banco Central',
+        prices: [885, 898, 908]
+    },
+    {
+        name: 'H2SO4', unit: 'USD/t SA', source: 'IMARC',
+        prices: [149, 149, 149]
+    }
+];
+
+// ═══ RENDER ═══
+function formatNum(n) {
+    if (n >= 10000) return n.toLocaleString('en-US');
+    if (n >= 100) return n.toLocaleString('en-US');
+    if (n >= 10) return n.toFixed(1);
+    return n.toFixed(2);
+}
+
+function getChange(prices) {
+    if (prices.length < 2) return { pct: 0, dir: 'flat' };
+    var last = prices[prices.length - 1];
+    var prev = prices[prices.length - 2];
+    if (prev === 0) return { pct: 0, dir: 'flat' };
+    var pct = ((last - prev) / prev) * 100;
+    return { pct: pct, dir: pct > 0.05 ? 'up' : pct < -0.05 ? 'down' : 'flat' };
+}
+
+function buildSparkSVG(prices, id) {
+    var W = 280, H = 60, PAD = 20;
+    var min = Math.min.apply(null, prices);
+    var max = Math.max.apply(null, prices);
+    var range = max - min || 1;
+    var n = prices.length;
+
+    // Scale points
+    var pts = prices.map(function(p, i) {
+        var x = PAD + (i / (n - 1 || 1)) * (W - 2 * PAD);
+        var y = PAD + (1 - (p - min) / range) * (H - 2 * PAD);
+        return { x: x, y: y, val: p };
+    });
+
+    var polyPoints = pts.map(function(p) { return p.x + ',' + p.y; }).join(' ');
+    var change = getChange(prices);
+    var color = change.dir === 'up' ? '#22c55e' : change.dir === 'down' ? '#ef4444' : '#eab308';
+
+    var svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="none" style="height:60px;">';
+
+    // Grid lines
+    svg += '<line x1="' + PAD + '" y1="' + PAD + '" x2="' + (W - PAD) + '" y2="' + PAD + '" stroke="#D1D8E0" stroke-width="0.5" stroke-dasharray="4"/>';
+    svg += '<line x1="' + PAD + '" y1="' + (H / 2) + '" x2="' + (W - PAD) + '" y2="' + (H / 2) + '" stroke="#D1D8E0" stroke-width="0.5" stroke-dasharray="4"/>';
+    svg += '<line x1="' + PAD + '" y1="' + (H - PAD) + '" x2="' + (W - PAD) + '" y2="' + (H - PAD) + '" stroke="#D1D8E0" stroke-width="0.5" stroke-dasharray="4"/>';
+
+    // Line
+    svg += '<polyline points="' + polyPoints + '" fill="none" stroke="' + color + '" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>';
+
+    // Points with edition labels
+    pts.forEach(function(p, i) {
+        svg += '<circle cx="' + p.x + '" cy="' + p.y + '" r="4" fill="' + color + '" stroke="white" stroke-width="2" data-idx="' + i + '" data-id="' + id + '"/>';
+        // Edition label below/above point
+        var labelY = p.y > H / 2 ? p.y - 10 : p.y + 16;
+        svg += '<text x="' + p.x + '" y="' + labelY + '" text-anchor="middle" font-size="8" font-family="DM Sans" fill="#5B6E84" font-weight="600">' + EDITIONS[i].label + '</text>';
+    });
+
+    // Y-axis labels
+    svg += '<text x="' + (PAD - 4) + '" y="' + (PAD + 3) + '" text-anchor="end" font-size="7" fill="#5B6E84" font-family="DM Mono">' + formatNum(max) + '</text>';
+    svg += '<text x="' + (PAD - 4) + '" y="' + (H - PAD + 3) + '" text-anchor="end" font-size="7" fill="#5B6E84" font-family="DM Mono">' + formatNum(min) + '</text>';
+
+    svg += '</svg>';
+    return svg;
+}
+
+function buildRow(commodity, index) {
+    var change = getChange(commodity.prices);
+    var lastPrice = commodity.prices[commodity.prices.length - 1];
+    var pctStr = (change.pct >= 0 ? '+' : '') + change.pct.toFixed(1) + '%';
+
+    var html = '<div class="commodity-row" id="cr-' + index + '">';
+    html += '<div class="cr-header" onclick="toggleRow(' + index + ')">';
+    html += '<div class="cr-left">';
+    html += '<span class="cr-dot ' + change.dir + '"></span>';
+    html += '<span class="cr-name">' + commodity.name + '</span>';
+    html += '</div>';
+    html += '<span class="cr-price">' + formatNum(lastPrice) + '</span>';
+    html += '<span class="cr-unit">' + commodity.unit + '</span>';
+    html += '<span class="cr-change ' + change.dir + '">' + pctStr + '</span>';
+    html += '<span class="cr-arrow">&#9660;</span>';
+    html += '</div>';
+
+    // Detail
+    html += '<div class="cr-detail">';
+
+    // Chart
+    html += '<div class="chart-wrap">';
+    html += buildSparkSVG(commodity.prices, index);
+    html += '</div>';
+
+    // Data table
+    html += '<table class="cr-table"><thead><tr><th>Edicion</th><th>Fecha</th><th>Precio</th><th>Var.</th></tr></thead><tbody>';
+    commodity.prices.forEach(function(p, i) {
+        var varStr = '—';
+        if (i > 0) {
+            var v = ((p - commodity.prices[i - 1]) / commodity.prices[i - 1]) * 100;
+            varStr = '<span class="' + (v >= 0 ? 'up' : 'down') + '">' + (v >= 0 ? '+' : '') + v.toFixed(1) + '%</span>';
+        }
+        html += '<tr><td>' + EDITIONS[i].label + '</td><td>' + EDITIONS[i].date + '</td><td>' + formatNum(p) + ' ' + commodity.unit + '</td><td>' + varStr + '</td></tr>';
+    });
+    html += '</tbody></table>';
+    html += '<div class="src">Fuente: ' + commodity.source + '</div>';
+    html += '</div></div>';
+    return html;
+}
+
+function toggleRow(idx) {
+    var el = document.getElementById('cr-' + idx);
+    el.classList.toggle('open');
+}
+
+// Build all rows
+var container = document.getElementById('commodity-list');
+var allHtml = '';
+COMMODITIES.forEach(function(c, i) {
+    allHtml += buildRow(c, i);
+});
+container.innerHTML = allHtml;
+</script>
 </body>
 </html>
