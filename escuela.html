@@ -164,6 +164,8 @@
         .lesson.collapsed .lesson-hero::after { transform:translateY(-50%) rotate(-90deg); }
         .lesson-body { overflow:hidden; transition:max-height .5s ease, opacity .3s ease; }
         .lesson.collapsed .lesson-body { max-height:0 !important; opacity:0; padding-top:0; padding-bottom:0; }
+        /* Hide non-current lessons by default — shown only via archive clicks */
+        .lesson.hidden { display:none; }
 
         /* Concept box */
         .concept-box {
@@ -1028,66 +1030,60 @@
 <footer>Escuela del Minero &middot; Al Ritmo de la Mineria &middot; Diego Varleta &middot; Contenido acumulativo desde Edicion N.1</footer>
 
 <script>
-// Accordion: all lessons start collapsed except the first
+// Lessons: first is current (visible+open), rest are hidden until accessed from archive
 (function(){
     var lessons = document.querySelectorAll('.lesson');
 
-    function openLesson(lesson) {
-        lesson.classList.remove('collapsed');
-        var body = lesson.querySelector('.lesson-body');
-        if(body) {
-            // Temporarily set to auto to measure, then animate
-            body.style.maxHeight = 'none';
-            var h = body.scrollHeight;
-            body.style.maxHeight = '0px';
-            // Force reflow
-            body.offsetHeight;
-            body.style.maxHeight = h + 'px';
-            // After transition, set to none so content is never clipped
-            setTimeout(function(){ if(!lesson.classList.contains('collapsed')) body.style.maxHeight = 'none'; }, 600);
-        }
-    }
-
-    function closeLesson(lesson) {
-        var body = lesson.querySelector('.lesson-body');
-        if(body) {
-            body.style.maxHeight = body.scrollHeight + 'px';
-            body.offsetHeight;
-            body.style.maxHeight = '0px';
-        }
-        lesson.classList.add('collapsed');
-    }
-
+    // Hide all except the first (current week)
     lessons.forEach(function(lesson, i){
-        if(i > 0) lesson.classList.add('collapsed');
+        var body = lesson.querySelector('.lesson-body');
+        if(i === 0) {
+            // Current lesson: visible and open
+            if(body) body.style.maxHeight = 'none';
+        } else {
+            // Others: hidden completely
+            lesson.classList.add('hidden');
+            lesson.classList.add('collapsed');
+        }
+    });
+
+    // Hero click toggles open/close
+    lessons.forEach(function(lesson){
         var hero = lesson.querySelector('.lesson-hero');
         if(!hero) return;
-        // First lesson open with no clipping
-        if(i === 0) {
-            var body = lesson.querySelector('.lesson-body');
-            if(body) body.style.maxHeight = 'none';
-        }
         hero.addEventListener('click', function(){
-            var isCollapsed = lesson.classList.contains('collapsed');
-            lessons.forEach(function(other){ if(other !== lesson) closeLesson(other); });
-            if(isCollapsed) {
-                openLesson(lesson);
-                setTimeout(function(){ lesson.scrollIntoView({behavior:'smooth', block:'start'}); }, 150);
+            var body = lesson.querySelector('.lesson-body');
+            if(lesson.classList.contains('collapsed')) {
+                lesson.classList.remove('collapsed');
+                if(body) body.style.maxHeight = 'none';
             } else {
-                closeLesson(lesson);
+                lesson.classList.add('collapsed');
+                if(body) body.style.maxHeight = '0px';
             }
         });
     });
 
-    document.querySelectorAll('.lesson-card').forEach(function(link){
+    // Archive links: show the target lesson, hide others (except current)
+    document.querySelectorAll('.archive-item').forEach(function(link){
         link.addEventListener('click', function(e){
             e.preventDefault();
             var targetId = this.getAttribute('href').replace('#','');
             var target = document.getElementById(targetId);
             if(!target) return;
-            lessons.forEach(function(l){ closeLesson(l); });
-            openLesson(target);
-            setTimeout(function(){ target.scrollIntoView({behavior:'smooth', block:'start'}); }, 150);
+            // Hide all non-current lessons
+            lessons.forEach(function(l, i){
+                if(i > 0) { l.classList.add('hidden'); l.classList.add('collapsed'); }
+            });
+            // Show and open the target
+            target.classList.remove('hidden');
+            target.classList.remove('collapsed');
+            var body = target.querySelector('.lesson-body');
+            if(body) body.style.maxHeight = 'none';
+            // Close the archive dropdown
+            document.getElementById('archive-toggle').classList.remove('open');
+            document.getElementById('archive-list').classList.remove('open');
+            // Scroll
+            setTimeout(function(){ target.scrollIntoView({behavior:'smooth', block:'start'}); }, 100);
         });
     });
 })();
