@@ -292,11 +292,42 @@
             text-decoration: none;
             color: inherit;
             display: block;
-            transition: box-shadow 0.15s, transform 0.1s, background 0.3s, border-color 0.3s;
         }
-        .card:hover {
-            box-shadow: 0 6px 24px rgba(0,0,0,0.08);
-            transform: translateY(-2px);
+        .card-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        .card-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
+        }
+        .card-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+        }
+        .card-btn.primary {
+            background: var(--copper);
+            color: white;
+        }
+        .card-btn.primary:hover { background: #a0642a; }
+        .card-btn.secondary {
+            background: var(--light);
+            color: var(--slate);
+            border: 1px solid var(--rule);
+        }
+        .card-btn.secondary:hover { background: #dce3ec; }
+        .card-btn svg { flex-shrink: 0; }
+        @media (max-width: 400px) {
+            .card-actions { flex-direction: column; }
+            .card-btn { justify-content: center; }
         }
         .card-header {
             display: flex;
@@ -513,7 +544,7 @@
     <!-- EDICIONES -->
     <p class="section-title">Ediciones disponibles</p>
     <div class="card-list">
-        <a class="card" href="Noticiero_Minero_Ed003_2026-03-17.html">
+        <div class="card">
             <div class="card-header">
                 <div>
                     <div class="card-title">Edicion N. 3 — Semana del 10 al 17 de marzo</div>
@@ -529,8 +560,12 @@
                 <li><span class="tag">[Au]</span> Oro sobre US$5,000/oz</li>
                 <li><span class="tag">[Li]</span> Litio recupera a US$20k/t</li>
             </ul>
-        </a>
-        <a class="card" href="Noticiero_Minero_Ed002_2026-03-13.html">
+            <div class="card-actions">
+                <a class="card-btn primary" href="Noticiero_Minero_Ed003_2026-03-17.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Informe</a>
+                <a class="card-btn secondary" href="escuela.html#leccion-1"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg> Clase: Del PEA al Feasibility Study</a>
+            </div>
+        </div>
+        <div class="card">
             <div class="card-header">
                 <div>
                     <div class="card-title">Edicion N. 2 — Semana del 07 al 13 de marzo</div>
@@ -538,8 +573,12 @@
                 </div>
                 <span class="badge">Ed. 002</span>
             </div>
-        </a>
-        <a class="card" href="Noticiero_Minero_Ed001_2026-03-12.html">
+            <div class="card-actions">
+                <a class="card-btn primary" href="Noticiero_Minero_Ed002_2026-03-13.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Informe</a>
+                <a class="card-btn secondary" href="escuela.html#leccion-02"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg> Clase: Ley de Corte y Curva Tonelaje-Ley</a>
+            </div>
+        </div>
+        <div class="card">
             <div class="card-header">
                 <div>
                     <div class="card-title">Edicion N. 1 — Semana del 06 al 12 de marzo</div>
@@ -547,7 +586,11 @@
                 </div>
                 <span class="badge">Ed. 001</span>
             </div>
-        </a>
+            <div class="card-actions">
+                <a class="card-btn primary" href="Noticiero_Minero_Ed001_2026-03-12.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Informe</a>
+                <a class="card-btn secondary" href="escuela.html#leccion-03"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg> Clase: Costos C1, C2 y AISC</a>
+            </div>
+        </div>
     </div>
 
     <!-- NAV LINKS -->
