@@ -50,6 +50,55 @@
             border-color:rgba(184,115,51,.4);
         }
         @media(max-width:500px){ .pillar-grid{grid-template-columns:repeat(2,1fr);} }
+        /* ═══ KEY TAKEAWAY ═══ */
+        .key-takeaway {
+            background: linear-gradient(135deg, var(--night) 0%, #16213e 100%);
+            border-radius: 10px; padding: 20px 24px; margin: 28px 0 8px;
+            border-left: 4px solid var(--copper);
+        }
+        .key-takeaway h4 {
+            font-size: 11px; text-transform: uppercase; letter-spacing: 1px;
+            color: var(--gold); font-weight: 700; margin-bottom: 10px;
+        }
+        .key-takeaway p {
+            font-size: 14px; color: rgba(255,255,255,.85);
+            line-height: 1.65; font-style: italic;
+        }
+
+        /* ═══ LESSON NAV ═══ */
+        .lesson-nav {
+            display: flex; justify-content: flex-end;
+            margin-top: 28px; padding-top: 16px;
+            border-top: 1px solid var(--rule);
+        }
+        .ln-next {
+            font-size: 13px; color: var(--copper); text-decoration: none;
+            font-weight: 600; display: flex; align-items: center; gap: 6px;
+        }
+        .ln-next:hover { text-decoration: underline; }
+
+        /* ═══ SHOW/HIDE LECCIONES ═══ */
+        .lesson { display: none; }
+        .lesson.active { display: block; }
+        .lesson-all-view .lesson { display: block; }
+
+        /* Boton volver a todas */
+        .btn-ver-todas {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: var(--light); border: 1px solid var(--rule);
+            color: var(--slate); font-size: 12px; font-weight: 600;
+            padding: 7px 14px; border-radius: 7px; cursor: pointer;
+            text-decoration: none; margin-bottom: 20px;
+            transition: background .2s;
+        }
+        .btn-ver-todas:hover { background: var(--rule); }
+
+        /* Archive item activo */
+        .archive-item.selected {
+            background: rgba(184,115,51,.08);
+            border-left: 3px solid var(--copper);
+        }
+
 
         /* ═══ LESSON INDEX ═══ */
         .section-title {
@@ -165,8 +214,11 @@
         .lesson.collapsed .lesson-hero::after { transform:translateY(-50%) rotate(-90deg); }
         .lesson-body { overflow:hidden; transition:max-height .5s ease, opacity .3s ease; }
         .lesson.collapsed .lesson-body { max-height:0 !important; opacity:0; padding-top:0; padding-bottom:0; }
-        /* Hide non-current lessons by default — shown only via archive clicks */
-        .lesson.hidden { display:none; }
+        /* top-bar mobile: hide h1 on small screens to avoid overflow */
+        @media(max-width:600px){
+            .top-bar h1 { display:none; }
+            .top-bar { padding:10px 12px; gap:6px; }
+        }
 
         /* Concept box */
         .concept-box {
@@ -300,11 +352,13 @@
         <div class="at-left">
             <span class="at-icon">&#128218;</span>
             <span class="at-label">Lecciones anteriores y especiales</span>
-            <span class="at-count">(5 mas)</span>
+            <span class="at-count">(7 mas)</span>
         </div>
         <span class="at-arrow">&#9660;</span>
     </div>
     <div class="archive-list" id="archive-list">
+        <a class="archive-item lesson-card" href="#leccion-4"><span class="ai-dot ed"></span><span class="ai-pillar">Economia</span><span class="ai-title">TC/RC: La cadena del cobre</span><span class="ai-ed">Ed.4</span></a>
+        <a class="archive-item lesson-card" href="#leccion-1"><span class="ai-dot ed"></span><span class="ai-pillar">Evaluacion</span><span class="ai-title">Del PEA al Feasibility Study</span><span class="ai-ed">Ed.3</span></a>
         <a class="archive-item lesson-card" href="#leccion-02"><span class="ai-dot ed"></span><span class="ai-pillar">Planificacion</span><span class="ai-title">Ley de Corte y Curva Tonelaje-Ley</span><span class="ai-ed">Ed.2</span></a>
         <a class="archive-item lesson-card" href="#leccion-03"><span class="ai-dot ed"></span><span class="ai-pillar">Finanzas</span><span class="ai-title">Costos C1, C2 y AISC</span><span class="ai-ed">Ed.1</span></a>
         <a class="archive-item lesson-card" href="#leccion-04"><span class="ai-dot special"></span><span class="ai-pillar">IFRS</span><span class="ai-title">IFRS 6 e IAS 36: Exploracion y Deterioro</span><span class="ai-ed">Esp.</span></a>
@@ -313,7 +367,7 @@
     </div>
 
     <!-- CURRENT LESSON -->
-    <p class="current-label">Clase de la semana — Edicion N.3</p>
+    <p class="current-label">Clase de la semana — Edicion N.4</p>
 
 
     <!-- ═══════════════════════════════════════════════════════════
@@ -328,6 +382,8 @@
         </div>
 
         <div class="lesson-body">
+
+            <a class="btn-ver-todas" onclick="verTodas()" href="javascript:void(0)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg> Ver todas las lecciones</a>
 
             <h3>El concepto central</h3>
 
@@ -388,6 +444,97 @@
 
             <p>Para el mercado, el benchmark de AMSA es la senial mas clara del mercado: las fundidoras estan tan cortas de concentrado que aceptan condiciones nunca vistas antes.</p>
 
+
+            <h3>Caso real</h3>
+
+            <div class="case-study">
+                <div class="cs-header">
+                    <span class="cs-icon">&#9874;</span>
+                    <span class="cs-label">Caso de estudio</span>
+                </div>
+                <div class="cs-title">Benchmark 2016: TC/RC en maximos historicos — el otro extremo</div>
+                <p>En 2016, el benchmark anual se nego con TC de US$97,35/t y RC de 9,735 cents/lb — los niveles mas altos en decadas. Ese ano, las mineras debian pagar casi US$100 por cada tonelada de concentrado que enviaban a fundir. ¿Por que? Porque habia exceso de concentrado en el mercado (expansion de minas en Peru y Chile) y deficit de capacidad de fundicion. Las fundidoras tenian el poder.</p>
+                <p>Diez anos despues, en 2026, la situacion es exactamente la inversa: TC/RC = 0. El mismo indicador que en 2016 favorecia a las fundidoras hoy favorece completamente a las mineras. <strong>Leccion:</strong> el TC/RC es un pendulo que mide donde esta el poder en la cadena del cobre. Saber leerlo te dice quien gana y quien pierde en cada ciclo del mercado.</p>
+                <p>Para Chile especificamente: en 2016, Codelco y AMSA pagaban US$97/t por fundir su concentrado. En 2026, lo funden practicamente gratis. En terminos de margen operacional, esa diferencia de US$97/t sobre millones de toneladas de concentrado equivale a <strong>cientos de millones de dolares adicionales de flujo de caja al ano</strong> para las mineras chilenas.</p>
+                <p class="cs-source">Fuentes: Metal Bulletin Concentrates Conference 2016; IEA Copper Commentary marzo 2026; AMSA Annual Report 2026</p>
+            </div>
+
+            <h3>Vocabulario tecnico</h3>
+
+            <table class="vocab-table">
+                <thead>
+                    <tr><th>Espanol</th><th>English</th><th>Contexto de uso</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Tarifa de tratamiento</td>
+                        <td><span class="v-english">Treatment Charge (TC)</span></td>
+                        <td><div class="v-context">"The 2026 benchmark TC was set at zero for the first time, reflecting extreme concentrate tightness."</div></td>
+                    </tr>
+                    <tr>
+                        <td>Tarifa de refinacion</td>
+                        <td><span class="v-english">Refining Charge (RC)</span></td>
+                        <td><div class="v-context">"Spot RC turned negative in Q1 2026 as smelters competed for scarce concentrate."</div></td>
+                    </tr>
+                    <tr>
+                        <td>Concentrado de cobre</td>
+                        <td><span class="v-english">Copper concentrate</span></td>
+                        <td><div class="v-context">"The mine ships 35% copper concentrate via slurry pipeline to the port of Mejillones."</div></td>
+                    </tr>
+                    <tr>
+                        <td>Fundicion</td>
+                        <td><span class="v-english">Smelter / Smelting plant</span></td>
+                        <td><div class="v-context">"Jiangxi Copper operates the largest copper smelter in China with 900,000 t/year of capacity."</div></td>
+                    </tr>
+                    <tr>
+                        <td>Ajuste de penalidades</td>
+                        <td><span class="v-english">Penalty deductions</span></td>
+                        <td><div class="v-context">"The off-take agreement includes penalty deductions for arsenic above 0.3% in the concentrate."</div></td>
+                    </tr>
+                    <tr>
+                        <td>Precio neto de fundicion</td>
+                        <td><span class="v-english">Net smelter return (NSR)</span></td>
+                        <td><div class="v-context">"The royalty is calculated as 2% of NSR, after deducting TC/RC and penalty deductions."</div></td>
+                    </tr>
+                    <tr>
+                        <td>Cuota de produccion coordinada</td>
+                        <td><span class="v-english">Coordinated production cut (CSPT)</span></td>
+                        <td><div class="v-context">"The CSPT announced a voluntary 10% production cut to reduce concentrate demand and recover TC/RC levels."</div></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Ejercicio mental</h3>
+
+            <div class="exercise-box">
+                <div class="ex-header">Piensa como el CFO de una minera de concentrados</div>
+                <p>Tu minera produce 200.000 toneladas de concentrado de cobre al ano (con 30% de cobre contenido = 60.000 t de cobre fino). Compara los dos escenarios:</p>
+                <ul>
+                    <li><strong>Escenario A (2016):</strong> TC = US$97/t de concentrado; RC = 9,7 cents/lb de Cu fino</li>
+                    <li><strong>Escenario B (2026):</strong> TC = US$0/t de concentrado; RC = 0 cents/lb de Cu fino</li>
+                </ul>
+                <p><strong>Pregunta 1:</strong> ¿Cuanto paga tu minera en TC en el Escenario A? ¿Y en el B?</p>
+                <p><strong>Pregunta 2:</strong> Si el precio del cobre es US$5/lb en ambos escenarios y tu costo operacional es US$2/lb, ¿cual es tu margen neto por libra en cada escenario?</p>
+                <p><strong>Pregunta 3:</strong> Si la fundidora tiene un costo fijo de US$60/t de concentrado para operar, ¿cuanto tiempo puede sobrevivir con TC = 0 antes de cerrar? ¿Que senial envia ese cierre al precio del cobre?</p>
+            </div>
+
+            <h3>Datos que pocos saben</h3>
+
+            <div class="concept-box">
+                <div class="cb-term">El TC/RC tiene un "precio sombra" de escasez</div>
+                <div class="cb-def">Cuando el TC cae por debajo de US$20/t, las fundidoras tipicamente empiezan a operar en margen negativo. Sin embargo, no cierran de inmediato porque el costo de apagar y relanzar una fundidora de gran escala supera los US$50M y toma entre 3 y 6 meses de operacion deficitaria. Este umbral "de aguante" de las fundidoras es lo que permite al TC/RC llegar a cero o negativo durante periodos de tiempo, creando una burbuja de soporte artificial para los productores de concentrado.</div>
+            </div>
+
+            <div class="concept-box">
+                <div class="cb-term">Las fundidoras chinas pierden, pero sus minas ganan</div>
+                <div class="cb-def">Muchas de las grandes fundidoras chinas (Jiangxi Copper, Tongling) son tambien companias mineras con activos en Chile, Peru y Africa. Cuando los TC/RC son bajos, la division de fundicion pierde margen, pero la division minera (que vende concentrado al mercado) gana exactamente esa diferencia. Por eso, el verdadero impacto de TC/RC = 0 para una empresa integrada verticalmente es mas complejo que para una minera pura o una fundidora pura.</div>
+            </div>
+
+            <div class="concept-box">
+                <div class="cb-term">El "precio del maquilaje" en Chile</div>
+                <div class="cb-def">Codelco envia parte de su concentrado a la fundidora de Chuquicamata (propia) y otra parte a fundidoras en Asia via contratos de largo plazo. Cuando los benchmarks anuales se firman a TC bajos, Codelco se beneficia doblemente: no paga el maquila externo (o lo paga minimo) y el precio spot del cobre catodo refleja la escasez de oferta. En 2026, este efecto combinado equivale a un "subsidio implicito" de varias centenas de millones de dolares sobre los estados de resultados de Codelco.</div>
+            </div>
+
             <div class="key-takeaway">
                 <h4>Para llevarte a una reunion</h4>
                 <p>&quot;Si los TC/RC estan en cero y las fundidoras chinas estan recortando produccion, ¿en que punto el mercado de catodo tambien entra en escasez? ¿Y que ventana de tiempo tiene un nuevo proyecto en Chile para llegar a produccion mientras esa prima todavia este vigente?&quot;</p>
@@ -395,9 +542,6 @@
 
         </div>
 
-        <div class="lesson-nav">
-            <a href="#leccion-1" class="ln-next">Leccion anterior: Del PEA al Feasibility Study &rarr;</a>
-        </div>
     </div>
 
     <!-- ═══════════════════════════════════════════════════════════
@@ -412,6 +556,8 @@
         </div>
 
         <div class="lesson-body">
+
+            <a class="btn-ver-todas" onclick="verTodas()" href="javascript:void(0)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg> Ver todas las lecciones</a>
 
             <h3>El concepto central</h3>
 
@@ -572,6 +718,8 @@
         </div>
         <div class="lesson-body">
 
+            <a class="btn-ver-todas" onclick="verTodas()" href="javascript:void(0)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg> Ver todas las lecciones</a>
+
             <h3>El concepto central</h3>
 
             <p>La <strong>ley de corte</strong> (cut-off grade) es la concentracion minima de metal que debe tener una roca para que sea economicamente rentable extraerla y procesarla. Todo lo que esta por encima de la ley de corte es <strong>mineral</strong> (ore); todo lo que esta por debajo es <strong>esteril</strong> (waste). Este numero unico define el tamano del deposito, la vida de la mina y su rentabilidad.</p>
@@ -671,6 +819,8 @@
             <span class="lh-pillar">Finanzas Mineras</span>
         </div>
         <div class="lesson-body">
+
+            <a class="btn-ver-todas" onclick="verTodas()" href="javascript:void(0)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg> Ver todas las lecciones</a>
 
             <h3>El concepto central</h3>
 
@@ -783,6 +933,8 @@
             <span class="lh-pillar">Contabilidad IFRS</span>
         </div>
         <div class="lesson-body">
+
+            <a class="btn-ver-todas" onclick="verTodas()" href="javascript:void(0)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg> Ver todas las lecciones</a>
 
             <h3>Por que un minero necesita entender IFRS</h3>
 
@@ -899,6 +1051,8 @@
         </div>
         <div class="lesson-body">
 
+            <a class="btn-ver-todas" onclick="verTodas()" href="javascript:void(0)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg> Ver todas las lecciones</a>
+
             <h3>El concepto central</h3>
 
             <p>Cuando una empresa minera dice "tenemos 500 millones de toneladas de recurso a 0.8% CuT", ¿como sabes que es verdad? La respuesta son los <strong>codigos de reporte de recursos y reservas minerales</strong> — marcos regulatorios que definen como se clasifica, estima y divulga la informacion geologica al mercado. Existen para proteger a los inversionistas de estimaciones infladas o fraudulentas.</p>
@@ -1001,6 +1155,8 @@
             <span class="lh-pillar">Contabilidad IFRS</span>
         </div>
         <div class="lesson-body">
+
+            <a class="btn-ver-todas" onclick="verTodas()" href="javascript:void(0)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg> Ver todas las lecciones</a>
 
             <h3>El concepto central</h3>
 
@@ -1117,24 +1273,9 @@
 <footer>Escuela del Minero &middot; Al Ritmo de la Mineria &middot; Diego Varleta &middot; Contenido acumulativo desde Edicion N.1</footer>
 
 <script>
-// Lessons: first is current (visible+open), rest are hidden until accessed from archive
+// Accordion: hero click toggles open/close within a visible lesson
 (function(){
     var lessons = document.querySelectorAll('.lesson');
-
-    // Hide all except the first (current week)
-    lessons.forEach(function(lesson, i){
-        var body = lesson.querySelector('.lesson-body');
-        if(i === 0) {
-            // Current lesson: visible and open
-            if(body) body.style.maxHeight = 'none';
-        } else {
-            // Others: hidden completely
-            lesson.classList.add('hidden');
-            lesson.classList.add('collapsed');
-        }
-    });
-
-    // Hero click toggles open/close
     lessons.forEach(function(lesson){
         var hero = lesson.querySelector('.lesson-hero');
         if(!hero) return;
@@ -1147,30 +1288,6 @@
                 lesson.classList.add('collapsed');
                 if(body) body.style.maxHeight = '0px';
             }
-        });
-    });
-
-    // Archive links: show the target lesson, hide others (except current)
-    document.querySelectorAll('.archive-item').forEach(function(link){
-        link.addEventListener('click', function(e){
-            e.preventDefault();
-            var targetId = this.getAttribute('href').replace('#','');
-            var target = document.getElementById(targetId);
-            if(!target) return;
-            // Hide all non-current lessons
-            lessons.forEach(function(l, i){
-                if(i > 0) { l.classList.add('hidden'); l.classList.add('collapsed'); }
-            });
-            // Show and open the target
-            target.classList.remove('hidden');
-            target.classList.remove('collapsed');
-            var body = target.querySelector('.lesson-body');
-            if(body) body.style.maxHeight = 'none';
-            // Close the archive dropdown
-            document.getElementById('archive-toggle').classList.remove('open');
-            document.getElementById('archive-list').classList.remove('open');
-            // Scroll
-            setTimeout(function(){ target.scrollIntoView({behavior:'smooth', block:'start'}); }, 100);
         });
     });
 })();
@@ -1204,6 +1321,69 @@
         });
         wrap.parentNode.insertBefore(cards, wrap.nextSibling);
     });
+})();
+</script>
+
+
+<script>
+(function() {
+    const lecciones = document.querySelectorAll('.lesson');
+    const archiveItems = document.querySelectorAll('.archive-item');
+
+    function mostrarLeccion(id) {
+        lecciones.forEach(l => { l.classList.remove('active'); l.classList.remove('collapsed'); });
+        archiveItems.forEach(a => a.classList.remove('selected'));
+
+        const target = document.getElementById(id);
+        if (target) {
+            target.classList.add('active');
+            const body = target.querySelector('.lesson-body');
+            if (body) body.style.maxHeight = 'none';
+            // Cerrar dropdown del archivo
+            const toggle = document.getElementById('archive-toggle');
+            const list = document.getElementById('archive-list');
+            if (toggle) toggle.classList.remove('open');
+            if (list) list.classList.remove('open');
+            setTimeout(function(){ target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 80);
+        }
+
+        archiveItems.forEach(a => {
+            if (a.getAttribute('href') === '#' + id) a.classList.add('selected');
+        });
+
+        const num = target ? target.querySelector('.lh-num') : null;
+        const label = document.querySelector('.current-label');
+        if (label && num) label.textContent = num.textContent;
+    }
+
+    window.verTodas = function() {
+        lecciones.forEach(l => { l.classList.add('active'); l.classList.remove('collapsed'); });
+        archiveItems.forEach(a => a.classList.remove('selected'));
+        const label = document.querySelector('.current-label');
+        if (label) label.textContent = 'Todas las lecciones';
+    };
+
+    archiveItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+            e.preventDefault();
+            const href = this.getAttribute('href');
+            if (href && href.startsWith('#')) mostrarLeccion(href.slice(1));
+        });
+    });
+
+    // Mostrar la leccion mas reciente (primera) por defecto
+    if (lecciones.length > 0) {
+        const primera = lecciones[0];
+        primera.classList.add('active');
+        const body = primera.querySelector('.lesson-body');
+        if (body) body.style.maxHeight = 'none';
+        archiveItems.forEach(a => {
+            if (a.getAttribute('href') === '#' + primera.id) a.classList.add('selected');
+        });
+        const num = primera.querySelector('.lh-num');
+        const label = document.querySelector('.current-label');
+        if (label && num) label.textContent = num.textContent;
+    }
 })();
 </script>
 
