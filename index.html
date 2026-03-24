@@ -1,147 +1,1251 @@
 <!DOCTYPE html>
+
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Al Ritmo de la Minería — Diego Varleta</title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <meta name="theme-color" content="#0F1C2E">
+
     <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400&display=swap');
+
+
+
         :root {
+
             --copper: #B87333;
-            --dark:   #1a1a2e;
+
             --gold:   #e2b96f;
-            --bg:     #f8f9fa;
+
+            --night:  #0F1C2E;
+
+            --slate:  #3B5070;
+
+            --mid:    #4B6280;
+
+            --light-blue: #8FA3BC;
+
+            --bg:     #F7F9FC;
+
+            --card:   #ffffff;
+
+            --text:   #1A2535;
+
+            --muted:  #5B6E84;
+
+            --rule:   #D1D8E0;
+
+            --green:  #22c55e;
+
+            --red:    #ef4444;
+
+            --yellow: #eab308;
+
+            --light:  #EEF2F7;
+
         }
+
+
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
+
         body {
-            font-family: 'Segoe UI', Inter, sans-serif;
+
+            font-family: 'DM Sans', 'Segoe UI', sans-serif;
+
             background: var(--bg);
-            color: #212529;
+
+            color: var(--text);
+
             min-height: 100vh;
+
         }
-        header {
-            background: linear-gradient(135deg, var(--dark) 0%, #0f3460 100%);
-            color: white;
-            padding: 28px 24px 24px;
-            text-align: center;
-        }
-        header h1 {
-            font-size: clamp(20px, 5vw, 32px);
-            letter-spacing: -0.5px;
-            color: var(--gold);
-            margin-bottom: 6px;
-        }
-        header p {
-            font-size: 13px;
-            color: rgba(255,255,255,0.6);
-            text-transform: uppercase;
-            letter-spacing: 0.6px;
-        }
-        .container {
-            max-width: 720px;
-            margin: 32px auto;
-            padding: 0 16px 48px;
-        }
-        .section-title {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            color: #6c757d;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-        .card-list {
+
+
+
+        /* ═══ TICKER BAR ═══ */
+
+        .ticker-bar {
+
+            background: var(--night);
+
+            border-bottom: 1px solid rgba(226,185,111,0.2);
+
+            overflow: hidden;
+
+            height: 38px;
+
             display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .card {
-            background: white;
-            border: 1px solid #dee2e6;
-            border-left: 4px solid var(--copper);
-            border-radius: 8px;
-            padding: 16px 20px;
-            text-decoration: none;
-            color: inherit;
-            display: flex;
-            justify-content: space-between;
+
             align-items: center;
-            transition: box-shadow 0.15s, transform 0.1s;
+
+            position: relative;
+
         }
-        .card:hover {
-            box-shadow: 0 4px 16px rgba(0,0,0,0.10);
-            transform: translateY(-1px);
-        }
-        .card-title {
-            font-weight: 600;
-            font-size: 15px;
-            color: var(--dark);
-        }
-        .card-meta {
-            font-size: 12px;
-            color: #6c757d;
-            margin-top: 3px;
-        }
-        .badge {
-            background: var(--copper);
-            color: white;
-            font-size: 10px;
-            font-weight: 700;
-            padding: 3px 10px;
-            border-radius: 12px;
+
+        .ticker-track {
+
+            display: flex;
+
+            gap: 0;
+
+            animation: tickerScroll 30s linear infinite;
+
             white-space: nowrap;
+
         }
-        .badge.latest {
-            background: #28a745;
+
+        .ticker-track:hover { animation-play-state: paused; }
+
+        .ticker-item {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 6px;
+
+            padding: 0 24px;
+
+            font-size: 12px;
+
+            font-family: 'DM Mono', monospace;
+
+            color: rgba(255,255,255,0.75);
+
+            border-right: 1px solid rgba(255,255,255,0.08);
+
         }
-        footer {
+
+        .ticker-item .t-label {
+
+            color: var(--gold);
+
+            font-weight: 600;
+
+            font-family: 'DM Sans', sans-serif;
+
+            font-size: 10px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.5px;
+
+        }
+
+        .ticker-item .t-price { color: white; font-weight: 400; }
+
+        .ticker-item .t-change { font-size: 11px; font-weight: 500; }
+
+        .ticker-item .t-change.up { color: var(--green); }
+
+        .ticker-item .t-change.down { color: var(--red); }
+
+        @keyframes tickerScroll {
+
+            0% { transform: translateX(0); }
+
+            100% { transform: translateX(-50%); }
+
+        }
+
+
+
+        /* ═══ HEADER ═══ */
+
+        header {
+
+            background: linear-gradient(135deg, var(--night) 0%, #0f3460 100%);
+
+            color: white;
+
+            padding: 32px 24px 28px;
+
             text-align: center;
+
+            position: relative;
+
+        }
+
+        header h1 {
+
+            font-family: 'Playfair Display', Georgia, serif;
+
+            font-size: clamp(22px, 5vw, 36px);
+
+            font-weight: 900;
+
+            letter-spacing: -0.5px;
+
+            color: var(--gold);
+
+            margin-bottom: 6px;
+
+        }
+
+        header .subtitle {
+
             font-size: 11px;
-            color: #adb5bd;
+
+            color: rgba(255,255,255,0.5);
+
+            text-transform: uppercase;
+
+            letter-spacing: 1.2px;
+
+            font-weight: 300;
+
+        }
+
+        .header-actions {
+
+            position: absolute;
+
+            top: 16px;
+
+            right: 16px;
+
+            display: flex;
+
+            gap: 8px;
+
+            align-items: center;
+
+        }
+
+
+
+        /* ═══ SEMÁFORO SECTION ═══ */
+
+        .signal-bar {
+
+            background: var(--card);
+
+            border-bottom: 1px solid var(--rule);
+
+            padding: 16px 24px;
+
+            transition: background 0.3s;
+
+        }
+
+        .signal-grid {
+
+            max-width: 800px;
+
+            margin: 0 auto;
+
+            display: grid;
+
+            grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+
+            gap: 8px;
+
+        }
+
+        .signal-item {
+
+            text-align: center;
+
+            padding: 8px 4px;
+
+            border-radius: 8px;
+
+            background: var(--light);
+
+            transition: background 0.3s;
+
+        }
+
+        .signal-dot {
+
+            width: 10px; height: 10px;
+
+            border-radius: 50%;
+
+            display: inline-block;
+
+            margin-bottom: 4px;
+
+            box-shadow: 0 0 6px currentColor;
+
+        }
+
+        .signal-dot.up { background: var(--green); color: var(--green); }
+
+        .signal-dot.down { background: var(--red); color: var(--red); }
+
+        .signal-dot.neutral { background: var(--yellow); color: var(--yellow); }
+
+        .signal-label {
+
+            font-size: 10px;
+
+            font-weight: 600;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.5px;
+
+            color: var(--muted);
+
+            display: block;
+
+        }
+
+        .signal-price {
+
+            font-family: 'DM Mono', monospace;
+
+            font-size: 11px;
+
+            color: var(--text);
+
+            margin-top: 2px;
+
+        }
+
+        .signal-change {
+
+            font-size: 10px;
+
+            font-weight: 600;
+
+        }
+
+        .signal-change.up { color: var(--green); }
+
+        .signal-change.down { color: var(--red); }
+
+
+
+        /* ═══ CONTAINER ═══ */
+
+        .container {
+
+            max-width: 800px;
+
+            margin: 0 auto;
+
+            padding: 24px 16px 48px;
+
+        }
+
+
+
+        /* ═══ LO QUE VIENE — HIGHLIGHT ═══ */
+
+        .upcoming-card {
+
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+
+            border: 1px solid rgba(226,185,111,0.25);
+
+            border-radius: 12px;
+
+            padding: 20px 24px;
+
+            margin-bottom: 28px;
+
+            color: white;
+
+        }
+
+        .upcoming-card .uc-header {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            margin-bottom: 12px;
+
+        }
+
+        .upcoming-card .uc-icon {
+
+            font-size: 18px;
+
+        }
+
+        .upcoming-card .uc-title {
+
+            font-family: 'Playfair Display', serif;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            color: var(--gold);
+
+        }
+
+        .upcoming-list {
+
+            list-style: none;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 8px;
+
+        }
+
+        .upcoming-list li {
+
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 10px;
+
+            font-size: 13px;
+
+            color: rgba(255,255,255,0.85);
+
+            line-height: 1.4;
+
+        }
+
+        .upcoming-list .uc-date {
+
+            flex-shrink: 0;
+
+            background: rgba(226,185,111,0.15);
+
+            color: var(--gold);
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            padding: 2px 8px;
+
+            border-radius: 4px;
+
+            font-family: 'DM Mono', monospace;
+
+            min-width: 56px;
+
+            text-align: center;
+
+        }
+
+
+
+        /* ═══ FRASE DE LA SEMANA ═══ */
+
+        .quote-card {
+
+            background: var(--card);
+
+            border-left: 4px solid var(--copper);
+
+            border-radius: 0 12px 12px 0;
+
+            padding: 20px 24px;
+
+            margin-bottom: 28px;
+
+            position: relative;
+
+            transition: background 0.3s;
+
+        }
+
+        .quote-card::before {
+
+            content: '\201C';
+
+            font-family: 'Playfair Display', serif;
+
+            font-size: 64px;
+
+            color: var(--copper);
+
+            opacity: 0.15;
+
+            position: absolute;
+
+            top: -8px;
+
+            left: 16px;
+
+            line-height: 1;
+
+        }
+
+        .quote-text {
+
+            font-family: 'Playfair Display', serif;
+
+            font-size: 15px;
+
+            font-style: italic;
+
+            color: var(--text);
+
+            line-height: 1.6;
+
+            margin-bottom: 8px;
+
+            padding-left: 8px;
+
+        }
+
+        .quote-author {
+
+            font-size: 12px;
+
+            color: var(--muted);
+
+            font-weight: 500;
+
+            padding-left: 8px;
+
+        }
+
+
+
+        /* ═══ SECTION TITLES ═══ */
+
+        .section-title {
+
+            font-size: 10px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1.2px;
+
+            color: var(--muted);
+
+            font-weight: 600;
+
+            margin-bottom: 14px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+        }
+
+        .section-title::after {
+
+            content: '';
+
+            flex: 1;
+
+            height: 1px;
+
+            background: var(--rule);
+
+        }
+
+
+
+        /* ═══ EDITION CARDS ═══ */
+
+        .card-list {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 12px;
+
+        }
+
+        .card {
+
+            background: var(--card);
+
+            border: 1px solid var(--rule);
+
+            border-left: 4px solid var(--copper);
+
+            border-radius: 10px;
+
+            padding: 18px 22px;
+
+            text-decoration: none;
+
+            color: inherit;
+
+            display: block;
+
+        }
+
+        .card-actions {
+
+            display: flex;
+
+            gap: 8px;
+
+            margin-top: 12px;
+
+        }
+
+        .card-btn {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 6px;
+
+            padding: 8px 16px;
+
+            border-radius: 8px;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            text-decoration: none;
+
+            transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
+
+        }
+
+        .card-btn:hover {
+
+            transform: translateY(-1px);
+
+            box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+
+        }
+
+        .card-btn.primary {
+
+            background: var(--copper);
+
+            color: white;
+
+        }
+
+        .card-btn.primary:hover { background: #a0642a; }
+
+        .card-btn.secondary {
+
+            background: var(--light);
+
+            color: var(--slate);
+
+            border: 1px solid var(--rule);
+
+        }
+
+        .card-btn.secondary:hover { background: #dce3ec; }
+
+        .card-btn svg { flex-shrink: 0; }
+
+        @media (max-width: 400px) {
+
+            .card-actions { flex-direction: column; }
+
+            .card-btn { justify-content: center; }
+
+        }
+
+        .card-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 10px;
+
+        }
+
+        .card-title {
+
+            font-family: 'Playfair Display', serif;
+
+            font-weight: 700;
+
+            font-size: 16px;
+
+            color: var(--text);
+
+        }
+
+        .card-meta {
+
+            font-size: 11px;
+
+            color: var(--muted);
+
+            margin-top: 2px;
+
+        }
+
+        .badge {
+
+            background: var(--copper);
+
+            color: white;
+
+            font-size: 9px;
+
+            font-weight: 700;
+
+            padding: 3px 10px;
+
+            border-radius: 12px;
+
+            white-space: nowrap;
+
+            letter-spacing: 0.3px;
+
+        }
+
+        .badge.latest {
+
+            background: var(--green);
+
+        }
+
+        .card-emphasis {
+
+            font-size: 13px;
+
+            color: var(--text);
+
+            line-height: 1.5;
+
+            margin-bottom: 10px;
+
+            padding: 10px 12px;
+
+            background: var(--light);
+
+            border-radius: 6px;
+
+            border-left: 3px solid var(--slate);
+
+            transition: background 0.3s;
+
+        }
+
+        .card-bullets {
+
+            list-style: none;
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 6px;
+
+        }
+
+        .card-bullets li {
+
+            font-size: 11px;
+
+            color: var(--muted);
+
+            background: var(--light);
+
+            padding: 3px 10px;
+
+            border-radius: 12px;
+
+            transition: background 0.3s;
+
+        }
+
+        .card-bullets li .tag {
+
+            font-weight: 700;
+
+            color: var(--copper);
+
+        }
+
+
+
+        /* ═══ NAV LINKS ═══ */
+
+        .nav-links {
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 16px;
+
+            margin-top: 28px;
+
+        }
+
+        .nav-link {
+
+            font-size: 12px;
+
+            color: var(--copper);
+
+            text-decoration: none;
+
+            font-weight: 600;
+
+            padding: 8px 16px;
+
+            border: 1px solid var(--copper);
+
+            border-radius: 8px;
+
+            transition: background 0.15s, color 0.15s;
+
+        }
+
+        .nav-link:hover {
+
+            background: var(--copper);
+
+            color: white;
+
+        }
+
+
+
+        /* ═══ FOOTER ═══ */
+
+        footer {
+
+            text-align: center;
+
+            font-size: 11px;
+
+            color: var(--muted);
+
             padding: 20px;
+
+            border-top: 1px solid var(--rule);
+
         }
-        @media (max-width: 500px) {
-            .card { flex-direction: column; align-items: flex-start; gap: 8px; }
+
+
+
+        /* ═══ RESPONSIVE ═══ */
+
+        @media (max-width: 600px) {
+
+            .signal-grid { grid-template-columns: repeat(4, 1fr); }
+
+            .card-emphasis { font-size: 12px; }
+
+            .upcoming-list li { font-size: 12px; }
+
+            .header-actions { top: 10px; right: 10px; }
+
         }
+
     </style>
+
 </head>
+
 <body>
-<header>
-    <h1>Al Ritmo de la Minería</h1>
-    <p>Inteligencia Minera Estratégica · Diego Varleta</p>
-</header>
-<div class="container">
-    <p class="section-title">Ediciones disponibles</p>
-    <div class="card-list">
-        <a class="card" href="Noticiero_Minero_Ed004_2026-03-24.html">
-            <div>
-                <div class="card-title">Edición N° 4 — Semana del 18/03/2026 al 24/03/2026</div>
-                <div class="card-meta">Publicado: 2026-03-24</div>
-            </div>
-            <span class="badge latest">ÚLTIMA EDICIÓN</span>
-        </a>
-        <a class="card" href="Noticiero_Minero_Ed003_2026-03-17.html">
-            <div>
-                <div class="card-title">Edición N° 3 — Semana del 10/03/2026 al 17/03/2026</div>
-                <div class="card-meta">Publicado: 2026-03-17</div>
-            </div>
-            <span class="badge">Ed. 003</span>
-        </a>
-        <a class="card" href="Noticiero_Minero_Ed002_2026-03-13.html">
-            <div>
-                <div class="card-title">Edición N° 2 — Semana del 07/03/2026 al 13/03/2026</div>
-                <div class="card-meta">Publicado: 2026-03-13</div>
-            </div>
-            <span class="badge">Ed. 002</span>
-        </a>
-        <a class="card" href="Noticiero_Minero_Ed001_2026-03-12.html">
-            <div>
-                <div class="card-title">Edición N° 1 — Semana del 06/03/2026 al 12/03/2026</div>
-                <div class="card-meta">Publicado: 2026-03-12</div>
-            </div>
-            <span class="badge">Ed. 001</span>
-        </a>
+
+
+
+<!-- TICKER BAR -->
+
+<div class="ticker-bar">
+
+    <div class="ticker-track" id="ticker-track">
+
+        <div class="ticker-item"><span class="t-label">Cu</span> <span class="t-price">$12,678/t</span> <span class="t-change up">-3.8%</span></div>
+
+        <div class="ticker-item"><span class="t-label">Au</span> <span class="t-price">$4,419/oz</span> <span class="t-change down">-12.1%</span></div>
+
+        <div class="ticker-item"><span class="t-label">Ag</span> <span class="t-price">$80.10/oz</span> <span class="t-change down">-13.2%</span></div>
+
+        <div class="ticker-item"><span class="t-label">Li</span> <span class="t-price">$20,256/t</span> <span class="t-change up">+18.9%</span></div>
+
+        <div class="ticker-item"><span class="t-label">Pt</span> <span class="t-price">$1,905/oz</span> <span class="t-change up">+15.5%</span></div>
+
+        <div class="ticker-item"><span class="t-label">Pd</span> <span class="t-price">$1,685/oz</span> <span class="t-change up">+1.8%</span></div>
+
+        <div class="ticker-item"><span class="t-label">Rh</span> <span class="t-price">$11,700/oz</span> <span class="t-change up">+1.7%</span></div>
+
+        <div class="ticker-item"><span class="t-label">NdPr</span> <span class="t-price">$103/kg</span> <span class="t-change up">-3.0%</span></div>
+
+        <div class="ticker-item"><span class="t-label">Co</span> <span class="t-price">$56,290/t</span> <span class="t-change up">+0.0%</span></div>
+
+        <div class="ticker-item"><span class="t-label">CLP/USD</span> <span class="t-price">$915</span> <span class="t-change down">-3.8%</span></div>
+
+        <!-- duplicate for seamless loop -->
+
+        <div class="ticker-item"><span class="t-label">Cu</span> <span class="t-price">$12,678/t</span> <span class="t-change up">-3.8%</span></div>
+
+        <div class="ticker-item"><span class="t-label">Au</span> <span class="t-price">$4,419/oz</span> <span class="t-change down">-12.1%</span></div>
+
+        <div class="ticker-item"><span class="t-label">Ag</span> <span class="t-price">$80.10/oz</span> <span class="t-change down">-13.2%</span></div>
+
+        <div class="ticker-item"><span class="t-label">Li</span> <span class="t-price">$20,256/t</span> <span class="t-change up">+18.9%</span></div>
+
+        <div class="ticker-item"><span class="t-label">Pt</span> <span class="t-price">$1,905/oz</span> <span class="t-change up">+15.5%</span></div>
+
+        <div class="ticker-item"><span class="t-label">Pd</span> <span class="t-price">$1,685/oz</span> <span class="t-change up">+1.8%</span></div>
+
+        <div class="ticker-item"><span class="t-label">Rh</span> <span class="t-price">$11,700/oz</span> <span class="t-change up">+1.7%</span></div>
+
+        <div class="ticker-item"><span class="t-label">NdPr</span> <span class="t-price">$103/kg</span> <span class="t-change up">-3.0%</span></div>
+
+        <div class="ticker-item"><span class="t-label">Co</span> <span class="t-price">$56,290/t</span> <span class="t-change up">+0.0%</span></div>
+
+        <div class="ticker-item"><span class="t-label">CLP/USD</span> <span class="t-price">$915</span> <span class="t-change down">-3.8%</span></div>
+
     </div>
+
 </div>
-<footer>Actualizado el 24/03/2026 11:05 · Uso personal y confidencial</footer>
+
+
+
+<!-- HEADER -->
+
+<header>
+
+    <img src="ChatGPT Image 13 mar 2026, 12_54_38 p.m..svg" alt="Al Ritmo de la Mineria" style="width:72px;height:72px;margin:0 auto 12px;display:block;border-radius:12px;">
+
+    <h1>Al Ritmo de la Mineria</h1>
+
+    <p class="subtitle">Inteligencia Minera Estrategica &middot; Diego Varleta</p>
+
+</header>
+
+
+
+<!-- SEMÁFORO DE SEÑALES -->
+
+<div class="signal-bar">
+
+    <div class="signal-grid">
+
+        <div class="signal-item">
+
+            <span class="signal-dot up"></span>
+
+            <span class="signal-label">Cobre</span>
+
+            <span class="signal-price">$5.45/lb</span>
+
+            <span class="signal-change up">-3.8%</span>
+
+        </div>
+
+        <div class="signal-item">
+
+            <span class="signal-dot up"></span>
+
+            <span class="signal-label">Litio</span>
+
+            <span class="signal-price">$24.1k/t</span>
+
+            <span class="signal-change up">+18.9%</span>
+
+        </div>
+
+        <div class="signal-item">
+
+            <span class="signal-dot up"></span>
+
+            <span class="signal-label">NdPr</span>
+
+            <span class="signal-price">$103/kg</span>
+
+            <span class="signal-change up">-3.0%</span>
+
+        </div>
+
+        <div class="signal-item">
+
+            <span class="signal-dot up"></span>
+
+            <span class="signal-label">Platino</span>
+
+            <span class="signal-price">$1,905/oz</span>
+
+            <span class="signal-change up">+15.5%</span>
+
+        </div>
+
+        <div class="signal-item">
+
+            <span class="signal-dot down"></span>
+
+            <span class="signal-label">Oro</span>
+
+            <span class="signal-price">$4,419/oz</span>
+
+            <span class="signal-change down">-12.1%</span>
+
+        </div>
+
+        <div class="signal-item">
+
+            <span class="signal-dot down"></span>
+
+            <span class="signal-label">Plata</span>
+
+            <span class="signal-price">$69.5/oz</span>
+
+            <span class="signal-change down">-13.2%</span>
+
+        </div>
+
+        <div class="signal-item">
+
+            <span class="signal-dot up"></span>
+
+            <span class="signal-label">Cobalto</span>
+
+            <span class="signal-price">$56.3k/t</span>
+
+            <span class="signal-change up">+0.0%</span>
+
+        </div>
+
+        <div class="signal-item">
+
+            <span class="signal-dot down"></span>
+
+            <span class="signal-label">CLP/USD</span>
+
+            <span class="signal-price">$915</span>
+
+            <span class="signal-change down">-3.8%</span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<div class="container">
+
+
+
+    <!-- LO QUE VIENE -->
+
+    <div class="upcoming-card">
+
+        <div class="uc-header">
+
+            <span class="uc-icon">&#9200;</span>
+
+            <span class="uc-title">Lo Que Viene</span>
+
+        </div>
+
+        <ul class="upcoming-list">
+
+            <li><span class="uc-date">~27 Mar</span> Primera consulta tecnica Chile-EEUU sobre minerales criticos (plazo del acuerdo 12/03)</li>
+
+            <li><span class="uc-date">26 Mar</span> Sube diesel Chile +CLP 580/litro &mdash; impacto inmediato en costos faenas</li>
+
+            <li><span class="uc-date">31 Mar</span> Cumbre Trump-Xi en China — minerales criticos en agenda</li>
+
+            <li><span class="uc-date">Jun 2026</span> Ingreso EIA Salar Futuro (Novandino Codelco-SQM) al SEIA</li>
+
+            <li><span class="uc-date">8-11 Jun</span> EXPONOR 2026, Antofagasta — principal feria minera de Chile</li>
+
+        </ul>
+
+    </div>
+
+
+
+    <!-- FRASE DE LA SEMANA -->
+
+    <div class="quote-card">
+
+        <p class="quote-text">Las tarifas TC/RC del cobre llegaron a cero por primera vez en la historia. Las fundidoras prefieren perder el margen antes que apagar la planta &mdash; el concentrado es tan escaso que parar y relanzar cuesta decenas de millones.</p>
+
+        <p class="quote-author">— Analisis IEA sobre controles de exportacion de REE, marzo 2026</p>
+
+    </div>
+
+
+
+    <!-- ULTIMAS 3 EDICIONES -->
+
+    <p class="section-title">Ultimas ediciones</p>
+
+    <div class="card-list">
+
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <div class="card-title">Edicion N. 4 &mdash; Semana del 18 al 24 de marzo</div>
+                    <div class="card-meta">Publicado: 24/03/2026</div>
+                </div>
+                <span class="badge latest">NUEVA</span>
+            </div>
+            <div class="card-emphasis">China confirma el 2° mayor yacimiento REE del mundo (Maoniuping, 10.4 Mt); TC/RC del cobre llegan a cero por primera vez en la historia; oro cae 12% en la peor semana desde 1983; BHP ingresa US$5.500M al SEIA.</div>
+            <ul class="card-bullets">
+                <li><span class="tag">[TRR]</span> China: Maoniuping 2° mayor yacimiento REE del mundo</li>
+                <li><span class="tag">[Cu]</span> TC/RC a cero &mdash; deficit global 330.000 t</li>
+                <li><span class="tag">[Au]</span> Oro cae 12% &mdash; peor semana desde 1983</li>
+                <li><span class="tag">[Chile]</span> BHP ingresa concentradora Escondida al SEIA US$5.5B</li>
+                <li><span class="tag">[Li]</span> Litio rebota +18.9% a US$24k/t</li>
+            </ul>
+            <div class="card-actions">
+                <a class="card-btn primary" href="Noticiero_Minero_Ed004_2026-03-24.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Informe</a>
+                <a class="card-btn secondary" href="escuela.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg> Clase: TC/RC y la cadena del cobre</a>
+            </div>
+        </div>
+        <div class="card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <div class="card-title">Edicion N. 3 — Semana del 10 al 17 de marzo</div>
+
+                    <div class="card-meta">Publicado: 17/03/2026</div>
+
+                </div>
+
+                <span class="badge">Ed. 003</span>
+
+            </div>
+
+            <div class="card-emphasis">Gobierno Kast debuta con decreto de destrabamiento por US$16.300M, acuerdo Chile-EEUU en minerales criticos, y Resolution Copper completa land exchange historico.</div>
+
+            <ul class="card-bullets">
+
+                <li><span class="tag">[Cu]</span> Resolution Copper desbloqueado</li>
+
+                <li><span class="tag">[TRR]</span> China pausa controles REE</li>
+
+                <li><span class="tag">[Chile]</span> Kast: decreto SEIA US$16.3B</li>
+
+                <li><span class="tag">[Au]</span> Oro sobre US$5,000/oz</li>
+
+                <li><span class="tag">[Li]</span> Litio recupera a US$20k/t</li>
+
+            </ul>
+
+            <div class="card-actions">
+
+                <a class="card-btn primary" href="Noticiero_Minero_Ed003_2026-03-17.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Informe</a>
+
+                <a class="card-btn secondary" href="escuela.html#leccion-1"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg> Clase: Del PEA al Feasibility Study</a>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <div class="card-title">Edicion N. 2 — Semana del 07 al 13 de marzo</div>
+
+                    <div class="card-meta">Publicado: 13/03/2026</div>
+
+                </div>
+
+                <span class="badge">Ed. 002</span>
+
+            </div>
+
+            <div class="card-emphasis">Primera semana de cobertura completa. Precios del cobre firmes sobre US$12.500/t, oro rompe US$5.000/oz por primera vez, y el litio muestra senales de recuperacion.</div>
+
+            <ul class="card-bullets">
+
+                <li><span class="tag">[Cu]</span> Cobre firme sobre US$12.5k/t</li>
+
+                <li><span class="tag">[Au]</span> Oro rompe US$5,000/oz</li>
+
+                <li><span class="tag">[Li]</span> Litio en recuperacion</li>
+
+            </ul>
+
+            <div class="card-actions">
+
+                <a class="card-btn primary" href="Noticiero_Minero_Ed002_2026-03-13.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Informe</a>
+
+                <a class="card-btn secondary" href="escuela.html#leccion-02"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg> Clase: Ley de Corte y Curva Tonelaje-Ley</a>
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+
+
+    <!-- EDICIONES ANTERIORES (desplegable, se llena cuando haya mas de 3) -->
+
+    <div class="older-toggle" onclick="this.classList.toggle('open');document.getElementById('older-list').classList.toggle('open');" style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 18px;margin-top:16px;">
+
+        <div style="display:flex;align-items:center;gap:10px;">
+
+            <span style="font-size:13px;font-weight:600;color:var(--night);">Ediciones anteriores</span>
+
+            <span style="font-size:11px;color:var(--muted);">(1 mas)</span>
+
+        </div>
+
+        <span style="font-size:10px;color:var(--copper);transition:transform .3s;" class="older-arrow">&#9660;</span>
+
+    </div>
+
+    <div id="older-list" style="display:none;border:1px solid var(--rule);border-top:none;border-radius:0 0 10px 10px;overflow:hidden;">
+
+        <!-- Aqui se agregan ediciones cuando haya mas de 3, formato compacto como archive-item -->
+
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 18px;border-bottom:1px solid var(--rule);"><span style="font-size:13px;color:var(--text);">Ed. 001 &mdash; Semana 06-12 Mar &middot; Edicion inaugural</span><a href="Noticiero_Minero_Ed001_2026-03-12.html" style="font-size:12px;color:var(--copper);text-decoration:none;font-weight:600;">Ver &rarr;</a></div>
+
+    </div>
+
+
+
+    <!-- NAV LINKS -->
+
+    <div class="nav-links">
+
+        <a class="nav-link" href="escuela.html">Escuela del Minero</a>
+
+        <a class="nav-link" href="proyecciones.html">Proyecciones</a>
+
+        <a class="nav-link" href="precios.html">Historial de Precios</a>
+
+    </div>
+
+</div>
+
+
+
+<footer>Actualizado el 24/03/2026 &middot; Uso personal y confidencial</footer>
+
+
+
 </body>
+
 </html>
+
