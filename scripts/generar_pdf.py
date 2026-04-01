@@ -925,15 +925,15 @@ def extraer_metadatos(md_text: str) -> dict:
 
     lines = md_text.split("\n")
     for line in lines[:15]:
-        if "**Período:**" in line:
-            meta["edicion"] = line.replace("**Período:**", "").strip()
-        elif "**Edición:**" in line:
-            meta["edicion"] = line.replace("**Edición:**", "").strip()
-        if "**Énfasis editorial" in line:
+        if "**Periodo:**" in line or "**Período:**" in line:
+            meta["edicion"] = line.replace("**Periodo:**", "").replace("**Período:**", "").strip()
+        elif "**Edicion:**" in line or "**Edición:**" in line:
+            meta["edicion"] = line.replace("**Edicion:**", "").replace("**Edición:**", "").strip()
+        if "**Enfasis editorial" in line or "**Énfasis editorial" in line:
             partes = line.split(":**")
             if len(partes) > 1:
                 meta["enfasis"] = partes[1].strip()
-        if "**N° Edición:**" in line or "**Numero de edicion:**" in line or "**Edición N°" in line:
+        if "**Edicion N" in line or "**Edición N" in line or "**N° Edicion:**" in line or "**N° Edición:**" in line or "**Numero de edicion:**" in line:
             nums = re.findall(r'\d+', line)
             if nums:
                 meta["numero_edicion"] = nums[0]
