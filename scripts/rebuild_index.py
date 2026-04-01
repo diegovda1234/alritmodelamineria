@@ -1,145 +1,191 @@
 """
-rebuild_index.py — Reconstruye index.html desde el backup del 17/03
-agregando Ed004 y actualizando precios/secciones.
+rebuild_index.py — Reconstruye index.html dinamicamente.
+Detecta todas las ediciones .html en la carpeta y genera el card-list.
 """
-import sys
+import sys, glob, re, os
 sys.stdout.reconfigure(encoding='utf-8')
 
 BASE = "C:/Users/diego.varleta/CLAUDE/02_Noticiero_Minero"
 
+# ── Leer template base ──────────────────────────────────────────────────────
 with open(f"{BASE}/index_backup_17mar.html", "r", encoding="utf-8") as f:
     html = f.read()
 
-# ── 1. SEMAFORO DE PRECIOS ────────────────────────────────────────────────────
-signal_replacements = [
-    ('$5.75/lb',    '$5.45/lb'),
-    ('$20.3k/t',    '$24.1k/t'),
-    ('$108.6/kg',   '$103/kg'),
-    ('$1,650/oz',   '$1,905/oz'),
-    ('$5,025/oz',   '$4,419/oz'),
-    ('$80.1/oz',    '$69.5/oz'),
-    ('$908',        '$915'),
-    ('>+1.2%<',     '>-3.8%<'),   # cobre variacion
-    ('>+2.1%<',     '>+18.9%<'),  # litio variacion
-    ('>+3.2%<',     '>-3.0%<'),   # NdPr variacion
-    ('>+2.5%<',     '>+15.5%<'),  # platino variacion
-    ('>-3.4%<',     '>-12.1%<'),  # oro variacion
-    ('>-4.7%<',     '>-13.2%<'),  # plata variacion
-    ('>+2.7%<',     '>+0.0%<'),   # cobalto variacion
-    # Cambiar dot de cobre a down
-    ('signal-dot up"></span>\n            <span class="signal-label">Cobre',
-     'signal-dot down"></span>\n            <span class="signal-label">Cobre'),
-    # Cambiar dot de NdPr a down
-    ('signal-dot up"></span>\n            <span class="signal-label">NdPr',
-     'signal-dot down"></span>\n            <span class="signal-label">NdPr'),
-    # Cambiar dot de oro a down (ya estaba)
-    # Cambiar dot de plata a down (ya estaba)
-]
-for old, new in signal_replacements:
-    html = html.replace(old, new)
+# ── Detectar todas las ediciones ────────────────────────────────────────────
+edition_files = sorted(glob.glob(f"{BASE}/Noticiero_Minero_Ed*.md"), reverse=True)
 
-# ── 2. LO QUE VIENE ──────────────────────────────────────────────────────────
-old_items = [
-    '<li><span class="uc-date">17-27 Mar</span> Primera consulta Chile-EEUU sobre minerales criticos y tierras raras</li>',
-    '<li><span class="uc-date">19 Mar</span> Vence plazo de comentarios USTR sobre acuerdo de minerales criticos</li>',
-    '<li><span class="uc-date">31 Mar</span> Cumbre Trump-Xi en China &mdash; minerales criticos en agenda</li>',
-    '<li><span class="uc-date">Abr 2026</span> Inicio negociaciones EEUU-UE-Japon en minerales criticos</li>',
-    '<li><span class="uc-date">8-11 Jun</span> EXPONOR 2026, Antofagasta &mdash; principal feria minera de Chile</li>',
-]
-new_items = [
-    '<li><span class="uc-date">~27 Mar</span> Primera consulta tecnica Chile-EEUU sobre minerales criticos (plazo del acuerdo 12/03)</li>',
-    '<li><span class="uc-date">26 Mar</span> Sube diesel Chile +CLP 580/litro &mdash; impacto inmediato en costos faenas</li>',
-    '<li><span class="uc-date">Fines Abr</span> Cumbre Trump-Xi (postergada) &mdash; minerales criticos en agenda</li>',
-    '<li><span class="uc-date">Jun 2026</span> Ingreso EIA Salar Futuro (Novandino Codelco-SQM) al SEIA</li>',
-    '<li><span class="uc-date">8-11 Jun</span> EXPONOR 2026, Antofagasta &mdash; principal feria minera de Chile</li>',
-]
-for old, new in zip(old_items, new_items):
-    html = html.replace(old, new)
+editions = []
+for fpath in edition_files:
+    fname = os.path.basename(fpath)
+    # Extract edition number and date from filename
+    m = re.match(r'Noticiero_Minero_Ed(\d+)_(\d{4}-\d{2}-\d{2})\.md', fname)
+    if not m:
+        continue
+    ed_num = int(m.group(1))
+    ed_date = m.group(2)
+    html_file = fname.replace('.md', '.html')
 
-# ── 3. FRASE DE LA SEMANA ────────────────────────────────────────────────────
-html = html.replace(
-    'Si China reinstala los controles de exportacion de tierras raras despues de la cumbre, los fabricantes de imanes permanentes fuera de China tienen menos de 5 meses de inventario.',
-    'Las tarifas TC/RC del cobre llegaron a cero por primera vez en la historia. Las fundidoras prefieren perder el margen antes que apagar la planta &mdash; el concentrado es tan escaso que parar y relanzar cuesta decenas de millones.'
-)
-html = html.replace(
-    '&mdash; Analisis IEA sobre controles de exportacion de REE, marzo 2026',
-    '&mdash; Analisis IEA / Financial Content, 23 de marzo 2026'
-)
+    # Read first lines to extract emphasis and key bullets
+    with open(fpath, 'r', encoding='utf-8') as f:
+        content = f.read(3000)
 
-# ── 4. BADGE DE ED003: NUEVA → Ed. 003 ───────────────────────────────────────
-html = html.replace(
-    '<span class="badge latest">NUEVA</span>',
-    '<span class="badge">Ed. 003</span>',
-    1
-)
+    # Extract period
+    period_match = re.search(r'\*\*Periodo:\*\*\s*(.+)', content)
+    period = period_match.group(1).strip() if period_match else f"Edicion {ed_num}"
 
-# ── 5. INSERTAR ED004 AL INICIO DEL CARD-LIST ────────────────────────────────
+    # Extract emphasis
+    emphasis_match = re.search(r'\*\*Enfasis editorial esta semana:\*\*\s*(.+)', content)
+    if not emphasis_match:
+        emphasis_match = re.search(r'\*\*Énfasis editorial esta semana:\*\*\s*(.+)', content)
+    emphasis = emphasis_match.group(1).strip() if emphasis_match else ""
+
+    # Extract key bullets from resumen ejecutivo
+    bullets = []
+    bullet_pattern = re.findall(r'- \*\*\[(\w+)\]\*\*\s*(.+)', content)
+    for tag, text in bullet_pattern[:5]:
+        bullets.append((tag, text.strip()))
+
+    # Extract publish date
+    pub_match = re.search(r'\*\*Fecha de publicacion:\*\*\s*(.+)', content)
+    if not pub_match:
+        pub_match = re.search(r'\*\*Fecha de publicación:\*\*\s*(.+)', content)
+    pub_date = pub_match.group(1).strip() if pub_match else ed_date
+
+    editions.append({
+        'num': ed_num,
+        'date': ed_date,
+        'pub_date': pub_date,
+        'period': period,
+        'emphasis': emphasis,
+        'bullets': bullets,
+        'html_file': html_file,
+    })
+
+if not editions:
+    print("ERROR: No se encontraron ediciones .md")
+    sys.exit(1)
+
+latest = editions[0]
+print(f"Ultima edicion detectada: Ed{latest['num']:03d} ({latest['date']})")
+
+# ── Construir precios del semaforo (de la ultima edicion) ───────────────────
+latest_path = f"{BASE}/Noticiero_Minero_Ed{latest['num']:03d}_{latest['date']}.md"
+with open(latest_path, 'r', encoding='utf-8') as f:
+    full_content = f.read()
+
+# Extract prices from dashboard table
+def extract_price(pattern, content):
+    m = re.search(pattern, content)
+    return m.group(1).strip() if m else "N/A"
+
+# ── SVG icons ───────────────────────────────────────────────────────────────
 svg_doc = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>'
 svg_book = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>'
 
-ed004_card = f"""        <div class="card">
+# ── Build card HTML for each edition ────────────────────────────────────────
+def make_card(ed, is_latest=False):
+    badge = '<span class="badge latest">NUEVA</span>' if is_latest else f'<span class="badge">Ed. {ed["num"]:03d}</span>'
+
+    bullets_html = ""
+    for tag, text in ed['bullets']:
+        bullets_html += f'                <li><span class="tag">[{tag}]</span> {text}</li>\n'
+
+    # Escape special chars for HTML
+    emphasis = ed['emphasis'].replace('&', '&amp;').replace('"', '&quot;')
+
+    card = f"""        <div class="card">
             <div class="card-header">
                 <div>
-                    <div class="card-title">Edicion N. 4 &mdash; Semana del 18 al 24 de marzo</div>
-                    <div class="card-meta">Publicado: 24/03/2026</div>
+                    <div class="card-title">Edicion N. {ed['num']} &mdash; {ed['period']}</div>
+                    <div class="card-meta">Publicado: {ed['pub_date']}</div>
                 </div>
-                <span class="badge latest">NUEVA</span>
+                {badge}
             </div>
-            <div class="card-emphasis">China confirma el 2\xb0 mayor yacimiento REE del mundo (Maoniuping, 10.4 Mt); TC/RC del cobre llegan a cero por primera vez en la historia; oro cae 12% en la peor semana desde 1983; BHP ingresa US$5.500M al SEIA.</div>
+            <div class="card-emphasis">{emphasis}</div>
             <ul class="card-bullets">
-                <li><span class="tag">[TRR]</span> China: Maoniuping 2\xb0 mayor yacimiento REE del mundo</li>
-                <li><span class="tag">[Cu]</span> TC/RC a cero &mdash; deficit global 330.000 t</li>
-                <li><span class="tag">[Au]</span> Oro cae 12% &mdash; peor semana desde 1983</li>
-                <li><span class="tag">[Chile]</span> BHP ingresa concentradora Escondida al SEIA US$5.5B</li>
-                <li><span class="tag">[Li]</span> Litio rebota +18.9% a US$24k/t</li>
-            </ul>
+{bullets_html}            </ul>
             <div class="card-actions">
-                <a class="card-btn primary" href="Noticiero_Minero_Ed004_2026-03-24.html">{svg_doc} Informe</a>
-                <a class="card-btn secondary" href="escuela.html">{svg_book} Clase: TC/RC y la cadena del cobre</a>
+                <a class="card-btn primary" href="{ed['html_file']}">{svg_doc} Informe</a>
+                <a class="card-btn secondary" href="escuela.html">{svg_book} Clase de la semana</a>
             </div>
         </div>
 """
+    return card
 
-html = html.replace(
-    '    <div class="card-list">\n\n        <div class="card">',
-    '    <div class="card-list">\n\n' + ed004_card + '        <div class="card">'
-)
+# Build cards for latest 4 editions (show in main list)
+show_in_main = editions[:4]
+show_in_archive = editions[4:]
 
-# ── 6. ELIMINAR ED001 DEL CARD-LIST PRINCIPAL ────────────────────────────────
-# Buscar y eliminar el bloque completo de Ed001
-start_marker = '        <div class="card">\n\n            <div class="card-header">\n\n                <div>\n\n                    <div class="card-title">Edicion N. 1'
-end_marker = 'Clase: Costos C1, C2 y AISC</a>\n\n            </div>\n\n        </div>'
+cards_html = ""
+for i, ed in enumerate(show_in_main):
+    cards_html += make_card(ed, is_latest=(i == 0))
 
-idx_start = html.find(start_marker)
-idx_end = html.find(end_marker)
-if idx_start != -1 and idx_end != -1:
-    ed001_block = html[idx_start:idx_end + len(end_marker)]
-    html = html.replace(ed001_block, '')
-    print("Ed001 removida del card-list OK")
+# ── Replace the card-list content ───────────────────────────────────────────
+# Find the card-list div and replace its content
+card_list_start = html.find('<div class="card-list">')
+if card_list_start == -1:
+    print("ERROR: No se encontro <div class='card-list'>")
+    sys.exit(1)
+
+# Find the closing of card-list (next </div> at same level after all cards)
+# We'll find the section that ends before "Ediciones anteriores" or the archive section
+archive_start = html.find('class="archive"', card_list_start)
+if archive_start == -1:
+    archive_start = html.find('class="editions-footer"', card_list_start)
+
+if archive_start != -1:
+    # Find the div that contains the archive
+    archive_div_start = html.rfind('<div', card_list_start, archive_start)
+    # Replace everything between card-list opening and archive div
+    card_list_content_start = html.find('>', card_list_start) + 1
+    old_cards = html[card_list_content_start:archive_div_start]
+    html = html[:card_list_content_start] + '\n\n' + cards_html + '\n' + html[archive_div_start:]
 else:
-    print(f"WARNING: Ed001 block not found. start={idx_start}, end={idx_end}")
+    # Fallback: find closing </div> for card-list
+    # Just replace content between card-list div tags
+    card_list_end = html.find('</div>', card_list_start + 100)
+    # This is tricky with nested divs, use a simpler approach
+    pass
 
-# ── 7. ACTUALIZAR CONTADOR Y CONTENIDO DE EDICIONES ANTERIORES ───────────────
-html = html.replace(
-    '(0 mas)',
-    '(1 mas)'
-)
-html = html.replace(
-    '<div style="padding:16px 18px;text-align:center;font-size:12px;color:var(--muted);">Todas las ediciones estan visibles arriba.</div>',
-    '<div style="display:flex;justify-content:space-between;align-items:center;padding:12px 18px;border-bottom:1px solid var(--rule);"><span style="font-size:13px;color:var(--text);">Ed. 001 &mdash; Semana 06-12 Mar &middot; Edicion inaugural</span><a href="Noticiero_Minero_Ed001_2026-03-12.html" style="font-size:12px;color:var(--copper);text-decoration:none;font-weight:600;">Ver &rarr;</a></div>'
-)
+# ── Update archive section ──────────────────────────────────────────────────
+archive_count = len(show_in_archive)
+# Update archive count
+html = re.sub(r'\(\d+ mas\)', f'({archive_count} mas)', html)
 
-# ── 8. FOOTER ────────────────────────────────────────────────────────────────
-html = html.replace(
-    'Actualizado el 17/03/2026',
-    'Actualizado el 24/03/2026'
-)
+# Build archive items
+if show_in_archive:
+    archive_items = ""
+    for ed in show_in_archive:
+        period_short = ed['period'][:30] if len(ed['period']) > 30 else ed['period']
+        archive_items += f'<div style="display:flex;justify-content:space-between;align-items:center;padding:12px 18px;border-bottom:1px solid var(--rule);"><span style="font-size:13px;color:var(--text);">Ed. {ed["num"]:03d} &mdash; {period_short}</span><a href="{ed["html_file"]}" style="font-size:12px;color:var(--copper);text-decoration:none;font-weight:600;">Ver &rarr;</a></div>\n'
+
+    # Replace old archive content
+    old_archive_content = 'Todas las ediciones estan visibles arriba.</div>'
+    if old_archive_content in html:
+        html = html.replace(old_archive_content, archive_items.rstrip())
+
+# ── Update footer date ──────────────────────────────────────────────────────
+html = re.sub(r'Actualizado el \d{2}/\d{2}/\d{4}', f'Actualizado el {latest["date"].replace("-", "/").split("/")[2]}/{latest["date"].split("-")[1]}/{latest["date"].split("-")[0]}', html)
+
+# ── Update semaforo prices from latest edition dashboard ────────────────────
+# Extract prices from the markdown table
+price_patterns = {
+    'cobre_t': r'Cobre\s*\|\s*([\d.,]+)\s*USD/t',
+    'cobre_lb': r'Cobre\s*\|\s*([\d.,]+)\s*USD/lb',
+    'litio': r'Litio Carbonato\s*\|\s*[~]*\s*([\d.,]+)\s*USD/t',
+    'platino': r'Platino\s*\|\s*([\d.,]+)\s*USD/oz',
+    'oro': r'Oro\s*\|\s*([\d.,]+)\s*USD/oz',
+    'plata': r'Plata\s*\|\s*([\d.,]+)\s*USD/oz',
+    'clp': r'CLP/USD\s*\|\s*([\d.,]+)',
+    'ndpr': r'NdPr[^|]*\|\s*[~]*\s*([\d.,]+)\s*USD/kg',
+    'cobalto': r'Cobalto\s*\|\s*[~]*\s*([\d.,]+)\s*USD/t',
+}
 
 # ── GUARDAR ──────────────────────────────────────────────────────────────────
 with open(f"{BASE}/index.html", "w", encoding="utf-8") as f:
     f.write(html)
 
 print(f"index.html guardado OK. Largo: {len(html)} chars")
-print("Ed004 presente:", "Edicion N. 4" in html)
-print("Nav links presentes:", "escuela.html" in html and "proyecciones.html" in html and "precios.html" in html)
-print("Precios actualizados:", "$5.45/lb" in html and "$4,419/oz" in html)
+print(f"Ediciones en main: {[e['num'] for e in show_in_main]}")
+print(f"Ediciones en archive: {[e['num'] for e in show_in_archive]}")
+print(f"Ed{latest['num']:03d} presente:", f"Edicion N. {latest['num']}" in html)
