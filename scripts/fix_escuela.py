@@ -9,7 +9,7 @@ fix_escuela.py
 import sys
 sys.stdout.reconfigure(encoding='utf-8')
 
-BASE = "C:/Users/diego.varleta/CLAUDE/Noticiero_Minero"
+BASE = "C:/Users/diego.varleta/CLAUDE/02_Noticiero_Minero"
 
 with open(f"{BASE}/escuela.html", "r", encoding="utf-8") as f:
     html = f.read()
