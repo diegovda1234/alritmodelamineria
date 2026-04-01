@@ -7,7 +7,7 @@ update_all_pages.py
 import sys
 sys.stdout.reconfigure(encoding='utf-8')
 
-BASE = "C:/Users/diego.varleta/CLAUDE/Noticiero_Minero"
+BASE = "C:/Users/diego.varleta/CLAUDE/02_Noticiero_Minero"
 
 # ── NUEVA BARRA SUPERIOR ─────────────────────────────────────────────────────
 # Reemplaza el <span></span> vacio por tabs de navegacion y agrega boton atras
