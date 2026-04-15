@@ -1,55 +1,73 @@
 """
-rebuild_index.py — Reconstruye index.html dinamicamente.
-Detecta todas las ediciones .html en la carpeta y genera el card-list.
+rebuild_index.py v2 — Reconstruye index.html desde cero.
+
+- Parsea todos los Noticiero_Minero_Ed*.md en la carpeta.
+- Usa index_backup_17mar.html solo como template estatico (CSS, header, footer).
+- Reemplaza limpiamente: semaforo de precios, card-list (top 4), older-list (resto).
+- Robusto: si no encuentra un dato, deja placeholder, nunca trunca ni borra cards.
 """
 import sys, glob, re, os
+
 sys.stdout.reconfigure(encoding='utf-8')
 
 BASE = "C:/Users/diego.varleta/CLAUDE/02_Noticiero_Minero"
+TEMPLATE = f"{BASE}/index_backup_17mar.html"
+OUTPUT = f"{BASE}/index.html"
 
-# ── Leer template base ──────────────────────────────────────────────────────
-with open(f"{BASE}/index_backup_17mar.html", "r", encoding="utf-8") as f:
+# ═══════════════════════════════════════════════════════════
+# 1. Cargar template base
+# ═══════════════════════════════════════════════════════════
+with open(TEMPLATE, "r", encoding="utf-8") as f:
     html = f.read()
 
-# ── Detectar todas las ediciones ────────────────────────────────────────────
-edition_files = sorted(glob.glob(f"{BASE}/Noticiero_Minero_Ed*.md"), reverse=True)
+# ═══════════════════════════════════════════════════════════
+# 2. Detectar y parsear todas las ediciones
+# ═══════════════════════════════════════════════════════════
+edition_files = sorted(
+    glob.glob(f"{BASE}/Noticiero_Minero_Ed*.md"),
+    key=lambda p: int(re.search(r'Ed(\d+)_', os.path.basename(p)).group(1)),
+    reverse=True
+)
 
 editions = []
 for fpath in edition_files:
     fname = os.path.basename(fpath)
-    # Extract edition number and date from filename
     m = re.match(r'Noticiero_Minero_Ed(\d+)_(\d{4}-\d{2}-\d{2})\.md', fname)
     if not m:
         continue
     ed_num = int(m.group(1))
     ed_date = m.group(2)
-    html_file = fname.replace('.md', '.html')
 
-    # Read first lines to extract emphasis and key bullets
     with open(fpath, 'r', encoding='utf-8') as f:
-        content = f.read(3000)
+        content = f.read()
 
-    # Extract period
-    period_match = re.search(r'\*\*Periodo:\*\*\s*(.+)', content)
-    period = period_match.group(1).strip() if period_match else f"Edicion {ed_num}"
+    # Periodo
+    p = re.search(r'\*\*Per[ií]odo:\*\*\s*(.+)', content)
+    period = p.group(1).strip() if p else f"Edicion {ed_num}"
 
-    # Extract emphasis
-    emphasis_match = re.search(r'\*\*Enfasis editorial esta semana:\*\*\s*(.+)', content)
-    if not emphasis_match:
-        emphasis_match = re.search(r'\*\*Énfasis editorial esta semana:\*\*\s*(.+)', content)
-    emphasis = emphasis_match.group(1).strip() if emphasis_match else ""
+    # Fecha publicacion
+    p = re.search(r'\*\*Fecha de publicaci[oó]n:\*\*\s*(.+)', content)
+    pub_date = p.group(1).strip() if p else ed_date
 
-    # Extract key bullets from resumen ejecutivo
+    # Enfasis
+    p = re.search(r'\*\*[ÉE]nfasis editorial esta semana:\*\*\s*(.+)', content)
+    emphasis = p.group(1).strip() if p else ""
+    # Trim si muy largo
+    if len(emphasis) > 320:
+        emphasis = emphasis[:317].rsplit(' ', 1)[0] + '...'
+
+    # Bullets del resumen ejecutivo (max 5)
     bullets = []
-    bullet_pattern = re.findall(r'- \*\*\[(\w+)\]\*\*\s*(.+)', content)
-    for tag, text in bullet_pattern[:5]:
-        bullets.append((tag, text.strip()))
-
-    # Extract publish date
-    pub_match = re.search(r'\*\*Fecha de publicacion:\*\*\s*(.+)', content)
-    if not pub_match:
-        pub_match = re.search(r'\*\*Fecha de publicación:\*\*\s*(.+)', content)
-    pub_date = pub_match.group(1).strip() if pub_match else ed_date
+    # Patron: - **[TAG]** texto
+    for match in re.finditer(r'- \*\*\[([^\]]+)\]\*\*\s*(.+)', content):
+        tag = match.group(1).strip()
+        text = match.group(2).strip()
+        # Trim bullet si es muy largo
+        if len(text) > 70:
+            text = text[:67].rsplit(' ', 1)[0] + '...'
+        bullets.append((tag, text))
+        if len(bullets) >= 5:
+            break
 
     editions.append({
         'num': ed_num,
@@ -58,7 +76,7 @@ for fpath in edition_files:
         'period': period,
         'emphasis': emphasis,
         'bullets': bullets,
-        'html_file': html_file,
+        'html_file': fname.replace('.md', '.html'),
     })
 
 if not editions:
@@ -67,125 +85,208 @@ if not editions:
 
 latest = editions[0]
 print(f"Ultima edicion detectada: Ed{latest['num']:03d} ({latest['date']})")
+print(f"Total ediciones: {len(editions)}")
 
-# ── Construir precios del semaforo (de la ultima edicion) ───────────────────
-latest_path = f"{BASE}/Noticiero_Minero_Ed{latest['num']:03d}_{latest['date']}.md"
-with open(latest_path, 'r', encoding='utf-8') as f:
-    full_content = f.read()
+# ═══════════════════════════════════════════════════════════
+# 3. Extraer precios del semaforo desde la ultima edicion
+# ═══════════════════════════════════════════════════════════
+with open(f"{BASE}/Noticiero_Minero_Ed{latest['num']:03d}_{latest['date']}.md", 'r', encoding='utf-8') as f:
+    latest_md = f.read()
 
-# Extract prices from dashboard table
-def extract_price(pattern, content):
-    m = re.search(pattern, content)
-    return m.group(1).strip() if m else "N/A"
 
-# ── SVG icons ───────────────────────────────────────────────────────────────
-svg_doc = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>'
-svg_book = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>'
+def extract(pattern, fallback="N/A"):
+    m = re.search(pattern, latest_md)
+    if not m:
+        return fallback
+    return m.group(1).strip().replace('**', '').replace('~', '')
 
-# ── Build card HTML for each edition ────────────────────────────────────────
+
+# Extraer precios de la tabla dashboard (formato: | mineral | edN | **edN+1** | ±x% | fuente |)
+def parse_row(mineral_label_regex):
+    """
+    Busca una fila del dashboard que empiece con 'mineral_label_regex' y
+    extrae (precio_actual, variacion). Devuelve (None, None) si no matchea.
+    """
+    # Buscar linea completa
+    for line in latest_md.splitlines():
+        if not line.lstrip().startswith('|'):
+            continue
+        cells = [c.strip() for c in line.strip().strip('|').split('|')]
+        if len(cells) < 4:
+            continue
+        if not re.match(mineral_label_regex, cells[0], re.IGNORECASE):
+            continue
+        # cells[0]=mineral, cells[1]=ed_anterior, cells[2]=ed_actual (bold), cells[3]=var
+        price_cell = cells[2].replace('**', '').replace('~', '').strip()
+        # Limpiar: "12.630 USD/t" -> "12.630"
+        m_price = re.match(r'([\d.,]+)', price_cell)
+        price = m_price.group(1) if m_price else None
+        var_cell = cells[3]
+        m_var = re.search(r'([+\-−]\s*[\d.,]+\s*%)', var_cell)
+        var = m_var.group(1).replace(' ', '').replace('−', '-').replace(',', '.') if m_var else "0%"
+        return price, var
+    return None, None
+
+
+def direction_from_var(var_str):
+    s = var_str.replace('%', '').replace('+', '').strip()
+    try:
+        val = float(s)
+    except ValueError:
+        return 'flat'
+    if val > 0.1:
+        return 'up'
+    if val < -0.1:
+        return 'down'
+    return 'flat'
+
+
+# Mapeo semaforo: label -> (regex mineral, format func)
+semaforo_config = [
+    ('Cobre',    r'Cobre(?!\s*$)',      lambda p: f'${p}/t'),
+    ('Litio',    r'Litio\s*Carbonato',  lambda p: f'${p}/t'),
+    ('NdPr',     r'NdPr',               lambda p: f'${p}/kg'),
+    ('Platino',  r'Platino',            lambda p: f'${p}/oz'),
+    ('Oro',      r'Oro',                lambda p: f'${p}/oz'),
+    ('Plata',    r'Plata',              lambda p: f'${p}/oz'),
+    ('Cobalto',  r'Cobalto',            lambda p: f'${p}/t'),
+    ('CLP/USD',  r'CLP/USD',            lambda p: f'${p}'),
+]
+
+semaforo_items = []
+for label, mineral_re, fmt in semaforo_config:
+    price, change = parse_row(mineral_re)
+    dir_ = direction_from_var(change or "0%")
+    if price is None:
+        semaforo_items.append((label, "—", "—", 'flat', fmt))
+        continue
+    # Compactar numeros grandes: 12630 -> 12.630
+    display = price
+    try:
+        clean = price.replace('.', '').replace(',', '.')
+        num = float(clean)
+        if num >= 10000:
+            display = f"{int(num):,}".replace(',', '.')
+    except Exception:
+        pass
+    semaforo_items.append((label, display, change, dir_, fmt))
+
+# ═══════════════════════════════════════════════════════════
+# 4. Construir HTML del semaforo
+# ═══════════════════════════════════════════════════════════
+semaforo_html = ""
+for label, price, change, dir_, fmt in semaforo_items:
+    price_fmt = fmt(price) if price != "—" else "—"
+    semaforo_html += f'''        <div class="signal-item">
+            <span class="signal-dot {dir_}"></span>
+            <span class="signal-label">{label}</span>
+            <span class="signal-price">{price_fmt}</span>
+            <span class="signal-change {dir_}">{change}</span>
+        </div>
+'''
+
+# ═══════════════════════════════════════════════════════════
+# 5. Construir HTML de cards (top 4)
+# ═══════════════════════════════════════════════════════════
+SVG_DOC = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>'
+SVG_BOOK = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>'
+
+
+def esc(s):
+    return s.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('"', '&quot;')
+
+
 def make_card(ed, is_latest=False):
     badge = '<span class="badge latest">NUEVA</span>' if is_latest else f'<span class="badge">Ed. {ed["num"]:03d}</span>'
-
     bullets_html = ""
     for tag, text in ed['bullets']:
-        bullets_html += f'                <li><span class="tag">[{tag}]</span> {text}</li>\n'
-
-    # Escape special chars for HTML
-    emphasis = ed['emphasis'].replace('&', '&amp;').replace('"', '&quot;')
-
-    card = f"""        <div class="card">
+        bullets_html += f'                <li><span class="tag">[{esc(tag)}]</span> {esc(text)}</li>\n'
+    leccion_id = f"leccion-{ed['num']}" if ed['num'] >= 4 else {1: 'leccion-03', 2: 'leccion-02', 3: 'leccion-1'}.get(ed['num'], f'leccion-{ed["num"]}')
+    return f'''        <div class="card">
             <div class="card-header">
                 <div>
-                    <div class="card-title">Edicion N. {ed['num']} &mdash; {ed['period']}</div>
-                    <div class="card-meta">Publicado: {ed['pub_date']}</div>
+                    <div class="card-title">Edicion N. {ed['num']} &mdash; {esc(ed['period'])}</div>
+                    <div class="card-meta">Publicado: {esc(ed['pub_date'])}</div>
                 </div>
                 {badge}
             </div>
-            <div class="card-emphasis">{emphasis}</div>
+            <div class="card-emphasis">{esc(ed['emphasis'])}</div>
             <ul class="card-bullets">
 {bullets_html}            </ul>
             <div class="card-actions">
-                <a class="card-btn primary" href="{ed['html_file']}">{svg_doc} Informe</a>
-                <a class="card-btn secondary" href="escuela.html">{svg_book} Clase de la semana</a>
+                <a class="card-btn primary" href="{ed['html_file']}">{SVG_DOC} Informe</a>
+                <a class="card-btn secondary" href="escuela.html#{leccion_id}">{SVG_BOOK} Clase de la semana</a>
             </div>
         </div>
-"""
-    return card
+'''
 
-# Build cards for latest 4 editions (show in main list)
-show_in_main = editions[:4]
-show_in_archive = editions[4:]
+
+main_cards = editions[:4]
+archive_cards = editions[4:]
 
 cards_html = ""
-for i, ed in enumerate(show_in_main):
+for i, ed in enumerate(main_cards):
     cards_html += make_card(ed, is_latest=(i == 0))
 
-# ── Replace the card-list content ───────────────────────────────────────────
-# Find the card-list div and replace its content
-card_list_start = html.find('<div class="card-list">')
-if card_list_start == -1:
-    print("ERROR: No se encontro <div class='card-list'>")
-    sys.exit(1)
-
-# Find the closing of card-list (next </div> at same level after all cards)
-# We'll find the section that ends before "Ediciones anteriores" or the archive section
-archive_start = html.find('class="archive"', card_list_start)
-if archive_start == -1:
-    archive_start = html.find('class="editions-footer"', card_list_start)
-
-if archive_start != -1:
-    # Find the div that contains the archive
-    archive_div_start = html.rfind('<div', card_list_start, archive_start)
-    # Replace everything between card-list opening and archive div
-    card_list_content_start = html.find('>', card_list_start) + 1
-    old_cards = html[card_list_content_start:archive_div_start]
-    html = html[:card_list_content_start] + '\n\n' + cards_html + '\n' + html[archive_div_start:]
+# ═══════════════════════════════════════════════════════════
+# 6. Construir older-list (archive compacto)
+# ═══════════════════════════════════════════════════════════
+if archive_cards:
+    older_html = ""
+    for ed in archive_cards:
+        older_html += f'        <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 18px;border-bottom:1px solid var(--rule);"><span style="font-size:13px;color:var(--text);">Ed. {ed["num"]:03d} &mdash; {esc(ed["period"])}</span><a href="{ed["html_file"]}" style="font-size:12px;color:var(--copper);text-decoration:none;font-weight:600;">Ver &rarr;</a></div>\n'
 else:
-    # Fallback: find closing </div> for card-list
-    # Just replace content between card-list div tags
-    card_list_end = html.find('</div>', card_list_start + 100)
-    # This is tricky with nested divs, use a simpler approach
-    pass
+    older_html = '        <div style="padding:16px 18px;text-align:center;font-size:12px;color:var(--muted);">Todas las ediciones estan visibles arriba.</div>\n'
 
-# ── Update archive section ──────────────────────────────────────────────────
-archive_count = len(show_in_archive)
-# Update archive count
-html = re.sub(r'\(\d+ mas\)', f'({archive_count} mas)', html)
+# ═══════════════════════════════════════════════════════════
+# 7. Reemplazar secciones en el HTML
+# ═══════════════════════════════════════════════════════════
 
-# Build archive items
-if show_in_archive:
-    archive_items = ""
-    for ed in show_in_archive:
-        period_short = ed['period'][:30] if len(ed['period']) > 30 else ed['period']
-        archive_items += f'<div style="display:flex;justify-content:space-between;align-items:center;padding:12px 18px;border-bottom:1px solid var(--rule);"><span style="font-size:13px;color:var(--text);">Ed. {ed["num"]:03d} &mdash; {period_short}</span><a href="{ed["html_file"]}" style="font-size:12px;color:var(--copper);text-decoration:none;font-weight:600;">Ver &rarr;</a></div>\n'
+# 7a. Semaforo: reemplazar contenido de <div class="signal-grid">
+html = re.sub(
+    r'(<div class="signal-grid">)(.*?)(</div>\s*</div>\s*<div class="container">)',
+    lambda m: m.group(1) + '\n' + semaforo_html + '    ' + m.group(3),
+    html,
+    count=1,
+    flags=re.DOTALL
+)
 
-    # Replace old archive content
-    old_archive_content = 'Todas las ediciones estan visibles arriba.</div>'
-    if old_archive_content in html:
-        html = html.replace(old_archive_content, archive_items.rstrip())
+# 7b. card-list: reemplazar contenido completo
+html = re.sub(
+    r'(<div class="card-list">)(.*?)(</div>\s*<!-- EDICIONES ANTERIORES)',
+    lambda m: m.group(1) + '\n' + cards_html + '    ' + m.group(3),
+    html,
+    count=1,
+    flags=re.DOTALL
+)
 
-# ── Update footer date ──────────────────────────────────────────────────────
-html = re.sub(r'Actualizado el \d{2}/\d{2}/\d{4}', f'Actualizado el {latest["date"].replace("-", "/").split("/")[2]}/{latest["date"].split("-")[1]}/{latest["date"].split("-")[0]}', html)
+# 7c. older-list count
+html = re.sub(r'\((\d+) mas\)', f'({len(archive_cards)} mas)', html)
 
-# ── Update semaforo prices from latest edition dashboard ────────────────────
-# Extract prices from the markdown table
-price_patterns = {
-    'cobre_t': r'Cobre\s*\|\s*([\d.,]+)\s*USD/t',
-    'cobre_lb': r'Cobre\s*\|\s*([\d.,]+)\s*USD/lb',
-    'litio': r'Litio Carbonato\s*\|\s*[~]*\s*([\d.,]+)\s*USD/t',
-    'platino': r'Platino\s*\|\s*([\d.,]+)\s*USD/oz',
-    'oro': r'Oro\s*\|\s*([\d.,]+)\s*USD/oz',
-    'plata': r'Plata\s*\|\s*([\d.,]+)\s*USD/oz',
-    'clp': r'CLP/USD\s*\|\s*([\d.,]+)',
-    'ndpr': r'NdPr[^|]*\|\s*[~]*\s*([\d.,]+)\s*USD/kg',
-    'cobalto': r'Cobalto\s*\|\s*[~]*\s*([\d.,]+)\s*USD/t',
-}
+# 7d. older-list content
+html = re.sub(
+    r'(<div id="older-list"[^>]*>)(.*?)(</div>\s*<!-- NAV LINKS)',
+    lambda m: m.group(1) + '\n' + older_html + '    ' + m.group(3),
+    html,
+    count=1,
+    flags=re.DOTALL
+)
 
-# ── GUARDAR ──────────────────────────────────────────────────────────────────
-with open(f"{BASE}/index.html", "w", encoding="utf-8") as f:
+# 7e. Footer date
+dd, mm, yyyy = latest['date'].split('-')[2], latest['date'].split('-')[1], latest['date'].split('-')[0]
+html = re.sub(r'Actualizado el \d{2}/\d{2}/\d{4}', f'Actualizado el {dd}/{mm}/{yyyy}', html)
+
+# ═══════════════════════════════════════════════════════════
+# 8. Validacion y guardado
+# ═══════════════════════════════════════════════════════════
+assert f"Edicion N. {latest['num']}" in html, f"FALLO: Ed{latest['num']} no quedo en index.html"
+assert "card-list" in html
+assert "signal-grid" in html
+
+with open(OUTPUT, "w", encoding="utf-8") as f:
     f.write(html)
 
-print(f"index.html guardado OK. Largo: {len(html)} chars")
-print(f"Ediciones en main: {[e['num'] for e in show_in_main]}")
-print(f"Ediciones en archive: {[e['num'] for e in show_in_archive]}")
-print(f"Ed{latest['num']:03d} presente:", f"Edicion N. {latest['num']}" in html)
+print(f"[OK] index.html guardado. Largo: {len(html)} chars")
+print(f"[OK] Main cards: {[e['num'] for e in main_cards]}")
+print(f"[OK] Archive: {[e['num'] for e in archive_cards]}")
+print(f"[OK] Ed{latest['num']:03d} presente en HTML: True")
