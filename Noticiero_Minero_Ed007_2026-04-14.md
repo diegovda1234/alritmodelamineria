@@ -3,6 +3,8 @@
 **Período:** Semana del 08/04/2026 al 14/04/2026
 **Fecha de publicación:** 14 de Abril de 2026
 **Énfasis editorial esta semana:** China prohíbe exportaciones de ácido sulfúrico desde mayo (devastador para Chile, +44% precio último mes); cobre LME marca récord ~US$12.630/t por "triple demand shock" (AI + defensa + aranceles); CESCO Week 2026 inicia en Santiago con llamado de Biministro Mas a destrabar inversión; Gobierno Kast define reemplazante de Pacheco en Codelco (Bernardo Fontaine principal carta); Pentagon cierra deal Lynas US$96M con price floor REE US$110/kg.
+**Frase de la semana:** "Chile no tiene soberanía sobre un insumo crítico del ~20% de su producción de cobre. La prohibición china del ácido sulfúrico expone una vulnerabilidad tan estratégica como la dependencia energética — y ningún modelo financiero de la gran minería chilena tiene sensitivity específico al precio del H₂SO₄."
+**Atribución frase:** — Análisis Noticiero Minero Ed.7, basado en cobertura Bloomberg/Mining.com del 10 de abril 2026
 
 ---
 
