@@ -93,6 +93,78 @@ print(f"Total ediciones: {len(editions)}")
 with open(f"{BASE}/Noticiero_Minero_Ed{latest['num']:03d}_{latest['date']}.md", 'r', encoding='utf-8') as f:
     latest_md = f.read()
 
+# ── Frase de la semana ──────────────────────────────────────
+quote_match = re.search(r'\*\*Frase de la semana:\*\*\s*["\u201c](.+?)["\u201d]', latest_md)
+if not quote_match:
+    # Fallback sin comillas
+    quote_match = re.search(r'\*\*Frase de la semana:\*\*\s*(.+)', latest_md)
+quote_text = quote_match.group(1).strip() if quote_match else ""
+
+attrib_match = re.search(r'\*\*Atribuci[oó]n frase:\*\*\s*(.+)', latest_md)
+quote_author = attrib_match.group(1).strip() if attrib_match else f"— Noticiero Minero Ed.{latest['num']}"
+
+# ── Lo que viene ────────────────────────────────────────────
+# Extraer bullets de "Próximos 7 días" y primeros de "Próximas 4 semanas"
+upcoming_items = []
+
+# Buscar seccion "Próximos 7 días" y capturar sus bullets
+prox_7d_match = re.search(
+    r'###\s*Pr[óo]ximos\s*7\s*d[ií]as[^\n]*\n(.*?)(?=###|\n##|\Z)',
+    latest_md,
+    re.DOTALL
+)
+if prox_7d_match:
+    block = prox_7d_match.group(1)
+    for line in block.split('\n'):
+        line = line.strip()
+        if not line.startswith('-'):
+            continue
+        # Patron: "- **fecha:** texto" o "- texto"
+        m = re.match(r'-\s*\*\*([^:*]+):\*\*\s*(.+)', line)
+        if m:
+            date_str = m.group(1).strip()
+            text = m.group(2).strip()
+            upcoming_items.append((date_str, text))
+        else:
+            m2 = re.match(r'-\s*(.+)', line)
+            if m2:
+                upcoming_items.append(("Próx.", m2.group(1).strip()))
+        if len(upcoming_items) >= 4:
+            break
+
+# Agregar 1-2 items de "Próximas 4 semanas"
+prox_4w_match = re.search(
+    r'###\s*Pr[óo]ximas\s*4\s*semanas[^\n]*\n(.*?)(?=###|\n##|\Z)',
+    latest_md,
+    re.DOTALL
+)
+if prox_4w_match and len(upcoming_items) < 5:
+    block = prox_4w_match.group(1)
+    for line in block.split('\n'):
+        line = line.strip()
+        if not line.startswith('-'):
+            continue
+        m = re.match(r'-\s*\*\*([^:*]+):\*\*\s*(.+)', line)
+        if m:
+            date_str = m.group(1).strip()
+            text = m.group(2).strip()
+            # Limpiar markdown residual
+            text = re.sub(r'\*\*|`', '', text)
+            if len(text) > 85:
+                text = text[:82].rsplit(' ', 1)[0] + '...'
+            upcoming_items.append((date_str, text))
+        if len(upcoming_items) >= 5:
+            break
+
+# Limpiar items: remover markdown y acortar
+clean_upcoming = []
+for date_str, text in upcoming_items[:5]:
+    text = re.sub(r'\*\*|`|⚠️|🚨', '', text).strip()
+    if len(text) > 85:
+        text = text[:82].rsplit(' ', 1)[0] + '...'
+    clean_upcoming.append((date_str, text))
+upcoming_items = clean_upcoming
+
 
 def extract(pattern, fallback="N/A"):
     m = re.search(pattern, latest_md)
@@ -102,12 +174,14 @@ def extract(pattern, fallback="N/A"):
 
 
 # Extraer precios de la tabla dashboard (formato: | mineral | edN | **edN+1** | ±x% | fuente |)
-def parse_row(mineral_label_regex):
+def parse_row(mineral_label_regex, required_unit=None):
     """
-    Busca una fila del dashboard que empiece con 'mineral_label_regex' y
-    extrae (precio_actual, variacion). Devuelve (None, None) si no matchea.
+    Busca una fila del dashboard que matchee 'mineral_label_regex' y (opcionalmente)
+    contenga 'required_unit' en la celda de precio. Devuelve (precio, variacion) o (None, None).
+
+    required_unit fuerza consistencia de unidades entre ediciones. Ej: para Cobre pedimos
+    siempre 'USD/t' para evitar que el semaforo cambie a USD/lb en una edicion.
     """
-    # Buscar linea completa
     for line in latest_md.splitlines():
         if not line.lstrip().startswith('|'):
             continue
@@ -116,10 +190,11 @@ def parse_row(mineral_label_regex):
             continue
         if not re.match(mineral_label_regex, cells[0], re.IGNORECASE):
             continue
-        # cells[0]=mineral, cells[1]=ed_anterior, cells[2]=ed_actual (bold), cells[3]=var
-        price_cell = cells[2].replace('**', '').replace('~', '').strip()
-        # Limpiar: "12.630 USD/t" -> "12.630"
-        m_price = re.match(r'([\d.,]+)', price_cell)
+        price_cell_raw = cells[2].replace('**', '').replace('~', '').strip()
+        if required_unit and required_unit.lower() not in price_cell_raw.lower():
+            # Unidad no coincide — seguir buscando otra fila del mismo mineral
+            continue
+        m_price = re.match(r'([\d.,]+)', price_cell_raw)
         price = m_price.group(1) if m_price else None
         var_cell = cells[3]
         m_var = re.search(r'([+\-−]\s*[\d.,]+\s*%)', var_cell)
@@ -141,21 +216,28 @@ def direction_from_var(var_str):
     return 'flat'
 
 
-# Mapeo semaforo: label -> (regex mineral, format func)
+# ═══════════════════════════════════════════════════════════
+# POLITICA DE UNIDADES — NO NEGOCIABLE
+# El semaforo siempre muestra el mismo mineral con la MISMA unidad entre ediciones.
+# Cobre: USD/t (nunca USD/lb). Litio/Cobalto: USD/t. Preciosos: USD/oz.
+# NdPr: USD/kg. CLP/USD: CLP.
+# parse_row() recibe 'required_unit' para rechazar filas con unidad incorrecta.
+# ═══════════════════════════════════════════════════════════
 semaforo_config = [
-    ('Cobre',    r'Cobre(?!\s*$)',      lambda p: f'${p}/t'),
-    ('Litio',    r'Litio\s*Carbonato',  lambda p: f'${p}/t'),
-    ('NdPr',     r'NdPr',               lambda p: f'${p}/kg'),
-    ('Platino',  r'Platino',            lambda p: f'${p}/oz'),
-    ('Oro',      r'Oro',                lambda p: f'${p}/oz'),
-    ('Plata',    r'Plata',              lambda p: f'${p}/oz'),
-    ('Cobalto',  r'Cobalto',            lambda p: f'${p}/t'),
-    ('CLP/USD',  r'CLP/USD',            lambda p: f'${p}'),
+    # (label, regex mineral,        required_unit, format_fn)
+    ('Cobre',    r'Cobre',            'USD/lb', lambda p: f'${p}/lb'),
+    ('Litio',    r'Litio\s*Carbonato','USD/t',  lambda p: f'${p}/t'),
+    ('NdPr',     r'NdPr',             'USD/kg', lambda p: f'${p}/kg'),
+    ('Platino',  r'Platino',          'USD/oz', lambda p: f'${p}/oz'),
+    ('Oro',      r'Oro',              'USD/oz', lambda p: f'${p}/oz'),
+    ('Plata',    r'Plata',            'USD/oz', lambda p: f'${p}/oz'),
+    ('Cobalto',  r'Cobalto',          'USD/t',  lambda p: f'${p}/t'),
+    ('CLP/USD',  r'CLP/USD',          None,     lambda p: f'${p}'),
 ]
 
 semaforo_items = []
-for label, mineral_re, fmt in semaforo_config:
-    price, change = parse_row(mineral_re)
+for label, mineral_re, unit, fmt in semaforo_config:
+    price, change = parse_row(mineral_re, required_unit=unit)
     dir_ = direction_from_var(change or "0%")
     if price is None:
         semaforo_items.append((label, "—", "—", 'flat', fmt))
@@ -250,6 +332,30 @@ html = re.sub(
     count=1,
     flags=re.DOTALL
 )
+
+# 7a-bis. Quote card (frase de la semana)
+if quote_text:
+    quote_html = f'        <p class="quote-text">{esc(quote_text)}</p>\n        <p class="quote-author">{esc(quote_author)}</p>\n'
+    html = re.sub(
+        r'(<div class="quote-card">)(.*?)(</div>)',
+        lambda m: m.group(1) + '\n' + quote_html + '    ' + m.group(3),
+        html,
+        count=1,
+        flags=re.DOTALL
+    )
+
+# 7a-ter. Upcoming list (lo que viene)
+if upcoming_items:
+    upcoming_html = ""
+    for date_str, text in upcoming_items:
+        upcoming_html += f'            <li><span class="uc-date">{esc(date_str)}</span> {esc(text)}</li>\n'
+    html = re.sub(
+        r'(<ul class="upcoming-list">)(.*?)(</ul>)',
+        lambda m: m.group(1) + '\n' + upcoming_html + '        ' + m.group(3),
+        html,
+        count=1,
+        flags=re.DOTALL
+    )
 
 # 7b. card-list: reemplazar contenido completo
 html = re.sub(
