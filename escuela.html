@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -352,11 +352,12 @@
         <div class="at-left">
             <span class="at-icon">&#128218;</span>
             <span class="at-label">Lecciones anteriores y especiales</span>
-            <span class="at-count">(10 mas)</span>
+            <span class="at-count">(11 mas)</span>
         </div>
         <span class="at-arrow">&#9660;</span>
     </div>
     <div class="archive-list" id="archive-list">
+        <a class="archive-item lesson-card" href="#leccion-13"><span class="ai-dot ed"></span><span class="ai-pillar">Gobernanza</span><span class="ai-title">La Ley de Goodhart y el Gaming de Metricas — cuando los incentivos mal disenados generan numeros falsos</span><span class="ai-ed">Ed.13</span></a>
         <a class="archive-item lesson-card" href="#leccion-12"><span class="ai-dot ed"></span><span class="ai-pillar">Comercio</span><span class="ai-title">Antidumping en minerales criticos: el proceso ITC y el caso del paladio ruso</span><span class="ai-ed">Ed.12</span></a>
         <a class="archive-item lesson-card" href="#leccion-11"><span class="ai-dot ed"></span><span class="ai-pillar">Gestion</span><span class="ai-title">Gobernanza en empresas mineras estatales: teoria del agente-principal</span><span class="ai-ed">Ed.11</span></a>
         <a class="archive-item lesson-card" href="#leccion-10"><span class="ai-dot ed"></span><span class="ai-pillar">Procesos</span><span class="ai-title">SX-EW: del oxido al catodo y la crisis del acido</span><span class="ai-ed">Ed.10</span></a>
@@ -375,10 +376,85 @@
     </div>
 
     <!-- CURRENT LESSON -->
-    <p class="current-label">Clase de la semana — Edicion N.12</p>
+    <p class="current-label">Clase de la semana — Edicion N.13</p>
+
+    <!-- LECCION 13 - EDICION N.13 -->
+    <div class="lesson" id="leccion-13">
+        <div class="lesson-hero">
+            <div class="lh-num">Leccion 13 &middot; Edicion N.13</div>
+            <h2>La Ley de Goodhart y el Gaming de Metricas — por que los incentivos mal disenados generan numeros falsos</h2>
+            <div class="lh-english">Goodhart's Law and Metric Gaming — Why Poorly Designed Incentives Create False Numbers</div>
+            <span class="lh-pillar">Gobernanza</span>
+        </div>
+        <div class="lesson-body">
+            <a class="btn-ver-todas" onclick="verTodas()" href="javascript:void(0)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg> Ver todas las lecciones</a>
+
+            <h3>El concepto central</h3>
+            <p>En 1975, el economista britanico Charles Goodhart enuncio lo que hoy se conoce como la <strong>Ley de Goodhart</strong>:</p>
+
+            <div class="concept-box">
+                <div class="cb-term">Ley de Goodhart (Goodhart's Law)</div>
+                <div class="cb-def">"Cuando una medida se convierte en objetivo, deja de ser una buena medida." En otros terminos: el momento en que un indicador se usa para evaluar o remunerar personas, estas dejan de optimizar el fenomeno que el indicador representa y empiezan a optimizar el indicador mismo, desconectandolo de la realidad que supuestamente mide.</div>
+            </div>
+
+            <p>La ley no describe malicia necesariamente — puede ser resultado de presion organizacional, de miedo a la sancion, o simplemente de racionalidad individual ante un sistema de incentivos defectuoso. Pero el resultado es siempre el mismo: los numeros reportados dejan de reflejar la realidad operacional.</p>
+
+            <h3>Los tres niveles del problema</h3>
+
+            <div class="vocab-wrap">
+                <table class="vocab-table">
+                    <thead><tr><th>Nivel</th><th>Mecanismo</th><th>Ejemplo minero</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Individual</strong></td><td>El trabajador o supervisor optimiza su bono personal sobre la operacion real</td><td>Extraer mineral de zonas de baja ley ya catalogado para inflar volumen del mes</td></tr>
+                        <tr><td><strong>Sistemico</strong></td><td>El sistema de incentivos premia la metrica en lugar del resultado economico real</td><td>Bono ligado a toneladas movidas, sin ajuste por ley ni por rentabilidad del material movido</td></tr>
+                        <tr><td><strong>Cultural</strong></td><td>La organizacion aprende a reportar lo que se espera, no lo que ocurre</td><td>Gerentes que saben que los numeros son falsos pero no los cuestionan para no perder su bono</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="vocab-cards">
+                <div class="vc-item"><div class="vc-es">Nivel Individual</div><div class="vc-en">Individual gaming</div><div class="vc-ctx">Extraer mineral de baja ley para inflar volumen del mes y cobrar el bono.</div></div>
+                <div class="vc-item"><div class="vc-es">Nivel Sistemico</div><div class="vc-en">Systemic misalignment</div><div class="vc-ctx">Bono ligado a toneladas movidas, sin ajuste por ley ni por rentabilidad.</div></div>
+                <div class="vc-item"><div class="vc-es">Nivel Cultural</div><div class="vc-en">Cultural capture</div><div class="vc-ctx">Gerentes que saben que los numeros son falsos pero no los cuestionan para no perder su bono.</div></div>
+            </div>
+
+            <div class="case-study">
+                <div class="cs-header"><span class="cs-icon">&#9874;</span><span class="cs-label">Caso de estudio</span></div>
+                <div class="cs-title">Codelco Iniciativa P1 — como un programa de productividad se convirtio en una maquina de gaming</div>
+                <p>En diciembre de 2025, Codelco registro una produccion mensual de <strong>172.300 toneladas</strong> de cobre — casi el <strong>doble</strong> del promedio mensual historico de 105.600 t. El numero fue presentado internamente como un exito de la Iniciativa P1, un programa de productividad con bonos asociados al cumplimiento de metas de produccion.</p>
+                <p>Lo que vino despues lo desmintio: entre enero y marzo de 2026, la produccion colapso un <strong>47% frente al mismo periodo del ano anterior</strong>. Auditores detectaron que parte de la produccion de diciembre correspondia a mineral extraido de sectores no programados o con reservas que debian preservarse — adelantando produccion futura para capturar el bono de fin de ano. El dano no fue solo estadistico: se estima que <strong>27.000 toneladas</strong> del pico de diciembre son atribuibles a practicas de gaming. El Directorio encargo a KPMG una auditoria independiente y el Ministerio de Hacienda presento una denuncia penal contra los responsables.</p>
+                <p class="cs-source">Fuentes: Noticiero Minero Ed.013 (mayo 2026), Diario Financiero (mayo 2026), Ministerio de Hacienda Chile.</p>
+            </div>
+
+            <h3>Vocabulario tecnico bilingue</h3>
+
+            <div class="vocab-wrap">
+                <table class="vocab-table">
+                    <thead><tr><th>Espanol</th><th>English</th><th>Contexto de uso</th></tr></thead>
+                    <tbody>
+                        <tr><td>Manipulacion de metricas</td><td><span class="v-english">Gaming the metrics</span></td><td><div class="v-context">"Management discovered that production figures had been gamed: supervisors pulled forward inventory to meet year-end KPIs."</div></td></tr>
+                        <tr><td>Reexpresion de estados financieros</td><td><span class="v-english">Restatement</span></td><td><div class="v-context">"The company announced a restatement of its Q4 2025 production figures following an internal audit that exposed the metric gaming."</div></td></tr>
+                        <tr><td>Denunciante interno</td><td><span class="v-english">Whistleblower</span></td><td><div class="v-context">"A whistleblower report triggered the KPMG forensic audit that uncovered systematic production inflation."</div></td></tr>
+                        <tr><td>Desalineamiento de incentivos</td><td><span class="v-english">Incentive misalignment</span></td><td><div class="v-context">"The root cause was incentive misalignment: bonuses tied to volume metrics with no quality or sustainability adjustment."</div></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="vocab-cards">
+                <div class="vc-item"><div class="vc-es">Manipulacion de metricas</div><div class="vc-en">Gaming the metrics</div><div class="vc-ctx">"Supervisors pulled forward inventory to meet year-end KPIs."</div></div>
+                <div class="vc-item"><div class="vc-es">Reexpresion de estados financieros</div><div class="vc-en">Restatement</div><div class="vc-ctx">"The company announced a restatement of its Q4 2025 production figures."</div></div>
+                <div class="vc-item"><div class="vc-es">Denunciante interno</div><div class="vc-en">Whistleblower</div><div class="vc-ctx">"A whistleblower report triggered the KPMG forensic audit."</div></div>
+                <div class="vc-item"><div class="vc-es">Desalineamiento de incentivos</div><div class="vc-en">Incentive misalignment</div><div class="vc-ctx">"Bonuses tied to volume metrics with no quality or sustainability adjustment."</div></div>
+            </div>
+
+            <div class="key-takeaway">
+                <h4>Lo que pocos dicen en la sala de directorio</h4>
+                <p>Cambiar a las personas no es suficiente: si no cambia el mecanismo de medicion, el gaming se repite con los nuevos responsables. La solucion correcta a la Ley de Goodhart no es castigar a quienes optimizaron la metrica — eso es atacar el sintoma. La solucion es redisenar el sistema de incentivos para que lo que se premia sea el resultado economico real, no el numero que lo intenta representar. En mineria: ligar los bonos a la rentabilidad ajustada por ley del mineral extraido, no solo al volumen; incluir clausulas de recuperacion (clawback) si los numeros se revierten en trimestres siguientes; y garantizar que el auditor tenga acceso independiente a los datos de planificacion minera.</p>
+                <p><em>Fuente: Charles Goodhart (1975), Bank of England Staff Report; Marilyn Strathern "Improving Ratings" (1997); Noticiero Minero Ed.013 analisis editorial.</em></p>
+            </div>
+        </div>
+    </div>
 
     <!-- LECCION 12 - EDICION N.12 -->
-    <div class="lesson" id="leccion-12">
+    <div class="lesson collapsed" id="leccion-12">
         <div class="lesson-hero">
             <div class="lh-num">Leccion 12 &middot; Edicion N.12</div>
             <h2>Antidumping en minerales criticos: como funciona el proceso ITC y por que el fallo sobre el paladio ruso puede cambiar los flujos globales</h2>
@@ -2118,3 +2194,4 @@
 
 </body>
 </html>
+
