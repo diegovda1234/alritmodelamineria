@@ -676,6 +676,64 @@ mark.search-hl.current {
     .nav-h2-link { font-size: 12pt; padding: 14px 16px; }
     .nav-sub-link { font-size: 11pt; padding: 11px 14px; }
 }
+
+/* ══════════════════════════════════════
+   SHARE BUTTONS
+══════════════════════════════════════ */
+.share-btns {
+    display: inline-flex;
+    gap: 4px;
+    margin-left: 10px;
+    opacity: 0;
+    transition: opacity 0.2s;
+    vertical-align: middle;
+    line-height: 1;
+}
+h4:hover .share-btns { opacity: 1; }
+@media (hover: none) { .share-btns { opacity: 0.7; } }
+.share-btn {
+    background: none;
+    border: 1px solid var(--copper);
+    border-radius: 4px;
+    color: var(--copper);
+    cursor: pointer;
+    font-size: 7.5pt;
+    padding: 2px 7px;
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.5;
+    white-space: nowrap;
+    transition: background 0.15s, color 0.15s;
+    font-weight: 500;
+}
+.share-btn:hover { background: var(--copper); color: white; }
+.share-toast {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%) translateY(60px);
+    background: var(--night);
+    color: white;
+    padding: 9px 22px;
+    border-radius: 24px;
+    font-size: 9.5pt;
+    font-family: 'DM Sans', sans-serif;
+    z-index: 99999;
+    opacity: 0;
+    transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), opacity 0.2s;
+    pointer-events: none;
+    border: 1px solid rgba(226,185,111,0.5);
+}
+.share-toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+.anchor-highlight {
+    animation: anchor-glow 2.8s ease forwards;
+    border-radius: 4px;
+}
+@keyframes anchor-glow {
+    0%   { background-color: rgba(226,185,111,0.4); }
+    65%  { background-color: rgba(226,185,111,0.15); }
+    100% { background-color: transparent; }
+}
+@media print { .share-btns, .share-toast { display: none !important; } }
 """
 
 # ── TEMPLATE HTML ────────────────────────────────────────────────────────────
@@ -909,6 +967,90 @@ NAV_JS = r"""
 })();
 """
 
+SHARE_JS = r"""
+(function () {
+    /* Toast de confirmación */
+    function showToast(msg) {
+        var t = document.getElementById('share-toast');
+        if (!t) {
+            t = document.createElement('div');
+            t.id = 'share-toast';
+            t.className = 'share-toast';
+            document.body.appendChild(t);
+        }
+        t.textContent = msg;
+        t.classList.add('show');
+        setTimeout(function () { t.classList.remove('show'); }, 2200);
+    }
+
+    function writeClipboard(text, onOk) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(onOk).catch(function () { fallback(text, onOk); });
+        } else {
+            fallback(text, onOk);
+        }
+    }
+
+    function fallback(text, onOk) {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.cssText = 'position:fixed;opacity:0;top:0;left:0';
+        document.body.appendChild(ta);
+        ta.focus(); ta.select();
+        try { document.execCommand('copy'); onOk(); } catch (e) {}
+        document.body.removeChild(ta);
+    }
+
+    /* Copiar link directo */
+    window.copyLink = function (id) {
+        var url = window.location.href.split('#')[0] + '#' + id;
+        writeClipboard(url, function () { showToast('Link copiado ✓'); });
+    };
+
+    /* Copiar tarjeta de resumen */
+    window.copyCard = function (id) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        var titleEl = el.querySelector('.h4-text');
+        var title = titleEl ? titleEl.textContent.trim() : el.childNodes[0].textContent.trim();
+        /* Extraer primeros 2-3 párrafos siguientes al heading */
+        var paragraphs = [];
+        var sib = el.nextElementSibling;
+        var count = 0;
+        while (sib && count < 3) {
+            if (sib.tagName === 'P') {
+                var txt = sib.textContent.trim();
+                if (txt.length > 30) { paragraphs.push(txt); count++; }
+            } else if (['H2', 'H3', 'H4', 'TABLE', 'HR'].includes(sib.tagName)) {
+                break;
+            }
+            sib = sib.nextElementSibling;
+        }
+        var url = window.location.href.split('#')[0] + '#' + id;
+        var body = paragraphs.length ? paragraphs.join('\n\n') : '(ver artículo completo en el link)';
+        if (body.length > 380) { body = body.slice(0, 377) + '…'; }
+        var card = '📌 ' + title + '\n\n' + body + '\n\n🪨 Noticiero Minero · ' + url;
+        writeClipboard(card, function () { showToast('Resumen copiado ✓'); });
+    };
+
+    /* Highlight de la sección al navegar por anchor */
+    function highlightAnchor() {
+        var hash = window.location.hash;
+        if (!hash) return;
+        try {
+            var el = document.querySelector(hash);
+            if (!el) return;
+            el.classList.remove('anchor-highlight');
+            void el.offsetWidth; /* reiniciar animación */
+            el.classList.add('anchor-highlight');
+            setTimeout(function () { el.classList.remove('anchor-highlight'); }, 3000);
+        } catch (e) {}
+    }
+    window.addEventListener('hashchange', highlightAnchor);
+    setTimeout(highlightAnchor, 320); /* esperar render completo */
+})();
+"""
+
 
 # ── EXTRACCIÓN DE METADATOS DEL MARKDOWN ─────────────────────────────────────
 def extraer_metadatos(md_text: str) -> dict:
@@ -1010,6 +1152,13 @@ def add_section_ids(html_body: str):
             sections.append({'id': slug, 'label': display, 'level': level})
         elif level == 4:
             h4_sections.append({'id': slug, 'label': clean_label})
+            share = (
+                f'<span class="share-btns">'
+                f'<button class="share-btn" onclick="copyLink(\'{slug}\')" title="Copiar link directo a esta noticia">&#128279; Link</button>'
+                f'<button class="share-btn" onclick="copyCard(\'{slug}\')" title="Copiar resumen para compartir">&#128203; Copiar</button>'
+                f'</span>'
+            )
+            return f'<h{tag} id="{slug}"><span class="h4-text">{clean_inner}</span>{share}</h{tag}>'
         return f'<h{tag} id="{slug}">{clean_inner}</h{tag}>'
 
     modified = re.sub(r'<h([234])>(.*?)</h\1>', replace_heading, html_body, flags=re.DOTALL)
@@ -1218,7 +1367,7 @@ def build_html(md_text: str) -> str:
     )
     html = html.replace(
         '</body>\n</html>',
-        f'<script>\n{NAV_JS}\n</script>\n</body>\n</html>'
+        f'<script>\n{NAV_JS}\n{SHARE_JS}\n</script>\n</body>\n</html>'
     )
     return html
 
