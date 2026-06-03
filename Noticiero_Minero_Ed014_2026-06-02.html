@@ -663,6 +663,64 @@ mark.search-hl.current {
     .nav-h2-link { font-size: 12pt; padding: 14px 16px; }
     .nav-sub-link { font-size: 11pt; padding: 11px 14px; }
 }
+
+/* ══════════════════════════════════════
+   SHARE BUTTONS
+══════════════════════════════════════ */
+.share-btns {
+    display: inline-flex;
+    gap: 4px;
+    margin-left: 10px;
+    opacity: 0;
+    transition: opacity 0.2s;
+    vertical-align: middle;
+    line-height: 1;
+}
+h4:hover .share-btns { opacity: 1; }
+@media (hover: none) { .share-btns { opacity: 0.7; } }
+.share-btn {
+    background: none;
+    border: 1px solid var(--copper);
+    border-radius: 4px;
+    color: var(--copper);
+    cursor: pointer;
+    font-size: 7.5pt;
+    padding: 2px 7px;
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.5;
+    white-space: nowrap;
+    transition: background 0.15s, color 0.15s;
+    font-weight: 500;
+}
+.share-btn:hover { background: var(--copper); color: white; }
+.share-toast {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%) translateY(60px);
+    background: var(--night);
+    color: white;
+    padding: 9px 22px;
+    border-radius: 24px;
+    font-size: 9.5pt;
+    font-family: 'DM Sans', sans-serif;
+    z-index: 99999;
+    opacity: 0;
+    transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), opacity 0.2s;
+    pointer-events: none;
+    border: 1px solid rgba(226,185,111,0.5);
+}
+.share-toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+.anchor-highlight {
+    animation: anchor-glow 2.8s ease forwards;
+    border-radius: 4px;
+}
+@keyframes anchor-glow {
+    0%   { background-color: rgba(226,185,111,0.4); }
+    65%  { background-color: rgba(226,185,111,0.15); }
+    100% { background-color: transparent; }
+}
+@media print { .share-btns, .share-toast { display: none !important; } }
 </style>
 </head>
 <body>
@@ -830,7 +888,7 @@ mark.search-hl.current {
             </div>
             <div class="cover-meta-item">
                 <div class="label">Fecha de publicación</div>
-                <div class="value">03 de June de 2026, 10:06 hrs</div>
+                <div class="value">03 de June de 2026, 12:45 hrs</div>
             </div>
             <div class="cover-meta-item">
                 <div class="label">Énfasis editorial</div>
@@ -862,7 +920,7 @@ mark.search-hl.current {
 <hr />
     <p class="es-footer-note">
         Este informe contiene 29 noticias analizadas, precios spot actualizados para 7 minerales y 1 concepto(s) educativo(s) de la semana.
-        Fuentes verificadas al 03 de June de 2026, 10:06 hrs.
+        Fuentes verificadas al 03 de June de 2026, 12:45 hrs.
     </p>
 </div>
 
@@ -1057,7 +1115,7 @@ El ban efectivo desde el 1 de mayo elimina el 37% del suministro importado de Ch
 <hr />
 <h2 id="anlisis-por-mineral">ANÁLISIS POR MINERAL</h2>
 <h3 id="platinoides-pgm-seccin-prioritaria-esta-semana">️ Platinoides (PGM) — Sección prioritaria esta semana</h3>
-<h4 id="platino-en-correccin-de-cuatro-semanas-cclica-">Platino en corrección de cuatro semanas: ¿cíclica o secular?</h4>
+<h4 id="platino-en-correccin-de-cuatro-semanas-cclica-"><span class="h4-text">Platino en corrección de cuatro semanas: ¿cíclica o secular?</span><span class="share-btns"><button class="share-btn" onclick="copyLink('platino-en-correccin-de-cuatro-semanas-cclica-')" title="Copiar link directo a esta noticia">&#128279; Link</button><button class="share-btn" onclick="copyCard('platino-en-correccin-de-cuatro-semanas-cclica-')" title="Copiar resumen para compartir">&#128203; Copiar</button></span></h4>
 <p><strong>El hecho:</strong> Platino cerró en USD 1.935/oz, cuarta semana consecutiva de baja desde el pico de Ed.11 (USD 2.050/oz). La corrección acumulada es -5,6% en un mes. [■■■■░] (Kitco / Trading Economics, 02/06)</p>
 <p><strong>El contexto:</strong> El WPIC publicó su Platinum Quarterly Q1 2026 el 18 de mayo (cubierto en Ed.13): déficit proyectado de ~297.000 oz para el año, cuarto año consecutivo en rojo. El bull case de largo plazo sigue intacto. Sin embargo, la semana del 12 de mayo el platino tocó USD 2.050/oz — un nivel que el mercado no había visto desde 2021 — e inició una corrección ordenada.</p>
 <p><strong>📊 DIAGNÓSTICO SECULAR/CÍCLICO:</strong><br />
@@ -1071,7 +1129,7 @@ Driver secular alcista (intacto): WPIC publicó esta semana que la economía del
 | <strong>Como empresario</strong> | La demanda de platino para hidrógeno proyectada por WPIC crea oportunidades en la cadena de suministro: distribución de catalizadores, refining, reciclaje de celdas de combustible. |<br />
 | <strong>Como gerente</strong> | Si la empresa tiene subproductos de PGM (como ocurre en algunas mineras de Au/Ag en Chile), esta corrección reduce el crédito transitoriamente. No rediseñar la estrategia por un movimiento de cuatro semanas. |</p>
 <hr />
-<h4 id="rodio-correccin-acelerada-con-seal-secular-baj">Rodio: corrección acelerada con señal secular bajista</h4>
+<h4 id="rodio-correccin-acelerada-con-seal-secular-baj"><span class="h4-text">Rodio: corrección acelerada con señal secular bajista</span><span class="share-btns"><button class="share-btn" onclick="copyLink('rodio-correccin-acelerada-con-seal-secular-baj')" title="Copiar link directo a esta noticia">&#128279; Link</button><button class="share-btn" onclick="copyCard('rodio-correccin-acelerada-con-seal-secular-baj')" title="Copiar resumen para compartir">&#128203; Copiar</button></span></h4>
 <p><strong>El hecho:</strong> Rodio en ~USD 8.750/oz (-5,9% semanal, -12,3% en 4 semanas). La tendencia es la más negativa del complejo PGM. [■■■░░] (Umicore PMM / Trading Economics, 01/06)</p>
 <p><strong>El contexto:</strong> A diferencia del platino, el rodio no tiene una narrativa secular alcista nueva que compense la presión de largo plazo: la transición a vehículos eléctricos reduce la demanda de catalizadores de tres vías (donde el rodio es insumo crítico). El rodio subió violentamente durante 2020-2021 (USD 29.000/oz) por escasez post-COVID, y ha corregido desde entonces. El nivel actual de USD 8.750/oz sigue siendo +61,9% sobre el precio de hace un año.</p>
 <p><strong>📊 DIAGNÓSTICO SECULAR/CÍCLICO:</strong><br />
@@ -1079,7 +1137,7 @@ Driver secular bajista real: cada EV vendido reemplaza un catalizador de combust
 Driver cíclico (amortiguador): la demanda de autos a combustión sigue siendo masiva hoy; la transición tarda décadas.<br />
 → <strong>DIAGNÓSTICO: MIXTO con componente secular bajista creciente.</strong> A diferencia del platino (que tiene el hidrógeno como sustituto de demanda), el rodio no tiene un driver nuevo de largo plazo. La corrección actual incluye un componente secular que el platino no tiene. Horizonte: tendencia bajista secular de fondo, con rebotes cíclicos. [■■■░░]</p>
 <hr />
-<h4 id="wpic-hidrgeno-podra-multiplicar-10-la-demanda-">WPIC: Hidrógeno podría multiplicar 10× la demanda de platino antes de 2030</h4>
+<h4 id="wpic-hidrgeno-podra-multiplicar-10-la-demanda-"><span class="h4-text">WPIC: Hidrógeno podría multiplicar 10× la demanda de platino antes de 2030</span><span class="share-btns"><button class="share-btn" onclick="copyLink('wpic-hidrgeno-podra-multiplicar-10-la-demanda-')" title="Copiar link directo a esta noticia">&#128279; Link</button><button class="share-btn" onclick="copyCard('wpic-hidrgeno-podra-multiplicar-10-la-demanda-')" title="Copiar resumen para compartir">&#128203; Copiar</button></span></h4>
 <p><strong>El hecho:</strong> El WPIC publicó esta semana un análisis donde proyecta que la economía del hidrógeno podría elevar la demanda de platino desde ~90.000 oz actuales a ~900.000 oz para 2030. La demanda de inversión en barras y monedas subió +27% a 718.000 oz en Q1 2026. (Kitco News / Mining Weekly, 22/05) [■■■■░]</p>
 <p><strong>El contexto:</strong> Los electrolizadores PEM (Proton Exchange Membrane) para producción de hidrógeno verde usan platino como catalizador en cantidades significativas — entre 0,3 y 1 g/kW instalado. La baja de costos de los electrolizadores, impulsada por subsidios europeos y del IRA en EE.UU., está acelerando los proyectos. Si la proyección del WPIC se materializa aunque sea al 50%, el impacto en el mercado de un metal que ya está en déficit estructural sería extraordinario.</p>
 <p><strong>Marco estratégico — Opción real:</strong><br />
@@ -1089,7 +1147,7 @@ El platino funciona hoy como una opción real sobre la economía del hidrógeno:
 </blockquote>
 <hr />
 <h3 id="tierras-raras-ree">Tierras Raras (REE)</h3>
-<h4 id="mp-materials-demanda-usa-rare-earth-fractura-int">MP Materials demanda USA Rare Earth: fractura interna del ecosistema occidental de REE</h4>
+<h4 id="mp-materials-demanda-usa-rare-earth-fractura-int"><span class="h4-text">MP Materials demanda USA Rare Earth: fractura interna del ecosistema occidental de REE</span><span class="share-btns"><button class="share-btn" onclick="copyLink('mp-materials-demanda-usa-rare-earth-fractura-int')" title="Copiar link directo a esta noticia">&#128279; Link</button><button class="share-btn" onclick="copyCard('mp-materials-demanda-usa-rare-earth-fractura-int')" title="Copiar resumen para compartir">&#128203; Copiar</button></span></h4>
 <p><strong>El hecho:</strong> MP Materials (Mountain Pass, California) interpuso demanda contra USA Rare Earth acusándola de robo de tecnología propietaria de difusión de bordes de grano (grain boundary diffusion) para la fabricación de magnetos de neodimio de alta coercitividad. El litigio se presentó en la semana del 27-31 de mayo. [■■■■░] (MINING.COM / Benzinga, semana del 27/05)</p>
 <p><strong>El contexto:</strong> Ambas empresas son los dos pilares del programa de independencia de REE de EE.UU. MP Materials recibió ~USD 400M del Pentágono (DoD) para construir la cadena de producción de magnetos en Mountain Pass. USA Rare Earth recibió ~USD 1.600M en garantías y contratos DoD para su planta de Texas. El litigio pone en riesgo de retraso el único ecosistema doméstico de producción de magnetos de tierras raras fuera de China.</p>
 <p><strong>La conexión no obvia:</strong> Este litigio entre los dos programas de independencia REE más importantes de EE.UU. ocurre en la misma semana en que NdPr sube +4,8%. El mercado empieza a descontar que la diversificación de la cadena REE occidental está más complicada de lo esperado — lo que podría extender la ventana de dependencia de China y sostener precios de NdPr más altos por más tiempo.</p>
@@ -1102,13 +1160,13 @@ El platino funciona hoy como una opción real sobre la economía del hidrógeno:
 <p><strong>¿Qué viene después?</strong> El juicio se resolverá en meses o años. El indicador a seguir: si DoD toma partido activamente (renegociación de contratos con una de las partes), es señal de cuál empresa considera estratégicamente prioritaria.</p>
 </blockquote>
 <hr />
-<h4 id="critical-metals-corp-tanbreez-groenlandia-ree-oc">Critical Metals Corp / Tanbreez (Groenlandia): REE occidentales avanzan en paralelo</h4>
+<h4 id="critical-metals-corp-tanbreez-groenlandia-ree-oc"><span class="h4-text">Critical Metals Corp / Tanbreez (Groenlandia): REE occidentales avanzan en paralelo</span><span class="share-btns"><button class="share-btn" onclick="copyLink('critical-metals-corp-tanbreez-groenlandia-ree-oc')" title="Copiar link directo a esta noticia">&#128279; Link</button><button class="share-btn" onclick="copyCard('critical-metals-corp-tanbreez-groenlandia-ree-oc')" title="Copiar resumen para compartir">&#128203; Copiar</button></span></h4>
 <p><strong>El hecho:</strong> Critical Metals Corp publicó el 2 de junio una actualización de su proyecto Tanbreez (Groenlandia) — uno de los mayores yacimientos de tierras raras del mundo, con alta concentración de HREE (27% son tierras raras pesadas). La actualización reporta: vuelos diarios operativos, perforación ampliada con más rigs, y la planta piloto Etapa 1 en curso con producción prevista para agosto 2026. [■■■░░] (Stocktitan / Yahoo Finance / Manila Times, 02/06)</p>
 <p><strong>El contexto:</strong> Tanbreez tiene la ventaja competitiva de HREE (disprosio, terbio) que son los más escasos y con menor presencia en los depósitos de LREE (neodimio, praseodimio). La aceleración del plan de desarrollo (jets diarios, más rigs) es señal de financiamiento activo. El proyecto todavía está en etapa de piloto — producción comercial a escala es al menos 3-5 años para adelante.</p>
 <p><strong>Para el lector:</strong> Este proyecto ilustra cómo el ecosistema REE fuera de China está en distintas etapas de madurez. MP Materials (producción desde 2022), Tanbreez (piloto 2026), proyectos en Chile (exploración/PEA). Para quien evalúa oportunidades en REE: el timing de maduración importa tanto como el depósito.</p>
 <hr />
 <h3 id="cobre">Cobre</h3>
-<h4 id="produccin-de-chile-en-mnimo-de-27-aos-y-el-pr">Producción de Chile en mínimo de 27 años — y el precio ya lo dice</h4>
+<h4 id="produccin-de-chile-en-mnimo-de-27-aos-y-el-pr"><span class="h4-text">Producción de Chile en mínimo de 27 años — y el precio ya lo dice</span><span class="share-btns"><button class="share-btn" onclick="copyLink('produccin-de-chile-en-mnimo-de-27-aos-y-el-pr')" title="Copiar link directo a esta noticia">&#128279; Link</button><button class="share-btn" onclick="copyCard('produccin-de-chile-en-mnimo-de-27-aos-y-el-pr')" title="Copiar resumen para compartir">&#128203; Copiar</button></span></h4>
 <p><strong>El hecho:</strong> Chile publicó que su producción de cobre cayó 13,8% interanual en abril 2026 — el peor registro para ese mes en muchos años. La producción propia de Codelco en Q1 2026 fue de 272.000 tmf (-8,1% interanual), el mínimo en al menos 27 años según Bloomberg. El precio LME respondió: 6,56 USD/lb al cierre del 2 de junio, máximo de la edición. [■■■■■] (Bloomberg / MINING.COM, semana del 27/05; Codelco Q1, 01/06)</p>
 <p><strong>El contexto:</strong> El tightness del mercado de cobre que los bancos de inversión venían proyectando para 2025-2030 se materializa con velocidad mayor a la esperada. La causa raíz tiene dos capas: (1) la sobrestimación de producción de ~27.000 t en Codelco que infló artificialmente las cifras de 2025, y (2) el desempeño operacional real, donde El Teniente cayó 26% y Chuquicamata 18% en Q1. Goldman Sachs elevó su target de precio del cobre para H2 2026 a USD 13.735/t (~6,23 USD/lb) — ahora superado por el precio real.</p>
 <p><strong>📊 DIAGNÓSTICO SECULAR/CÍCLICO:</strong><br />
@@ -1117,7 +1175,7 @@ Driver secular: no hay suficientes proyectos greenfield de cobre en el pipeline 
 → <strong>DIAGNÓSTICO: MIXTO con sesgo secular.</strong> El precio 6,56 USD/lb no es solo un artefacto de problemas operacionales de Codelco — es el mercado descontando que la oferta estructural de Chile y globalmente no crece al ritmo necesario para la electrificación. [■■■■░]</p>
 <hr />
 <h3 id="litio">Litio</h3>
-<h4 id="sqm-q1-2026-utilidades-165-el-ciclo-del-litio-en">SQM Q1 2026: utilidades +165% — el ciclo del litio en modo alcista</h4>
+<h4 id="sqm-q1-2026-utilidades-165-el-ciclo-del-litio-en"><span class="h4-text">SQM Q1 2026: utilidades +165% — el ciclo del litio en modo alcista</span><span class="share-btns"><button class="share-btn" onclick="copyLink('sqm-q1-2026-utilidades-165-el-ciclo-del-litio-en')" title="Copiar link directo a esta noticia">&#128279; Link</button><button class="share-btn" onclick="copyCard('sqm-q1-2026-utilidades-165-el-ciclo-del-litio-en')" title="Copiar resumen para compartir">&#128203; Copiar</button></span></h4>
 <p><strong>El hecho:</strong> SQM publicó el 27 de mayo: utilidades netas Q1 2026 de USD 365M (+165% interanual), ingresos de USD 1.760M (+70%), EBITDA de USD 837M. El precio realizado del litio subió de USD 10/kg en Q4 2025 a USD 18/kg en Q1 2026. La compañía elevó su guidance de crecimiento de volumen de litio de +10% a +15% para 2026. [■■■■■] (StockTitan / Diario Financiero / Nueva Minería, 27/05)</p>
 <p><strong>El contexto:</strong> Estos resultados confirman que el rebote del litio desde los mínimos de 2024 tiene sustancia operacional — no es solo expectativa. El precio de venta de SQM de USD 18/kg implica un mercado spot considerablemente más alto que los contratos legacy a USD 10/kg. La pregunta para los próximos trimestres es cuánto tiempo aguanta este nivel ante la entrada de nueva oferta.</p>
 <p><strong>La amenaza al bull case — Zijin Mining:</strong> Zijin Mining anunció el comienzo del comisionamiento comercial de su proyecto Manono (República Democrática del Congo) en junio 2026, con capacidad de 120.000 t LCE para 2026 y 270.000-320.000 t para 2028. Es el mayor incremento de oferta de litio del año. El precio de litio ha respondido: -0,9% esta semana, reanudando la corrección tras el rebote de Ed.13. [■■■░░] (Mysteel / MINING.COM)</p>
@@ -1131,7 +1189,7 @@ Driver secular: no hay suficientes proyectos greenfield de cobre en el pipeline 
 <hr />
 <h2 id="chile-minero">CHILE MINERO</h2>
 <h3 id="codelco-crisis-institucional-en-escala">Codelco — Crisis institucional en escala</h3>
-<h4 id="fontaine-asume-el-directorio-con-mandato-de-sali">Fontaine asume el directorio con mandato de salida de Alvarado</h4>
+<h4 id="fontaine-asume-el-directorio-con-mandato-de-sali"><span class="h4-text">Fontaine asume el directorio con mandato de salida de Alvarado</span><span class="share-btns"><button class="share-btn" onclick="copyLink('fontaine-asume-el-directorio-con-mandato-de-sali')" title="Copiar link directo a esta noticia">&#128279; Link</button><button class="share-btn" onclick="copyCard('fontaine-asume-el-directorio-con-mandato-de-sali')" title="Copiar resumen para compartir">&#128203; Copiar</button></span></h4>
 <p><strong>El hecho:</strong> Bernardo Fontaine asumió como nuevo presidente del directorio de Codelco el 28 de mayo, con misión explícita del gobierno Kast de acelerar la salida del presidente ejecutivo Rubén Alvarado. El 2 de junio, Alvarado y la presidenta del Comité de Auditoría (Tamara Agnic) fueron citados a la Comisión de Minería de la Cámara de Diputados. Correos internos revelados en la semana confirman que Alvarado habría visado gestiones relacionadas con el proceso de reporte de producción. [■■■■■] (Ex-Ante / La Tercera / T13, 27/05–02/06)</p>
 <p><strong>El hecho 2 — Resultados Q1 2026:</strong> Codelco publicó el 1 de junio un EBITDA de USD 2.143M (+fuertemente impulsado por precio del cobre), pero producción propia de solo 272.000 tmf, el mínimo en 27 años. El Teniente cayó 26% y Chuquicamata 18% interanual. Los bonos pagados con cifras infladas suman USD 14,3M a ~6.300 funcionarios. El fiscal Aquiles Cubillos (O'Higgins) investiga posibles delitos de falsificación de documentos públicos y fraude al Estado. [■■■■■] (Portal Minero / Bloomberg / Reuters, 01/06)</p>
 <p><strong>El contexto estratégico:</strong> Codelco enfrenta simultáneamente una crisis de gobernanza, una crisis de producción y una investigación penal activa. El debate sobre la privatización parcial de Codelco —mencionado en el parlamento esta semana por primera vez en años— es la consecuencia más importante a monitorear: no porque sea probable en el corto plazo, sino porque su sola mención cambia el marco de referencia para la valoración de los activos de la empresa.</p>
@@ -1158,11 +1216,11 @@ Driver secular: no hay suficientes proyectos greenfield de cobre en el pipeline 
 <h2 id="insumos-estratgicos">️ INSUMOS ESTRATÉGICOS</h2>
 <h3 id="crisis-de-cido-sulfrico-la-amenaza-invisible-a">Crisis de Ácido Sulfúrico — La Amenaza Invisible al Cobre Chileno</h3>
 <p>Esta es la sección más importante de la edición para operadores de minería de lixiviación.</p>
-<h4 id="la-anatoma-de-la-crisis">La anatomía de la crisis</h4>
+<h4 id="la-anatoma-de-la-crisis"><span class="h4-text">La anatomía de la crisis</span><span class="share-btns"><button class="share-btn" onclick="copyLink('la-anatoma-de-la-crisis')" title="Copiar link directo a esta noticia">&#128279; Link</button><button class="share-btn" onclick="copyCard('la-anatoma-de-la-crisis')" title="Copiar resumen para compartir">&#128203; Copiar</button></span></h4>
 <p><strong>Causa raíz — Cierre del Estrecho de Hormuz (activo desde febrero 2026):</strong> El 45% del comercio marítimo global de azufre pasa por Hormuz. El azufre del Golfo Pérsico es el insumo principal para producir ácido sulfúrico a nivel mundial. El cierre desde fines de febrero eliminó una fracción significativa del azufre disponible en el mercado internacional, forzando a China a reservar su producción doméstica de ácido. [■■■■■] (WEF / Wikipedia, activo)</p>
 <p><strong>El ban chino (efectivo desde 1 de mayo 2026):</strong> China suspendió las exportaciones de ácido sulfúrico desde el 1 de mayo. Chile importaba el 37% de su ácido del mercado chino (~4 millones mt/año totales). El precio spot CFR Mejillones pasó de ~USD 190/mt en febrero a USD 380/mt al 15 de abril — un aumento del 100% en 7 semanas, <strong>antes</strong> de que el ban se hiciera efectivo. [■■■■■] (Bloomberg / S&amp;P Global / MINING.COM, 10/04 y 21/04)</p>
 <p><strong>El H2 2026 descubierto:</strong> S&amp;P Global confirmó en su análisis del 21 de abril que los compradores chilenos cubrieron el H1 2026 con contratos anteriores al ban, pero dejaron el H2 (julio-diciembre) mayoritariamente sin cobertura. La ventana crítica es ahora: junio es el primer mes de H2. Goldman Sachs estima ~200.000 t de cobre en riesgo directo; Morgan Stanley eleva la cifra a 1,1MM t de cobre por lixiviación (SX-EW) potencialmente afectado — más de la mitad del cobre refinado chileno. [■■■■■] (S&amp;P Global, 21/04; Goldman Sachs; Morgan Stanley / The Deep Dive)</p>
-<h4 id="el-impacto-para-la-mediana-minera">El impacto para la mediana minería</h4>
+<h4 id="el-impacto-para-la-mediana-minera"><span class="h4-text">El impacto para la mediana minería</span><span class="share-btns"><button class="share-btn" onclick="copyLink('el-impacto-para-la-mediana-minera')" title="Copiar link directo a esta noticia">&#128279; Link</button><button class="share-btn" onclick="copyCard('el-impacto-para-la-mediana-minera')" title="Copiar resumen para compartir">&#128203; Copiar</button></span></h4>
 <p>La producción de cobre por lixiviación (pilas de lixiviación + SX-EW) es el método dominante en pequeña y mediana minería de Chile. A diferencia de la flotación convencional, la lixiviación depende directamente del ácido sulfúrico para disolver el cobre de los minerales oxidados. Sin ácido, la planta se detiene.</p>
 <p>Las empresas más expuestas al riesgo de suministro son las que:<br />
 - No tienen contratos de largo plazo cubriendo H2 2026<br />
@@ -1601,6 +1659,89 @@ Cómo conectar: EXPONOR 2026 (8-11 junio, Antofagasta) — es el evento donde ca
             if (e.key === 'Escape') closeNavMenu();
         });
     }
+})();
+
+
+(function () {
+    /* Toast de confirmación */
+    function showToast(msg) {
+        var t = document.getElementById('share-toast');
+        if (!t) {
+            t = document.createElement('div');
+            t.id = 'share-toast';
+            t.className = 'share-toast';
+            document.body.appendChild(t);
+        }
+        t.textContent = msg;
+        t.classList.add('show');
+        setTimeout(function () { t.classList.remove('show'); }, 2200);
+    }
+
+    function writeClipboard(text, onOk) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(onOk).catch(function () { fallback(text, onOk); });
+        } else {
+            fallback(text, onOk);
+        }
+    }
+
+    function fallback(text, onOk) {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.cssText = 'position:fixed;opacity:0;top:0;left:0';
+        document.body.appendChild(ta);
+        ta.focus(); ta.select();
+        try { document.execCommand('copy'); onOk(); } catch (e) {}
+        document.body.removeChild(ta);
+    }
+
+    /* Copiar link directo */
+    window.copyLink = function (id) {
+        var url = window.location.href.split('#')[0] + '#' + id;
+        writeClipboard(url, function () { showToast('Link copiado ✓'); });
+    };
+
+    /* Copiar tarjeta de resumen */
+    window.copyCard = function (id) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        var titleEl = el.querySelector('.h4-text');
+        var title = titleEl ? titleEl.textContent.trim() : el.childNodes[0].textContent.trim();
+        /* Extraer primeros 2-3 párrafos siguientes al heading */
+        var paragraphs = [];
+        var sib = el.nextElementSibling;
+        var count = 0;
+        while (sib && count < 3) {
+            if (sib.tagName === 'P') {
+                var txt = sib.textContent.trim();
+                if (txt.length > 30) { paragraphs.push(txt); count++; }
+            } else if (['H2', 'H3', 'H4', 'TABLE', 'HR'].includes(sib.tagName)) {
+                break;
+            }
+            sib = sib.nextElementSibling;
+        }
+        var url = window.location.href.split('#')[0] + '#' + id;
+        var body = paragraphs.length ? paragraphs.join('\n\n') : '(ver artículo completo en el link)';
+        if (body.length > 380) { body = body.slice(0, 377) + '…'; }
+        var card = '📌 ' + title + '\n\n' + body + '\n\n🪨 Noticiero Minero · ' + url;
+        writeClipboard(card, function () { showToast('Resumen copiado ✓'); });
+    };
+
+    /* Highlight de la sección al navegar por anchor */
+    function highlightAnchor() {
+        var hash = window.location.hash;
+        if (!hash) return;
+        try {
+            var el = document.querySelector(hash);
+            if (!el) return;
+            el.classList.remove('anchor-highlight');
+            void el.offsetWidth; /* reiniciar animación */
+            el.classList.add('anchor-highlight');
+            setTimeout(function () { el.classList.remove('anchor-highlight'); }, 3000);
+        } catch (e) {}
+    }
+    window.addEventListener('hashchange', highlightAnchor);
+    setTimeout(highlightAnchor, 320); /* esperar render completo */
 })();
 
 </script>
