@@ -721,6 +721,58 @@ h4:hover .share-btns { opacity: 1; }
     100% { background-color: transparent; }
 }
 @media print { .share-btns, .share-toast { display: none !important; } }
+
+/* ══════════════════════════════════════
+   CLASE EJECUTIVA — TEASER CARD
+══════════════════════════════════════ */
+.clase-card {
+    background: var(--night);
+    color: white;
+    border-radius: 6px;
+    padding: 22px 26px 20px;
+    margin: 18px 0 24px;
+    border-left: 4px solid var(--gold);
+}
+.cc-badge {
+    display: inline-block;
+    background: rgba(226,185,111,0.18);
+    color: var(--gold);
+    font-size: 7pt;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+}
+.cc-title {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: 11.5pt !important;
+    font-weight: 700 !important;
+    color: white !important;
+    margin: 0 0 10px !important;
+    line-height: 1.4 !important;
+    border: none !important;
+    padding: 0 !important;
+    background: none !important;
+}
+.cc-intro {
+    color: rgba(255,255,255,0.72);
+    font-size: 9.5pt;
+    line-height: 1.65;
+    margin-bottom: 16px;
+}
+.cc-link {
+    display: inline-block;
+    color: var(--gold);
+    font-weight: 600;
+    font-size: 9pt;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(226,185,111,0.4);
+    padding-bottom: 1px;
+    transition: border-color 0.15s;
+}
+.cc-link:hover { border-color: var(--gold); }
 </style>
 </head>
 <body>
@@ -888,7 +940,7 @@ h4:hover .share-btns { opacity: 1; }
             </div>
             <div class="cover-meta-item">
                 <div class="label">Fecha de publicación</div>
-                <div class="value">03 de June de 2026, 12:45 hrs</div>
+                <div class="value">04 de June de 2026, 11:15 hrs</div>
             </div>
             <div class="cover-meta-item">
                 <div class="label">Énfasis editorial</div>
@@ -920,7 +972,7 @@ h4:hover .share-btns { opacity: 1; }
 <hr />
     <p class="es-footer-note">
         Este informe contiene 29 noticias analizadas, precios spot actualizados para 7 minerales y 1 concepto(s) educativo(s) de la semana.
-        Fuentes verificadas al 03 de June de 2026, 12:45 hrs.
+        Fuentes verificadas al 04 de June de 2026, 11:15 hrs.
     </p>
 </div>
 
@@ -1304,79 +1356,7 @@ Driver secular: no hay suficientes proyectos greenfield de cobre en el pipeline 
 <p><strong>Hormuz — Situación activa:</strong> El Estrecho de Hormuz sigue siendo la variable geopolítica más subestimada en el análisis de costos de minería. El acuerdo tentativo EE.UU.-Irán del 24-25 mayo redujo la prima de riesgo en el Brent (-5,4% esta semana) pero no resolvió el bloqueo de azufre. La caída del Brent es buena para los costos de energía y transporte de las mineras, pero no compensa el shock del ácido.</p>
 <hr />
 <h2 id="clase-ejecutiva-de-la-semana">CLASE EJECUTIVA DE LA SEMANA</h2>
-<p><strong>Lección N° 14: Procurement Estratégico de Insumos — Por qué las Mineras no se Cubren (y Cuánto les Cuesta)</strong><br />
-<em>Strategic Procurement in Mining — The Hidden Cost of Reactive Purchasing</em><br />
-<strong>Pilar:</strong> Operaciones mineras</p>
-<hr />
-<h3 id="el-concepto">El concepto</h3>
-<p><strong>Procurement estratégico</strong> es la gestión activa del suministro de insumos críticos a través del tiempo, con el objetivo de reducir la volatilidad de costos y garantizar la continuidad operacional. A diferencia del procurement táctico (comprar cuando necesito, al precio del mercado), el estratégico anticipa: identifica la cadena de suministro de cada insumo crítico, diversifica fuentes, y establece contratos de largo plazo o coberturas financieras para los más volátiles.</p>
-<p>En minería, los insumos más críticos para el proceso son:<br />
-- <strong>Reactivos de proceso:</strong> ácido sulfúrico (lixiviación), cianuro (cementación), cal (flotación)<br />
-- <strong>Energía:</strong> electricidad, diésel, gas natural<br />
-- <strong>Consumibles mecánicos:</strong> neumáticos gigantes, correas transportadoras, bolas de molienda<br />
-- <strong>Agua</strong> (en norte de Chile: desalinización o DGA)</p>
-<p>El ácido sulfúrico es el más volátil de todos porque su precio depende de una cadena global (azufre → H2SO4 → transporte marítimo) que puede ser interrumpida en cualquier punto.</p>
-<h3 id="por-qu-las-mineras-no-se-cubren-y-no-es-por-ign">Por qué las mineras no se cubren (y no es por ignorancia)</h3>
-<p>El problema es de incentivos y estructura organizacional:</p>
-<ol>
-<li>
-<p><strong>El gerente de operaciones maximiza producción hoy.</strong> El procurement de largo plazo requiere capital en caja para pagar contratos anticipados. Ese capital compite con la inversión en producción — y producción siempre gana en el corto plazo.</p>
-</li>
-<li>
-<p><strong>El precio spot en 2023-2024 era muy bajo.</strong> Con H2SO4 en USD 130-190/mt, nadie quería "desperdiciar dinero" pagando contratos de largo plazo a USD 220-250/mt. La gestión de riesgo siempre parece cara antes de que el riesgo se materialice.</p>
-</li>
-<li>
-<p><strong>Las mineras medianas no tienen acceso a instrumentos financieros sofisticados.</strong> Las grandes pueden hacer swaps de materias primas y usar derivados OTC para cubrir precios de insumos. Las medianas no tienen la tesorería, los contratos bancarios ni el volumen mínimo para acceder a esos mercados.</p>
-</li>
-<li>
-<p><strong>La responsabilidad está fragmentada.</strong> Compras negocia. Operaciones consume. Finanzas aprueba. Ningún área tiene incentivo individual para proponer un contrato de 3 años con precio fijo más alto que el spot.</p>
-</li>
-</ol>
-<h3 id="caso-real-de-esta-semana-el-h2-2026-descubierto">Caso real de esta semana: el H2 2026 descubierto</h3>
-<p>Las mineras chilenas cubrieron H1 2026 porque los contratos de H1 se negocian en octubre-noviembre del año anterior — cuando el shock de Hormuz (febrero) todavía no había ocurrido. Pero los contratos de H2 se negocian en marzo-abril 2026, justo cuando:<br />
-- Hormuz ya estaba cerrado (+45% azufre afectado)<br />
-- China ya anunciaba el ban<br />
-- El precio spot había subido 100% en 7 semanas</p>
-<p>El resultado: las compras de H2 se postergaron esperando que el precio bajara — y no bajó. Ahora el H2 está descubierto y el mercado spot para julio-diciembre cotiza con una prima de crisis sobre el USD 380/mt de abril.</p>
-<p><strong>La lección de costo:</strong> Si una minera mediana consume 5.000 t/mes de ácido (cifra ilustrativa), un incremento de USD 100/t en el precio es USD 500.000/mes de costo adicional, o USD 3MM en H2. Ese es el costo exacto de no haber firmado contratos de largo plazo en octubre 2025.</p>
-<h3 id="por-qu-importa-en-esta-etapa-de-carrera">Por qué importa en esta etapa de carrera</h3>
-<table>
-<thead>
-<tr>
-<th>Rol</th>
-<th>Lo que esto cambia</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Analista</strong></td>
-<td>La sensibilidad del modelo de costos a los insumos es tan importante como la sensibilidad al precio del metal. Un modelo de C1 que no tiene escenarios de H2SO4 +50-100% es incompleto.</td>
-</tr>
-<tr>
-<td><strong>Gerente</strong></td>
-<td>Proponer un sistema de procurement estratégico es una de las iniciativas de mayor ROI que puede implementar. Cuesta tiempo y coordinación, no dinero.</td>
-</tr>
-<tr>
-<td><strong>Director/Ejecutivo</strong></td>
-<td>La política de procurement debería ser aprobada por el directorio, no delegada a operaciones. Es una decisión de gestión de riesgo estratégico.</td>
-</tr>
-<tr>
-<td><strong>Empresario</strong></td>
-<td>Quien resuelva el problema de acceso a contratos de largo plazo de insumos para la mediana minería tiene un negocio con barreras de entrada altas y demanda asegurada.</td>
-</tr>
-<tr>
-<td><strong>Inversor</strong></td>
-<td>Al evaluar una minera, pregunta: ¿tiene contratos de suministro de insumos para los próximos 12 meses? ¿A qué precio? Si la respuesta es "compramos en el mercado spot", el riesgo de margen es mayor de lo que el modelo de DCF captura.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="lo-que-distingue-a-quien-lo-entiende-profundo">Lo que distingue a quien lo entiende profundo</h3>
-<p>La mayoría sabe que el ácido sulfúrico subió. Los que entienden profundo saben que:<br />
-- El precio del ácido está estructuralmente vinculado al precio del azufre, que a su vez depende de la producción de gas natural licuado (el azufre es un subproducto del gas). <br />
-- Cuando el mercado de LNG se tensiona (como en 2022 post-Ucrania, o 2026 post-Hormuz), el azufre disponible cae y el ácido sube con rezago de 3-6 meses.<br />
-- El hedging de insumos de proceso no existe formalmente en Chile para la mediana minería — es uno de los pocos mercados donde no hay intermediarios financieros.<br />
-- Las refinerías de cobre europeas y japonesas venden ácido como subproducto a precios más estables (basados en netback de cobre). Son la fuente más predecible para los compradores que pueden manejar la logística.</p>
-<hr />
+<div class="clase-card"><div class="cc-badge">Operaciones mineras</div><p class="cc-title">Procurement Estratégico de Insumos — Por qué las Mineras no se Cubren (y Cuánto les Cuesta)</p><p class="cc-intro">El ácido sulfúrico es el más volátil de todos porque su precio depende de una cadena global (azufre → H2SO4 → transporte marítimo) que puede ser interrumpida en cualquier punto.…</p><a class="cc-link" href="escuela.html#leccion-14">Leer lección completa en la Escuela del Empresario →</a></div>
 <h2 id="calendario-prximas-semanas">CALENDARIO — PRÓXIMAS SEMANAS</h2>
 <h3 id="prximos-7-das">Próximos 7 días</h3>
 <ul>
