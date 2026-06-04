@@ -734,6 +734,58 @@ h4:hover .share-btns { opacity: 1; }
     100% { background-color: transparent; }
 }
 @media print { .share-btns, .share-toast { display: none !important; } }
+
+/* ══════════════════════════════════════
+   CLASE EJECUTIVA — TEASER CARD
+══════════════════════════════════════ */
+.clase-card {
+    background: var(--night);
+    color: white;
+    border-radius: 6px;
+    padding: 22px 26px 20px;
+    margin: 18px 0 24px;
+    border-left: 4px solid var(--gold);
+}
+.cc-badge {
+    display: inline-block;
+    background: rgba(226,185,111,0.18);
+    color: var(--gold);
+    font-size: 7pt;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+}
+.cc-title {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: 11.5pt !important;
+    font-weight: 700 !important;
+    color: white !important;
+    margin: 0 0 10px !important;
+    line-height: 1.4 !important;
+    border: none !important;
+    padding: 0 !important;
+    background: none !important;
+}
+.cc-intro {
+    color: rgba(255,255,255,0.72);
+    font-size: 9.5pt;
+    line-height: 1.65;
+    margin-bottom: 16px;
+}
+.cc-link {
+    display: inline-block;
+    color: var(--gold);
+    font-weight: 600;
+    font-size: 9pt;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(226,185,111,0.4);
+    padding-bottom: 1px;
+    transition: border-color 0.15s;
+}
+.cc-link:hover { border-color: var(--gold); }
 """
 
 # ── TEMPLATE HTML ────────────────────────────────────────────────────────────
@@ -1330,11 +1382,53 @@ def _strip_emoji(text: str) -> str:
     ).strip()
 
 
+def _clase_to_teaser_html(html_body: str, ed_num: str) -> str:
+    """Reemplaza el cuerpo completo de CLASE EJECUTIVA con un teaser card que enlaza a escuela.html."""
+    m = re.search(
+        r'(<h2[^>]*clase-ejecutiva[^>]*>.*?</h2>)(.*?)(?=<h2\b|\Z)',
+        html_body, re.DOTALL | re.IGNORECASE
+    )
+    if not m:
+        return html_body
+
+    section_html = m.group(2)
+
+    # Título de la lección
+    title_m = re.search(
+        r'<strong>Lecci[oó]n\s*N[°º]?\s*\d+[:\.\s]*([^<]{10,})</strong>',
+        section_html
+    )
+    title = title_m.group(1).strip() if title_m else f'Clase Ejecutiva Ed.{ed_num}'
+    # Limpiar posible sufijo en cursiva separado
+    title = re.sub(r'\s*—\s*$', '', title).strip()
+
+    # Pilar
+    pilar_m = re.search(r'<strong>Pilar[:\s]*</strong>\s*([^<\n]+)', section_html)
+    pilar = pilar_m.group(1).strip() if pilar_m else 'Clase ejecutiva'
+
+    # Primer párrafo sustancioso (>60 chars, no metadata)
+    paras = re.findall(r'<p>([^<]{60,})</p>', section_html)
+    intro = (paras[0][:240] + '…') if paras else ''
+
+    teaser = (
+        f'<div class="clase-card">'
+        f'<div class="cc-badge">{pilar}</div>'
+        f'<p class="cc-title">{title}</p>'
+        f'<p class="cc-intro">{intro}</p>'
+        f'<a class="cc-link" href="escuela.html#leccion-{ed_num}">'
+        f'Leer lección completa en la Escuela del Empresario →</a>'
+        f'</div>'
+    )
+
+    return html_body[:m.start(1)] + m.group(1) + '\n' + teaser + '\n' + html_body[m.end():]
+
+
 def build_html(md_text: str) -> str:
     md_text = _strip_gmlc_footer(md_text)
     meta = extraer_metadatos(md_text)
     raw_body = md_to_html_body(md_text)
     html_body, sections, h4_sections = add_section_ids(raw_body)
+    html_body = _clase_to_teaser_html(html_body, meta['numero_edicion'])
     resumen_html = construir_resumen_html(meta.get("resumen_ejecutivo", ""))
     resumen_html = link_summary_to_articles(resumen_html, h4_sections)
     nav_html = build_nav_html(sections)
