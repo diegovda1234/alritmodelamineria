@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al Ritmo de la Minería — Briefing Diario — 11 de junio de 2026</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;600&display=swap');
+
+:root {
+    --night:      #0F1C2E;
+    --slate:      #3B5070;
+    --mid-blue:   #4B6280;
+    --light-blue: #8FA3BC;
+    --cold-white: #F7F9FC;
+    --copper:     #B87333;
+    --gold:       #e2b96f;
+    --text:       #1A2535;
+    --muted:      #5B6E84;
+    --rule:       #D1D8E0;
+    --green:      #2a7a3b;
+    --red:        #b52b2b;
+    --dark:       var(--night);
+    --bg:         var(--cold-white);
+    --light:      #EEF2F7;
+    --black:      #0A1220;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'DM Sans', 'Segoe UI', sans-serif;
+    font-size: 10.5pt;
+    line-height: 1.75;
+    color: var(--text);
+    background: var(--cold-white);
+}
+
+/* ── BARRA NAV ── */
+@media print { .quick-nav { display: none !important; } body { padding-top: 0 !important; } }
+@media screen { body { padding-top: 50px; } }
+
+.quick-nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 9999;
+    height: 50px;
+    background: rgba(15,28,46,0.97);
+    backdrop-filter: blur(10px);
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 2px 14px rgba(0,0,0,0.4);
+    font-family: 'DM Sans', sans-serif;
+    border-bottom: 1px solid rgba(143,163,188,0.2);
+}
+.nav-brand { color: var(--gold); font-size: 8.5pt; font-weight: 700; white-space: nowrap; }
+.nav-back {
+    color: var(--light-blue); font-size: 8pt; text-decoration: none;
+    padding: 4px 10px; border: 1px solid rgba(143,163,188,0.3);
+    border-radius: 3px; white-space: nowrap;
+}
+.nav-back:hover { background: rgba(143,163,188,0.15); color: white; }
+.nav-date { color: var(--light-blue); font-size: 7.5pt; opacity: 0.7; margin-left: auto; }
+
+/* ── PORTADA ── */
+.cover {
+    background: var(--night);
+    color: white;
+    padding: 0;
+    border-bottom: 3px solid var(--copper);
+    min-height: 240px;
+    display: flex;
+    flex-direction: column;
+}
+.cover-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 32px 52px 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.cover-brand-name {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 30pt;
+    font-weight: 900;
+    color: white;
+    letter-spacing: -0.5px;
+    line-height: 1.05;
+}
+.cover-brand-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 7.5pt;
+    color: var(--light-blue);
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    font-weight: 300;
+    margin-top: 4px;
+}
+.cover-body { padding: 24px 52px 32px; flex: 1; }
+.cover-badge {
+    display: inline-block;
+    background: var(--copper);
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 7pt;
+    font-weight: 700;
+    padding: 4px 14px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    margin-bottom: 16px;
+}
+.cover-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 20pt;
+    font-weight: 700;
+    color: white;
+    line-height: 1.25;
+    margin-bottom: 8px;
+}
+.cover-subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9pt;
+    color: var(--light-blue);
+    font-weight: 300;
+}
+.cover-meta {
+    display: flex;
+    gap: 32px;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+.cover-meta-item .label {
+    font-size: 6.5pt;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--light-blue);
+    opacity: 0.7;
+    margin-bottom: 3px;
+}
+.cover-meta-item .value {
+    font-size: 9pt;
+    color: rgba(255,255,255,0.85);
+    font-weight: 300;
+}
+
+/* ── CONTENIDO PRINCIPAL ── */
+.content { padding: 36px 52px 60px; max-width: 900px; margin: 0 auto; }
+
+h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 11pt;
+    font-weight: 700;
+    color: white;
+    background: var(--night);
+    padding: 11px 52px;
+    margin: 40px -52px 20px;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+}
+
+/* ── TABLA DE PRECIOS ── */
+.precios-tabla {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 8px;
+    font-size: 9.5pt;
+    font-family: 'DM Sans', sans-serif;
+}
+.precios-tabla thead tr { background: var(--night); color: white; }
+.precios-tabla thead th {
+    padding: 9px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 7.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+.precios-tabla tbody tr:nth-child(even) { background: var(--light); }
+.precios-tabla tbody tr { border-bottom: 1px solid var(--rule); }
+.precios-tabla tbody td { padding: 9px 12px; vertical-align: top; }
+.precios-tabla tbody td:first-child { font-weight: 600; color: var(--night); }
+.var-up   { color: var(--green); font-weight: 700; }
+.var-down { color: var(--red);   font-weight: 700; }
+.var-neu  { color: var(--muted); }
+.precio-nota { font-size: 8.5pt; color: var(--muted); font-style: italic; }
+
+/* ── TARJETA DE NOTICIA ── */
+.noticia-card {
+    background: white;
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--slate);
+    padding: 18px 20px;
+    margin-bottom: 16px;
+    border-radius: 2px;
+}
+.noticia-card.chile { border-left-color: var(--night); }
+.noticia-card.internacional { border-left-color: var(--copper); }
+
+.noticia-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+.noticia-titulo {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 11.5pt;
+    font-weight: 700;
+    color: var(--night);
+    line-height: 1.35;
+    flex: 1;
+}
+.noticia-badge {
+    flex-shrink: 0;
+    font-size: 6.5pt;
+    font-weight: 700;
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: 0.9px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    color: white;
+    background: var(--slate);
+    white-space: nowrap;
+}
+.noticia-badge.chile { background: var(--night); }
+.noticia-badge.internacional { background: var(--copper); }
+.noticia-fecha {
+    font-size: 7.5pt;
+    color: var(--muted);
+    margin-bottom: 8px;
+    font-style: italic;
+}
+.noticia-resumen {
+    font-size: 9.5pt;
+    color: var(--text);
+    line-height: 1.7;
+    margin-bottom: 10px;
+}
+.noticia-fuente {
+    font-size: 8pt;
+    color: var(--muted);
+    font-style: italic;
+}
+.noticia-fuente a { color: var(--mid-blue); text-decoration: none; }
+.noticia-fuente a:hover { text-decoration: underline; }
+
+/* ── RESUMEN RÁPIDO ── */
+.resumen-rapido {
+    background: var(--night);
+    color: white;
+    padding: 20px 24px;
+    margin-bottom: 0;
+    border-radius: 2px;
+}
+.resumen-rapido h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 7.5pt;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    color: var(--light-blue);
+    margin-bottom: 12px;
+}
+.resumen-rapido ul { list-style: none; padding: 0; margin: 0; }
+.resumen-rapido li {
+    padding: 5px 0;
+    font-size: 9.5pt;
+    color: rgba(255,255,255,0.88);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    line-height: 1.55;
+}
+.resumen-rapido li:last-child { border-bottom: none; }
+.resumen-rapido li::before { content: "› "; color: var(--gold); font-weight: 700; }
+
+/* ── PIE DE PÁGINA ── */
+.footer {
+    text-align: center;
+    padding: 24px 52px;
+    border-top: 1px solid var(--rule);
+    font-size: 8pt;
+    color: var(--muted);
+    font-style: italic;
+}
+.footer a { color: var(--mid-blue); text-decoration: none; }
+
+/* ── RESPONSIVE ── */
+@media screen and (max-width: 700px) {
+    .cover-header { padding: 24px 20px 20px; }
+    .cover-brand-name { font-size: 20pt; }
+    .cover-body { padding: 20px 20px 28px; }
+    .cover-meta { flex-direction: column; gap: 12px; }
+    .content { padding: 20px 18px 40px; }
+    h2 { padding: 11px 18px; margin: 32px -18px 14px; }
+    .noticia-header { flex-direction: column; gap: 6px; }
+}
+    </style>
+</head>
+<body>
+
+<!-- Barra de navegación -->
+<nav class="quick-nav">
+    <span class="nav-brand">AL RITMO DE LA MINERÍA</span>
+    <a href="index.html" class="nav-back">← Volver al inicio</a>
+    <span class="nav-date">Briefing Diario — 11 jun 2026</span>
+</nav>
+
+<!-- Portada -->
+<div class="cover">
+    <div class="cover-header">
+        <div>
+            <div class="cover-brand-name">Al Ritmo de la Minería</div>
+            <div class="cover-brand-sub">Inteligencia para la industria del cobre</div>
+        </div>
+    </div>
+    <div class="cover-body">
+        <div class="cover-badge">Briefing Diario</div>
+        <div class="cover-title">Noticias Mineras — 11 de junio de 2026</div>
+        <div class="cover-subtitle">Ventana cubierta: jueves 4 de junio (11:12) → jueves 11 de junio de 2026</div>
+        <div class="cover-meta">
+            <div class="cover-meta-item">
+                <div class="label">Noticias</div>
+                <div class="value">9 items</div>
+            </div>
+            <div class="cover-meta-item">
+                <div class="label">Foco principal</div>
+                <div class="value">Exponor 2026 · Codelco</div>
+            </div>
+            <div class="cover-meta-item">
+                <div class="label">Cobre LME</div>
+                <div class="value">USD 6,19/lb</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content">
+
+    <!-- Resumen rápido -->
+    <div class="resumen-rapido" style="margin-top:8px; margin-bottom:36px;">
+        <h3>En 30 segundos</h3>
+        <ul>
+            <li>Jorge Gómez Díaz (ex CEO de Collahuasi, 14 años) asumirá la presidencia ejecutiva de Codelco el 13 de julio, reemplazando a Rubén Alvarado.</li>
+            <li>Exponor 2026 (8-11 jun, Antofagasta): la mayor edición de su historia — 1.350 expositores, 47 mil visitantes, 36 países. Sierra Gorda y Spence firman MoU para explorar sinergias.</li>
+            <li>Los intereses de la deuda de Codelco superan por primera vez los USD 1.000M anuales (USD 1.022M al Q1 2026), casi el doble que en 2022.</li>
+            <li>Tintina Mines cierra C$91M con Sumitomo y familia Gignac para el proyecto Domeyko Sulfuros (cobre-oro, Atacama).</li>
+            <li>Exportaciones mineras chilenas: USD 23.606M en el primer cuatrimestre — cobre +9,6%, litio récord en USD 2.137M.</li>
+        </ul>
+    </div>
+
+    <!-- PRECIOS -->
+    <h2>Precios de referencia — 11 de junio de 2026</h2>
+
+    <table class="precios-tabla">
+        <thead>
+            <tr>
+                <th>Metal / Insumo</th>
+                <th>Precio</th>
+                <th>Variación</th>
+                <th>Contexto</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Cobre (LME)</td>
+                <td>USD 6,19/lb</td>
+                <td><span class="var-down">-0,91%</span></td>
+                <td class="precio-nota">Tensiones geopolíticas en Medio Oriente pesan sobre metales industriales. Sigue muy por encima del pronóstico anual de Cochilco (USD 5,55/lb).</td>
+            </tr>
+            <tr>
+                <td>Oro (COMEX)</td>
+                <td>USD 4.101/oz</td>
+                <td><span class="var-up">+0,52%</span></td>
+                <td class="precio-nota">Refugio de valor sostenido por conflicto en Medio Oriente. Nivel históricamente alto; favorece márgenes de mineras con subproducto en oro.</td>
+            </tr>
+            <tr>
+                <td>Plata (COMEX)</td>
+                <td>USD 64,77/oz</td>
+                <td><span class="var-neu">s/d</span></td>
+                <td class="precio-nota">Precio en máximos del ciclo, impulsado por demanda industrial (paneles solares, electrónica) y apetito por activos refugio.</td>
+            </tr>
+            <tr>
+                <td>Petróleo Brent</td>
+                <td>USD 93,50/bbl</td>
+                <td><span class="var-up">+0,43%</span></td>
+                <td class="precio-nota">Caída de ~8% desde los USD 101/bbl de inicio de junio. Sigue elevado (+34,8% interanual); presión relevante en costos de transporte, explosivos y diesel.</td>
+            </tr>
+            <tr>
+                <td>Ácido Sulfúrico (spot Asia)</td>
+                <td>USD 278,62/t</td>
+                <td><span class="var-down">+1,3%</span></td>
+                <td class="precio-nota">Tendencia alcista sostenida desde dic-2025 (+63% acumulado). Presión sobre costos de lixiviación SX-EW para operaciones catódicas.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- NOTICIAS CHILE -->
+    <h2>Chile Minero</h2>
+
+    <div class="noticia-card chile">
+        <div class="noticia-header">
+            <div class="noticia-titulo">Codelco nombra a Jorge Gómez como nuevo presidente ejecutivo</div>
+            <div class="noticia-badge chile">Chile</div>
+        </div>
+        <div class="noticia-fecha">4 de junio de 2026</div>
+        <div class="noticia-resumen">El directorio de Codelco designó a Jorge Gómez Díaz como nuevo presidente ejecutivo de la corporación, asumirá el 13 de julio de 2026. Gómez reemplaza a Rubén Alvarado Vigar, quien renunció tras dirigir la empresa desde septiembre de 2023. El nuevo ejecutivo proviene de Minera Doña Inés de Collahuasi, donde fue CEO durante 14 años, transformando la operación en una de las más eficientes y seguras del mundo. Gómez es ingeniero civil de minas de la Universidad de Atacama con más de 30 años de experiencia; fue vicepresidente de Operaciones Centro-Sur en Codelco, gerente general de Los Pelambres y presidente del Consejo Minero entre 2018 y 2022. Su nombramiento llega en un momento crítico para la empresa estatal, que enfrenta una deuda histórica y presiones para revertir años de caída productiva.</div>
+        <div class="noticia-fuente">Fuente: <a href="https://www.codelco.com/prensa/2026/directorio-nombra-a-jorge-gomez-nuevo-presidente-ejecutivo-de-codelco" target="_blank">CODELCO</a></div>
+    </div>
+
+    <div class="noticia-card chile">
+        <div class="noticia-header">
+            <div class="noticia-titulo">Intereses de la deuda de Codelco superan por primera vez los USD 1.000M anuales</div>
+            <div class="noticia-badge chile">Chile</div>
+        </div>
+        <div class="noticia-fecha">Junio de 2026</div>
+        <div class="noticia-resumen">El costo financiero de la deuda de Codelco alcanzó USD 1.022M en los últimos 12 meses al cierre del Q1 2026, superando por primera vez la barrera de los USD 1.000M anuales. La cifra equivale a casi el doble de los USD 569M registrados en 2022 y representa una presión estructural sobre los resultados de la empresa. Este peso de la deuda limita la capacidad de inversión en proyectos estructurales como Chuquicamata Subterránea y El Teniente. Cesco publicó un documento que propone crear un holding estatal y revisar la cartera de proyectos como vías para fortalecer la viabilidad de largo plazo de la corporación. La Comisión de Minería del Senado también sesionó sobre la situación de Codelco, firmando una declaración en defensa de su carácter estatal.</div>
+        <div class="noticia-fuente">Fuente: <a href="https://www.df.cl/senal-df/datos-de-sobremesa/el-costo-de-la-deuda-de-codelco-pago-por-intereses-cruza-us-1-000-anuales" target="_blank">Diario Financiero</a></div>
+    </div>
+
+    <div class="noticia-card chile">
+        <div class="noticia-header">
+            <div class="noticia-titulo">Exponor 2026 abre sus puertas: la edición más grande de la historia de la feria</div>
+            <div class="noticia-badge chile">Chile</div>
+        </div>
+        <div class="noticia-fecha">8 de junio de 2026</div>
+        <div class="noticia-resumen">Exponor 2026 inició el 8 de junio en Antofagasta como la exhibición minero-energética más grande de su historia, reuniendo a 1.350 expositores, 47.000 visitantes esperados y representantes de 36 países. El evento —que se extendió hasta el 11 de junio— concentró en un mismo espacio a compañías mineras, proveedores, autoridades, inversionistas y centros tecnológicos de todo el mundo. La agenda abarcó cobre, litio, minerales críticos, eficiencia energética, desalación, electromovilidad, automatización e inteligencia artificial. El evento se realizó en un contexto de alta actividad inversora: la cartera de proyectos mineros de Chile para 2025-2034 supera los USD 104.500M según Cochilco, el mayor nivel en más de una década.</div>
+        <div class="noticia-fuente">Fuente: <a href="https://www.nuevamineria.com/revista/la-mineria-mundial-vuelve-a-encontrarse-en-antofagasta-con-el-inicio-de-exponor-2026/" target="_blank">Nueva Minería &amp; Energía</a></div>
+    </div>
+
+    <div class="noticia-card chile">
+        <div class="noticia-header">
+            <div class="noticia-titulo">Sierra Gorda y Spence (BHP) firman MoU en Exponor para explorar sinergias operativas</div>
+            <div class="noticia-badge chile">Chile</div>
+        </div>
+        <div class="noticia-fecha">9 de junio de 2026</div>
+        <div class="noticia-resumen">Sierra Gorda SCM y Minera Spence S.A. (BHP) firmaron en el marco de Exponor 2026 un memorando de entendimiento para evaluar oportunidades de colaboración entre sus operaciones vecinas en la Región de Antofagasta. El acuerdo busca identificar iniciativas conjuntas en cadenas de suministro, procesos operacionales y economías de escala, con foco en reducir costos en un contexto de leyes de mineral en declive. Dee Lingenfelder, presidenta de Pampa Norte en BHP, destacó que el objetivo es generar resultados sostenibles de largo plazo. En paralelo, BHP avanza en una expansión de USD 600M en el concentrador de Spence para incorporar un nuevo circuito de flotación y mejorar las tasas de recuperación afectadas por la variabilidad del mineral.</div>
+        <div class="noticia-fuente">Fuente: <a href="https://www.portalminero.com/wp/sierra-gorda-scm-y-minera-spence-s-a-firman-memorando-de-entendimiento-para-fortalecer-la-eficiencia-de-sus-operaciones/" target="_blank">Portal Minero</a></div>
+    </div>
+
+    <div class="noticia-card chile">
+        <div class="noticia-header">
+            <div class="noticia-titulo">Gobierno presenta Plan Minero 2026-2030 con foco en destrabar USD 17.000M en proyectos</div>
+            <div class="noticia-badge chile">Chile</div>
+        </div>
+        <div class="noticia-fecha">8 de junio de 2026</div>
+        <div class="noticia-resumen">El subsecretario de Minería, Álvaro González, presentó en Exponor 2026 el Plan de Gobierno en Minería 2026-2030, articulado en tres ejes: inversión, exploración y permisos. La iniciativa apunta a destrabar más de USD 17.000M en proyectos actualmente en evaluación en el SEIA y contempla un proyecto de ley que simplifica el régimen de patentes mineras. Además se evalúa crear un estatuto especial para proyectos estratégicos como los de tierras raras, con el fin de acelerar su desarrollo. Chile mantiene su posición como primer productor mundial de cobre, segundo de molibdeno y tercero de litio, en un ciclo favorable de precios impulsado por la descarbonización, la electromovilidad y la demanda de inteligencia artificial.</div>
+        <div class="noticia-fuente">Fuente: <a href="https://www.reporteminero.cl/noticia/noticias/2026/04/agenda-minera-chile-inversion" target="_blank">Reporte Minero</a></div>
+    </div>
+
+    <div class="noticia-card chile">
+        <div class="noticia-header">
+            <div class="noticia-titulo">AMTC de la Universidad de Chile presenta soluciones de IA y automatización en Exponor 2026</div>
+            <div class="noticia-badge chile">Chile</div>
+        </div>
+        <div class="noticia-fecha">Junio de 2026</div>
+        <div class="noticia-resumen">El Advanced Mining Technology Center (AMTC) de la Universidad de Chile exhibió en Exponor 2026 sus desarrollos más avanzados para la digitalización y transformación de la minería. Entre las soluciones presentadas destacan plataformas de monitoreo inteligente de variables operacionales, sistemas de control de procesos basados en inteligencia artificial y herramientas de trazabilidad y seguridad. El AMTC es uno de los centros de investigación aplicada más relevantes de América Latina y trabaja en alianza con las principales compañías mineras del país. La exhibición se enmarcó en el contexto del Plan Minero 2026-2030, que prioriza la adopción de tecnología para mejorar productividad y reducir costos en un ciclo de leyes decrecientes.</div>
+        <div class="noticia-fuente">Fuente: <a href="https://www.reporteminero.cl/noticia/exponor-2026/2026/06/amtc-exponor-2026-tecnologias-mineria-chilena" target="_blank">Reporte Minero</a></div>
+    </div>
+
+    <div class="noticia-card chile">
+        <div class="noticia-header">
+            <div class="noticia-titulo">Albemarle exhibe avances hacia la Extracción Directa de Litio (DLE) en el Salar de Atacama</div>
+            <div class="noticia-badge chile">Chile</div>
+        </div>
+        <div class="noticia-fecha">Junio de 2026</div>
+        <div class="noticia-resumen">Albemarle presentó en Exponor 2026 los avances de su proyecto TED (Transición hacia la Extracción Directa de Litio), diseñado para aumentar la eficiencia productiva en el Salar de Atacama y reducir el impacto hídrico del proceso. La tecnología DLE (Direct Lithium Extraction) recupera litio directamente de las salmueras con menor consumo de agua respecto al proceso de evaporación tradicional. En lo que va de 2026, las acciones de Albemarle acumulan un alza de 30,8% y las de SQM un 27,3%. En paralelo, SQM avanza en el permiso ambiental de su proyecto Salar Futuro, que ampliaría la producción nacional de litio en el mediano plazo.</div>
+        <div class="noticia-fuente">Fuente: <a href="https://www.redimin.cl/albemarle-exhibira-en-exponor-2026-su-innovacion-orientada-a-transformar-la-produccion-de-litio-en-chile" target="_blank">REDIMIN</a></div>
+    </div>
+
+    <div class="noticia-card chile">
+        <div class="noticia-header">
+            <div class="noticia-titulo">Exportaciones mineras de Chile superan USD 23.600M en el primer cuatrimestre de 2026</div>
+            <div class="noticia-badge chile">Chile</div>
+        </div>
+        <div class="noticia-fecha">Junio de 2026</div>
+        <div class="noticia-resumen">El sector minero chileno exportó USD 23.606M entre enero y abril de 2026, impulsado por cobre y litio en un contexto de precios históricamente elevados. El cobre lideró la canasta exportadora con USD 19.053M, un crecimiento de 9,6% frente al mismo período de 2025. El litio triplicó sus exportaciones, alcanzando USD 2.137M en el cuatrimestre, impulsado por la creciente demanda global de minerales críticos para tecnologías limpias y almacenamiento de energía. Los resultados confirman que Chile consolida su rol como proveedor estratégico de cobre y litio para la cadena global de baterías y energías renovables.</div>
+        <div class="noticia-fuente">Fuente: <a href="https://www.reporteminero.cl/noticia/noticias/2026/05/exportaciones-mineras-chile-litio-cobre-2026" target="_blank">Reporte Minero</a></div>
+    </div>
+
+    <!-- NOTICIAS INTERNACIONALES -->
+    <h2>Internacional</h2>
+
+    <div class="noticia-card internacional">
+        <div class="noticia-header">
+            <div class="noticia-titulo">Tintina Mines asegura C$91M de Sumitomo y familia Gignac para el proyecto Domeyko Sulfuros en Chile</div>
+            <div class="noticia-badge internacional">Internacional</div>
+        </div>
+        <div class="noticia-fecha">Junio de 2026</div>
+        <div class="noticia-resumen">Tintina Mines (TSXV: TTS) anunció una colocación privada de C$91M respaldada por Sumitomo Corporation de Japón y la familia Gignac (GMC), para financiar el desarrollo del proyecto de cobre y oro Domeyko Sulfuros en la Región de Atacama. Aproximadamente C$55M se destinarán a avanzar hacia la Decisión Final de Inversión (FID), mientras que C$36M se usarán para comprar la participación minoritaria del 26,25% en el proyecto. El depósito pórfido cobre-oro tiene un recurso estimado de 357 millones de toneladas con leyes de 0,34-0,35% Cu y 0,24-0,28 g/t Au. Sumitomo y la familia Gignac obtendrán aproximadamente un 25% de las acciones post-conversión. El interés japonés por activos cupríferos en Chile refleja la estrategia de Tokio de asegurar minerales críticos para la transición energética.</div>
+        <div class="noticia-fuente">Fuente: <a href="https://www.mining.com/tintina-soars-to-new-high-on-66m-backing-for-chile-copper-gold-project/" target="_blank">MINING.COM</a></div>
+    </div>
+
+</div>
+
+<!-- Pie de página -->
+<div class="footer">
+    <p>Briefing Minero — Al Ritmo de la Minería &nbsp;|&nbsp; Generado el 11 de junio de 2026 &nbsp;|&nbsp; <a href="index.html">Ver todos los informes</a></p>
+    <p style="margin-top:6px;">Documento generado con base en fuentes públicas. Verificar antes de distribuir.</p>
+</div>
+
+</body>
+</html>
