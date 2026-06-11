@@ -352,11 +352,12 @@
         <div class="at-left">
             <span class="at-icon">&#128218;</span>
             <span class="at-label">Lecciones anteriores y especiales</span>
-            <span class="at-count">(12 mas)</span>
+            <span class="at-count">(13 mas)</span>
         </div>
         <span class="at-arrow">&#9660;</span>
     </div>
     <div class="archive-list" id="archive-list">
+        <a class="archive-item lesson-card" href="#leccion-15"><span class="ai-dot ed"></span><span class="ai-pillar">Finanzas Corporativas</span><span class="ai-title">NPV incremental de extension de vida de mina — el caso Zaldivar USD 900M a 2051</span><span class="ai-ed">Ed.15</span></a>
         <a class="archive-item lesson-card" href="#leccion-14"><span class="ai-dot ed"></span><span class="ai-pillar">Operaciones mineras</span><span class="ai-title">Procurement Estrategico de Insumos — por que las mineras no se cubren y cuanto les cuesta</span><span class="ai-ed">Ed.14</span></a>
         <a class="archive-item lesson-card" href="#leccion-13"><span class="ai-dot ed"></span><span class="ai-pillar">Gobernanza</span><span class="ai-title">La Ley de Goodhart y el Gaming de Metricas — cuando los incentivos mal disenados generan numeros falsos</span><span class="ai-ed">Ed.13</span></a>
         <a class="archive-item lesson-card" href="#leccion-12"><span class="ai-dot ed"></span><span class="ai-pillar">Comercio</span><span class="ai-title">Antidumping en minerales criticos: el proceso ITC y el caso del paladio ruso</span><span class="ai-ed">Ed.12</span></a>
@@ -377,7 +378,75 @@
     </div>
 
     <!-- CURRENT LESSON -->
-    <p class="current-label">Clase de la semana — Edicion N.13</p>
+    <p class="current-label">Clase de la semana — Edicion N.15</p>
+
+    <div class="lesson" id="leccion-15">
+        <div class="lesson-hero">
+            <div class="lh-num">Leccion 15 &middot; Edicion N.15</div>
+            <h2>NPV incremental de extension de vida de mina — el caso Zaldivar USD 900M a 2051</h2>
+            <div class="lh-english">Incremental NPV of Mine Life Extension — The Zaldivar USD 900M Case Study</div>
+            <span class="lh-pillar">Finanzas Corporativas</span>
+        </div>
+        <div class="lesson-body">
+            <a class="btn-ver-todas" onclick="verTodas()" href="javascript:void(0)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg> Ver todas las lecciones</a>
+
+            <h3>El concepto central</h3>
+            <p>Cuando una mina ya amortizo su capex original y esta en fase de produccion estable, cada anio adicional de vida tiene un perfil de riesgo completamente distinto al del proyecto original. El <strong>NPV incremental de extension de vida</strong> es la herramienta que compara el valor presente de esos flujos adicionales contra la inversion requerida para extender la operacion — nueva infraestructura, exploracion profunda, negociacion de permisos, cierre postergado. La regla de decision es simple: si el NPV incremental es positivo, la extension crea valor. La dificultad esta en construirlo correctamente.</p>
+
+            <div class="concept-box">
+                <div class="cb-term">NPV Incremental vs NPV Total</div>
+                <div class="cb-def">El NPV total de un proyecto mide el valor del proyecto desde cero. El NPV incremental de una extension solo mide el valor que agrega la decision de extender la vida de mina, comparado con la alternativa de cerrar segun el plan original. La mayoria de los errores financieros en decisiones de extension ocurren por confundir los dos: incluir costos ya incurridos (sunk costs) en el analisis incremental, o descontar con el WACC del proyecto original cuando el perfil de riesgo cambio.</div>
+            </div>
+
+            <h3>Los componentes del analisis incremental</h3>
+
+            <div class="vocab-wrap">
+                <table class="vocab-table">
+                    <thead><tr><th>Componente</th><th>Que incluye</th><th>Error tipico</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Flujos incrementales</strong></td><td>Ingresos por produccion adicional menos costos operacionales y cierre postergado. Solo lo nuevo — no lo que ocurriria de todos modos.</td><td>Incluir costos de capital ya depreciados que no requieren reposicion.</td></tr>
+                        <tr><td><strong>Capex de extension</strong></td><td>Inversion en nueva infraestructura, profundizacion, permisos adicionales, nuevas pilas de lixiviacion o rampas.</td><td>Subestimar el capex de sustaining para mantener tasas de produccion.</td></tr>
+                        <tr><td><strong>Valor del cierre postergado</strong></td><td>El costo de cierre (USD/t de pasivo ambiental) se paga mas tarde — ese diferimiento tiene valor presente positivo. Es parte del beneficio de extender.</td><td>Ignorar que el cierre postergado es un beneficio financiero, no solo un costo diferido.</td></tr>
+                        <tr><td><strong>Tasa de descuento correcta</strong></td><td>Una mina madura en jurisdiccion estable tiene menor riesgo geologico y regulatorio que un greenfield. El WACC puede ser 1-2pp menor al del proyecto original.</td><td>Usar el WACC del estudio de factibilidad original, que incluia prima de riesgo geologico ya resuelto.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="concept-box">
+                <div class="cb-term">Regla de los Costos Hundidos (Sunk Costs)</div>
+                <div class="cb-def">El capex original de construccion de la mina no es relevante para la decision de extension — ya esta pagado. Lo unico relevante es el capex incremental que requiere la extension versus los flujos que genera. Una mina que costo USD 2.000M construir puede justificar una extension de USD 900M si los flujos descontados adicionales superan ese monto, independientemente del costo historico.</div>
+            </div>
+
+            <h3>Vocabulario clave</h3>
+            <div class="vocab-cards">
+                <div class="vc-item"><div class="vc-es">NPV incremental</div><div class="vc-en">Incremental NPV</div><div class="vc-ctx">Valor presente neto de los flujos adicionales que genera extender la vida de la mina, descontado el capex de extension.</div></div>
+                <div class="vc-item"><div class="vc-es">Vida util remanente</div><div class="vc-en">Remaining Mine Life (RML)</div><div class="vc-ctx">Anos de produccion proyectados con las reservas actuales. La extension aumenta el RML al convertir recursos en reservas.</div></div>
+                <div class="vc-item"><div class="vc-es">Conversion de recursos</div><div class="vc-en">Resource conversion</div><div class="vc-ctx">Proceso de convertir recursos inferidos o indicados (menor certeza) en reservas probadas, que ya se pueden incluir en el plan de minado y el NPV.</div></div>
+                <div class="vc-item"><div class="vc-es">Capex de sustaining</div><div class="vc-en">Sustaining capex</div><div class="vc-ctx">Inversion recurrente para mantener la tasa de produccion: reposicion de equipos, mantención de infraestructura. No es capex de crecimiento — es el costo de no decrecer.</div></div>
+            </div>
+
+            <div class="case-study">
+                <div class="cs-header"><span class="cs-icon">&#9874;</span><span class="cs-label">Caso de estudio</span></div>
+                <div class="cs-title">Antofagasta Minerals — Zaldivar USD 900M: extension de vida hasta 2051</div>
+                <p>En junio 2026, AMSA (Antofagasta Minerals) anuncio una inversion de USD 900 millones para extender la vida operacional de la mina Zaldivar — una operacion de cobre por lixiviacion SX-EW en el Desierto de Atacama — hasta 2051. Sin la inversion, la mina cerraria en la decada siguiente. Con ella, agrega aproximadamente 25 anos de produccion adicional.</p>
+                <p>¿Como se justifica esa cifra? La logica del NPV incremental: Zaldivar tiene costos operacionales conocidos (mina madura, sin sorpresas geologicas mayores), acceso asegurado (agua, energia, permisos base), y el mineral esta identificado. El capex de USD 900M financia principalmente la profundizacion de la rajo, expansion de pilas de lixiviacion y renovacion de infraestructura de planta. Los flujos incrementales de 25 anos adicionales de produccion, descontados al WACC de una mina madura en Chile (aproximadamente 7-9% real en USD), generan un NPV incremental positivo que justifica la inversion.</p>
+                <p>El caso ilustra otro punto critico: <strong>la licencia social ya otorgada tiene valor economico</strong>. Zaldivar opera con aprobacion comunitaria e instrumentos ambientales vigentes. Construir una mina nueva con el mismo perfil de produccion requeriria 8-12 anos de tramitacion ambiental y riesgo de oposicion. Ese valor no aparece en el modelo financiero estandar, pero es parte del NPV real de la extension.</p>
+                <p class="cs-source">Fuentes: AMSA press release jun 2026, Noticiero Minero Ed.15.</p>
+            </div>
+
+            <div class="exercise-box">
+                <div class="ex-title">&#128196; Ejercicio aplicado</div>
+                <p>Una mina de cobre madura tiene reservas para 8 anos mas. La empresa evalua una extension de vida de 12 anos adicionales mediante una inversion de USD 450M (capex de extension). Datos: produccion anual 80.000 t Cu fino, precio proyectado USD 4.80/lb (USD 10.582/t), costo operacional total (C2) USD 7.200/t, tasa de descuento 8% real USD.</p>
+                <p><strong>Calcula:</strong> (1) EBITDA incremental anual, (2) Flujo de caja libre incremental (asumiendo capex de sustaining USD 30M/anio, impuestos 27%), (3) NPV incremental a 12 anios. ¿La extension crea valor? ¿A que precio minimo del cobre el NPV incremental llega a cero?</p>
+                <p><em>Pista:</em> El precio de equilibrio (NPV=0) es el precio al que el valor presente de los flujos equals el capex de USD 450M. Esa cifra se llama <strong>precio de corte financiero</strong> — distinto del cut-off grade geologico.</p>
+            </div>
+
+            <div class="key-takeaway">
+                <div class="kt-label">Punto clave para el directivo</div>
+                <p>La frontera de una mina madura casi nunca es la geologia: es la licencia para operar. Una vez que tienes mineral, permisos y comunidades alineadas, el unico interrogante real es si el capex de extension genera NPV positivo. En un entorno de cobre estructuralmente deficitario, la respuesta suele ser si — siempre que no se cometa el error de incluir costos hundidos o descontar con una tasa de riesgo que ya no aplica.</p>
+            </div>
+        </div>
+    </div>
 
     <div class="lesson" id="leccion-14">
         <div class="lesson-hero">
