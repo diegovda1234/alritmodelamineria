@@ -1,78 +1,79 @@
----
-title: Noticiero Minero Personal — Edición N°16
-periodo: Semana del 10 al 16 de junio de 2026
-fecha: 16 de junio de 2026
-autor: Diego Varleta — Asistente IA
-tags: [cobre, PGM, paladio, platino, aranceles, S232, ITC, Codelco, litio, REE, Hudbay, P/NAV]
----
+# 🪨 NOTICIERO MINERO PERSONAL
 
-# NOTICIERO MINERO PERSONAL
-## Edición N°16 — Semana del 10 al 16 de junio de 2026
+**Edición N°:** 16
+**Período:** Semana del 10 al 16 de junio de 2026
+**Fecha de publicación:** 16 de junio de 2026
+**Énfasis editorial esta semana:** El fallo ITC "no daño" al paladio ruso cierra 5 semanas de corrección especulativa en PGM mientras los aranceles S232 al cobre refinado —decisión el 30 de junio— definen el mayor riesgo de corto plazo para la minería chilena. Codelco enfrenta su peor crisis institucional en una década: 27.000 t de inventario no registrado salen a la luz a días de refinanciar USD 2.400M en bonos.
+**Frase de la semana:** "El 30 de junio es la fecha más importante de la minería chilena en lo que va del año."
+**Atribución frase:** — Análisis Noticiero Minero Ed.16
 
 ---
 
-## 🔔 PRIMICIAS DE LA SEMANA
+## 🔔 PRIMICIAS Y ALERTAS DE LA SEMANA
 
-**🔔 PRIMICIA 1 — ITC determina "no daño" al paladio ruso:** La Comisión de Comercio Internacional de EE.UU. (USITC) publicó el 13 de junio la determinación final (Pub. 5749): las importaciones de paladio ruso no causan daño a la industria doméstica. No se impondrán derechos antidumping. El paladio repuntó +11.7% en dos sesiones desde USD 1,225 → USD 1,369/oz tras cinco semanas de corrección especulativa. Las acciones de Sibanye-Stillwater, el mayor productor de PGM de EE.UU., subieron 8.4% en la sesión del 13/06 (NYSE: SBSW).
+> **1. ITC determina "no daño" al paladio ruso (USITC Pub. 5749, 13 jun).** El paladio repuntó +11,7% en dos sesiones desde USD 1.225 → 1.369/oz. Sibanye-Stillwater (SBSW) +8,4% en NYSE. Cinco semanas de corrección especulativa se deshacen en 48 horas. **[■■■■■]**
 
-**🔔 PRIMICIA 2 — S232 vigentes; cobre refinado en pausa hasta 30 jun:** Los aranceles Sección 232 a manufacturas de cobre (50%) y semielaborados (25%) entraron en vigor el 8 de junio. Sin embargo, la categoría "cobre refinado" (HTS 7403) permanece exenta pendiente decisión presidencial antes del 30 de junio. El USTR abrió periodo de comentarios hasta el 20 de junio. Es el mayor riesgo de corto plazo para las exportaciones chilenas: Chile exporta ~450,000 t/año de cátodos a EE.UU., que representan ~USD 2,900M al precio actual.
+> **2. S232 cobre: manufacturas (50%) y semielaborados (25%) vigentes desde 8 jun.** Cobre refinado (HTS 7403) PENDIENTE — decisión presidencial antes del 30 de junio. El USTR recibe comentarios hasta el 20 jun. Chile exporta ~450.000 t/año de cátodos a EE.UU. (~USD 2.900M). **[■■■■■]**
 
-**🔔 PRIMICIA 3 — Codelco: auditoría detecta 27,000 t de cobre no registrado:** La Contraloría General de la República publicó el 12 de junio un informe de auditoría que detectó discrepancias de inventario por 27,000 toneladas de cobre en proceso en plantas de Chuquicamata y El Teniente durante el período 2023-2025. El directorio de Codelco convocó sesión extraordinaria el 14 de junio; el CEO Jorge Gómez compareció ante la Comisión de Minería del Senado.
+> **3. Contraloría detecta 27.000 t de cobre no registrado en Codelco.** Informe publicado 12 jun abarca Chuquicamata y El Teniente, período 2023-2025. Fitch pone a Codelco en Rating Watch Negative. Jorge Gómez (CEO) comparece ante el Senado 14 jun. **[■■■■■]**
 
-**🔔 PRIMICIA 4 — Ormuz reabierto; Brent cae USD 12 en tres sesiones:** Irán y EE.UU. firmaron el acuerdo de alto al fuego el 11 de junio. El Estrecho de Ormuz —que canaliza ~20% del petróleo global— fue declarado abierto a la navegación comercial el 12 de junio. El Brent cayó de USD 95 a USD 82.97/bbl en tres sesiones, reduciendo presión inflacionaria global. Efecto secundario positivo para la minería: menores costos de energía y flete.
-
----
-
-## RESUMEN EJECUTIVO
-
-1. **El fallo ITC cierra el capítulo especulativo del paladio.** Durante cinco semanas el mercado descontó el peor escenario (duties > 30%). La resolución "no daño" libera al metal de esa prima de riesgo; el rebote desde mínimos confirma que la corrección fue exagerada. PGM siguen bajo presión estructural de largo plazo por electrificación, pero el driver inmediato desapareció.
-
-2. **El 30 de junio es la fecha más importante de la minería chilena en lo que va del año.** Si Trump extiende S232 al cobre refinado, el impacto sobre la rentabilidad del sector exportador chileno es inmediato. Cabildo, Catodos, Concentrados y Franke operan en un escenario donde el precio FOB de sus ventas a EE.UU. podría quedar comprimido entre el LME y el arancel del comprador.
-
-3. **Codelco vive su peor crisis institucional en una década.** 27,000 t no registradas equivalen a ~USD 380M al precio actual — mayor que los write-downs de Ventanas (2023). El impacto real es secundario al daño reputacional: Codelco necesita refinanciar USD 2,400M en bonos en H2 2026.
-
-4. **Ormuz reabierto rompe la secuencia alcista del Brent.** La caída de USD 12/bbl en tres días reduce presiones inflacionarias y mejora el escenario para recortes de tasas Fed. Para la minería: menores costos energéticos de corto plazo, pero también menor flujo de caja de las empresas petroleras que invierten en exploracion minera.
-
-5. **USA Rare Earth y MP Materials aceleran la desconexión de la cadena REE de China.** USA Rare Earth cerró una ronda USD 1,600M para construir la primera planta integrada de separación/manufactura de imanes permanentes en suelo americano. NdPr se mantiene estable en ~USD 109/kg; la amenaza china al mercado es táctica, no estructural de largo plazo.
-
-6. **Cobre LME en USD 14,200/t: el soporte se está probando.** Tras caer desde el máximo de USD 14,462 (Ed.14), el metal recuperó parcialmente. La siguiente semana es clave: si el USTR extiende S232 al refinado, el mercado descontará flujo vendedor de productores chilenos buscando cobertura.
+> **4. Ormuz reabierto; Brent cae USD 12 en tres sesiones.** Acuerdo EEUU-Irán 11 jun. Brent de USD 95 → 82,97/bbl. CLP/USD se aprecia 3,3% a 887,50. **[■■■■■]**
 
 ---
 
-## DASHBOARD DE PRECIOS
+## 📋 RESUMEN EJECUTIVO
 
-### Precios Spot — 16 de junio de 2026
+### Lo más importante de la semana
 
-| Mineral | Precio | Unidad | Var. semanal | Conf. |
-|---------|--------|--------|--------------|-------|
-| Cobre (LME) | 6.44 | USD/lb | +2.5% | [■■■■□] |
-| Cobre (LME) | 14,200 | USD/t | +2.5% | [■■■■□] |
-| Litio carb. | 24,500 | USD/t | +1.3% | [■■■□□] |
-| Platino | 1,814 | USD/oz | +6.9% | [■■■■□] |
-| Paladio | 1,369 | USD/oz | +11.7% | [■■■■□] |
-| Rodio | 7,900 | USD/oz | -3.5% | [■■□□□] |
-| NdPr óxido | 109 | USD/kg | -0.5% | [■■■□□] |
-| Cobalto | 55,906 | USD/t | -0.7% | [■■■□□] |
-| Oro | 4,345 | USD/oz | +5.6% | [■■■■□] |
-| Plata | 70.20 | USD/oz | +8.7% | [■■■□□] |
-| CLP/USD | 887.50 | CLP | apreciación | [■■■■□] |
-| Brent | 82.97 | USD/bbl | -12.7% | [■■■■■] |
-| H₂SO₄ CFR | ~390 | USD/t | sin datos | [■■□□□] |
+- **[PGM/ITC]** ITC Pub.5749 "no injury" paladio ruso — rebote +11,7% Pd, +6,9% Pt cierra 5 semanas de corrección especulativa; el driver estructural (electrificación) no cambió
+- **[Cu/S232]** Aranceles S232 vigentes; cobre refinado exento solo hasta 30 jun — mayor riesgo para exportaciones chilenas (~USD 2.900M/año de cátodos a EEUU)
+- **[Chile/Codelco]** Auditoría Contraloría: 27.000 t no registradas (~USD 380M); Fitch Rating Watch Negative; CEO Gómez ante el Senado; refinanciamiento USD 2.400M en riesgo
+- **[Macro/Ormuz]** Estrecho Ormuz reabierto el 12 jun; Brent −12,7% en 3 sesiones; Fed dovish con 2 recortes previstos H2 2026; CLP se aprecia
+- **[REE]** USA Rare Earth cierra USD 1.600M Serie C para planta integrada REE en Oklahoma — primer financiamiento privado institucional de escala para desconectarse de China
+- **[M&A]** Hudbay adquiere Arizona Sonoran (ASCU) por USD 1.480M (+30% prima) — apuesta por jurisdicción USMCA libre de S232; P/NAV ~1,3x; EV/EBITDA forward 2,9x
 
-### Tendencia Múlti-Semana (Ed.12–Ed.16)
+La historia estructural de la semana no fue el rebote del paladio —fue la convergencia de dos señales que definen la minería chilena de corto plazo: el reloj del S232 cobre refinado corriendo hacia el 30 de junio, y la auditoría de Codelco revelando un problema de gobernanza que llega en el peor momento financiero posible.
 
-| Mineral | 19/05 | 26/05 | 02/06 | 10/06 | 16/06 | Tendencia |
-|---------|-------|-------|-------|-------|-------|-----------|
-| Cu (USD/lb) | 6.15 | 6.36 | 6.56 | 6.28 | **6.44** | ↑ (corrección superada) |
-| Pt (USD/oz) | 1,985 | 1,960 | 1,935 | 1,697 | **1,814** | ↑ (rebote post-ITC) |
-| Pd (USD/oz) | 1,363 | 1,380 | 1,388 | 1,225 | **1,369** | ↑ (rebote post-ITC) |
-| Au (USD/oz) | 4,558 | 4,510 | 4,505 | 4,115 | **4,345** | ↑ (Ormuz + FOMC) |
-| Ag (USD/oz) | 75.69 | 77.50 | 76.25 | 64.62 | **70.20** | ↑ (rebote) |
+El fallo ITC resolvió la incertidumbre del lado regulatorio del paladio, pero la analogía inversa aplica al cobre: el S232 está creando exactamente la misma incertidumbre pre-resolución que presionó a los PGM cinco semanas. Si el resultado es "no arancel al refinado", habrá un rally como el del Pd; si hay arancel, la corrección será aún más profunda porque el cobre tiene más compradores con exposición directa.
 
-**Lectura de tendencias:**
-- **PGM (Pt/Pd):** el rebote de esta semana es técnico post-resolución ITC, no estructural. El driver secular —electrificación automotriz— no cambió. La presión de mediano plazo persiste.
-- **Cobre:** la secuencia 6.15 → 6.56 → 6.28 → 6.44 muestra soporte en torno a USD 14,000/t. El catalizador del 30 jun (S232 refinado) puede romper ese soporte hacia abajo o confirmarlo hacia arriba.
-- **Oro/Plata:** el rebote desde mínimos de Ed.15 (causados por tensión Ormuz-dólar fuerte) se invierte con la firma del alto al fuego. La Fed dovish + Ormuz abierto = favorable para metales preciosos en H2 2026.
+La **ausencia notable** de la semana: el litio no tuvo catalizador propio. La EIA de Salar Futuro es un hito de largo plazo pero sin efecto en el precio spot. El oversupply estructural persiste.
+
+### Señal de mercado semanal
+
+El mercado está pre-preciando el S232 cobre refinado del mismo modo que pre-preció el ITC paladio — con volatilidad excesiva en ambas direcciones. La historia enseña que el resultado regulatorio suele ser menos extremo que lo que el mercado descuenta. Para gestores de riesgo: cobertura selectiva antes del 30 jun es más barata que después.
+
+---
+
+## 📊 DASHBOARD DE PRECIOS SPOT
+
+**Cierre referencial al 16 de junio de 2026.**
+
+| Mineral | Ed.15 | Ed.16 | Δ semana | Fuente |
+|---------|:---:|:---:|:---:|---|
+| Cobre 🟢 | 6,28 | **6,44 USD/lb** | **+2,5%** | LME 16/06 |
+| Cobre | 13.841 | **14.200 USD/t** | +2,5% | LME 16/06 |
+| Litio Carbonato | 24.180 | **24.500 USD/t** | +1,3% | SMM 16/06 |
+| Platino | 1.697 | **1.814 USD/oz** | +6,9% | Kitco 16/06 |
+| Paladio | 1.225 | **1.369 USD/oz** | +11,7% | Kitco 16/06 |
+| Rodio | 8.186 | **7.900 USD/oz** | −3,5% | Kitco 16/06 |
+| NdPr óxido | 109,55 | **109 USD/kg** | −0,5% | Fastmarkets 16/06 |
+| Cobalto | 56.290 | **55.906 USD/t** | −0,7% | LME 16/06 |
+| Oro | 4.115 | **4.345 USD/oz** | +5,6% | COMEX 16/06 |
+| Plata | 64,62 | **70,20 USD/oz** | +8,7% | COMEX 16/06 |
+| CLP/USD | 916,86 | **887,50** | **−3,2%** | BCentral 16/06 |
+| H₂SO₄ CFR Chile | ~410 | ~390 USD/t SA | −4,9% est. | Estimado 16/06 |
+| Brent | 95 | **82,97 USD/bbl** | −12,7% | ICE 16/06 |
+
+### Tendencia multi-semana (Ed.12 → Ed.16)
+
+| Mineral | 19/05 | 26/05 | 02/06 | 10/06 | 16/06 | Lectura |
+|---------|:---:|:---:|:---:|:---:|:---:|---|
+| Cu USD/lb | 6,15 | 6,36 | 6,56 | 6,28 | **6,44** | → Lateral; soporte USD 14.000/t probado |
+| Pt USD/oz | 1.985 | 1.960 | 1.935 | 1.697 | **1.814** | ↗ Rebote post-ITC; presión secular persiste |
+| Pd USD/oz | 1.363 | 1.380 | 1.388 | 1.225 | **1.369** | ↗ Rebote fuerte post-ITC |
+| Au USD/oz | 4.558 | 4.510 | 4.505 | 4.115 | **4.345** | ↗ Rebote; Ormuz abierto + Fed dovish |
+| Ag USD/oz | 75,69 | 77,50 | 76,25 | 64,62 | **70,20** | ↗ Rebote; ratio Ag/Au comprimiéndose |
+| NdPr USD/kg | 111 | 105 | 110 | 109,55 | **109** | → Lateral |
 
 ---
 
@@ -309,14 +310,16 @@ Arquitecto del deal con Arizona Sonoran. Su tesis: jurisdicción USMCA + escala 
 
 ## CALENDARIO DE EVENTOS RELEVANTES
 
-| Fecha | Evento | Relevancia |
-|-------|--------|-----------|
-| **30 jun** | **Decisión Trump: S232 cobre refinado** | **CRÍTICO — máxima prioridad** |
-| 20 jun | Cierre comentarios USTR sobre S232 refinado | Alta — mueve el mercado |
-| Jun-Jul | FOMC siguiente reunión (30 jul) | Media — tasas estables esperadas |
-| Jul 2026 | COCHILCO — Informe Tendencias Cobre Q2 2026 | Alta — precios de referencia Chile |
-| Ago 2026 | Resultado auditoría independiente Codelco | Alta — rating y refinanciamiento |
-| Sep 2026 | SEA — Salar Futuro: adición antecedentes | Media |
+### Próximos 7 días
+- **20 jun:** Cierre comentarios USTR sobre S232 cobre refinado — última oportunidad de lobby antes de la decisión del 30 jun
+- **20 jun:** Vencimiento periodo comentarios USTR — los productores chilenos y compradores americanos deben pronunciarse
+- **23 jun:** FOMC — actas de la reunión 11-12 jun publicadas; confirmarán o matizarán la señal dovish de Powell
+
+### Próximas 4 semanas
+- **30 jun:** Decisión presidencial S232 cobre refinado (HTS 7403) — FECHA CRÍTICA para la minería chilena exportadora
+- **30 jul:** FOMC reunión — primera oportunidad de recorte de tasas si inflación sigue cediendo
+- **Jul 2026:** COCHILCO — Informe Tendencias del Mercado del Cobre Q2 2026 — precios de referencia para presupuestos
+- **Ago 2026:** Resultado auditoría independiente Big 4 a Codelco — determinará si hay restatement de EEFF y el costo del refinanciamiento de bonos
 
 ---
 
