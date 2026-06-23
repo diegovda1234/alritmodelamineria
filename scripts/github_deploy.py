@@ -12,6 +12,7 @@ Requiere:
 
 import sys
 import base64
+import time
 from pathlib import Path
 
 CARPETA = Path(__file__).parent.parent          # Noticiero_Minero/
@@ -46,9 +47,26 @@ def cargar_config():
 
 
 # ── OBTENER SHA ACTUAL DEL ARCHIVO EN GITHUB ──────────────────────────────────
+def _request_con_reintento(fn, intentos=4, espera=3):
+    """Ejecuta una llamada HTTP reintentando ante errores de conexion transitorios."""
+    import requests
+    ultimo_error = None
+    for i in range(intentos):
+        try:
+            return fn()
+        except (requests.exceptions.ConnectionError,
+                requests.exceptions.Timeout) as e:
+            ultimo_error = e
+            if i < intentos - 1:
+                time.sleep(espera * (i + 1))
+    raise ultimo_error
+
+
 def obtener_sha(session, api_base: str, ruta_repo: str) -> str | None:
     """Retorna el SHA del archivo si ya existe en el repo, o None si no existe."""
-    resp = session.get(f"{api_base}/contents/{ruta_repo}")
+    resp = _request_con_reintento(
+        lambda: session.get(f"{api_base}/contents/{ruta_repo}", timeout=30)
+    )
     if resp.status_code == 200:
         return resp.json().get("sha")
     return None
@@ -66,7 +84,9 @@ def subir_archivo(session, api_base: str, ruta_repo: str, contenido_bytes: bytes
     if sha_actual:
         body["sha"] = sha_actual  # requerido para actualizar un archivo existente
 
-    resp = session.put(f"{api_base}/contents/{ruta_repo}", json=body)
+    resp = _request_con_reintento(
+        lambda: session.put(f"{api_base}/contents/{ruta_repo}", json=body, timeout=30)
+    )
     return resp.status_code in (200, 201), resp.status_code
 
 
@@ -115,11 +135,15 @@ def deploy(token: str, user: str, repo: str):
     ok = 0
     for ruta_repo, filepath in archivos:
         contenido = filepath.read_bytes()
-        exito, codigo = subir_archivo(
-            session, api_base, ruta_repo, contenido,
-            mensaje=f"deploy: {filepath.name}"
-        )
-        estado = "[OK]" if exito else f"[!] codigo {codigo}"
+        try:
+            exito, codigo = subir_archivo(
+                session, api_base, ruta_repo, contenido,
+                mensaje=f"deploy: {filepath.name}"
+            )
+            estado = "[OK]" if exito else f"[!] codigo {codigo}"
+        except Exception as e:
+            exito = False
+            estado = f"[!] error conexion: {type(e).__name__}"
         print(f"      {estado} {ruta_repo}")
         if exito:
             ok += 1
