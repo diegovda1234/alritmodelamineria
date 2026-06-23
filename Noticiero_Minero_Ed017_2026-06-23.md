@@ -44,6 +44,19 @@ Semana de **corrección generalizada con sesgo restrictivo del dólar**. La Fed 
 
 ## 📊 DASHBOARD DE PRECIOS SPOT
 
+### 🚦 Semáforo semanal (Ed.17 · 23/06/2026)
+
+| Mineral | Ed.16 (16/06) | Ed.17 (23/06) | Var. semanal | Fuente |
+|---------|:-------------:|:-------------:|:------------:|--------|
+| Cobre 🔻 | 6,44 | **6,15 USD/lb** | **−4,5%** | LME 23/06 |
+| Litio Carbonato 🔻 | 24.500 | **23.160 USD/t** | **−5,4%** | SMM 23/06 |
+| NdPr óxido ➖ | 109 | **109 USD/kg** | **0%** | SMM 23/06 |
+| Platino 🔻 | 1.814 | **1.662 USD/oz** | **−8,4%** | Kitco 23/06 |
+| Oro 🔻 | 4.345 | **4.113 USD/oz** | **−5,3%** | Kitco 23/06 |
+| Plata 🔻 | 70,20 | **62,06 USD/oz** | **−11,6%** | Kitco 23/06 |
+| Cobalto ✅ | 55.906 | **56.290 USD/t** | **+0,7%** | LME 19/06 |
+| CLP/USD 🔻 | 887,50 | **912,27** | **+2,8%** | BCentral 23/06 |
+
 ### 📈 Tendencia multi-semana (Ed.13 → Ed.17)
 
 | Mineral | Ed.13 | Ed.14 | Ed.15 | Ed.16 (16/06) | **Ed.17 (23/06)** | Var. vs Ed.16 | Tendencia 4 sem. | Fuente |
