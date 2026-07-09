@@ -1,16 +1,19 @@
 # Noticiero Minero — Ed.19 | Semana del 1 al 7 de julio de 2026
-**Publicación:** 7 de julio de 2026 | **Cobertura:** semana 1–7 julio 2026
+
+**Período:** 1 al 7 de julio de 2026
+**Fecha de publicación:** 7 de julio de 2026
+**Énfasis editorial esta semana:** S232 postergado con escalera 2027-2028; NdPr +14% por coerción REE china; Codelco en triple frente simultáneo; Novandino ingresa EIA más ambicioso de Chile
 
 ---
 
 ## Resumen ejecutivo
 
-- **La historia de la semana no es un precio, es un calendario.** Trump excluyó el cobre refinado del arancel del 50% pero instaló una escalera de 15% (ene-2027) → 30% (ene-2028). El riesgo no desapareció: se difirió y se hizo predecible. Chile gana 18 meses de aire, pero ahora tiene una fecha en el reloj para reordenar su exposición de USD 2.900M/año en cátodos hacia EE.UU.
-- **Exposición dual chilena en una sola semana:** al S232 (cobre) se suman las audiencias S.301 del 7–9 julio (riesgo de arancel adicional de 12,5% a exportaciones generales). Dos instrumentos legales distintos golpeando al mismo exportador al mismo tiempo — el tema central de la Escuela de esta edición.
-- **Tierras raras entran en fase de guerra de aplicación.** China activó el Anuncio MOFCOM 26/2026: sistema de delación con recompensas y aplicación extraterritorial (arrestos incluidos), más bloqueo de licencias a MP Materials y USA Rare Earth. El NdPr aleación subió +21% en 4 semanas. Esto ya no es control de exportaciones, es coerción de cadena de suministro.
-- **Codelco vive su semana más compleja del año:** causa penal acotada por el Juzgado de Rancagua (primer respiro legal), pero llega Jorge Gómez como CEO el 13-jul con mandato de recuperar producción (1,3 → 1,7 Mt) mientras la Cámara abre comisión investigadora de 60 días. Gobierno corporativo y producción en tensión simultánea.
-- **El déficit estructural de cobre se confirma por dos vías:** Morgan Stanley proyecta 600.000 t de déficit 2026 (el mayor en 20 años) y la demanda de data centers IA aporta 475.000 t solo este año. El precio no lo refleja aún (−0,7% semanal) porque el ruido arancelario domina el corto plazo.
-- **Ácido sulfúrico: la crisis silenciosa.** Novena semana de suspensión china de exportaciones, spot >USD 300/t. Los contratos anuales protegen a Codelco/AMSA/BHP en 2026, pero 1,1 Mt de cobre lixiviado chileno quedan en riesgo si el déficit cruza a 2027.
+- **[S232]** Cobre refinado exento del 50% pero con escalera 15% (2027) → 30% (2028) — Chile tiene 18 meses y una fecha de vencimiento firmada para reordenar USD 2.900M/año en cátodos hacia EE.UU.
+- **[REE]** MOFCOM Anuncio 26: China activa sistema de delación extraterritorial para REE; NdPr +14% en la semana; bloqueo a MP Materials y USA Rare Earth — coerción de cadena de suministro.
+- **[CODELCO]** Causa penal acotada por tribunal (primer respiro), pero Gómez asume CEO el 13-jul con comisión investigadora de 60 días activa y mandato de recuperar 1,3→1,7 Mt.
+- **[NOVANDINO]** EIA Salar Futuro ingresó al SEIA: 470.000 t/año LCE, USD 3.000M, DLE hasta 2060 — el proyecto de litio más ambicioso de Chile bajo tensión política de anulación.
+- **[COBRE]** Déficit Morgan Stanley 2026: 600.000 t (mayor en 20 años); demanda IA suma 475.000 t solo este año; COMEX 652.200 t es récord histórico por pre-compra arancelaria.
+- **[H2SO4]** Novena semana sin exportaciones chinas; spot >USD 300/t; 1,1 Mt de cobre lixiviado chileno en riesgo si el déficit cruza a 2027.
 
 ---
 
@@ -181,6 +184,19 @@ El **Brent quedó plano (~73 USD/bbl)** pero acumula **−22,7% en el mes** por 
 ### China
 
 Los PMI de junio confirman **expansión sostenida: NBS 50,3 y Caixin 51,7**, con el subsector de **IA/alta tecnología destacando en 53,5** y órdenes de exportación recuperándose. Inventarios SHFE cayendo −7,3% semanal confirman demanda física real desde China. El cuadro chino es el soporte de fondo del cobre para el segundo semestre.
+
+---
+
+## Lo que viene
+
+### Próximos 7 días
+- **13 jul:** Jorge Gómez asume como CEO de Codelco — primera señal estratégica sobre plan de recuperación de producción
+- **28-29 jul:** Reunión FOMC — mercado descuenta primera baja de tasas Fed en 2026 (nominas débiles 57k)
+- **Jul-ago:** Resultado audiencias S.301 del USTR — determinación sobre arancel adicional 12,5% a exportaciones chilenas
+
+### Próximas 4 semanas
+- **Ago 2026:** Aprobación SAMR China sobre fusión Teck-Anglo USD 53B — pendiente entre sep-2026 y mar-2027
+- **Ago 2026:** Señal H₂SO₄ — China sin plazo de término para suspensión; renovación contratos 2027 empieza ahora
 
 ---
 
