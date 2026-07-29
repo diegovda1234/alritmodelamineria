@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Al Ritmo de la Minería — Edición 1 — 15 al 27 de julio de 2026</title>
+    <title>Al Ritmo de la Minería — Edición 21 — 15 al 27 de julio de 2026</title>
     <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;600&display=swap');
 
@@ -790,51 +790,71 @@ h4:hover .share-btns { opacity: 1; }
 <div class="nav-dropdown" id="nav-dropdown" aria-hidden="true">
     <div class="nav-dropdown-inner">
         <div class="nav-group">
-            <a href="#s301-chile-recibe-arancel-con-excepcin-minera-e" class="nav-h2-link" onclick="closeNavMenu()">S.301 — Chile recibe arancel con excepción minera ...</a>
+            <a href="#primicias" class="nav-h2-link" onclick="closeNavMenu()">PRIMICIAS</a>
         </div>
         <div class="nav-group">
-            <a href="#hormuz-brent-perfor-usd-102-luego-moder" class="nav-h2-link" onclick="closeNavMenu()">Hormuz — Brent perforó USD 102, luego moderó</a>
+            <a href="#" class="nav-h2-link" onclick="toggleSub('sub-dashboard-de-precios-spot')">DASHBOARD DE PRECIOS SPOT <span class="nav-arrow">&#9660;</span></a>
+        <div class="nav-sub-group" id="sub-dashboard-de-precios-spot">
+            <a href="#semforo-semanal-ed21-27072026" class="nav-sub-link" onclick="closeNavMenu()">Semáforo semanal (Ed.21 · 27/07/2026)</a>
+            <a href="#tendencia-multi-semana-ed17-ed21" class="nav-sub-link" onclick="closeNavMenu()">Tendencia multi-semana (Ed.17 → Ed.21)</a>
+        </div>
         </div>
         <div class="nav-group">
-            <a href="#tcrc-negativos-el-hecho-ms-significativo-de-la-" class="nav-h2-link" onclick="closeNavMenu()">TC/RC negativos — El hecho más significativo de la...</a>
+            <a href="#" class="nav-h2-link" onclick="toggleSub('sub-anlisis-por-mineral')">ANÁLISIS POR MINERAL <span class="nav-arrow">&#9660;</span></a>
+        <div class="nav-sub-group" id="sub-anlisis-por-mineral">
+            <a href="#cobre-cu" class="nav-sub-link" onclick="closeNavMenu()">Cobre (Cu)</a>
+            <a href="#tierras-raras-ree-ndpr" class="nav-sub-link" onclick="closeNavMenu()">Tierras Raras (REE / NdPr)</a>
+            <a href="#metales-del-grupo-del-platino-pgm" class="nav-sub-link" onclick="closeNavMenu()">Metales del Grupo del Platino (PGM)</a>
+            <a href="#litio-li" class="nav-sub-link" onclick="closeNavMenu()">Litio (Li)</a>
+            <a href="#cobalto-co" class="nav-sub-link" onclick="closeNavMenu()">Cobalto (Co)</a>
+            <a href="#oro-au" class="nav-sub-link" onclick="closeNavMenu()">Oro (Au)</a>
+            <a href="#plata-ag" class="nav-sub-link" onclick="closeNavMenu()">Plata (Ag)</a>
+        </div>
         </div>
         <div class="nav-group">
-            <a href="#codelco-kpmg-deuda-y-fin-del-mayor-productor" class="nav-h2-link" onclick="closeNavMenu()">Codelco — KPMG, deuda y fin del "mayor productor"</a>
+            <a href="#" class="nav-h2-link" onclick="toggleSub('sub-chile-minero')">CHILE MINERO <span class="nav-arrow">&#9660;</span></a>
+        <div class="nav-sub-group" id="sub-chile-minero">
+            <a href="#s301-la-excepcin-que-protege-al-sector-minero" class="nav-sub-link" onclick="closeNavMenu()">S.301 — la excepción que protege al sector minero</a>
+            <a href="#codelco-auditora-kpmg-deuda-y-giro-estratgico" class="nav-sub-link" onclick="closeNavMenu()">Codelco — auditoría KPMG, deuda y giro estratégico</a>
+            <a href="#anglo-american-chile-es-el-567-de-su-cartera" class="nav-sub-link" onclick="closeNavMenu()">Anglo American — Chile es el 56,7% de su cartera</a>
+        </div>
         </div>
         <div class="nav-group">
-            <a href="#anglo-american-chile-es-el-567-de-su-cartera-glo" class="nav-h2-link" onclick="closeNavMenu()">Anglo American — Chile es el 56,7% de su cartera g...</a>
+            <a href="#" class="nav-h2-link" onclick="toggleSub('sub-insumos-estratgicos')">️ INSUMOS ESTRATÉGICOS <span class="nav-arrow">&#9660;</span></a>
+        <div class="nav-sub-group" id="sub-insumos-estratgicos">
+            <a href="#cido-sulfrico-escasez-estructural-sin-resoluci" class="nav-sub-link" onclick="closeNavMenu()">Ácido sulfúrico — escasez estructural sin resoluci...</a>
+        </div>
         </div>
         <div class="nav-group">
-            <a href="#ndpr-y-tierras-raras-estabilizacin-sin-cataliza" class="nav-h2-link" onclick="closeNavMenu()">NdPr y Tierras Raras — Estabilización sin cataliza...</a>
+            <a href="#oportunidades" class="nav-h2-link" onclick="closeNavMenu()">OPORTUNIDADES</a>
         </div>
         <div class="nav-group">
-            <a href="#litio-la-cada-contina" class="nav-h2-link" onclick="closeNavMenu()">Litio — La caída continúa</a>
+            <a href="#tecnologa-e-ia" class="nav-h2-link" onclick="closeNavMenu()">️ TECNOLOGÍA E IA</a>
         </div>
         <div class="nav-group">
-            <a href="#hso-escasez-sin-resolucin" class="nav-h2-link" onclick="closeNavMenu()">H₂SO₄ — Escasez sin resolución</a>
+            <a href="#contexto-macro" class="nav-h2-link" onclick="closeNavMenu()">CONTEXTO MACRO</a>
         </div>
         <div class="nav-group">
-            <a href="#macro-fomc-y-pmi-china" class="nav-h2-link" onclick="closeNavMenu()">Macro — FOMC y PMI China</a>
+            <a href="#clase-ejecutiva" class="nav-h2-link" onclick="closeNavMenu()">CLASE EJECUTIVA</a>
         </div>
         <div class="nav-group">
-            <a href="#" class="nav-h2-link" onclick="toggleSub('sub-lo-que-viene')">Lo que viene <span class="nav-arrow">&#9660;</span></a>
-        <div class="nav-sub-group" id="sub-lo-que-viene">
+            <a href="#" class="nav-h2-link" onclick="toggleSub('sub-calendario')">CALENDARIO <span class="nav-arrow">&#9660;</span></a>
+        <div class="nav-sub-group" id="sub-calendario">
             <a href="#prximos-7-das" class="nav-sub-link" onclick="closeNavMenu()">Próximos 7 días</a>
             <a href="#prximas-4-semanas" class="nav-sub-link" onclick="closeNavMenu()">Próximas 4 semanas</a>
         </div>
         </div>
         <div class="nav-group">
-            <a href="#" class="nav-h2-link" onclick="toggleSub('sub-la-escuela-leccin-21')">La Escuela — Lección 21 <span class="nav-arrow">&#9660;</span></a>
-        <div class="nav-sub-group" id="sub-la-escuela-leccin-21">
-            <a href="#qu-son-los-tcrc" class="nav-sub-link" onclick="closeNavMenu()">¿Qué son los TC/RC?</a>
-            <a href="#la-inversin-histrica" class="nav-sub-link" onclick="closeNavMenu()">La inversión histórica</a>
-            <a href="#por-qu-ocurri" class="nav-sub-link" onclick="closeNavMenu()">¿Por qué ocurrió?</a>
-            <a href="#quin-gana-y-quin-pierde" class="nav-sub-link" onclick="closeNavMenu()">¿Quién gana y quién pierde?</a>
-            <a href="#es-sostenible" class="nav-sub-link" onclick="closeNavMenu()">¿Es sostenible?</a>
-            <a href="#benchmark-anual-vs-spot" class="nav-sub-link" onclick="closeNavMenu()">Benchmark anual vs. spot</a>
-            <a href="#ejercicio-para-el-inversor" class="nav-sub-link" onclick="closeNavMenu()">Ejercicio para el inversor</a>
-            <a href="#vocabulario-clave" class="nav-sub-link" onclick="closeNavMenu()">Vocabulario clave</a>
+            <a href="#temas-a-monitorear" class="nav-h2-link" onclick="closeNavMenu()">TEMAS A MONITOREAR</a>
         </div>
+        <div class="nav-group">
+            <a href="#radar-de-personas" class="nav-h2-link" onclick="closeNavMenu()">RADAR DE PERSONAS</a>
+        </div>
+        <div class="nav-group">
+            <a href="#nota-editorial" class="nav-h2-link" onclick="closeNavMenu()">NOTA EDITORIAL</a>
+        </div>
+        <div class="nav-group">
+            <a href="#stats-de-bsqueda" class="nav-h2-link" onclick="closeNavMenu()">STATS DE BÚSQUEDA</a>
         </div>
     </div>
 </div>
@@ -890,7 +910,7 @@ h4:hover .share-btns { opacity: 1; }
         </div>
     </div>
     <div class="cover-body">
-        <div class="cover-edition-badge">Edición N° 1</div>
+        <div class="cover-edition-badge">Edición N° 21</div>
         <hr class="cover-divider">
         <div class="cover-meta">
             <div class="cover-meta-item">
@@ -899,11 +919,11 @@ h4:hover .share-btns { opacity: 1; }
             </div>
             <div class="cover-meta-item">
                 <div class="label">Fecha de publicación</div>
-                <div class="value">29 de July de 2026, 12:47 hrs</div>
+                <div class="value">29 de July de 2026, 17:23 hrs</div>
             </div>
             <div class="cover-meta-item">
                 <div class="label">Énfasis editorial</div>
-                <div class="value">TC/RC cobre cae a -$42,80/mt (mínimo histórico); S.301 Chile excluye explícitamente cobre, litio, oro y plata; Brent pica USD 102 por Hormuz y modera.</div>
+                <div class="value">TC/RC cobre cae a -42,80 USD/mt (mínimo histórico absoluto); S.301 Chile excluye cobre, litio, oro y plata; Brent toca USD 102 por crisis Hormuz y modera.</div>
             </div>
         </div>
     </div>
@@ -912,234 +932,325 @@ h4:hover .share-btns { opacity: 1; }
 <!-- RESUMEN EJECUTIVO -->
 <div class="executive-summary">
     <h2>Resumen Ejecutivo</h2>
-    <p>La quincena del 15 al 27 de julio concentró tres señales estructurales de primer orden.</p>
-<p>La más significativa: los TC/RC del concentrado de cobre cayeron a territorio negativo (-42,80 USD/mt), un hecho sin precedente histórico que invierte la lógica de la cadena de valor del metal rojo. Por primera vez, los fundidores chinos — que dominan el 45% de la capacidad global — están pagando a los productores de concentrado por el derecho a procesar su mineral. Esto refleja una sobreexpansión de fundición en China combinada con escasez de concentrado disponible, agravada por los costos de flete desde Hormuz. El impacto para las operaciones chilenas de concentrado es directamente positivo en ingresos de corto plazo; la Lección 21 lo desarrolla en detalle.</p>
-<p>Segundo: el arancel S.301 del 12,5% activado sobre Chile el 24 de julio llegó con una excepción explícita para los minerales estratégicos — cobre, litio, oro y plata — validando dos años de diplomacia minero-comercial del gobierno Kast. El impacto directo sobre exportaciones mineras es nulo; el indirecto vía apreciación del dólar (CLP/USD subió de 926 a 945) encarece insumos importados pero beneficia a exportadores que reciben dólares.</p>
-<p>Tercero: la crisis de Hormuz llevó al Brent por encima de USD 102/bbl durante tres días consecutivos. Los 140+ días de crisis ya superan el shock de Suez de 2021 en duración. La moderación a USD 90,3 refleja negociaciones diplomáticas activas, no resolución estructural.</p>
-<p>En el frente corporativo, Codelco atraviesa su momento institucional más delicado desde Dávila (1994): auditoría KPMG, abandono del objetivo de mayor productor y deuda sobre USD 25.000 millones. Anglo American confirma que Chile es hoy el epicentro de su cartera global con el 56,7% de su producción cuprífera.</p>
-<hr />
-<h3>🚦 Semáforo semanal (Ed.21 · 27/07/2026)</h3>
-<p>| Mineral | Ed. anterior | Esta semana | Δ | Señal |<br />
-|---------|-------------|-------------|---|-------|<br />
-| Cobre | $6,26/lb | <strong>$6,30/lb</strong> | +0,6% | 🟢 |<br />
-| Litio | $22.700/t | <strong>$20.850/t</strong> | −8,1% | 🔴 |<br />
-| Platino | $1.628/oz | <strong>$1.599/oz</strong> | −1,8% | 🟡 |<br />
-| Paladio | $1.288/oz | <strong>$1.300/oz</strong> | +0,9% | 🟢 |<br />
-| Rodio | $8.150/oz | <strong>$8.200/oz</strong> | +0,6% | 🟢 |<br />
-| NdPr | $113/kg | <strong>$113/kg</strong> | 0,0% | 🟡 |<br />
-| Cobalto | $56.290/t | <strong>$56.300/t</strong> | ~0% | 🟡 |<br />
-| Oro | $4.059/oz | <strong>$4.054/oz</strong> | −0,1% | 🟡 |<br />
-| Plata | $58,62/oz | <strong>$58,28/oz</strong> | −0,6% | 🟡 |<br />
-| CLP/USD | $926,45 | <strong>$945</strong> | +2,0% | 🔴 |<br />
-| Brent | $86,5/bbl | <strong>$90,3/bbl</strong> | +4,4% | 🔴 |<br />
-| H₂SO₄ | $380/t | <strong>~$440/t</strong> | +15,8% | 🔴 |</p>
+    <ul>
+<li><strong>[TCRC]</strong> TC/RC spot del concentrado de cobre: -42,80 USD/mt, mínimo histórico absoluto. Primera vez en la historia que los fundidores pagan a los productores de concentrado. Causas: sobreexpansión china de fundición + oferta de concentrado ajustada + fletes Hormuz. Productores de concentrado chilenos ganan margen; operaciones SX-EW son neutras; fundidores chinos de tercera línea reportan curtailment.</li>
+<li><strong>[S301]</strong> EE.UU. activó el 24 de julio el arancel S.301 del 12,5% sobre exportaciones chilenas — pero excluye explícitamente cobre y concentrados, litio y compuestos, oro, plata y PGM. Chile sortea el impacto directo. CLP/USD sube a ~945 por fortaleza del dólar (+2,0% vs Ed.20), encareciendo insumos importados.</li>
+<li><strong>[HORMUZ]</strong> Brent toca USD 102/bbl (19-22 jul), máximo desde 2022. Crisis día 140+. Modera a USD 90,3 ante negociaciones Qatar-Irán. Goldman Sachs base Q3: USD 88-95, con tail risk USD 120 si el estrecho se cierra parcialmente.</li>
+<li><strong>[CODELCO]</strong> Directorio encarga auditoría KPMG por escándalo de gastos. Presidente Fontaine abandona objetivo "mayor productor mundial". Deuda financiera supera USD 25.000 millones. Plan estratégico 2026-2036 se presentará en octubre.</li>
+<li><strong>[ANGLO]</strong> Anglo American Q2: Chile = 56,7% de producción global de cobre (máximo histórico). Los Bronces: 98.200 t, superando guidance. Fusión Anglo-Teck: solo falta aprobación SAMR China (Phase 3). BMO estima agosto-septiembre.</li>
+<li><strong>[H2SO4]</strong> Ácido sulfúrico CFR Mejillones supera USD 440/t (+15,8% vs Ed.20). China sigue sin exportar azufre elemental desde mayo. La escasez estructural no cede y presiona costos SX-EW.</li>
+<li><strong>[MACRO]</strong> PMI manufacturero Caixin China julio: 47,8 (contracción, mínimo de 14 meses). FOMC 28-29 jul: hold esperado &gt;90% de probabilidad. Litio carbonato grado batería cae a ~20.850 USD/t (-8,1% vs Ed.20) por inventarios elevados en China.</li>
+</ul>
 <hr />
     <p class="es-footer-note">
-        Este informe contiene 9 noticias analizadas, precios spot actualizados para 7 minerales y 1 concepto(s) educativo(s) de la semana.
-        Fuentes verificadas al 29 de July de 2026, 12:47 hrs.
+        Este informe contiene 13 noticias analizadas, precios spot actualizados para 7 minerales y 1 concepto(s) educativo(s) de la semana.
+        Fuentes verificadas al 29 de July de 2026, 17:23 hrs.
     </p>
 </div>
 
 <!-- CONTENIDO PRINCIPAL -->
 <div class="content">
-    <ul>
-<li><strong>[TCRC]</strong> Los TC/RC spot del concentrado de cobre tocaron -42,80 USD/mt en la semana del 21 de julio — primera vez en la historia que los fundidores pagan a los productores de concentrado por procesar su mineral. Señal de estrés estructural sin precedente en la cadena de valor del cobre.</li>
-<li><strong>[S301]</strong> EE.UU. activó el 24 de julio el arancel S.301 (12,5%) sobre exportaciones chilenas, pero la orden ejecutiva excluye explícitamente cobre, litio, oro, plata y sus concentrados. Chile sortea el impacto directo sobre su sector minero.</li>
-<li><strong>[HORMUZ]</strong> El Brent perforó USD 102/bbl entre el 19 y 22 de julio (máximo desde 2022) por escalada en el Estrecho de Hormuz; moderó a USD 90,3 ante señales de negociación — la prima de riesgo permanece.</li>
-<li><strong>[CODELCO]</strong> El directorio encargó una auditoría a KPMG; el presidente Fontaine declaró que Codelco abandona el objetivo de "mayor productor mundial"; la deuda financiera supera USD 25.000 millones y el plan estratégico se presentará en octubre.</li>
-<li><strong>[ANGLO]</strong> Anglo American Q2: Chile representó el 56,7% de su producción global de cobre; Los Bronces entregó 98.200 t. La fusión Anglo-Teck avanza — solo falta aprobación SAMR China (Phase 3).</li>
-<li><strong>[H2SO4]</strong> El ácido sulfúrico CFR Mejillones superó USD 440/t (desde 380 en Ed.20) — la restricción china de exportaciones de azufre no cede y presiona costos SX-EW.</li>
-<li><strong>[MACRO]</strong> FOMC se reúne 28–29 julio con probabilidad &gt;90% de hold; PMI manufacturero China julio: 47,8 (contracción, señal de demanda débil).</li>
+    <p><strong>Frase de la semana:</strong> "Cuando el TC/RC es negativo, el fundidor deja de cobrar por un servicio y empieza a pagar por acceso: la cadena de valor del cobre se invierte."<br />
+<strong>Atribución frase:</strong> — Análisis Noticiero Minero Ed.21</p>
+<h2 id="primicias">PRIMICIAS</h2>
+<p><strong>TC/RC del concentrado de cobre colapsan a -42,80 USD/mt: primera vez en la historia que los fundidores pagan a los mineros.</strong> En la semana del 21 de julio, los benchmarks spot para los cargos de tratamiento y refinación del concentrado de cobre cayeron a territorio negativo por primera vez en la historia documentada del mercado. Normalmente, los productores de concentrado pagan entre 20 y 80 USD/mt a los fundidores chinos por convertir su concentrado en cobre refinado. Un TC negativo invierte este flujo: el fundidor paga por el derecho a procesar el concentrado. Las causas son convergentes: sobreexpansión masiva de fundición china (+3 Mt/año de nueva capacidad entre 2020-2025), oferta de concentrado que no creció al ritmo proyectado, y fletes elevados por la crisis de Hormuz que erosionan el margen del procesador asiático. Para las operaciones de concentrado chilenas (Escondida, Collahuasi, Los Bronces, Chuquicamata), esto representa un ingreso adicional de corto plazo. La Clase Ejecutiva de esta edición desarrolla el mecanismo completo.</p>
+<hr />
+<h2 id="dashboard-de-precios-spot">DASHBOARD DE PRECIOS SPOT</h2>
+<h3 id="semforo-semanal-ed21-27072026">Semáforo semanal (Ed.21 · 27/07/2026)</h3>
+<table>
+<thead>
+<tr>
+<th>Mineral</th>
+<th style="text-align: center;">Ed.20 (14/07)</th>
+<th style="text-align: center;">Ed.21 (27/07)</th>
+<th style="text-align: center;">Var. período</th>
+<th>Fuente</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cobre 🔺</td>
+<td style="text-align: center;">6,26</td>
+<td style="text-align: center;"><strong>6,30 USD/lb</strong></td>
+<td style="text-align: center;"><strong>+0,6%</strong></td>
+<td>LME 25/07</td>
+</tr>
+<tr>
+<td>Litio Carbonato 🔻</td>
+<td style="text-align: center;">22.700</td>
+<td style="text-align: center;"><strong>20.850 USD/t</strong></td>
+<td style="text-align: center;"><strong>−8,1%</strong></td>
+<td>SMM 25/07</td>
+</tr>
+<tr>
+<td>NdPr óxido ➖</td>
+<td style="text-align: center;">~113</td>
+<td style="text-align: center;"><strong>~113 USD/kg</strong></td>
+<td style="text-align: center;"><strong>0,0%</strong></td>
+<td>REE Exchange 24/07</td>
+</tr>
+<tr>
+<td>Platino 🔻</td>
+<td style="text-align: center;">1.628</td>
+<td style="text-align: center;"><strong>1.599 USD/oz</strong></td>
+<td style="text-align: center;"><strong>−1,8%</strong></td>
+<td>TradingEcon 24/07</td>
+</tr>
+<tr>
+<td>Oro 🔻</td>
+<td style="text-align: center;">4.059</td>
+<td style="text-align: center;"><strong>4.054 USD/oz</strong></td>
+<td style="text-align: center;"><strong>−0,1%</strong></td>
+<td>Kitco 25/07</td>
+</tr>
+<tr>
+<td>Plata 🔻</td>
+<td style="text-align: center;">58,62</td>
+<td style="text-align: center;"><strong>58,28 USD/oz</strong></td>
+<td style="text-align: center;"><strong>−0,6%</strong></td>
+<td>Kitco 25/07</td>
+</tr>
+<tr>
+<td>Cobalto ➖</td>
+<td style="text-align: center;">56.290</td>
+<td style="text-align: center;"><strong>~56.300 USD/t</strong></td>
+<td style="text-align: center;"><strong>~0%</strong></td>
+<td>LME ~20/07</td>
+</tr>
+<tr>
+<td>CLP/USD 🔺</td>
+<td style="text-align: center;">926,45</td>
+<td style="text-align: center;"><strong>945</strong></td>
+<td style="text-align: center;"><strong>+2,0%</strong></td>
+<td>BCentral 25/07</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Otros precios de referencia (27/07):</strong> Paladio ~1.300 USD/oz (+0,9%); Rodio ~8.200 USD/oz (+0,6%, Umicore); H₂SO₄ CFR Mejillones &gt;440 USD/t (est. jul 2026, sin cotización Platts julio verificada); Brent 90,3 USD/bbl (+4,4%, pico intrasemanal USD 102); DXY ~101,18.</p>
+<h3 id="tendencia-multi-semana-ed17-ed21">Tendencia multi-semana (Ed.17 → Ed.21)</h3>
+<table>
+<thead>
+<tr>
+<th>Mineral</th>
+<th style="text-align: center;">Ed.17</th>
+<th style="text-align: center;">Ed.18</th>
+<th style="text-align: center;">Ed.19</th>
+<th style="text-align: center;">Ed.20</th>
+<th style="text-align: center;">Ed.21</th>
+<th>Tendencia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cobre (USD/lb)</td>
+<td style="text-align: center;">6,15</td>
+<td style="text-align: center;">6,12</td>
+<td style="text-align: center;">6,08</td>
+<td style="text-align: center;">6,26</td>
+<td style="text-align: center;">6,30</td>
+<td>Recuperación desde mínimo Ed.19; rango 6,08-6,30</td>
+</tr>
+<tr>
+<td>Litio Li₂CO₃ (USD/t)</td>
+<td style="text-align: center;">23.160</td>
+<td style="text-align: center;">23.250</td>
+<td style="text-align: center;">21.500</td>
+<td style="text-align: center;">22.700</td>
+<td style="text-align: center;">20.850</td>
+<td>Bajista estructural — nueva caída en Ed.21</td>
+</tr>
+<tr>
+<td>Platino (USD/oz)</td>
+<td style="text-align: center;">1.662</td>
+<td style="text-align: center;">1.576</td>
+<td style="text-align: center;">1.641</td>
+<td style="text-align: center;">1.628</td>
+<td style="text-align: center;">1.599</td>
+<td>Lateral-bajista; sin catalizador alcista visible</td>
+</tr>
+<tr>
+<td>Oro (USD/oz)</td>
+<td style="text-align: center;">4.113</td>
+<td style="text-align: center;">3.986</td>
+<td style="text-align: center;">4.154</td>
+<td style="text-align: center;">4.059</td>
+<td style="text-align: center;">4.054</td>
+<td>Lateral; sin dirección clara</td>
+</tr>
+<tr>
+<td>Plata (USD/oz)</td>
+<td style="text-align: center;">62,06</td>
+<td style="text-align: center;">58,69</td>
+<td style="text-align: center;">60,84</td>
+<td style="text-align: center;">58,62</td>
+<td style="text-align: center;">58,28</td>
+<td>Bajista; mínimo del ciclo</td>
+</tr>
+<tr>
+<td>Brent (USD/bbl)</td>
+<td style="text-align: center;">77,42</td>
+<td style="text-align: center;">73,00</td>
+<td style="text-align: center;">73,00</td>
+<td style="text-align: center;">86,50</td>
+<td style="text-align: center;">90,30</td>
+<td>Fuerte alza Ed.20-21 por Hormuz; pico USD 102</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="anlisis-por-mineral">ANÁLISIS POR MINERAL</h2>
+<h3 id="cobre-cu">Cobre (Cu)</h3>
+<p>El cobre LME cerró la quincena en 6,30 USD/lb (13.870 USD/t), +0,6% frente a los 6,26 de Ed.20. El movimiento de precio es moderado, pero el contexto es el más disruptivo en años: los TC/RC spot del concentrado cayeron a -42,80 USD/mt la semana del 21 de julio.</p>
+<p>En condiciones históricas normales (20-80 USD/mt), los productores de concentrado pagan a los fundidores por fundir y refinar su mineral. Un TC negativo indica que la oferta de concentrado disponible para fundir es menor que la capacidad de fundición existente, y los fundidores compiten por acceder al material. Las tres causas convergentes: (1) China añadió ~3 Mt/año de nueva capacidad de fundición entre 2020-2025, apostando a que el boom de transición energética garantizaría volumen — hoy representa el 45% de la capacidad global; (2) la oferta de concentrado no creció al ritmo proyectado: leyes decrecientes en Chile (~0,3-0,4% Cu), problemas en Grasberg y Kamoa-Kakula; (3) la crisis de Hormuz elevó el costo de flete de concentrado desde América del Sur hacia China ~18%, erosionando aún más el margen del fundidor asiático.</p>
+<p>Para Chile: Escondida, Collahuasi, Los Bronces y Chuquicamata reciben un pago adicional por tonelada de concentrado. Las operaciones SX-EW (Radomiro Tomic, Gaby, Franke) venden cátodo directamente al LME sin exponer TC/RC. Los fundidores de tercera línea chinos reportan curtailment. El benchmark anual 2026 sigue positivo (~15 USD/mt) pero la presión sobre el benchmark 2027 ya es estructural.</p>
+<p>La fusión Anglo-Teck (USD 53B) está a un paso de completarse: solo falta aprobación SAMR China en Phase 3 review; BMO estima agosto-septiembre. La entidad combinada se convertiría en el tercer productor cuprero global.</p>
+<p>El PMI manufacturero Caixin de China julio (47,8) es la señal de demanda más débil en 14 meses y actúa como presión bajista de corto plazo sobre el precio spot.</p>
+<h3 id="tierras-raras-ree-ndpr">Tierras Raras (REE / NdPr)</h3>
+<p>El NdPr cotiza en ~113 USD/kg, sin variación respecto a Ed.20, confirmando la estabilización post-rally de junio (108→125 USD/kg). El mercado digiere el fin del rallye sin caída dramática: el MOFCOM no ha anunciado modificaciones a las cuotas de exportación Q3 (señal neutral por silencio), y las ventas EV en China cayeron 3,4% m/m en junio pero permanecen +22% a/a.</p>
+<p>Los REE pesados — Terbio y Disprosio — siguen firmes con oferta ajustada por controles de exportación. La diferencia estructural persiste: REE livianos (NdPr) tienen mayor oferta relativa por la producción china; REE pesados (Dy, Tb) siguen con restricciones críticas.</p>
+<p>Ausencia notable de la quincena: sin movimientos nuevos en el mercado de REE de Sudamérica ni avances en proyectos ex-China relevantes.</p>
+<h3 id="metales-del-grupo-del-platino-pgm">Metales del Grupo del Platino (PGM)</h3>
+<p>El platino cede a ~1.599 USD/oz (−1,8%), con un pico intradiario de 1.650 el 22 de julio revertido al cierre. El déficit estructural del platino (cuarto año consecutivo proyectado por WPIC y Johnson Matthey) sigue vigente como driver de largo plazo, pero el mercado continúa descontando debilidad autocatalítica por transición a vehículos eléctricos antes que el balance físico. La tendencia de los últimos cinco períodos (Ed.17-21) es lateral-bajista: 1.662 → 1.576 → 1.641 → 1.628 → 1.599 — nunca recupera el nivel de Ed.17.</p>
+<p>El paladio recupera levemente a ~1.300 USD/oz (+0,9%). La presión bajista estructural por electrificación vehicular persiste, aunque sin catalizadores negativos inmediatos esta quincena.</p>
+<p>El rodio se estima en ~8.200 USD/oz (+0,6% vs Ed.20). Fuente institucional: Umicore. La dispersión entre fuentes (dealers spot vs. Umicore) puede ser de 5-8%.</p>
+<h3 id="litio-li">Litio (Li)</h3>
+<p>El Li₂CO₃ grado batería (SMM China) cayó a ~20.850 USD/t desde 22.700 USD/t en Ed.20 — contracción de −8,1% en dos semanas. Los inventarios en China subieron a 5-6 semanas de consumo (sobre el promedio histórico de 3-4 semanas), reflejo de que los OEM de baterías como CATL y BYD mantienen política de inventario ajustado ante la incertidumbre arancelaria global.</p>
+<p>La tendencia es bajista estructural en el período cubierto: 23.160 (Ed.17) → 23.250 (Ed.18) → 21.500 (Ed.19) → 22.700 (Ed.20) → 20.850 (Ed.21). El rebote de Ed.20 quedó como un repunte temporal.</p>
+<p>SQM confirmó que sus contratos de largo plazo con clientes japoneses y coreanos siguen vigentes con precios indexados. El impacto de la caída spot sobre sus ingresos totales se verá recién en el Q3 reporting de octubre.</p>
+<h3 id="cobalto-co">Cobalto (Co)</h3>
+<p>Prácticamente sin variación: ~56.300 USD/t vs 56.290 en Ed.20. La cuota DRC vigente para H2-2026 (96.600 t) mantiene el mercado en equilibrio sin señales de sobredemanda inmediata. Glencore sigue priorizando producción de cobre sobre cobalto.</p>
+<h3 id="oro-au">Oro (Au)</h3>
+<p>El oro cotiza en 4.054 USD/oz (−0,1%), prácticamente sin variación. La crisis de Hormuz y la incertidumbre de S.301 no generaron el rally de refugio esperado: el canal de transmisión es el fortalecimiento del dólar (DXY ~101,18), que opera como sustituto del oro como refugio en shocks energéticos. El FOMC de mañana es el próximo catalizador — un dovish hold podría impulsar el oro brevemente.</p>
+<h3 id="plata-ag">Plata (Ag)</h3>
+<p>La plata cede a 58,28 USD/oz (−0,6%), continuando su tendencia bajista del período (62,06 → 58,69 → 60,84 → 58,62 → 58,28). Su doble naturaleza — refugio e insumo industrial — la deja expuesta a la desaceleración de demanda industrial china (PMI 47,8) y a la rotación hacia el dólar como refugio geopolítico.</p>
+<hr />
+<h2 id="chile-minero">CHILE MINERO</h2>
+<h3 id="s301-la-excepcin-que-protege-al-sector-minero">S.301 — la excepción que protege al sector minero</h3>
+<p>El 24 de julio, EE.UU. activó los aranceles S.301 del 12,5% sobre exportaciones chilenas. La orden ejecutiva de la USTR incluyó, sin embargo, una exclusión explícita para cobre y sus concentrados, litio y compuestos de litio, oro, plata y PGM — en línea con la clasificación de "minerales críticos" bajo la Ley CHIPS y la Science Act. Las categorías excluidas representan aproximadamente el 78% del valor de las exportaciones chilenas a EE.UU.</p>
+<p><strong>El impacto directo sobre el sector minero es nulo.</strong> El impacto indirecto sí existe: el dólar se apreció durante el anuncio (DXY sube), llevando el CLP/USD de 926,45 a ~945 (+2,0%). Esto encarece insumos importados (maquinaria, reactivos, explosivos) pero beneficia marginalmente a exportadores que liquidan dólares en pesos.</p>
+<p>La exclusión es resultado de dos años de gestión diplomática bajo el acuerdo bilateral de minerales críticos Chile-EE.UU. (2024) — confirma el posicionamiento de Chile como proveedor confiable de la cadena industrial norteamericana.</p>
+<h3 id="codelco-auditora-kpmg-deuda-y-giro-estratgico">Codelco — auditoría KPMG, deuda y giro estratégico</h3>
+<p>Codelco atraviesa su momento institucional más delicado desde el caso Dávila (1994). En las últimas dos semanas convergieron tres hechos de alta relevancia.</p>
+<p><strong>Auditoría KPMG:</strong> El directorio encargó a KPMG Chile una auditoría independiente de los gastos corporativos del período 2023-2025, luego del escándalo que involucra pagos a consultoras relacionadas con ex ejecutivos y contratos de imagen sin respaldo técnico. Resultados preliminares: septiembre.</p>
+<p><strong>Fontaine abandona el objetivo de "mayor productor":</strong> En entrevista con Reuters (22 de julio), el presidente del directorio declaró que Codelco debe dejar de definirse por volumen y enfocarse en rentabilidad por tonelada y sostenibilidad financiera. Producción estimada 2025: ~1,36 Mt Cu fino vs. 1,72 Mt de BHP. Este giro estratégico tiene implicaciones directas sobre el capex futuro: no más proyectos que crezcan el volumen si destruyen valor.</p>
+<p><strong>Deuda:</strong> La deuda financiera neta supera USD 25.000-26.000 millones a junio de 2026 — ratio deuda/EBITDA por encima de 5x. El plan estratégico 2026-2036 se presentará al directorio en octubre.</p>
+<h3 id="anglo-american-chile-es-el-567-de-su-cartera">Anglo American — Chile es el 56,7% de su cartera</h3>
+<p>Anglo American publicó sus resultados de producción Q2 2026: Chile representó el 56,7% de la producción global de cobre de la compañía — máximo histórico, reflejo del peso de Collahuasi (44% Anglo), Los Bronces, El Soldado y Chagres. Los Bronces entregó 98.200 t en Q2, superando guidance, beneficiado por mayores leyes en el bloque norte del rajo.</p>
+<p>La fusión Anglo-Teck (USD 53B) avanza hacia su cierre. Solo falta la aprobación del SAMR chino (Phase 3 review); BMO Capital Markets estima agosto-septiembre. La entidad combinada se convertiría en el tercer productor cuprero global.</p>
+<hr />
+<h2 id="insumos-estratgicos">️ INSUMOS ESTRATÉGICOS</h2>
+<h3 id="cido-sulfrico-escasez-estructural-sin-resoluci">Ácido sulfúrico — escasez estructural sin resolución</h3>
+<p>El ácido sulfúrico CFR Mejillones superó USD 440/t esta quincena — nivel récord para Chile, +15,8% frente a los ~380 USD/t de Ed.20. La dinámica estructural no ha cambiado: China prohibió las exportaciones de azufre elemental en mayo 2026 para garantizar suministro doméstico de fertilizantes, y la restricción no da señales de levantarse.</p>
+<p>Las fundidoras de cobre chilenas producen ácido sulfúrico como subproducto de la fundición de concentrado, pero la producción doméstica no alcanza para la demanda del proceso SX-EW (lixiviación), que requiere ácido en grandes volúmenes. Cada tonelada adicional en precio comprime directamente el costo C1 de las operaciones de cátodos — especialmente las de menor escala. El alza desde 380 a &gt;440 USD/t en dos semanas es señal de que el mercado regional no tiene cómo absorber la ausencia china a corto plazo.</p>
+<p>La crisis de Hormuz agrega presión adicional: el bunker fuel que mueve los buques de azufre desde Qatar hacia Chile también sube con el Brent.</p>
+<hr />
+<h2 id="oportunidades">OPORTUNIDADES</h2>
+<ul>
+<li><strong>Productores de concentrado en entorno TC/RC negativo:</strong> El ingreso adicional por tonelada de concentrado (hasta +42,80 USD/mt) es un buffer de margen real a corto plazo para Escondida, Collahuasi y Los Bronces. Para cualquier análisis de EBITDA de esas operaciones en Q3 2026, incorporar el TC/RC spot como variable explícita.</li>
+<li><strong>Codelco post-Fontaine:</strong> El abandono del objetivo de "mayor productor" y la auditoría KPMG señalan un probable ciclo de racionalización de capex. Cualquier proyecto de Codelco con VAN limítrofe debería reevaluarse bajo la nueva función objetivo declarada.</li>
+<li><strong>Litio en ciclo bajista de inventarios:</strong> Con inventarios chinos en 5-6 semanas de consumo, el mercado spot seguirá presionado. Monitorear si el contrato de Q4 de CATL o BYD señala recompra anticipada como trigger de rebote.</li>
+<li><strong>Anglo-Teck post-SAMR:</strong> Una vez aprobada la fusión, el mercado ajustará el precio de los activos de Collahuasi (44% Anglo) en función de la nueva estrategia del gigante combinado. Anticipar ese repricing.</li>
 </ul>
-<h2 id="s301-chile-recibe-arancel-con-excepcin-minera-e">S.301 — Chile recibe arancel con excepción minera explícita</h2>
-<p>El 24 de julio, la administración Trump activó los aranceles S.301 del 12,5% sobre exportaciones chilenas como respuesta a lo que la USTR calificó de "prácticas comerciales desleales" en sectores forestales y agrícolas. Sin embargo, la orden ejecutiva incluyó una exclusión explícita para cobre y sus concentrados, litio y compuestos de litio, oro, plata y metales del grupo del platino — en línea con la clasificación de "minerales críticos" bajo la Ley CHIPS y la Science Act.</p>
-<p>Las categorías arancelarias excluidas representan aproximadamente el 78% del valor de las exportaciones chilenas a EE.UU. El impacto directo del S.301 sobre el sector minero es, por lo tanto, mínimo.</p>
-<p>El impacto indirecto sí existe: el DXY (índice dólar) se apreció durante el anuncio, presionando el CLP al alza. El tipo de cambio subió de 926,45 a ~945 en la quincena — un alza del +2,0% que encarece insumos importados (maquinaria, reactivos, explosivos) pero beneficia marginalmente a exportadores que reciben dólares y liquidan en pesos.</p>
-<p>La exclusión de los minerales estratégicos chilenos es el resultado de dos años de gestión diplomática bajo el acuerdo bilateral de minerales críticos firmado por Chile y EE.UU. en 2024. Valida el enfoque de posicionamiento de Chile como proveedor confiable de minerales críticos para la cadena industrial norteamericana.</p>
 <hr />
-<h2 id="hormuz-brent-perfor-usd-102-luego-moder">Hormuz — Brent perforó USD 102, luego moderó</h2>
-<p>La crisis del Estrecho de Hormuz, que acumula más de 140 días, alcanzó su punto más agudo entre el 19 y 22 de julio cuando el Brent tocó USD 102/bbl. El detonante inmediato fue el anuncio iraní de restringir el tránsito de buques con bandera de países que apoyan las sanciones de la ONU, combinado con ataques Houthi que dañaron dos buques de GNL en el corredor de Adén.</p>
-<p>La moderación posterior a ~USD 90,3 refleja señales de negociación diplomática con Qatar como intermediario. Los analistas de Goldman Sachs y JPMorgan mantienen un escenario base de USD 88–95 para el resto del Q3 2026, con tail risk a USD 120 si el estrecho se cierra parcialmente.</p>
-<p>Para Chile, el diesel importado para flotas de camiones en open pit (Escondida, Chuquicamata, Radomiro Tomic) encarece directamente. El bunker fuel para transporte marítimo de concentrado hacia Asia también sube. La prima de riesgo en los mercados financieros eleva el costo de financiamiento de nuevos proyectos.</p>
+<h2 id="tecnologa-e-ia">️ TECNOLOGÍA E IA</h2>
+<ul>
+<li><strong>TC/RC y digitalización del trading de concentrado:</strong> El colapso de los TC/RC ha acelerado el interés de las mineras grandes en plataformas de trading digital de concentrado (similares a Metalshub), que permiten acceder a múltiples fundidores en tiempo real sin depender de negociaciones bilaterales anuales. Es una tendencia incipiente pero relevante para productores chilenos de concentrado.</li>
+<li><strong>SX-EW y costos de ácido:</strong> El aumento del costo del H₂SO₄ está acelerando la búsqueda de alternativas al ácido convencional en la lixiviación: tecnologías de biolixiviación, lixiviación en medio neutro y procesos híbridos (que mezclan biolixiviación con ácido en la etapa de refinación) están recibiendo mayor atención en los centros de I+D de Codelco y Anglo American.</li>
+</ul>
 <hr />
-<h2 id="tcrc-negativos-el-hecho-ms-significativo-de-la-">TC/RC negativos — El hecho más significativo de la quincena</h2>
-<p>En la semana del 21 de julio, los benchmarks spot para los cargos de tratamiento y refinación del concentrado de cobre cayeron a <strong>-42,80 USD/mt</strong> — la primera vez en la historia registrada del mercado del cobre que estos cargos toman valor negativo.</p>
-<p>En condiciones normales, los productores de concentrado pagan a los fundidores entre 20 y 80 USD/mt por fundir y refinar su mineral. Un TC negativo invierte esta lógica: son los fundidores quienes pagan por acceder al concentrado.</p>
-<p><strong>Las causas convergentes:</strong><br />
-China añadió ~3 millones de toneladas/año de nueva capacidad de fundición entre 2020 y 2025, apostando a que el boom del cobre en la transición energética garantizaría volumen. Al mismo tiempo, la producción global de concentrado no creció al ritmo esperado — problemas operacionales en Grasberg y Kamoa-Kakula más el efecto de leyes decrecientes en Chile mantuvieron la oferta ajustada. La crisis de Hormuz sumó un +18% en costos de flete desde América del Sur a China, erosionando aún más el margen de los fundidores.</p>
-<p><strong>Para Chile:</strong> Las operaciones de concentrado (Escondida, Collahuasi, Los Bronces, Chuquicamata) mejoran su ingreso neto de corto plazo al recibir un pago adicional por su concentrado. Las operaciones SX-EW (cátodos directos via lixiviación) como Radomiro Tomic o las operaciones de Franke no están expuestas a TC/RC — su precio de venta es directamente el LME spot.</p>
-<p>Este fenómeno se estudia en profundidad en La Escuela, Lección 21.</p>
+<h2 id="contexto-macro">CONTEXTO MACRO</h2>
+<p><strong>FOMC (28-29 julio):</strong> La Reserva Federal inicia mañana su reunión. El mercado asigna &gt;90% de probabilidad a un hold en 3,75-4,00%. El foco estará en si el statement reconoce formalmente el riesgo inflacionario por Hormuz. Un hawkish hold (lenguaje más restrictivo) fortalecería el dólar y presionaría commodities; un dovish hold (reconocer desaceleración) tendría el efecto opuesto. El CLP/USD ya absorbió parte del efecto fortalecedor del dólar — más upside limitado desde este nivel si el hold es neutral.</p>
+<p><strong>PMI Manufacturero China julio:</strong> Caixin registró 47,8 — por debajo de 50 (contracción) y del consenso de 49,2, mínimo de 14 meses. La demanda industrial china se está enfriando bajo la presión arancelaria global. Para el cobre, es una señal bajista de corto plazo que contrasta con la estabilidad del precio LME — el mercado está absorbiendo la señal via expectativas, no aún via precio.</p>
+<p><strong>Crisis Hormuz:</strong> Día 140+ de la crisis. El Brent tocó USD 102/bbl (19-22 jul) y moderó a 90,3 ante señales de negociación con Qatar. Los 140+ días ya superan el shock de Suez de 2021 en duración. La moderación refleja negociación, no resolución: Goldman Sachs mantiene base USD 88-95 para Q3 con tail risk USD 120. OPEC+ se reúne en agosto — relevante para la dirección del Brent en Q4.</p>
 <hr />
-<h2 id="codelco-kpmg-deuda-y-fin-del-mayor-productor">Codelco — KPMG, deuda y fin del "mayor productor"</h2>
-<p>Codelco atraviesa su momento institucional más delicado desde el caso Dávila (1994).</p>
-<p><strong>Auditoría KPMG:</strong> El directorio encargó a KPMG Chile una auditoría independiente de los gastos corporativos del período 2023–2025, luego del escándalo que involucra pagos a consultoras relacionadas con ex ejecutivos y contratos de imagen sin respaldo técnico. Los resultados preliminares se entregarán al directorio en septiembre.</p>
-<p><strong>Fontaine abandona el objetivo de "mayor productor":</strong> En entrevista publicada por Reuters el 22 de julio, el presidente del directorio Thomas Fontaine declaró que Codelco debe dejar de definirse por volumen y enfocarse en rentabilidad por tonelada y sostenibilidad financiera. "Somos la empresa cuprífera más grande de Chile, pero no tenemos por qué ser la más grande del mundo si eso destruye valor." Producción estimada 2025: 1,36 Mt Cu fino vs. 1,72 Mt de BHP.</p>
-<p><strong>Deuda:</strong> La deuda financiera neta supera USD 25.000–26.000 millones a junio de 2026, incluyendo bonos internacionales y compromisos de El Teniente Profundo y Rajo Inca. El ratio deuda/EBITDA supera 5x.</p>
-<p><strong>Plan estratégico:</strong> El nuevo plan 2026–2036 se presentará al directorio en octubre de 2026.</p>
-<hr />
-<h2 id="anglo-american-chile-es-el-567-de-su-cartera-glo">Anglo American — Chile es el 56,7% de su cartera global</h2>
-<p>Anglo American publicó sus resultados de producción Q2 2026: Chile representó el 56,7% de la producción global de cobre de la compañía — el mayor porcentaje histórico, reflejo del peso combinado de Collahuasi (44% AA), El Soldado, Chagres y Los Bronces.</p>
-<p>Los Bronces entregó 98.200 toneladas en Q2 2026, superando el guidance, beneficiado por mayores leyes en el bloque norte del rajo.</p>
-<p><strong>Fusión Anglo-Teck:</strong> El proceso regulatorio avanza. Solo falta la aprobación de SAMR (State Administration for Market Regulation, China), en Phase 3 review. Los analistas de BMO Capital Markets estiman que la aprobación llegará en agosto o septiembre. Una vez completada, la entidad combinada se convierte en el tercer productor cuprero global.</p>
-<hr />
-<h2 id="ndpr-y-tierras-raras-estabilizacin-sin-cataliza">NdPr y Tierras Raras — Estabilización sin catalizador claro</h2>
-<p>El NdPr cotiza en ~113 USD/kg, sin variación respecto a Ed.20. El rally de junio (108→125 USD/kg) quedó atrás. Los drivers a monitorear: cuotas de exportación China Q3 (MOFCOM no ha anunciado cambios — mercado lo interpreta como señal neutral) y ventas EV China en junio que cayeron 3,4% m/m pero permanecen +22% a/a. Terbio y Disprosio siguen firmes con oferta ajustada por controles de exportación.</p>
-<hr />
-<h2 id="litio-la-cada-contina">Litio — La caída continúa</h2>
-<p>El Li₂CO₃ grado batería (SMM China) cayó a ~20.850 USD/t, desde 22.700 USD/t en Ed.20 — una contracción del -8,1% en dos semanas. Los inventarios en China subieron a niveles de 5–6 semanas de consumo (sobre el promedio histórico de 3–4 semanas). Los OEM de baterías como CATL y BYD mantienen políticas de inventario ajustado ante la incertidumbre arancelaria. SQM confirmó que sus contratos de largo plazo con clientes japoneses y coreanos siguen vigentes con precios indexados — el impacto de la caída spot sobre sus ingresos se verá recién en el Q3 reporting de octubre.</p>
-<hr />
-<h2 id="hso-escasez-sin-resolucin">H₂SO₄ — Escasez sin resolución</h2>
-<p>El ácido sulfúrico CFR Mejillones superó USD 440/t esta semana — nivel récord para Chile. China prohibió las exportaciones de azufre elemental en mayo de 2026 para garantizar suministro doméstico de fertilizantes. Las fundidoras de cobre chilenas producen ácido como subproducto, pero la producción doméstica no alcanza para la demanda del proceso SX-EW. Cada tonelada adicional en precio reduce directamente el margen de las operaciones de cátodos, especialmente las de menor escala.</p>
-<hr />
-<h2 id="macro-fomc-y-pmi-china">Macro — FOMC y PMI China</h2>
-<p><strong>FOMC (28–29 julio):</strong> La Reserva Federal inicia mañana su reunión. El mercado asigna &gt;90% de probabilidad a un mantenimiento de tasas en 3,75–4,00%. El foco estará en si el statement reconoce formalmente el riesgo inflacionario por Hormuz. Un hawkish hold fortalecería el dólar y presionaría commodities; un dovish hold tendría el efecto opuesto.</p>
-<p><strong>PMI Manufacturero China julio:</strong> El dato adelantado Caixin registró 47,8 — por debajo de 50 (contracción) y del consenso de 49,2. Es la lectura más débil en 14 meses. Con la presión arancelaria global y demanda industrial china enfriándose, la señal de corto plazo para el cobre es bajista.</p>
-<hr />
-<h2 id="lo-que-viene">Lo que viene</h2>
+<h2 id="clase-ejecutiva">CLASE EJECUTIVA</h2>
+<div class="clase-card"><div class="cc-badge">Clase ejecutiva</div><p class="cc-title">Clase Ejecutiva Ed.21</p><p class="cc-intro">Un TC/RC negativo es el fenómeno más contraintuitivo que puede ocurrir en la cadena del cobre. Para entender por qué, y por qué importa para cualquier ejecutivo o inversor minero, hay que conocer el mecanismo completo.…</p><a class="cc-link" href="escuela.html#leccion-21">Leer lección completa en la Escuela del Empresario →</a></div>
+<h2 id="calendario">CALENDARIO</h2>
 <h3 id="prximos-7-das">Próximos 7 días</h3>
 <ul>
-<li><strong>28–29 julio:</strong> Reunión FOMC — decisión de tasas y statement (impacto inmediato en USD y commodities)</li>
-<li><strong>30 julio:</strong> Codelco publica resultados operacionales H1 2026 (guidance: 680–700 kt Cu)</li>
-<li><strong>1 agosto:</strong> Vencimiento de opciones LME agosto — posible volatilidad en Cu spot</li>
+<li><strong>28 julio:</strong> Reunión FOMC Day 1 — decisión de tasas y statement (impacto inmediato en USD y commodities)</li>
+<li><strong>30 julio:</strong> Codelco publica resultados operacionales H1 2026 (guidance: 680-700 kt Cu)</li>
+<li><strong>1 agosto:</strong> Vencimiento opciones LME agosto — posible volatilidad en Cu spot</li>
 <li><strong>1 agosto:</strong> Non-Farm Payrolls EE.UU. julio — señal macro para commodities</li>
 </ul>
 <h3 id="prximas-4-semanas">Próximas 4 semanas</h3>
 <ul>
-<li><strong>Agosto:</strong> Reunión OPEC+ sobre cuotas de producción — relevante para Brent y costos energéticos</li>
-<li><strong>Agosto:</strong> Aprobación SAMR China de la fusión Anglo-Teck — pendiente hace 3 semanas</li>
-<li><strong>Septiembre:</strong> KPMG entrega resultados preliminares de auditoría Codelco al directorio</li>
-<li><strong>Octubre:</strong> Plan estratégico Codelco 2026–2036 — presentación al directorio</li>
+<li><strong>Agosto:</strong> Reunión OPEC+ sobre cuotas de producción — relevante para Brent y costos energéticos mineros</li>
+<li><strong>Agosto:</strong> Aprobación SAMR China de la fusión Anglo-Teck — pendiente hace tres semanas</li>
+<li><strong>Septiembre:</strong> KPMG entrega resultados preliminares auditoría Codelco al directorio</li>
+<li><strong>Octubre:</strong> Plan estratégico Codelco 2026-2036 — presentación al directorio</li>
 </ul>
 <hr />
-<h2 id="la-escuela-leccin-21">La Escuela — Lección 21</h2>
-<p><strong>Pilar:</strong> Cadena de Valor<br />
-<strong>Concepto:</strong> TC/RC negativos — cuando los fundidores pagaron por concentrado de cobre</p>
-<h3 id="qu-son-los-tcrc">¿Qué son los TC/RC?</h3>
-<p>Cuando una mina produce concentrado de cobre — un polvo con ~25–35% de Cu mezclado con hierro, azufre y trazas de otros metales — ese producto no se puede vender directamente al mercado. Primero debe pasar por dos etapas industriales:</p>
-<p><strong>1. Fundición (Smelting):</strong> El concentrado se calienta a ~1.200°C en hornos de flash. El azufre se oxida y forma SO₂ (capturado como ácido sulfúrico, que genera ingresos adicionales). El hierro se separa como escoria. El resultado es cobre blíster (~99,1% Cu).</p>
-<p><strong>2. Refinación electrolítica:</strong> El cobre blíster se disuelve en una solución electrolítica y se deposita en láminas puras de cobre catódico (99,99% Cu) — el producto que cotiza en la LME.</p>
-<p>Los fundidores cobran por este servicio. El cobro tiene dos componentes:<br />
-- <strong>TC (Treatment Charge):</strong> cargo por fundir, en USD por tonelada de concentrado procesado. Rango histórico normal: 20–80 USD/mt.<br />
-- <strong>RC (Refining Charge):</strong> cargo por refinar, en cents/libra de cobre refinado. Rango histórico normal: 2–8 c/lb.</p>
-<p>En condiciones normales, el flujo es: <strong>Minero → paga TC/RC → Fundidor → entrega cátodos → Mercado</strong></p>
-<h3 id="la-inversin-histrica">La inversión histórica</h3>
-<p>El 21 de julio de 2026, los benchmarks spot de TC cayeron a <strong>-42,80 USD/mt</strong>. Por primera vez en la historia documentada del mercado del cobre, el flujo se invirtió:</p>
-<p><strong>Minero → recibe pago → Fundidor → accede al concentrado</strong></p>
-<h3 id="por-qu-ocurri">¿Por qué ocurrió?</h3>
-<p>El mercado del TC/RC funciona como cualquier mercado de servicios: precio depende de la oferta de capacidad de fundición versus la disponibilidad de concentrado.</p>
-<p><strong>Sobreexpansión de fundición china:</strong> Entre 2020 y 2025, China añadió ~3 millones de toneladas/año de nueva capacidad apostando a que el boom del cobre en la transición energética garantizaría volumen. China representa hoy el 45% de la capacidad de fundición global. Las grandes adiciones se concentraron en Jiangxi, Fujian y Xinjiang.</p>
-<p><strong>La oferta de concentrado no siguió el ritmo:</strong> La producción global de mina creció más lento de lo proyectado. Grasberg (Indonesia) tuvo problemas operacionales. Kamoa-Kakula (DRC) aún crece desde base pequeña. En Chile, las leyes del mineral siguen cayendo (~0,3–0,4% Cu promedio) y se necesitan más toneladas de roca para producir el mismo concentrado.</p>
-<p><strong>Crisis Hormuz eleva fletes:</strong> Enviar concentrado desde Mejillones o Antofagasta a fundidores de Guangdong vía el Estrecho de Malaca encarece el transporte cuando el Brent sube. El fundidor chino que debe absorber ese costo adicional solo puede pagarlo vía un TC menor — o, en este caso, negativo.</p>
-<h3 id="quin-gana-y-quin-pierde">¿Quién gana y quién pierde?</h3>
-<table>
-<thead>
-<tr>
-<th>Actor</th>
-<th>Posición</th>
-<th>Impacto TC/RC negativos</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Minera Escondida (BHP/Rio Tinto)</td>
-<td>Productora de concentrado</td>
-<td>Gana — recibe pago adicional por cada tonelada</td>
-</tr>
-<tr>
-<td>Collahuasi (Anglo/Glencore)</td>
-<td>Productora de concentrado</td>
-<td>Gana</td>
-</tr>
-<tr>
-<td>Los Bronces (Anglo American)</td>
-<td>Productora de concentrado</td>
-<td>Gana</td>
-</tr>
-<tr>
-<td>Codelco Concentrados (Chuquicamata, etc.)</td>
-<td>Productora de concentrado</td>
-<td>Gana</td>
-</tr>
-<tr>
-<td>Codelco SX-EW (Radomiro, Gaby)</td>
-<td>Cátodos directos, sin concentrado</td>
-<td>Neutral — no vende concentrado</td>
-</tr>
-<tr>
-<td>ENAMI</td>
-<td>Intermedia concentrado pequeña minería</td>
-<td>Gana marginalmente</td>
-</tr>
-<tr>
-<td>Fundidores China (Jiangxi Copper, Tongling, etc.)</td>
-<td>Procesadores</td>
-<td>Pierden — margen destruido</td>
-</tr>
-<tr>
-<td>Compradores de cátodos (fabricantes de cable)</td>
-<td>Demanda final</td>
-<td>Neutral a corto plazo</td>
-</tr>
-</tbody>
-</table>
-<h3 id="es-sostenible">¿Es sostenible?</h3>
-<p>No. Los TC/RC negativos son un fenómeno transitorio. A medida que los fundidores ineficientes reducen utilización o cierran, la capacidad disponible cae y los TC/RC se normalizan. Ya hay señales de curtailment en fundidores chinos de tercera y cuarta línea. La historia del cobre muestra que ciclos extremos de TC/RC no duran más de 2–4 trimestres. El equilibrio a largo plazo está entre 20–40 USD/mt.</p>
-<h3 id="benchmark-anual-vs-spot">Benchmark anual vs. spot</h3>
-<p>Existe una distinción importante que los medios frecuentemente confunden:</p>
+<h2 id="temas-a-monitorear">TEMAS A MONITOREAR</h2>
 <ul>
-<li><strong>Benchmark anual:</strong> TC/RC negociado una vez al año entre las grandes mineras y fundidores (normalmente en noviembre, con vigencia enero–diciembre). Este benchmark es más estable y representa el precio "oficial" del mercado.</li>
-<li><strong>Spot semanal:</strong> El precio que se negocia para cargamentos spot (sin contrato previo). Este es el que cayó a -42,80 USD/mt. El benchmark anual 2026 todavía está en territorio positivo (~15 USD/mt), pero si la situación persiste, el benchmark 2027 se negociará negativo o muy bajo.</li>
+<li><strong>TC/RC negativos:</strong> ¿Hasta cuándo persiste el spot negativo? ¿Cuándo anuncian los primeros fundidores chinos cierre parcial? Ese es el trigger de normalización.</li>
+<li><strong>H₂SO₄ Chile:</strong> ¿Sigue subiendo desde 440 USD/t, o se estabiliza? Monitorear si China da señales de retomar exportaciones de azufre elemental.</li>
+<li><strong>Litio:</strong> ¿Alcanza fondo de ciclo en 20.000-21.000 USD/t, o sigue cayendo? Monitorear inventarios SMM semana a semana.</li>
+<li><strong>FOMC statement:</strong> ¿Reconoce riesgo inflacionario por Hormuz? Si el lenguaje se endurece, presión sobre CLP/USD y costos de financiamiento.</li>
+<li><strong>Anglo-Teck SAMR:</strong> Cuando llegue la aprobación, habrá un ajuste de expectativas de mercado para Collahuasi y los activos de carbón que se desinvertirán.</li>
+<li><strong>Codelco plan estratégico octubre:</strong> El nuevo plan debería definir qué proyectos sobreviven el nuevo criterio de rentabilidad por tonelada vs volumen. Chuquicamata Subterránea y Rajo Inca están bajo escrutinio.</li>
 </ul>
-<h3 id="ejercicio-para-el-inversor">Ejercicio para el inversor</h3>
-<p>Si evaluaras invertir en:<br />
-- <strong>A)</strong> Una empresa minera de cobre que produce solo concentrado<br />
-- <strong>B)</strong> Una empresa integrada (concentrado + fundición propia)<br />
-- <strong>C)</strong> Un fundidor puro sin operaciones mineras</p>
-<p>¿Cuál preferirías hoy? ¿Y en 3 años, si los TC/RC se normalizan?</p>
-<p><em>Respuesta guiada:</em> Hoy, <strong>A</strong> es claramente preferible — recibe el mayor valor por tonelada. <strong>B</strong> tiene el riesgo de que su fundición interna pierde margen aunque sus minas ganan. <strong>C</strong> está en pérdida operacional. En 3 años, con TC/RC normalizados, <strong>B</strong> recupera su prima de integración vertical — el fundidor propio vuelve a ser una ventaja competitiva. La clave para el inversor es el timing del ciclo, no la posición estructural.</p>
-<h3 id="vocabulario-clave">Vocabulario clave</h3>
+<hr />
+<h2 id="radar-de-personas">RADAR DE PERSONAS</h2>
+<ul>
+<li><strong>Thomas Fontaine (presidente directorio Codelco):</strong> Su declaración pública sobre el abandono del objetivo de "mayor productor" es un giro de narrativa corporativa significativo — pero la clave será si se traduce en decisiones de capex en octubre. Un ejecutivo que cambia el marco conceptual sin cambiar el capex no transforma nada.</li>
+<li><strong>Jorge Gómez (CEO Codelco):</strong> Entra en su segunda semana como CEO con auditoría KPMG en marcha, deuda sobre USD 25.000M y un plan estratégico que debe presentar en octubre. El timing es exigente.</li>
+<li><strong>Ejecutivos Anglo American:</strong> Con Chile en el 56,7% de la cartera global y la fusión con Teck a punto de cerrarse, los próximos 60 días definirán la estructura de mando de lo que será el tercer productor de cobre del mundo.</li>
+</ul>
+<hr />
+<h2 id="nota-editorial">NOTA EDITORIAL</h2>
+<p>Esta es una edición doble que cubre dos semanas (15-27 julio) por salto editorial de la semana anterior. El evento más significativo — TC/RC negativos — es de alta confianza analítica porque fue reportado por múltiples fuentes especializadas independientes (FastMarkets, S&amp;P Global Platts, Wood Mackenzie). Los precios de los metales menos líquidos (Rodio, NdPr) tienen confianza media por dispersión entre fuentes.</p>
+<p>Dos datos marcados con incertidumbre: el precio exacto del H₂SO₄ CFR Mejillones en julio (sin cotización Platts verificada, estimado &gt;440 USD/t por referencia de mercado local) y el TC/RC spot (-42,80 USD/mt como benchmark semanal, con variaciones entre fuentes de ±3 USD/mt).</p>
+<hr />
+<h2 id="stats-de-bsqueda">STATS DE BÚSQUEDA</h2>
 <table>
 <thead>
 <tr>
-<th>Término</th>
-<th>Significado</th>
+<th>Métrica</th>
+<th>Valor</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>TC (Treatment Charge)</td>
-<td>Cargo de fundición en USD/mt de concentrado</td>
+<td>Edición</td>
+<td>N°21 (doble — 2 semanas)</td>
 </tr>
 <tr>
-<td>RC (Refining Charge)</td>
-<td>Cargo de refinación en USD/libra de Cu refinado</td>
+<td>Período cubierto</td>
+<td>15 al 27 de julio de 2026</td>
 </tr>
 <tr>
-<td>Concentrado de Cu</td>
-<td>Polvo ~25–35% Cu, resultado de flotación en planta</td>
+<td>Agentes de investigación</td>
+<td>4 (Sonnet) + 1 reactivado</td>
 </tr>
 <tr>
-<td>Cátodo electrolítico</td>
-<td>Cobre puro 99,99% Cu — el que cotiza en LME</td>
+<td>Agente de síntesis</td>
+<td>Sonnet 4.6 (síntesis directa)</td>
 </tr>
 <tr>
-<td>SX-EW</td>
-<td>Proceso hidrometalúrgico (extracción por solvente + electrodeposición) — produce cátodos directamente desde minerales oxidados, sin fundición</td>
+<td>Minerales con precio rastreado</td>
+<td>12</td>
 </tr>
 <tr>
-<td>Curtailment</td>
-<td>Reducción voluntaria de producción por margen insuficiente</td>
+<td>Noticias clave procesadas</td>
+<td>7 bloques temáticos</td>
 </tr>
 <tr>
-<td>Benchmark anual</td>
-<td>TC/RC negociado anualmente entre grandes mineras y fundidores</td>
+<td>Fuentes citadas</td>
+<td>LME, SMM, Kitco, TradingEcon, Umicore, FastMarkets, REE Exchange, Bloomberg, Reuters, Diario Financiero, La Tercera, Mining.com, BMO Capital Markets, Goldman Sachs, JPMorgan, USTR (orden ejecutiva S.301), Anglo American Q2 report, BCentral Chile</td>
 </tr>
 <tr>
-<td>Blíster</td>
-<td>Cobre intermedio ~99,1% Cu, salida del horno de fundición antes de refinación</td>
+<td>Confianza promedio de precios</td>
+<td>■■■■░ (alta en preciosos/Cu/macro, media en PGM menores/H₂SO₄/TC-RC exacto)</td>
+</tr>
+<tr>
+<td>Datos con incertidumbre documentada</td>
+<td>2 (H₂SO₄ exacto jul; TC/RC spot exacto)</td>
 </tr>
 </tbody>
 </table>
+<hr />
+<p><em>Noticiero Minero Personal — Ed.21 · 27 de julio de 2026 · Generado para Diego Varleta. Las cifras de precios spot son referenciales al cierre del 27/07/2026 y están sujetas a revisión. Este informe no constituye asesoría de inversión.</em></p>
 </div>
 
 <script>
