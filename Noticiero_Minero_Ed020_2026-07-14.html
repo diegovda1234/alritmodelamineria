@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Al Ritmo de la Minería — Edición 1 — 8 al 14 de julio de 2026</title>
+    <title>Al Ritmo de la Minería — Edición 20 — Semana del 8 al 14 de julio de 2026</title>
     <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;600&display=swap');
 
@@ -790,35 +790,63 @@ h4:hover .share-btns { opacity: 1; }
 <div class="nav-dropdown" id="nav-dropdown" aria-hidden="true">
     <div class="nav-dropdown-inner">
         <div class="nav-group">
-            <a href="#cobre-y-contexto-de-mercado" class="nav-h2-link" onclick="closeNavMenu()">Cobre y contexto de mercado</a>
+            <a href="#primicias" class="nav-h2-link" onclick="closeNavMenu()">PRIMICIAS</a>
         </div>
         <div class="nav-group">
-            <a href="#crisis-del-estrecho-de-ormuz-el-shock-energtico" class="nav-h2-link" onclick="closeNavMenu()">Crisis del Estrecho de Ormuz — el shock energético...</a>
-        </div>
-        <div class="nav-group">
-            <a href="#codelco-cambio-de-mando-bajo-fuego-cruzado" class="nav-h2-link" onclick="closeNavMenu()">Codelco — cambio de mando bajo fuego cruzado</a>
-        </div>
-        <div class="nav-group">
-            <a href="#tierras-raras-y-pgm" class="nav-h2-link" onclick="closeNavMenu()">Tierras raras y PGM</a>
-        </div>
-        <div class="nav-group">
-            <a href="#" class="nav-h2-link" onclick="toggleSub('sub-comercio-mampa-y-macro')">Comercio, M&amp;A y macro <span class="nav-arrow">&#9660;</span></a>
-        <div class="nav-sub-group" id="sub-comercio-mampa-y-macro">
+            <a href="#" class="nav-h2-link" onclick="toggleSub('sub-dashboard-de-precios-spot')">DASHBOARD DE PRECIOS SPOT <span class="nav-arrow">&#9660;</span></a>
+        <div class="nav-sub-group" id="sub-dashboard-de-precios-spot">
             <a href="#semforo-semanal-ed20-14072026" class="nav-sub-link" onclick="closeNavMenu()">Semáforo semanal (Ed.20 · 14/07/2026)</a>
+            <a href="#tendencia-multi-semana-ed16-ed20" class="nav-sub-link" onclick="closeNavMenu()">Tendencia multi-semana (Ed.16 → Ed.20)</a>
         </div>
         </div>
         <div class="nav-group">
-            <a href="#" class="nav-h2-link" onclick="toggleSub('sub-lo-que-viene')">Lo que viene <span class="nav-arrow">&#9660;</span></a>
-        <div class="nav-sub-group" id="sub-lo-que-viene">
+            <a href="#" class="nav-h2-link" onclick="toggleSub('sub-anlisis-por-mineral')">ANÁLISIS POR MINERAL <span class="nav-arrow">&#9660;</span></a>
+        <div class="nav-sub-group" id="sub-anlisis-por-mineral">
+            <a href="#cobre-cu" class="nav-sub-link" onclick="closeNavMenu()">Cobre (Cu)</a>
+            <a href="#tierras-raras-ree-ndpr" class="nav-sub-link" onclick="closeNavMenu()">Tierras Raras (REE / NdPr)</a>
+            <a href="#metales-del-grupo-del-platino-pgm" class="nav-sub-link" onclick="closeNavMenu()">Metales del Grupo del Platino (PGM)</a>
+            <a href="#litio-li" class="nav-sub-link" onclick="closeNavMenu()">Litio (Li)</a>
+            <a href="#cobalto-co" class="nav-sub-link" onclick="closeNavMenu()">Cobalto (Co)</a>
+            <a href="#oro-au" class="nav-sub-link" onclick="closeNavMenu()">Oro (Au)</a>
+            <a href="#plata-ag" class="nav-sub-link" onclick="closeNavMenu()">Plata (Ag)</a>
+        </div>
+        </div>
+        <div class="nav-group">
+            <a href="#chile-minero" class="nav-h2-link" onclick="closeNavMenu()">CHILE MINERO</a>
+        </div>
+        <div class="nav-group">
+            <a href="#insumos-estratgicos" class="nav-h2-link" onclick="closeNavMenu()">️ INSUMOS ESTRATÉGICOS</a>
+        </div>
+        <div class="nav-group">
+            <a href="#oportunidades" class="nav-h2-link" onclick="closeNavMenu()">OPORTUNIDADES</a>
+        </div>
+        <div class="nav-group">
+            <a href="#tecnologa-e-ia" class="nav-h2-link" onclick="closeNavMenu()">️ TECNOLOGÍA E IA</a>
+        </div>
+        <div class="nav-group">
+            <a href="#contexto-macro" class="nav-h2-link" onclick="closeNavMenu()">CONTEXTO MACRO</a>
+        </div>
+        <div class="nav-group">
+            <a href="#clase-ejecutiva" class="nav-h2-link" onclick="closeNavMenu()">CLASE EJECUTIVA</a>
+        </div>
+        <div class="nav-group">
+            <a href="#" class="nav-h2-link" onclick="toggleSub('sub-calendario')">CALENDARIO <span class="nav-arrow">&#9660;</span></a>
+        <div class="nav-sub-group" id="sub-calendario">
             <a href="#prximos-7-das" class="nav-sub-link" onclick="closeNavMenu()">Próximos 7 días</a>
             <a href="#prximas-4-semanas" class="nav-sub-link" onclick="closeNavMenu()">Próximas 4 semanas</a>
         </div>
         </div>
         <div class="nav-group">
-            <a href="#" class="nav-h2-link" onclick="toggleSub('sub-escuela-minera-gobernanza')">Escuela Minera — Gobernanza <span class="nav-arrow">&#9660;</span></a>
-        <div class="nav-sub-group" id="sub-escuela-minera-gobernanza">
-            <a href="#leccin-n20-el-ceo-de-una-empresa-pblica-el-man" class="nav-sub-link" onclick="closeNavMenu()">Lección N.20: El CEO de una empresa pública — el m...</a>
+            <a href="#temas-a-monitorear" class="nav-h2-link" onclick="closeNavMenu()">TEMAS A MONITOREAR</a>
         </div>
+        <div class="nav-group">
+            <a href="#radar-de-personas" class="nav-h2-link" onclick="closeNavMenu()">RADAR DE PERSONAS</a>
+        </div>
+        <div class="nav-group">
+            <a href="#nota-editorial" class="nav-h2-link" onclick="closeNavMenu()">NOTA EDITORIAL</a>
+        </div>
+        <div class="nav-group">
+            <a href="#stats-de-bsqueda" class="nav-h2-link" onclick="closeNavMenu()">STATS DE BÚSQUEDA</a>
         </div>
     </div>
 </div>
@@ -874,20 +902,20 @@ h4:hover .share-btns { opacity: 1; }
         </div>
     </div>
     <div class="cover-body">
-        <div class="cover-edition-badge">Edición N° 1</div>
+        <div class="cover-edition-badge">Edición N° 20</div>
         <hr class="cover-divider">
         <div class="cover-meta">
             <div class="cover-meta-item">
                 <div class="label">Período cubierto</div>
-                <div class="value">8 al 14 de julio de 2026</div>
+                <div class="value">Semana del 8 al 14 de julio de 2026</div>
             </div>
             <div class="cover-meta-item">
                 <div class="label">Fecha de publicación</div>
-                <div class="value">14 de July de 2026, 15:54 hrs</div>
+                <div class="value">30 de July de 2026, 15:32 hrs</div>
             </div>
             <div class="cover-meta-item">
                 <div class="label">Énfasis editorial</div>
-                <div class="value">Crisis del Estrecho de Ormuz dispara Brent +18,5%; Jorge Gómez asume Codelco bajo presión política; BHP aprueba expansión USD 1.300M en Escondida; fin del rally NdPr.</div>
+                <div class="value">Crisis del Estrecho de Ormuz dispara Brent +18,5%; Jorge Gómez asume Codelco bajo presión política; BHP aprueba expansión USD 1.300M en Escondida; fin del rally NdPr</div>
             </div>
         </div>
     </div>
@@ -897,36 +925,29 @@ h4:hover .share-btns { opacity: 1; }
 <div class="executive-summary">
     <h2>Resumen Ejecutivo</h2>
     <ul>
-<li><strong>[ORMUZ]</strong> El shock energético de la semana: EE.UU. atacó capacidad naval iraní e Irán contraatacó contra aliados en el Golfo, dejando el tráfico del Estrecho en 6 buques (vs 18-22 habitual) y empujando el Brent +18,5% en 7 días (73 → 86,5 USD/bbl). Como el ~50% del azufre global pasa por Oriente Medio, el precio del azufre en Qatar subió +10,6% y presiona estructuralmente el ácido sulfúrico y los costos de lixiviación SX-EW.</li>
-<li><strong>[CODELCO]</strong> Jorge Gómez asumió como CEO de Codelco el 13 de julio con agenda de seguridad, estabilidad y disciplina operacional, apoyado en 14 años en Collahuasi; hereda tres frentes simultáneos, incluida una comisión investigadora de la Cámara que amplió su alcance el 14 de julio (26.875 t reportadas falsamente, US$14,3M en bonos indebidos, y scope extendido a Chuquicamata Subterránea, Rajo Inca y remodelación corporativa US$57M).</li>
-<li><strong>[NDPR]</strong> El rally de 7 trimestres del NdPr terminó: China Northern Rare Earth bajó su precio de transferencia Q3 por primera vez en 8 trimestres, y el óxido cae a ~113 USD/kg (~−9,6% semanal, baja confianza en el nivel exacto). No es un colapso —los REE pesados (Dy, Tb) siguen en máximos y el desequilibrio estructural persiste— pero marca un punto de inflexión para las inversiones ex-China.</li>
-<li><strong>[ESCONDIDA]</strong> BHP obtuvo aprobación ambiental para una expansión de USD 1.300M (fase de lixiviación de sulfuros + mejoras eléctricas), dentro de un plan potencial total de USD 14.700M con producción desde 2031-2032, justo cuando el alza del azufre presiona los costos de la ruta SX que esa fase amplía.</li>
-<li><strong>[S301]</strong> La Sección 301 sigue sin determinación de USTR tras las audiencias del 9 de julio; los comentarios cierran el 16 de julio. El cobre refinado chileno está exento por ahora, con riesgo de un arancel de 12,5% y posibilidad de exención para minerales del Anexo A.</li>
-<li><strong>[TRATADO]</strong> Chile y Argentina reactivaron el tratado minero binacional con sesiones retomadas en Buenos Aires el 7 de julio, activando una cartera fronteriza superior a USD 20.700M (Vicuña, Los Azules, El Pachón, Los Helados).</li>
+<li><strong>[ORMUZ]</strong> EE.UU. atacó capacidad naval iraní e Irán contraatacó contra aliados en el Golfo; tráfico del Estrecho en 6 buques (vs 18-22 habitual); Brent +18,5% en 7 días (73 → 86,5 USD/bbl). Canal doble hacia minería: energía + azufre (50% del global pasa por Oriente Medio → azufre Qatar +10,6% → presión H₂SO₄ SX-EW).</li>
+<li><strong>[CODELCO]</strong> Jorge Gómez asumió CEO el 13 de julio con agenda de seguridad, estabilidad y disciplina operacional; la comisión investigadora de la Cámara amplió su alcance el 14-jul sumando Chuquicamata Subterránea, Rajo Inca y remodelación corporativa USD 57M a las 26.875 t falsificadas y USD 14,3M en bonos indebidos.</li>
+<li><strong>[NDPR]</strong> Fin del rally de 7 trimestres: China Northern Rare Earth bajó su precio Q3 por primera vez en 8 trimestres; el óxido cae a ~113 USD/kg (~−9,6% semanal). No es un colapso — REE pesados (Dy, Tb) siguen en máximos y el enforcement chino continúa — pero marca un punto de inflexión.</li>
+<li><strong>[ESCONDIDA]</strong> BHP obtuvo aprobación ambiental para expansión USD 1.300M (fase lixiviación sulfuros + mejoras eléctricas), dentro de un plan potencial total de USD 14.700M con producción desde 2031-2032, justo cuando el azufre y el H₂SO₄ escalan.</li>
+<li><strong>[S301]</strong> Sección 301 sigue sin determinación de USTR tras audiencias del 9 de julio; comentarios cierran el 16-jul; cobre refinado chileno exento por ahora, con riesgo de arancel 12,5% y posibilidad de exención por Anexo A.</li>
+<li><strong>[EXPORTACIONES]</strong> Chile marcó récord de USD 60.354M en exportaciones H1 2026 — cobre USD 30.236M (promedio 5,94 USD/lb, +11,5%) y litio en 6 meses superó el total de 2025.</li>
 </ul>
+<hr />
     <p class="es-footer-note">
-        Este informe contiene 2 noticias analizadas, precios spot actualizados para 7 minerales y 1 concepto(s) educativo(s) de la semana.
-        Fuentes verificadas al 14 de July de 2026, 15:54 hrs.
+        Este informe contiene 9 noticias analizadas, precios spot actualizados para 7 minerales y 1 concepto(s) educativo(s) de la semana.
+        Fuentes verificadas al 30 de July de 2026, 15:32 hrs.
     </p>
 </div>
 
 <!-- CONTENIDO PRINCIPAL -->
 <div class="content">
-    <h2 id="cobre-y-contexto-de-mercado">Cobre y contexto de mercado</h2>
-<p>El cobre LME cerró la semana en 6,26 USD/lb (13.800 USD/t), +3,0% frente a los 6,08 de la edición anterior, con un spike intradía asociado a la crisis de Ormuz (Westmetall, 14/07). El movimiento no es puramente de fundamentos físicos: los inventarios LME bajaron a 318.900 t, −18% desde mayo, en un mercado que sigue redirigiendo metal hacia EE.UU. antes de la decisión de la Sección 232. El ICSG mantiene un superávit proyectado 2026 de 96.000 t, pero JPMorgan proyecta un déficit de cobre refinado de 330.000 t —el mayor en años— con consumo aparente de China +9% YoY en abril. La lectura es un mercado tensionado por logística y arbitraje regulatorio más que por escasez estructural inmediata.</p>
-<p>En el frente corporativo chileno, la aprobación ambiental de la expansión de USD 1.300M en Escondida (fase lixiviación de sulfuros más mejoras eléctricas) es la señal de inversión más relevante de la semana, dentro de un plan potencial total de USD 14.700M con producción desde 2031-2032. El timing es incómodo: la fase aprobada amplía capacidad SX justamente cuando el alza del azufre presiona el costo del ácido sulfúrico. En Spence, BHP paralizó 12 horas el 8 de julio y evalúa la venta de su desalinizadora. En Los Bronces, Felipe Rau asume la gerencia general de Anglo American el 15 de julio.</p>
-<h2 id="crisis-del-estrecho-de-ormuz-el-shock-energtico">Crisis del Estrecho de Ormuz — el shock energético del año</h2>
-<p>El evento dominante de la semana merece análisis propio: un +18,5% en el Brent en 7 días es el mayor shock energético semanal de 2026. EE.UU. atacó capacidad naval iraní e Irán contraatacó contra aliados, incluida una plataforma offshore en Kuwait; el tráfico por el Estrecho cayó a 6 buques frente a los 18-22 habituales. Para la minería del cobre el canal de transmisión es doble. Primero, los costos energéticos afectan directamente las operaciones SX-EW. Segundo, y más específico, cerca del 50% del azufre global pasa por Oriente Medio: el azufre en Qatar subió a ~890 USD/t (+10,6%), con QSP +$85/t y ADNOC +$140/t. Esto presiona estructuralmente el ácido sulfúrico —cotizado en ~380 USD/t sin dato de julio verificado (Platts, abril 2026)— insumo crítico de la lixiviación. La conexión no obvia: sube el azufre → sube el H₂SO₄ → suben los costos de lixiviación → presión sobre los márgenes de Escondida y Franke, precisamente cuando BHP aprueba USD 1.300M en expansión SX.</p>
-<p>Un detalle narrativo relevante: el oro <strong>cayó</strong> −2,3% pese a la crisis geopolítica. La explicación es que cuando el shock es energético y no financiero, el refugio es el dólar (DXY ~101,10-101,15, ligero fortalecimiento) y no el oro. La plata acompañó la baja (−3,6%).</p>
-<h2 id="codelco-cambio-de-mando-bajo-fuego-cruzado">Codelco — cambio de mando bajo fuego cruzado</h2>
-<p>Jorge Gómez asumió como CEO el 13 de julio con una agenda de seguridad, estabilidad y disciplina operacional, y con sus 14 años en Collahuasi como credencial central. La presión política llegó desde el primer día: el 14 de julio la comisión investigadora de la Cámara amplió su alcance, sumando a las 26.875 t reportadas falsamente y los US$14,3M en bonos indebidos una revisión de Chuquicamata Subterránea, Rajo Inca y la remodelación corporativa de US$57M. La Escuela Minera de esta edición usa este caso para construir criterio sobre el mandato imposible del CEO de una empresa pública.</p>
-<h2 id="tierras-raras-y-pgm">Tierras raras y PGM</h2>
-<p>El fin del rally de 7 trimestres del NdPr es el punto de inflexión de la semana en tierras raras: China Northern Rare Earth bajó su precio de transferencia Q3 por primera vez en 8 trimestres (DigiTimes, 14/07). Conviene no sobredimensionar la caída —es pricing Q3 de un actor chino, no un colapso de mercado—; el desequilibrio estructural persiste y los REE pesados (Dy, Tb) siguen en máximos. En paralelo, el enforcement chino se endureció: dos ciudadanos japoneses fueron detenidos en Dalian por exportar REE sin licencia (primera vez), y el presidente de una empresa óptica china quedó bajo medidas coercitivas por germanio, en la primera semana completa de operación del sistema del Anuncio 26 del MOFCOM (Morgan Lewis). El China REE Price Index avanzó a 272,4, con Germanio +27,8%, Disprosio +25,4% e Indio +26,5%.</p>
-<p>En PGM, el platino cedió levemente a 1.628 USD/oz (−0,8%) y el paladio subió a 1.288 USD/oz (+2,6%); el rodio se estima en ~8.150 USD/oz (−6,3%) en un mercado ilíquido y con conflicto de fuentes (Kitco lo ubica en 7.600). Sibanye comprometió R964m para 2026-2027 en su proyecto K4, primera concreción del plan de 7 proyectos UG2 mecanizados, con el platino en déficit estructural por cuarto año consecutivo.</p>
-<h2 id="comercio-mampa-y-macro">Comercio, M&amp;A y macro</h2>
-<p>La Sección 301 sigue sin determinación de USTR; los comentarios post-audiencia cierran el 16 de julio, con el cobre refinado chileno exento por ahora pero bajo riesgo de un arancel de 12,5% y posibilidad de exención para minerales del Anexo A. La fusión Anglo American-Teck (USD 53B) tiene aprobación canadiense y espera el pronunciamiento del SAMR chino antes de fines de 2026, principal riesgo pendiente. Chile y Argentina reactivaron su tratado minero binacional, activando una cartera fronteriza superior a USD 20.700M.</p>
-<p>Las exportaciones chilenas marcaron un récord de USD 60.354M en el primer semestre, con cobre por USD 30.236M (promedio US$5,94/lb, +11,5%) y un litio que en 6 meses superó el total de todo 2025. En el frente macro, el CPI de EE.UU. de junio bajó a 3,5% YoY (desde 4,2%), con energía moderándose a +15,7% YoY, lo que alivia la presión sobre la Fed; el mercado asigna 79,5% de probabilidad a que el FOMC del 28-29 de julio mantenga la tasa en 3,50-3,75%. El PMI chino de junio se mantuvo estable (NBS 50,3 / Caixin 51,7).</p>
-<p>Ausencia notable de la semana: sin novedades de Novandino/Salar Futuro ni de Capstone Mantos Blancos.</p>
+    <p><strong>Frase de la semana:</strong> "El shock de Ormuz no es solo un evento energético — es el recordatorio de que el 50% del azufre global cuelga de un Estrecho de 54 kilómetros de ancho."<br />
+<strong>Atribución frase:</strong> — Análisis Noticiero Minero Ed.20</p>
+<h2 id="primicias">PRIMICIAS</h2>
+<p><strong>China Northern Rare Earth baja su precio de transferencia Q3 por primera vez en 8 trimestres.</strong> El anuncio de DigiTimes del 14 de julio marca el fin del rally de NdPr de 7 trimestres consecutivos. Es la primera señal de que el productor estatal de referencia ve el techo del ciclo de corto plazo, pese al enforcement del Anuncio 26 que sigue activo. La cobertura occidental tardó más de 24 horas en replicarlo.</p>
+<p><strong>Sibanye compromete R964 millones al proyecto K4 para 2026-2027,</strong> primera concreción del plan de 7 proyectos UG2 mecanizados anunciado la semana pasada. Es el primer desembolso confirmado de los R20.000M totales del plan — transición de anuncio estratégico a compromiso de capital específico. Detalles publicados en el reporte de actualización operacional de Sibanye antes de la cobertura de medios especializados.</p>
+<hr />
+<h2 id="dashboard-de-precios-spot">DASHBOARD DE PRECIOS SPOT</h2>
 <h3 id="semforo-semanal-ed20-14072026">Semáforo semanal (Ed.20 · 14/07/2026)</h3>
 <table>
 <thead>
@@ -1002,19 +1023,134 @@ h4:hover .share-btns { opacity: 1; }
 <td style="text-align: center;"><strong>−0,1%</strong></td>
 <td>BCentral 14/07</td>
 </tr>
+</tbody>
+</table>
+<p><strong>Otros precios de referencia (14/07):</strong> Brent 86,5 USD/bbl (+18,5%); Rodio ~8.150 USD/oz (~−6,3%, conflicto de fuentes: Kitco 7.600 vs estimación media); H₂SO₄ CFR Mejillones ~380 USD/t (referencial, sin dato verificado julio); DXY ~101,10 (leve fortalecimiento).</p>
+<p><em>Nota: NdPr ~113 USD/kg es estimación derivada del Q3 pricing de China Northern Rare Earth (DigiTimes); baja confianza en el nivel exacto. Rodio: conflicto entre Kitco (7.600) y estimación media (8.150) — usar con cautela.</em></p>
+<h3 id="tendencia-multi-semana-ed16-ed20">Tendencia multi-semana (Ed.16 → Ed.20)</h3>
+<table>
+<thead>
 <tr>
-<td>Brent 🔺</td>
-<td style="text-align: center;">73</td>
-<td style="text-align: center;"><strong>86,5 USD/bbl</strong></td>
-<td style="text-align: center;"><strong>+18,5%</strong></td>
-<td>Fortune 14/07</td>
+<th>Mineral</th>
+<th style="text-align: center;">Ed.16</th>
+<th style="text-align: center;">Ed.17</th>
+<th style="text-align: center;">Ed.18</th>
+<th style="text-align: center;">Ed.19</th>
+<th style="text-align: center;">Ed.20</th>
+<th>Tendencia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cobre (USD/lb)</td>
+<td style="text-align: center;">6,44</td>
+<td style="text-align: center;">6,15</td>
+<td style="text-align: center;">6,12</td>
+<td style="text-align: center;">6,08</td>
+<td style="text-align: center;">6,26</td>
+<td>Rebote desde mínimos; rango lateral 6,08–6,44</td>
+</tr>
+<tr>
+<td>Litio Li₂CO₃ (USD/t)</td>
+<td style="text-align: center;">24.500</td>
+<td style="text-align: center;">23.160</td>
+<td style="text-align: center;">23.250</td>
+<td style="text-align: center;">21.500</td>
+<td style="text-align: center;">22.700</td>
+<td>Rebote técnico después de caída a 21.500</td>
+</tr>
+<tr>
+<td>Platino (USD/oz)</td>
+<td style="text-align: center;">1.814</td>
+<td style="text-align: center;">1.662</td>
+<td style="text-align: center;">1.576</td>
+<td style="text-align: center;">1.641</td>
+<td style="text-align: center;">1.628</td>
+<td>Lateral después de rebote; sin tendencia clara</td>
+</tr>
+<tr>
+<td>Oro (USD/oz)</td>
+<td style="text-align: center;">4.345</td>
+<td style="text-align: center;">4.113</td>
+<td style="text-align: center;">3.986</td>
+<td style="text-align: center;">4.154</td>
+<td style="text-align: center;">4.059</td>
+<td>Corrección dentro de rango amplio 3.986–4.345</td>
+</tr>
+<tr>
+<td>Plata (USD/oz)</td>
+<td style="text-align: center;">70,20</td>
+<td style="text-align: center;">62,06</td>
+<td style="text-align: center;">58,69</td>
+<td style="text-align: center;">60,84</td>
+<td style="text-align: center;">58,62</td>
+<td>Corrección profunda sostenida (−17% desde Ed.16)</td>
+</tr>
+<tr>
+<td>Brent (USD/bbl)</td>
+<td style="text-align: center;">82,97</td>
+<td style="text-align: center;">77,42</td>
+<td style="text-align: center;">73,00</td>
+<td style="text-align: center;">72,89</td>
+<td style="text-align: center;">86,50</td>
+<td>Quiebre alcista por crisis Ormuz (+18,5% semanal)</td>
 </tr>
 </tbody>
 </table>
-<h2 id="lo-que-viene">Lo que viene</h2>
+<hr />
+<h2 id="anlisis-por-mineral">ANÁLISIS POR MINERAL</h2>
+<h3 id="cobre-cu">Cobre (Cu)</h3>
+<p>El cobre LME cerró en 6,26 USD/lb (13.800 USD/t), +3,0% semanal — rebote técnico desde los mínimos de Ed.19. El movimiento no es puramente de fundamentos físicos: los inventarios LME bajaron a 318.900 t (−18% desde mayo), en un mercado que sigue redirigiendo metal hacia EE.UU. antes de la decisión S232. El spike intradía estuvo asociado a la crisis de Ormuz (Westmetall, 14/07). El ICSG mantiene superávit proyectado 2026 de 96.000 t, pero JPMorgan proyecta déficit de cobre refinado de 330.000 t — el mayor en años — con consumo aparente de China +9% YoY en abril.</p>
+<p>La aprobación ambiental de la expansión de USD 1.300M en Escondida (fase lixiviación de sulfuros + mejoras eléctricas) es la señal de inversión más relevante de la semana para el cobre chileno, dentro de un plan potencial total de USD 14.700M con producción desde 2031-2032. El timing es incómodo: la fase aprobada amplía capacidad SX justamente cuando el azufre escala. En Spence, BHP paralizó 12 horas el 8 de julio y evalúa la venta de su desalinizadora. En Los Bronces, Felipe Rau asume la gerencia general de Anglo American el 15 de julio.</p>
+<h3 id="tierras-raras-ree-ndpr">Tierras Raras (REE / NdPr)</h3>
+<p><strong>El punto de inflexión de la semana.</strong> China Northern Rare Earth bajó su precio de transferencia Q3 por primera vez en 8 trimestres (DigiTimes, 14/07). El óxido NdPr cae a ~113 USD/kg (~−9,6% semanal), revirtiendo parte del rally de +14,1% de Ed.19. Conviene no sobredimensionar la caída: es pricing Q3 de un actor chino, no un colapso de mercado. El desequilibrio estructural persiste — los REE pesados (Dy, Tb) siguen en máximos históricos — y el enforcement del Anuncio 26 continúa activo.</p>
+<p>En la semana también se concretaron las primeras acciones penales del sistema de delación: dos ciudadanos japoneses fueron detenidos en Dalian por exportar REE sin licencia (primera detención de extranjeros), y el presidente de una empresa óptica china quedó bajo medidas coercitivas por germanio. El China REE Price Index avanzó a 272,4, con Germanio +27,8%, Disprosio +25,4% e Indio +26,5%.</p>
+<h3 id="metales-del-grupo-del-platino-pgm">Metales del Grupo del Platino (PGM)</h3>
+<p>El platino cedió levemente a 1.628 USD/oz (−0,8%), en pausa después del rebote de Ed.19. El paladio subió a 1.288 USD/oz (+2,6%). El rodio presenta conflicto de fuentes: Kitco lo ubica en ~7.600 USD/oz, mientras la estimación media lo sitúa en ~8.150 USD/oz — alta dispersión habitual en un mercado ilíquido; asumir incertidumbre de ±7%.</p>
+<p><strong>Sibanye comprometió R964M al proyecto K4 para 2026-2027,</strong> primera concreción del plan de 7 proyectos UG2 mecanizados. El platino lleva cuatro años consecutivos en déficit estructural proyectado. La tesis de largo plazo — híbridos + hidrógeno como soporte de demanda PGM post-VE — se refuerza con cada trimestre de inversión confirmada.</p>
+<h3 id="litio-li">Litio (Li)</h3>
+<p>El litio carbonato rebotó +5,6% a 22.700 USD/t desde el mínimo de 21.500 USD/t de Ed.19. El rebote es técnico después de una caída de 7,5% — no hay catalizador fundamental nuevo. El contexto sigue siendo el mismo: Novandino con EIA ingresado al SEIA, pero el riesgo político de anulación del acuerdo Codelco-SQM por la comisión investigadora de la Cámara sigue activo. Las exportaciones de litio en H1 2026 superaron el total de todo 2025 — señal de que la demanda sigue robusta.</p>
+<h3 id="cobalto-co">Cobalto (Co)</h3>
+<p>Sin movimiento: 56.290 USD/t (0% semanal), sexta semana consecutiva en el mismo nivel. Las cuotas de exportación H1 de la RDC vencieron el 30 de junio; pendiente verificar la nueva asignación. Glencore sigue en modo reducción de producción priorizado hacia cobre.</p>
+<h3 id="oro-au">Oro (Au)</h3>
+<p>El oro cayó −2,3% a 4.059 USD/oz pese a la crisis geopolítica de Ormuz. La explicación es que cuando el shock es energético-inflacionario (no financiero ni deflacionario), el refugio preferido es el dólar (DXY se fortaleció levemente a ~101,10) y no el oro. El CPI de EE.UU. de junio bajó a 3,5% YoY (desde 4,2%), con energía moderándose a +15,7% YoY — alivia presión sobre la Fed pero moderadamente.</p>
+<h3 id="plata-ag">Plata (Ag)</h3>
+<p>La plata bajó −3,6% a 58,62 USD/oz acompañando al oro hacia abajo. Es la cuarta semana en corrección desde el máximo de Ed.14 (76,25 USD/oz), con una caída acumulada de −23%. El componente industrial de la plata está siendo presionado por la incertidumbre arancelaria sobre electrónica.</p>
+<hr />
+<h2 id="chile-minero">CHILE MINERO</h2>
+<p><strong>Jorge Gómez asume Codelco el 13 de julio bajo fuego cruzado.</strong> Llega con una agenda de seguridad, estabilidad y disciplina operacional, y con 14 años en Collahuasi como credencial central. La presión política llegó desde el primer día: el 14 de julio la comisión investigadora de la Cámara amplió su alcance sumando a las 26.875 t reportadas falsamente y los USD 14,3M en bonos indebidos una revisión de Chuquicamata Subterránea, Rajo Inca y la remodelación corporativa de USD 57M. Gómez hereda el mandato más complejo de cualquier CEO reciente: recuperar producción de ~1,3 Mt hacia ~1,7 Mt con tres frentes activos simultáneamente y sin margen de error político.</p>
+<p><strong>Escondida — BHP aprueba expansión de USD 1.300M.</strong> La aprobación ambiental para la fase de lixiviación de sulfuros más mejoras eléctricas forma parte de un plan potencial total de USD 14.700M con producción desde 2031-2032. Es la señal de inversión privada más relevante de la semana en la minería chilena. El timing geopolítico añade una tensión operacional: la nueva capacidad SX se construye justo cuando el ácido sulfúrico y el azufre escalan por Ormuz.</p>
+<p><strong>Chile marcó récord histórico de exportaciones.</strong> USD 60.354M en el H1 2026: cobre USD 30.236M (promedio 5,94 USD/lb, +11,5%) y litio superando el total de 2025 en solo seis meses. El récord valida la tesis de que los fundamentos físicos de largo plazo del cobre chileno son sólidos — el ruido arancelario es ruido, no revolución.</p>
+<p><strong>S301 sin determinación.</strong> Tras las audiencias del 7-9 julio del USTR, los comentarios post-audiencia cierran el 16 de julio. El cobre refinado chileno sigue exento por ahora. Riesgo activo: arancel adicional de ~12,5% con posibilidad de exención para minerales del Anexo A.</p>
+<p><strong>Fusión Anglo American-Teck (USD 53B)</strong> ya tiene aprobación canadiense y espera el pronunciamiento del SAMR chino — principal riesgo pendiente de una operación que nacería como el quinto mayor productor de cobre del mundo.</p>
+<hr />
+<h2 id="insumos-estratgicos">️ INSUMOS ESTRATÉGICOS</h2>
+<p><strong>H₂SO₄ y el efecto Ormuz.</strong> La crisis del Estrecho suma una nueva presión sobre el ácido sulfúrico: cerca del 50% del azufre global pasa por Oriente Medio. El azufre en Qatar subió a ~890 USD/t (+10,6%), con QSP +USD 85/t y ADNOC +USD 140/t. Esto presiona estructuralmente al H₂SO₄ (~380 USD/t referencial sin dato verificado julio, Platts abril 2026) que ya estaba en mínimos de exportación china por décima semana consecutiva. La conexión en cadena: sube el azufre → sube el H₂SO₄ → suben los costos de lixiviación → presión sobre márgenes de Escondida y Franke precisamente cuando BHP aprueba USD 1.300M en expansión SX.</p>
+<p><strong>Energía.</strong> El Brent escaló a 86,5 USD/bbl (+18,5% semanal) por la crisis de Ormuz — el mayor shock energético semanal de 2026. Esto impacta los costos operativos de combustibles y transporte en la minería del norte. La pregunta abierta es si el shock es temporal (normalización del tráfico marítimo) o estructural (escalada sostenida del conflicto).</p>
+<hr />
+<h2 id="oportunidades">OPORTUNIDADES</h2>
+<ul>
+<li><strong>Suministro H₂SO₄ 2027 — urgencia elevada:</strong> la combinación de décima semana de suspensión china + presión estructural de azufre por Ormuz hace que asegurar contratos anuales de ácido sulfúrico para 2027 sea ya una prioridad de gestión de riesgo operacional, no una tarea futura.</li>
+<li><strong>Escondida expansión — cadena de proveedores:</strong> la aprobación de USD 1.300M en la fase de lixiviación crea una ventana para empresas de ingeniería, equipos SX-EW y servicios mineros especializados que quieran posicionarse en el proyecto.</li>
+<li><strong>NdPr — fin del rally como oportunidad de entrada:</strong> la baja del Q3 pricing chino puede representar una corrección de 1-2 trimestres, no un cambio de ciclo. Para usuarios industriales de REE (fabricantes de imanes, turbinas), este puede ser un momento de acumular inventario antes de la siguiente fase alcista.</li>
+<li><strong>PGM mecanización — Sibanye como señal:</strong> R964M en K4 para 2026-2027 es la primera concreción de un plan de 7 proyectos. La mecanización de las minas UG2 sudafricanas abre oportunidades de equipamiento, tecnología y financiamiento de proyecto para actores especializados en PGM.</li>
+</ul>
+<hr />
+<h2 id="tecnologa-e-ia">️ TECNOLOGÍA E IA</h2>
+<p><strong>DLE como tecnología central de Novandino.</strong> El EIA de Salar Futuro usa Extracción Directa de Litio (DLE) para un proyecto de 470.000 t/año LCE. Es la primera operación de DLE a esta escala en Chile. La tecnología promete menor consumo de agua (crítico en el Atacama) y mayor recuperación vs evaporación solar. El desafío: DLE a esta escala no ha sido probado comercialmente en ningún proyecto comparable — el riesgo tecnológico es real y debe modelarse.</p>
+<p><strong>BHP evalúa la desalinizadora de Spence.</strong> La posible venta de la planta de agua de mar de Spence (luego de la paralización de 12 horas el 8-jul) abre interrogantes sobre la estrategia de infraestructura compartida en el norte de Chile. La desalinización es un activo crítico de largo plazo; venderla podría ser una señal de desinversión selectiva o de monetización de activos no core.</p>
+<hr />
+<h2 id="contexto-macro">CONTEXTO MACRO</h2>
+<p><strong>Crisis Ormuz como evento macro dominante.</strong> El ataque de EE.UU. a la capacidad naval iraní e Irán contraatacó contra aliados en el Golfo; el tráfico del Estrecho cayó a 6 buques frente a los 18-22 habituales. El Brent +18,5% en 7 días es el mayor shock energético semanal de 2026. Para la minería, el canal de transmisión más directo no es el costo del petróleo sino el azufre y el H₂SO₄.</p>
+<p><strong>CPI EE.UU. de junio en 3,5% YoY</strong> (desde 4,2%), con energía moderándose a +15,7% YoY. El mercado asigna 79,5% de probabilidad a que el FOMC del 28-29 de julio mantenga la tasa en 3,50-3,75%. El oro cayó pese a la crisis geopolítica porque el shock es energético-inflacionario, no deflacionario — el mercado buscó refugio en el dólar (DXY ~101,10, leve fortalecimiento).</p>
+<p><strong>PMI China de junio estable:</strong> NBS 50,3 / Caixin 51,7. La demanda china de cobre sigue siendo el soporte estructural del precio. Consumo aparente +9% YoY en abril.</p>
+<hr />
+<h2 id="clase-ejecutiva">CLASE EJECUTIVA</h2>
+<div class="clase-card"><div class="cc-badge">Gobernanza y Estrategia Corporativa</div><p class="cc-title">Clase Ejecutiva Ed.20</p><p class="cc-intro">En una empresa privada el CEO responde, en última instancia, a un principal con función objetivo clara: maximizar el valor para el accionista. El CEO de Codelco enfrenta el caso patológico del problema principal-agente: múltiples principale…</p><a class="cc-link" href="escuela.html#leccion-20">Leer lección completa en la Escuela del Empresario →</a></div>
+<h2 id="calendario">CALENDARIO</h2>
 <h3 id="prximos-7-das">Próximos 7 días</h3>
 <ul>
-<li><strong>15 jul:</strong> Felipe Rau asume gerencia general Anglo American Los Bronces</li>
+<li><strong>15 jul:</strong> Felipe Rau asume gerencia general de Anglo American Los Bronces</li>
 <li><strong>16 jul:</strong> Cierre período comentarios post-audiencia S.301 USTR</li>
 <li><strong>Sem. 14-18 jul:</strong> Evaluación posible acción USTR sobre cobre refinado post-comentarios</li>
 </ul>
@@ -1024,17 +1160,40 @@ h4:hover .share-btns { opacity: 1; }
 <li><strong>Ago 2026:</strong> Decisión final SAMR China sobre fusión Anglo American-Teck (USD 53B)</li>
 <li><strong>Otoño 2026:</strong> Vencimiento tregua comercial EE.UU.-China; arancel chino efectivo ~35%</li>
 </ul>
-<h2 id="escuela-minera-gobernanza">Escuela Minera — Gobernanza</h2>
-<h3 id="leccin-n20-el-ceo-de-una-empresa-pblica-el-man">Lección N.20: El CEO de una empresa pública — el mandato imposible</h3>
-<p>Cuando Jorge Gómez asumió Codelco el 13 de julio, no heredó una empresa: heredó un sistema de tensiones. Entender por qué es la clave para analizar cualquier minera con dueño-Estado, y el marco correcto no es el liderazgo sino la teoría de la agencia.</p>
-<p><strong>1. El problema del agente con múltiples principales.</strong> En una empresa privada el CEO responde, en última instancia, a un principal cuya función objetivo es clara: maximizar el valor para el accionista. El CEO de Codelco enfrenta el caso patológico del problema principal-agente: múltiples principales con funciones objetivo contradictorias. El Ministerio de Minería quiere producción y desarrollo territorial; Hacienda quiere transferencias fiscales predecibles; el Parlamento quiere fiscalización y responde a ciclos electorales; la ciudadanía quiere el "cobre para Chile"; los sindicatos quieren empleo y condiciones. Cada principal puede sancionar al agente, y ninguno puede darle una instrucción coherente con la de los demás. El agente termina optimizando la evitación de conflicto, no un objetivo.</p>
-<p><strong>2. Anatomía del gobierno corporativo de Codelco.</strong> La estructura formal separa tres capas: el accionista único (el Estado, representado por el fisco), un directorio y el CEO ejecutivo. El directorio es el mecanismo de aislamiento diseñado por la ley de gobierno corporativo de 2009 para poner una capa técnica entre la política y la operación: incluye directores propuestos por concurso, representación de trabajadores y designaciones presidenciales ratificadas por el Senado. El CEO ejecuta la estrategia que el directorio aprueba. En teoría, esto despolitiza la gestión. En la práctica, el blindaje es parcial.</p>
-<p><strong>3. El triángulo imposible.</strong> Codelco debe entregar simultáneamente tres cosas que compiten por el mismo flujo de caja: rentabilidad operacional (reinversión para sostener producción), dividendos estructurales al fisco (Codelco ha transferido históricamente decenas de miles de millones de dólares al Estado a lo largo de décadas, siendo por años el mayor aportante individual) y desarrollo nacional (empleo, proveedores locales, presencia territorial). Cada peso que va a dividendos es un peso que no va a capex; cada peso de capex diferido es producción futura perdida. El resultado visible es una deuda creciente y proyectos estructurales —Chuquicamata Subterránea, Rajo Inca— que arrastran sobrecostos y retrasos mientras la producción cayó por debajo de su potencial histórico.</p>
-<p><strong>4. Por qué el directorio es el campo de batalla, no el CEO.</strong> Aquí está la lección de arquitectura de poder: en una empresa estatal, la disputa política real se libra en la composición del directorio, no en la silla del CEO. El CEO es el ejecutor visible y, por tanto, el pararrayos mediático; pero quien controla el directorio controla la estrategia, el presupuesto de capital y la propia permanencia del CEO. Un analista que quiera anticipar el rumbo de Codelco debe mirar quién nombra y quién sale del directorio, no solo los cambios de gerencia general.</p>
-<p><strong>5. El caso Gómez: tres frentes desde el día 1.</strong> Gómez asumió con (a) una comisión investigadora de la Cámara que amplió su alcance el 14 de julio a Chuquicamata Subterránea, Rajo Inca y una remodelación corporativa de US$57M; (b) una causa penal acotada por 26.875 t reportadas falsamente y US$14,3M en bonos indebidos; y (c) el mandato operacional de recuperar producción desde el orden de 1,3 Mt hacia una meta cercana a 1,7 Mt. Ninguno de los tres se resuelve con las mismas palancas, y los tres consumen capital político simultáneamente.</p>
-<p><strong>6. Cómo descontar el "riesgo político estatal".</strong> Para el análisis de inversión, el concepto operativo es la <strong>restricción presupuestaria blanda</strong> (soft budget constraint): una empresa estatal rara vez quiebra porque el Estado la rescata, lo que debilita la disciplina de capital y permite tolerar proyectos que un mercado privado habría cancelado. Al valorar o comparar una minera con dueño-Estado, hay que castigar el WACC implícito por: (i) volatilidad de la política de dividendos ligada al ciclo fiscal, (ii) horizonte de decisión atado al ciclo electoral y no al ciclo del yacimiento, y (iii) riesgo de que el capex se subordine a la caja fiscal. Ese descuento es la diferencia entre leer la noticia y tener criterio.</p>
-<p><strong>Pregunta para el lector:</strong> si usted fuera acreedor de Codelco, ¿preferiría que el Estado le exigiera menos dividendos (mejor caja para capex, pero señal de menor aporte fiscal) o que mantuviera la transferencia y financiara el capex con más deuda? ¿Qué le dice su respuesta sobre el conflicto entre principales?</p>
-<p><strong>Vocabulario clave:</strong> gobierno corporativo (reglas que separan propiedad, dirección y gestión); problema principal-agente (desalineación de intereses entre quien manda y quien ejecuta); mandato dual (obligación simultánea de rentabilidad y fin público); restricción presupuestaria blanda (tolerancia al déficit por respaldo estatal implícito).</p>
+<hr />
+<h2 id="temas-a-monitorear">TEMAS A MONITOREAR</h2>
+<ul>
+<li><strong>Ormuz — normalización del tráfico:</strong> ¿el shock es temporal o escala hacia un conflicto sostenido? Determina si el Brent +18,5% es un episodio o una nueva base de costos</li>
+<li><strong>H₂SO₄ 2027:</strong> combinación de décima semana de suspensión china + presión de azufre por Ormuz — urgente seguimiento de contratos de suministro para 2027</li>
+<li><strong>NdPr — ¿corrección o quiebre de ciclo?:</strong> China Northern Rare Earth Q3 pricing cut es el primero en 8 trimestres; verificar si otros productores chinos replican el movimiento o si es puntual</li>
+<li><strong>FOMC 28-29 julio:</strong> decisión de tasas Fed y su efecto sobre DXY → precios de metales monetarios</li>
+<li><strong>SAMR China / Anglo-Teck:</strong> cada mes que pasa sin aprobación aumenta la incertidumbre de la fusión</li>
+<li><strong>Comisión investigadora Codelco:</strong> evolución del alcance ampliado (Chuquicamata Sub, Rajo Inca) y su impacto sobre las decisiones de capex de Gómez</li>
+</ul>
+<hr />
+<h2 id="radar-de-personas">RADAR DE PERSONAS</h2>
+<p><strong>Jorge Gómez</strong> — CEO de Codelco desde el 13 de julio. Perfil operacional puro: triplicó producción y redujo costos a la mitad en 14 años al mando de Collahuasi. El desafío ahora no es de capacidad técnica — es de sobrevivencia política en un entorno con múltiples principales con agendas contradictorias. Seguimiento: ¿cuál será su primera decisión de capex y cómo la comunica al Congreso?</p>
+<p><strong>Felipe Rau</strong> — Nuevo gerente general de Anglo American Los Bronces, asume el 15 de julio. Llega a una operación que ha reducido producción y enfrenta presiones de costos. Seguimiento: ¿qué señales da sobre el plan de inversión de Los Bronces, que está en uno de los períodos de evaluación más activos de su historia reciente?</p>
+<p><strong>Directores Codelco (sin nombre específico esta semana)</strong> — La expansión de la comisión investigadora al 14 de julio para incluir Chuquicamata Sub, Rajo Inca y remodelaciones es una escalada política. El directorio como instancia es quien debe responder ante la comisión, no el CEO directamente — esto define quién absorbe el costo político.</p>
+<hr />
+<h2 id="nota-editorial">NOTA EDITORIAL</h2>
+<p><strong>NdPr ~113 USD/kg:</strong> estimación derivada del Q3 pricing de China Northern Rare Earth anunciado en DigiTimes; baja confianza en el nivel exacto. No hay cotización spot directa del óxido disponible a esta fecha.</p>
+<p><strong>Rodio ~8.150 USD/oz vs Kitco 7.600:</strong> conflicto real de fuentes. El rodio tiene mercado ilíquido con pocos market-makers; la dispersión de ~7% entre fuentes es habitual. Usar ambos datos como rango, no como punto.</p>
+<p><strong>H₂SO₄ CFR Mejillones ~380 USD/t:</strong> referencial basado en cotización de abril 2026 (Platts). El dato de Ormuz sobre azufre Qatar (+10,6%) sugiere presión adicional sobre el H₂SO₄, pero no hay precio spot verificado de julio para Chile. Las operaciones SX-EW deben verificar con sus brokers.</p>
+<p><strong>Brent 86,5 USD/bbl:</strong> dato de Fortune 14/07. La alta dispersión de precios del petróleo en una semana de crisis Ormuz hace que este número sea instantáneo — puede diferir según hora y fuente de cierre.</p>
+<hr />
+<h2 id="stats-de-bsqueda">STATS DE BÚSQUEDA</h2>
+<p>━━━━━━━━━━━━━━━━━━━<br />
+Queries ejecutadas: ~65 (4 agentes Sonnet + síntesis Opus)<br />
+Fuentes únicas consultadas: ~32<br />
+Noticias encontradas (pre-filtro): ~28<br />
+Noticias incluidas (post-filtro): 15<br />
+Primicias detectadas: 2 (China Northern Rare Earth Q3 pricing cut; Sibanye K4 R964M comprometido)<br />
+Convergencias cruzadas: 7<br />
+Modo: profundo<br />
+Fecha de investigación: 14/07/2026</p>
+<hr />
+<p><em>Noticiero Minero Personal — Edición N°20 · 14 de julio de 2026 · Elaborado con Claude Opus</em></p>
 </div>
 
 <script>
